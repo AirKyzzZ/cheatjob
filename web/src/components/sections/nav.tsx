@@ -1,8 +1,13 @@
 "use client";
 
-import Image from "next/image";
 import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
 import { EVENTS, track } from "@/lib/analytics/events";
+
+const SECONDARY_LINKS = [
+  { label: "Comment ça marche", href: "#wedge", id: "wedge" },
+  { label: "Preuves", href: "#evidence", id: "evidence" },
+  { label: "FAQ", href: "#faq", id: "faq" },
+] as const;
 
 export function Nav() {
   const reduce = useReducedMotion();
@@ -18,7 +23,7 @@ export function Nav() {
     [0, 600],
     ["rgba(255, 255, 255, 0.14)", "rgba(232, 230, 225, 1)"]
   );
-  const textColor = useTransform(scrollY, [0, 600], ["#faf9f6", "#0a0a0a"]);
+  const wordmarkColor = useTransform(scrollY, [0, 600], ["#faf9f6", "#6b1f28"]);
   const linkColor = useTransform(
     scrollY,
     [0, 600],
@@ -42,7 +47,7 @@ export function Nav() {
       initial={reduce ? false : { y: -16, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-[960px]"
+      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-[1120px]"
     >
       <motion.div
         style={{
@@ -59,32 +64,39 @@ export function Nav() {
           href="#top"
           aria-label="Cheatjob — retour en haut"
           onClick={() => track(EVENTS.NavLinkClick, { target: "top" })}
-          className="flex items-center gap-2.5 font-serif"
+          className="flex items-baseline font-serif"
         >
-          <Image
-            src="/logo-mark.png"
-            alt=""
-            width={28}
-            height={28}
-            priority
-            className="size-7 rounded-full object-cover shrink-0"
-          />
           <motion.span
-            style={{ color: textColor }}
-            className="text-[18px] font-normal tracking-tight leading-none"
+            style={{ color: wordmarkColor }}
+            className="font-serif text-[22px] leading-none tracking-[-0.01em]"
           >
             cheatjob
           </motion.span>
         </a>
 
-        <nav className="flex items-center gap-2 md:gap-4">
+        <nav className="flex items-center gap-1 lg:gap-2">
+          <div className="hidden lg:flex items-center gap-1 pr-2">
+            {SECONDARY_LINKS.map((link) => (
+              <motion.a
+                key={link.id}
+                href={link.href}
+                onClick={() =>
+                  track(EVENTS.NavLinkClick, { target: link.id, source: "link" })
+                }
+                style={{ color: linkColor }}
+                className="text-[13px] font-medium hover:opacity-80 transition-opacity px-3 py-1.5 rounded-full font-sans"
+              >
+                {link.label}
+              </motion.a>
+            ))}
+          </div>
           <motion.a
             href="#pricing"
             onClick={() =>
               track(EVENTS.NavLinkClick, { target: "pricing", source: "link" })
             }
             style={{ color: linkColor }}
-            className="hidden md:inline-block text-[13px] font-medium hover:opacity-80 transition-opacity px-2 py-1 font-sans"
+            className="hidden md:inline-block text-[13px] font-medium hover:opacity-80 transition-opacity px-3 py-1.5 font-sans"
           >
             Tarifs
           </motion.a>

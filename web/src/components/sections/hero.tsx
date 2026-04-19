@@ -59,19 +59,6 @@ export function Hero({ backgroundVideoSrc }: HeroProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center flex-1">
           {/* LEFT — Copy */}
           <div className="lg:col-span-7 flex flex-col gap-6 md:gap-8">
-            {/* Eyebrow */}
-            <motion.div
-              initial={reduce ? false : { opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35, delay: 0.18 }}
-              className="flex items-center gap-3"
-            >
-              <span className="h-px w-8 bg-burgundy" aria-hidden />
-              <span className="text-[12px] md:text-[13px] uppercase tracking-[0.22em] font-sans font-medium text-cream/70">
-                Le carnet d&apos;adresses que tu n&apos;as pas hérité
-              </span>
-            </motion.div>
-
             {/* Headline — ONE italic moment per screen (charter rule) */}
             <h1 className="font-serif text-[56px] md:text-[88px] lg:text-[112px] xl:text-[124px] leading-[0.92] tracking-[-0.04em] text-cream max-w-[13ch]">
               <BlurText

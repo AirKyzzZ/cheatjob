@@ -158,6 +158,7 @@ export function Evidence() {
   return (
     <section
       ref={sectionRef}
+      id="evidence"
       className="bg-cream-soft py-28 md:py-40 px-6 md:px-10 border-y border-border-subtle"
       aria-label="Preuves — emails envoyés et réponses obtenues"
     >
