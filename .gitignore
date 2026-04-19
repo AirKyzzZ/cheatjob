@@ -1,0 +1,31 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Node / Next build artifacts (web/ has its own .gitignore but keep these too)
+node_modules/
+.next/
+.vercel/
+out/
+build/
+*.tsbuildinfo
+next-env.d.ts
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Playwright MCP runtime cache (screenshots, console logs, trace files)
+.playwright-mcp/
+
+# Editor
+.idea/
+.vscode/
+*.swp

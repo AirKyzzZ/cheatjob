@@ -1,0 +1,100 @@
+{
+  "task": "brand_logo_generation",
+  "output_count": 4,
+  "output_format": "PNG, transparent background, 2048x2048 square canvas, vector-grade edges",
+  "brand": {
+    "name": "Cheatjob",
+    "wordmark_spelling": "cheatjob",
+    "case": "all_lowercase",
+    "market": "France",
+    "category": "B2C SaaS, AI-powered job search assistant for French students",
+    "personality": "Editorial, premium, confident, slightly provocative, magazine-masthead energy, anti-corporate",
+    "avoid_personality": "tech-bro, hacker-terminal, gamified, cartoon, startup-generic, Silicon Valley pastiche"
+  },
+  "typography": {
+    "primary_family": "Instrument Serif",
+    "fallback_families": ["Fraunces", "GT Super", "Editorial New"],
+    "weight": "400 regular",
+    "style_reference_notes": [
+      "Instrument Serif has a contemporary editorial character with high contrast between thick and thin strokes",
+      "Low x-height, elegant ball terminals, sharp serifs",
+      "Think of the visual feel of a masthead in a culture magazine like Society or The New Yorker"
+    ],
+    "letter_spacing": "tight, approximately -1% to -2% tracking",
+    "baseline": "consistent, no bouncing letters, no ornamental flourishes beyond what Instrument Serif natively has"
+  },
+  "color_palette": {
+    "background": {
+      "hex": "#FAF9F6",
+      "description": "warm off-white, not sterile pure white, slightly cream"
+    },
+    "wordmark": {
+      "hex": "#6B1F28",
+      "description": "deep burgundy, French editorial red, confident and refined"
+    },
+    "optional_alt_wordmark": {
+      "hex": "#0A0A0A",
+      "description": "near-black version for monochrome applications"
+    },
+    "forbidden_colors": ["bright red", "orange", "neon anything", "gradients", "metallic", "gold", "silver"]
+  },
+  "composition": {
+    "canvas": "2048x2048 square",
+    "alignment": "centered both horizontally and vertically",
+    "whitespace": "generous padding, at least 25% margin on all sides",
+    "baseline": "single baseline, no stacked text, no overlapping elements",
+    "orientation": "horizontal only"
+  },
+  "style_directives": [
+    "Flat 2D design, no 3D effects, no perspective, no bevels",
+    "No drop shadows, no glows, no outlines",
+    "No containers, no circles around the wordmark, no rectangular frames",
+    "No gradients under any circumstances",
+    "Vector-grade sharpness, as if set in a professional design tool and exported to SVG",
+    "Pure typographic execution, the letterforms carry all the weight",
+    "Premium editorial feel, as if printed on the cover of a French cultural magazine"
+  ],
+  "negative_prompts": [
+    "no sans-serif fonts",
+    "no hand-drawn or handwritten styles",
+    "no grunge, no distressed textures, no vintage filters",
+    "no icons, no symbols, no mascots, no illustrations",
+    "no French flag, no tricolor, no berets, no baguettes, no Eiffel Tower",
+    "no clip art, no emoji, no stock graphic elements",
+    "no glitch effects, no terminal text, no code aesthetics",
+    "no neon, no cyberpunk, no gaming aesthetic",
+    "no text other than the exact wordmark specified",
+    "no tagline, no subtitle, no descriptor text",
+    "no watermarks, no signatures, no artist marks"
+  ],
+  "variations": [
+    {
+      "id": "v1_primary_wordmark",
+      "instruction": "Render the wordmark 'cheatjob' in lowercase Instrument Serif Regular at 400 weight. Color: burgundy #6B1F28 on warm off-white #FAF9F6 background. Tight kerning, -1% tracking. Centered, generous margins. This is the primary brand wordmark, the version we will use 80% of the time."
+    },
+    {
+      "id": "v2_italic_signature",
+      "instruction": "Render the wordmark 'cheatjob' in lowercase Instrument Serif Italic at 400 weight. Color: burgundy #6B1F28 on warm off-white #FAF9F6 background. The italic version is softer, more editorial, used as a brand signature in video endplates and social share cards. Tight kerning, -1% tracking. Centered."
+    },
+    {
+      "id": "v3_statement_period",
+      "instruction": "Render the wordmark 'cheatjob.' (with a trailing period) in lowercase Instrument Serif Regular at 400 weight. Color: burgundy #6B1F28 on warm off-white #FAF9F6 background. The period is an integral part of the mark, tightly tracked against the 'b', same size and weight as the rest of the wordmark. The period converts the name into a declarative statement."
+    },
+    {
+      "id": "v4_monogram_lockup",
+      "instruction": "Render a horizontal lockup: on the left, a compact monogram 'cj' in lowercase Instrument Serif Regular at 400 weight, slightly larger than the wordmark. To the right of the monogram, separated by a thin vertical rule (1px burgundy #6B1F28, matching the text x-height), the full wordmark 'cheatjob' in lowercase Instrument Serif Regular. All elements in burgundy #6B1F28 on warm off-white #FAF9F6 background. This version is used for app icons (the 'cj' alone) and headers (the full lockup)."
+    }
+  ],
+  "quality_checks": [
+    "All letters must be clearly legible at 40px width (thumbnail size)",
+    "No anti-aliasing fringing, no color halos around letterforms",
+    "Burgundy must read as burgundy, not as brown or maroon",
+    "Background must be visibly warm, not pure #FFFFFF white",
+    "Wordmark must look like it was typeset, not hand-drawn or AI-hallucinated",
+    "No stray marks, no artifacts, no ghost text, no duplicate letters"
+  ],
+  "deliverables": [
+    "Four distinct PNG files at 2048x2048, transparent-capable, one per variation",
+    "Each file clearly corresponds to one variation id listed above"
+  ]
+}
