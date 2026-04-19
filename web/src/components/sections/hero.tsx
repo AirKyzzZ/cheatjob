@@ -1,10 +1,16 @@
 "use client";
 
+import { useRef } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { BlurText } from "@/components/ui/blur-text";
 import { ProofPanel } from "@/components/ui/proof-panel";
 import { ScrollHint } from "@/components/ui/scroll-hint";
 import { Play } from "lucide-react";
+import { EVENTS, track } from "@/lib/analytics/events";
+import { useWaitlist } from "@/components/waitlist/waitlist-context";
+import { useSectionViewed } from "@/hooks/use-section-viewed";
+
+const STRIPE_LINK_SPRINT = process.env.NEXT_PUBLIC_STRIPE_LINK_SPRINT;
 
 type HeroProps = {
   /**
@@ -16,9 +22,13 @@ type HeroProps = {
 
 export function Hero({ backgroundVideoSrc }: HeroProps) {
   const reduce = useReducedMotion();
+  const waitlist = useWaitlist();
+  const sectionRef = useRef<HTMLElement>(null);
+  useSectionViewed("hero", sectionRef);
 
   return (
     <section
+      ref={sectionRef}
       id="top"
       className="relative min-h-[100svh] w-full overflow-hidden bg-ink text-cream isolate pt-36 pb-24"
     >
@@ -106,14 +116,34 @@ export function Hero({ backgroundVideoSrc }: HeroProps) {
               transition={{ duration: 0.55, delay: 1.35, ease: [0.22, 1, 0.36, 1] }}
               className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2"
             >
-              <a
-                href="#pricing"
-                className="inline-flex items-center justify-center h-14 px-8 rounded-[12px] bg-cream text-ink text-[15px] font-semibold font-sans transition-transform hover:-translate-y-0.5"
-              >
-                Prendre le raccourci pour 29€
-              </a>
+              {STRIPE_LINK_SPRINT ? (
+                <a
+                  href={STRIPE_LINK_SPRINT}
+                  onClick={() =>
+                    track(EVENTS.HeroPrimaryCta, { destination: "stripe" })
+                  }
+                  rel="noopener"
+                  className="inline-flex items-center justify-center h-14 px-8 rounded-[12px] bg-cream text-ink text-[15px] font-semibold font-sans transition-transform hover:-translate-y-0.5"
+                >
+                  Prendre le raccourci pour 29€
+                </a>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => {
+                    track(EVENTS.HeroPrimaryCta, { destination: "waitlist" });
+                    waitlist.open({ source: "hero" });
+                  }}
+                  className="inline-flex items-center justify-center h-14 px-8 rounded-[12px] bg-cream text-ink text-[15px] font-semibold font-sans transition-transform hover:-translate-y-0.5"
+                >
+                  Réserver ma place pour 29€
+                </button>
+              )}
               <a
                 href="#wedge"
+                onClick={() =>
+                  track(EVENTS.HeroSecondaryCta, { target: "wedge" })
+                }
                 className="inline-flex items-center gap-2 h-14 px-6 rounded-[12px] text-cream text-[14px] font-medium font-sans border border-cream/15 hover:bg-white/5 transition-colors"
               >
                 <Play className="size-3.5" fill="currentColor" strokeWidth={0} aria-hidden />

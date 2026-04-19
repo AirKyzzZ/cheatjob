@@ -1,10 +1,13 @@
 "use client";
 
+import { useRef } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { Check } from "lucide-react";
-import posthog from "posthog-js";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { cn } from "@/lib/utils";
+import { EVENTS, track } from "@/lib/analytics/events";
+import { useWaitlist } from "@/components/waitlist/waitlist-context";
+import { useSectionViewed } from "@/hooks/use-section-viewed";
 
 const LINKS: Record<string, string | undefined> = {
   sprint: process.env.NEXT_PUBLIC_STRIPE_LINK_SPRINT,
@@ -80,8 +83,12 @@ const PLANS: Plan[] = [
 
 export function Pricing() {
   const reduce = useReducedMotion();
+  const waitlist = useWaitlist();
+  const sectionRef = useRef<HTMLElement>(null);
+  useSectionViewed("pricing", sectionRef);
   return (
     <section
+      ref={sectionRef}
       id="pricing"
       className="bg-cream py-28 md:py-40 px-6 md:px-10"
       aria-label="Tarifs Cheatjob"
@@ -107,6 +114,9 @@ export function Pricing() {
                 delay: reduce ? 0 : i * 0.1,
                 ease: [0.22, 1, 0.36, 1],
               }}
+              onHoverStart={() =>
+                track(EVENTS.PricingPlanHover, { plan: plan.id })
+              }
               className={cn(
                 "relative bg-white border border-border-subtle rounded-[12px] p-8 md:p-10 flex flex-col",
                 plan.featured && "border-burgundy border-t-[3px]"
@@ -151,31 +161,42 @@ export function Pricing() {
 
               {(() => {
                 const href = LINKS[plan.id];
-                const onClick = () => {
-                  posthog.capture("pricing_cta_click", {
-                    plan: plan.id,
-                    has_link: Boolean(href),
-                  });
-                };
                 const className = cn(
                   "w-full h-12 rounded-[10px] text-[14px] font-semibold font-sans transition-colors inline-flex items-center justify-center",
                   plan.featured
                     ? "bg-burgundy text-cream hover:bg-burgundy-deep"
-                    : "border border-burgundy text-burgundy hover:bg-burgundy/5",
-                  !href && "opacity-60 cursor-not-allowed"
+                    : "border border-burgundy text-burgundy hover:bg-burgundy/5"
                 );
-                return href ? (
-                  <a
-                    href={href}
-                    onClick={onClick}
+                if (href) {
+                  return (
+                    <a
+                      href={href}
+                      onClick={() =>
+                        track(EVENTS.PricingCtaClick, {
+                          plan: plan.id,
+                          destination: "stripe",
+                        })
+                      }
+                      className={className}
+                      rel="noopener"
+                    >
+                      {plan.cta}
+                    </a>
+                  );
+                }
+                return (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      track(EVENTS.PricingCtaClick, {
+                        plan: plan.id,
+                        destination: "waitlist",
+                      });
+                      waitlist.open({ plan: plan.id, source: "pricing" });
+                    }}
                     className={className}
-                    rel="noopener"
                   >
-                    {plan.cta}
-                  </a>
-                ) : (
-                  <button type="button" disabled className={className}>
-                    Bientôt disponible
+                    Réserver ma place
                   </button>
                 );
               })()}

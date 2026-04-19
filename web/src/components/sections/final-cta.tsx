@@ -1,13 +1,23 @@
 "use client";
 
+import { useRef } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { BlurText } from "@/components/ui/blur-text";
 import { BypassPath } from "@/components/ui/bypass-path";
+import { EVENTS, track } from "@/lib/analytics/events";
+import { useWaitlist } from "@/components/waitlist/waitlist-context";
+import { useSectionViewed } from "@/hooks/use-section-viewed";
+
+const STRIPE_LINK_SPRINT = process.env.NEXT_PUBLIC_STRIPE_LINK_SPRINT;
 
 export function FinalCTA() {
   const reduce = useReducedMotion();
+  const waitlist = useWaitlist();
+  const sectionRef = useRef<HTMLElement>(null);
+  useSectionViewed("final_cta", sectionRef);
   return (
     <section
+      ref={sectionRef}
       className="bg-cream py-36 md:py-52 px-6 md:px-10 border-t border-border-subtle text-center"
       aria-label="Lancer Cheatjob"
     >
@@ -34,14 +44,31 @@ export function FinalCTA() {
           transition={{ duration: 0.65, delay: 0.3 }}
           className="flex flex-col items-center gap-5"
         >
-          <a
-            href="#pricing"
-            className="inline-flex items-center justify-center h-16 px-10 rounded-[12px] bg-burgundy text-cream text-[17px] font-semibold font-sans hover:bg-burgundy-deep hover:-translate-y-0.5 transition-all"
-          >
-            Prendre le raccourci pour 29€
-          </a>
+          {STRIPE_LINK_SPRINT ? (
+            <a
+              href={STRIPE_LINK_SPRINT}
+              onClick={() =>
+                track(EVENTS.FinalCtaClick, { destination: "stripe" })
+              }
+              rel="noopener"
+              className="inline-flex items-center justify-center h-16 px-10 rounded-[12px] bg-burgundy text-cream text-[17px] font-semibold font-sans hover:bg-burgundy-deep hover:-translate-y-0.5 transition-all"
+            >
+              Prendre le raccourci pour 29€
+            </a>
+          ) : (
+            <button
+              type="button"
+              onClick={() => {
+                track(EVENTS.FinalCtaClick, { destination: "waitlist" });
+                waitlist.open({ source: "final_cta" });
+              }}
+              className="inline-flex items-center justify-center h-16 px-10 rounded-[12px] bg-burgundy text-cream text-[17px] font-semibold font-sans hover:bg-burgundy-deep hover:-translate-y-0.5 transition-all"
+            >
+              Réserver ma place
+            </button>
+          )}
           <p className="text-[13px] text-muted font-sans">
-            Paiement sécurisé. Annulation automatique. Conforme au RGPD.
+            Pré-commande · Livraison juin 2026 · Remboursement si non livré.
           </p>
         </motion.div>
       </div>

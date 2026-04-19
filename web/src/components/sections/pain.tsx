@@ -11,6 +11,7 @@ import {
 import { useEffect, useRef } from "react";
 import { BlurText } from "@/components/ui/blur-text";
 import { Eyebrow } from "@/components/ui/eyebrow";
+import { useSectionViewed } from "@/hooks/use-section-viewed";
 
 function CountUp({
   target,
@@ -46,8 +47,11 @@ function CountUp({
 }
 
 export function Pain() {
+  const sectionRef = useRef<HTMLElement>(null);
+  useSectionViewed("pain", sectionRef);
   return (
     <section
+      ref={sectionRef}
       className="relative bg-cream py-28 md:py-40 px-6 md:px-10"
       aria-label="Le problème du recrutement étudiant"
     >

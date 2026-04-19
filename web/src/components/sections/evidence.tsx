@@ -1,10 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Mail } from "lucide-react";
+import { EVENTS, track } from "@/lib/analytics/events";
+import { useSectionViewed } from "@/hooks/use-section-viewed";
 
 type EvidenceItem = {
   src: string;
@@ -79,6 +81,12 @@ function EvidenceCard({
         delay: reduce ? 0 : index * 0.09,
         ease: [0.22, 1, 0.36, 1],
       }}
+      onHoverStart={() =>
+        track(EVENTS.EvidenceCardHover, {
+          company: item.company,
+          index,
+        })
+      }
       className="group flex flex-col gap-4"
     >
       {/* Screenshot frame */}
@@ -145,8 +153,11 @@ function EvidenceCard({
 }
 
 export function Evidence() {
+  const sectionRef = useRef<HTMLElement>(null);
+  useSectionViewed("evidence", sectionRef);
   return (
     <section
+      ref={sectionRef}
       className="bg-cream-soft py-28 md:py-40 px-6 md:px-10 border-y border-border-subtle"
       aria-label="Preuves — emails envoyés et réponses obtenues"
     >

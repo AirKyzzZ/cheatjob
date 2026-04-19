@@ -1,6 +1,8 @@
 "use client";
 
+import { useRef } from "react";
 import { motion, useReducedMotion } from "motion/react";
+import { useSectionViewed } from "@/hooks/use-section-viewed";
 
 type Receipt = {
   date: string;
@@ -25,8 +27,11 @@ const RECEIPTS: Receipt[] = [
 
 export function Receipts() {
   const reduce = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+  useSectionViewed("receipts", sectionRef);
   return (
     <section
+      ref={sectionRef}
       className="bg-cream border-y border-border-subtle overflow-hidden"
       aria-label="Résultats récents"
     >

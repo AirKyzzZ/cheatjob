@@ -1,7 +1,9 @@
 "use client";
 
+import { useRef } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { Eyebrow } from "@/components/ui/eyebrow";
+import { useSectionViewed } from "@/hooks/use-section-viewed";
 
 type Card = {
   line: string;
@@ -29,8 +31,11 @@ const CARDS: Card[] = [
 
 export function AntiRec() {
   const reduce = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+  useSectionViewed("anti_rec", sectionRef);
   return (
     <section
+      ref={sectionRef}
       className="bg-cream py-28 md:py-36 px-6 md:px-10"
       aria-label="Ce produit n'est pas pour tout le monde"
     >

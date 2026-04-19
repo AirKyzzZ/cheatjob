@@ -1,10 +1,12 @@
 "use client";
 
 import { motion, AnimatePresence } from "motion/react";
-import { useId, useState } from "react";
+import { useId, useRef, useState } from "react";
 import { Plus } from "lucide-react";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { cn } from "@/lib/utils";
+import { EVENTS, track } from "@/lib/analytics/events";
+import { useSectionViewed } from "@/hooks/use-section-viewed";
 
 const QA = [
   {
@@ -92,9 +94,12 @@ function FaqItem({
 
 export function FAQ() {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
+  const sectionRef = useRef<HTMLElement>(null);
+  useSectionViewed("faq", sectionRef);
 
   return (
     <section
+      ref={sectionRef}
       id="faq"
       className="bg-cream py-24 md:py-32 px-6 md:px-10"
       aria-label="Questions fréquentes"
@@ -114,7 +119,16 @@ export function FAQ() {
               q={item.q}
               a={item.a}
               open={openIdx === i}
-              onToggle={() => setOpenIdx(openIdx === i ? null : i)}
+              onToggle={() => {
+                const willOpen = openIdx !== i;
+                setOpenIdx(willOpen ? i : null);
+                if (willOpen) {
+                  track(EVENTS.FaqExpanded, {
+                    index: i,
+                    question: item.q,
+                  });
+                }
+              }}
             />
           ))}
         </div>

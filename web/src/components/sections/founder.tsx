@@ -1,7 +1,9 @@
 "use client";
 
+import { useRef } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { Eyebrow } from "@/components/ui/eyebrow";
+import { useSectionViewed } from "@/hooks/use-section-viewed";
 
 /**
  * Founder story — asymmetric, near-silent section.
@@ -10,9 +12,12 @@ import { Eyebrow } from "@/components/ui/eyebrow";
  */
 export function Founder() {
   const reduce = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+  useSectionViewed("founder", sectionRef);
 
   return (
     <section
+      ref={sectionRef}
       className="bg-cream py-32 md:py-48 px-6 md:px-10"
       aria-label="Pourquoi Cheatjob existe"
     >

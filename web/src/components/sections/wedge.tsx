@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { BlurText } from "@/components/ui/blur-text";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Terminal, CheckCircle2, Mail } from "lucide-react";
+import { useSectionViewed } from "@/hooks/use-section-viewed";
 
 const MESSAGE_TEMPLATE =
   "Bonjour Thomas, je suis étudiant en M2 Marketing à Dauphine. J'ai vu l'offre d'alternance Growth ouverte chez Qonto. Avant de passer par le formulaire, je voulais te contacter directement pour savoir si...";
@@ -15,6 +16,7 @@ export function Wedge() {
   const sectionRef = useRef<HTMLElement>(null);
   const inView = useInView(sectionRef, { margin: "-20%", once: false });
   const reduce = useReducedMotion();
+  useSectionViewed("wedge", sectionRef);
   const [stage, setStage] = useState<Stage>("idle");
   const [typed, setTyped] = useState("");
   const [charIdx, setCharIdx] = useState(0);

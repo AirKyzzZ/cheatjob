@@ -1,8 +1,10 @@
 "use client";
 
+import { useRef } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { X, ArrowRight } from "lucide-react";
+import { useSectionViewed } from "@/hooks/use-section-viewed";
 
 type Row = {
   before: string;
@@ -30,8 +32,11 @@ const ROWS: Row[] = [
 
 export function Versus() {
   const reduce = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+  useSectionViewed("versus", sectionRef);
   return (
     <section
+      ref={sectionRef}
       className="bg-cream py-28 md:py-40 px-6 md:px-10 border-y border-border-subtle"
       aria-label="Comparaison"
     >

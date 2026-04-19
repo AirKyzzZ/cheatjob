@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
+import { EVENTS, track } from "@/lib/analytics/events";
 
 export function Nav() {
   const reduce = useReducedMotion();
@@ -57,6 +58,7 @@ export function Nav() {
         <a
           href="#top"
           aria-label="Cheatjob — retour en haut"
+          onClick={() => track(EVENTS.NavLinkClick, { target: "top" })}
           className="flex items-center gap-2.5 font-serif"
         >
           <Image
@@ -78,6 +80,9 @@ export function Nav() {
         <nav className="flex items-center gap-2 md:gap-4">
           <motion.a
             href="#pricing"
+            onClick={() =>
+              track(EVENTS.NavLinkClick, { target: "pricing", source: "link" })
+            }
             style={{ color: linkColor }}
             className="hidden md:inline-block text-[13px] font-medium hover:opacity-80 transition-opacity px-2 py-1 font-sans"
           >
@@ -85,6 +90,9 @@ export function Nav() {
           </motion.a>
           <motion.a
             href="#pricing"
+            onClick={() =>
+              track(EVENTS.NavLinkClick, { target: "pricing", source: "cta" })
+            }
             style={{ backgroundColor: ctaBg, color: ctaFg }}
             className="inline-flex items-center h-10 px-4 md:px-5 rounded-full text-[13px] font-semibold font-sans hover:-translate-y-0.5 hover:shadow-lg transition-all"
           >

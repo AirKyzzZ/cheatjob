@@ -1,7 +1,9 @@
 "use client";
 
+import { useRef } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { BypassPath } from "@/components/ui/bypass-path";
+import { useSectionViewed } from "@/hooks/use-section-viewed";
 
 /**
  * Handoff — a confident dark editorial moment featuring the signature
@@ -10,9 +12,12 @@ import { BypassPath } from "@/components/ui/bypass-path";
  */
 export function Handoff() {
   const reduce = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+  useSectionViewed("handoff", sectionRef);
 
   return (
     <section
+      ref={sectionRef}
       className="relative bg-ink text-cream py-24 md:py-32 px-6 md:px-10 overflow-hidden"
       aria-hidden
     >

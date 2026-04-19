@@ -29,3 +29,11 @@ yarn-error.log*
 .idea/
 .vscode/
 *.swp
+
+# Local Claude Code settings (per-machine permissions)
+.claude/settings.local.json
+
+# Source email screenshots contain unredacted PII — only the anonymized
+# /web/public/evidence/*.png versions are safe to commit
+/web/screenshots/
+
