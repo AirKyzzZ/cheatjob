@@ -37,3 +37,6 @@ yarn-error.log*
 # /web/public/evidence/*.png versions are safe to commit
 /web/screenshots/
 
+# Internal product/implementation specs — not for public repo
+/docs/superpowers/
+
