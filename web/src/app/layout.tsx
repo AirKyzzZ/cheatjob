@@ -24,7 +24,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://cheatjob.fr"),
+  metadataBase: new URL("https://cheatjob.com"),
   title: {
     default: "Cheatjob — Le logiciel qui contacte les recruteurs à ta place",
     template: "%s · Cheatjob",

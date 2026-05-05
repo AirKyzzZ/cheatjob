@@ -1,9 +1,31 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
+
+const withNextIntl = createNextIntlPlugin("./src/lib/i18n/request.ts");
 
 const nextConfig: NextConfig = {
-  turbopack: {
-    root: "/Users/samsepiol/Downloads/GithubRepos/Work/Projets-perso/saas-project-dropout/job-finder/web",
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "cheatjob.fr" }],
+        destination: "https://cheatjob.com/fr/:path*",
+        permanent: true,
+      },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.cheatjob.fr" }],
+        destination: "https://cheatjob.com/fr/:path*",
+        permanent: true,
+      },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.cheatjob.com" }],
+        destination: "https://cheatjob.com/:path*",
+        permanent: true,
+      },
+    ];
   },
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);
