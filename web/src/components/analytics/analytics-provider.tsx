@@ -2,11 +2,14 @@
 
 import { useEffect, Suspense } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
+import { useLocale } from "next-intl";
 import { Analytics } from "@vercel/analytics/react";
 import posthog from "posthog-js";
 import { PostHogProvider } from "posthog-js/react";
 import { WaitlistProvider } from "@/components/waitlist/waitlist-context";
 import { TrackingEffects } from "@/components/analytics/tracking-effects";
+import { registerLocale } from "@/lib/analytics/locale";
+import type { Locale } from "@/types/locale";
 
 const POSTHOG_KEY = process.env.NEXT_PUBLIC_POSTHOG_KEY;
 const POSTHOG_HOST =
@@ -43,6 +46,14 @@ function PageviewTracker() {
   return null;
 }
 
+function LocaleRegistrar() {
+  const locale = useLocale() as Locale;
+  useEffect(() => {
+    registerLocale(locale);
+  }, [locale]);
+  return null;
+}
+
 export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
   const inner = (
     <WaitlistProvider>
@@ -56,6 +67,7 @@ export function AnalyticsProvider({ children }: { children: React.ReactNode }) {
       <Suspense fallback={null}>
         <PageviewTracker />
       </Suspense>
+      <LocaleRegistrar />
       {inner}
     </PostHogProvider>
   ) : (

@@ -1,7 +1,9 @@
 import type { ReactNode } from "react";
 import { setRequestLocale } from "next-intl/server";
-import { WaitlistProvider } from "@/components/waitlist/waitlist-context";
 import { BetaLocaleBanner } from "./_components/beta-locale-banner";
+
+// WaitlistProvider lives inside AnalyticsProvider (one level up). Don't
+// re-mount it here or two WaitlistModals will render in the DOM.
 
 type MarketingLayoutProps = {
   children: ReactNode;
@@ -13,9 +15,9 @@ export default async function MarketingLayout({ children, params }: MarketingLay
   setRequestLocale(locale);
 
   return (
-    <WaitlistProvider>
+    <>
       <BetaLocaleBanner locale={locale} />
       {children}
-    </WaitlistProvider>
+    </>
   );
 }

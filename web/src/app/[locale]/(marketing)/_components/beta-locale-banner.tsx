@@ -4,17 +4,12 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { isBetaLocale, defaultLocale } from "@/lib/i18n/config";
 import { localeDisplay } from "@/lib/i18n/locale-data";
+// Global Window.posthog typing lives in @/lib/analytics/locale; importing
+// for side effects keeps both files in sync.
+import "@/lib/analytics/locale";
 import type { Locale } from "@/types/locale";
 
 const STORAGE_KEY = "cheatjob.betaBannerDismissed";
-
-declare global {
-  interface Window {
-    posthog?: {
-      capture: (event: string, props?: Record<string, unknown>) => void;
-    };
-  }
-}
 
 export function BetaLocaleBanner({ locale }: { locale: string }) {
   const t = useTranslations("betaBanner");

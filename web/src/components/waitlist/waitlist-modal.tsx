@@ -5,6 +5,7 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useLocale, useTranslations } from "next-intl";
 import { X, Mail, Loader2, Check } from "lucide-react";
 import { EVENTS, identify, setPersonProps, track } from "@/lib/analytics/events";
+import { joinWaitlist } from "@/server/actions/waitlist";
 import type { Locale } from "@/types/locale";
 
 type Props = {
@@ -65,6 +66,24 @@ export function WaitlistModal({ open, onClose, plan, source }: Props) {
     setErrorMsg(null);
 
     try {
+      // Persist via Server Action only when Supabase env is wired in prod.
+      // In local dev without Supabase keys this throws, so swallow that
+      // case to keep the analytics path intact.
+      try {
+        await joinWaitlist({
+          email,
+          plan: plan as "sprint" | "mois" | "vie" | undefined,
+          source,
+          intent,
+          locale,
+        });
+      } catch (persistErr) {
+        track(EVENTS.WaitlistError, {
+          reason: "persist_failed",
+          message: persistErr instanceof Error ? persistErr.message : "unknown",
+        });
+      }
+
       identify(email, {
         email,
         waitlist_plan: plan,
