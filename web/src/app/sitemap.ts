@@ -1,15 +1,25 @@
 import type { MetadataRoute } from "next";
+import { locales } from "@/lib/i18n/config";
 
-const BASE = "https://cheatjob.fr";
+const HOSTNAME = "https://cheatjob.com";
+
+// Phase 0 only ships the landing per locale. Legal pages (Phase 1) and
+// blog posts (Phase 5) extend STATIC_PATHS when those phases ship.
+const STATIC_PATHS = [""] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
-  return [
-    {
-      url: `${BASE}/`,
+  return locales.flatMap((locale) =>
+    STATIC_PATHS.map((path) => ({
+      url: `${HOSTNAME}/${locale}${path}`,
       lastModified,
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-  ];
+      changeFrequency: "weekly" as const,
+      priority: path === "" ? 1.0 : 0.5,
+      alternates: {
+        languages: Object.fromEntries(
+          locales.map((l) => [l, `${HOSTNAME}/${l}${path}`]),
+        ),
+      },
+    })),
+  );
 }

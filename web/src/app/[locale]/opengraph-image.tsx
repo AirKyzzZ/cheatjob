@@ -1,19 +1,23 @@
 import { ImageResponse } from "next/og";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { locales } from "@/lib/i18n/config";
 
 export const alt = "Cheatjob";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
 type OgProps = {
   params: Promise<{ locale: string }>;
 };
 
-// Locale-conditional copy lands in Task 9 once the meta namespace exists.
-// For now keep the original French copy so OG remains valid.
 export default async function Image({ params }: OgProps) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations({ locale, namespace: "meta" });
 
   return new ImageResponse(
     (
@@ -60,23 +64,18 @@ export default async function Image({ params }: OgProps) {
             display: "flex",
             flexDirection: "column",
             gap: 24,
-            maxWidth: 980,
+            maxWidth: 1040,
           }}
         >
           <div
             style={{
-              fontSize: 104,
-              lineHeight: 1,
+              fontSize: 84,
+              lineHeight: 1.02,
               letterSpacing: "-0.03em",
               display: "flex",
-              flexDirection: "column",
-              gap: 4,
             }}
           >
-            <span>Tu n&apos;auras pas ton stage</span>
-            <span style={{ fontStyle: "italic", color: "#f5f1e8" }}>
-              en postulant sur Indeed.
-            </span>
+            {t("ogTitle")}
           </div>
           <div
             style={{
@@ -84,11 +83,10 @@ export default async function Image({ params }: OgProps) {
               lineHeight: 1.45,
               fontFamily: "ui-sans-serif, system-ui, sans-serif",
               color: "rgba(245,241,232,0.72)",
-              maxWidth: 820,
+              maxWidth: 900,
             }}
           >
-            Le logiciel qui trouve l&apos;email du manager qui recrute et lui
-            écrit à ta place.
+            {t("ogDescription")}
           </div>
         </div>
 
@@ -110,9 +108,11 @@ export default async function Image({ params }: OgProps) {
               border: "1px solid rgba(245,241,232,0.24)",
               borderRadius: 999,
               fontSize: 18,
+              textTransform: "uppercase",
+              letterSpacing: "0.18em",
             }}
           >
-            {locale.toUpperCase()}
+            {locale}
           </span>
         </div>
       </div>
