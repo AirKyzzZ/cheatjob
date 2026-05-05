@@ -2,34 +2,19 @@
 
 import { useRef } from "react";
 import { motion, useReducedMotion } from "motion/react";
+import { useTranslations } from "next-intl";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { useSectionViewed } from "@/hooks/use-section-viewed";
 
-type Card = {
-  line: string;
-  mood: "out" | "in";
-};
-
-const CARDS: Card[] = [
-  {
-    line: "Si tu crois encore qu'un CV bien aligné suffit, passe ton tour.",
-    mood: "out",
-  },
-  {
-    line: "Si tu aimes remplir des formulaires et patienter, passe ton tour.",
-    mood: "out",
-  },
-  {
-    line: "Si contacter directement un manager te gêne, passe ton tour.",
-    mood: "out",
-  },
-  {
-    line: "Si tu veux une réponse plus qu'un rituel, entre.",
-    mood: "in",
-  },
-];
+const CARD_KEYS = [
+  { key: "out1", mood: "out" },
+  { key: "out2", mood: "out" },
+  { key: "out3", mood: "out" },
+  { key: "in", mood: "in" },
+] as const;
 
 export function AntiRec() {
+  const t = useTranslations("antiRec");
   const reduce = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
   useSectionViewed("anti_rec", sectionRef);
@@ -37,24 +22,24 @@ export function AntiRec() {
     <section
       ref={sectionRef}
       className="bg-cream py-28 md:py-36 px-6 md:px-10"
-      aria-label="Ce produit n'est pas pour tout le monde"
+      aria-label={t("ariaLabel")}
     >
       <div className="mx-auto max-w-[1100px] flex flex-col gap-14 md:gap-16">
         <div className="flex flex-col gap-6 max-w-[720px]">
-          <Eyebrow>Qui ne devrait pas lire la suite</Eyebrow>
+          <Eyebrow>{t("eyebrow")}</Eyebrow>
           <h2 className="font-serif text-[44px] md:text-[64px] leading-[1.02] tracking-[-0.03em] text-ink max-w-[20ch]">
-            Si tu crois encore au mérite pur, <span className="italic">ferme cet onglet.</span>
+            {t("headlineLead")}{" "}
+            <span className="italic">{t("headlineItalic")}</span>
           </h2>
           <p className="font-sans text-[17px] md:text-[18px] leading-[1.65] text-muted max-w-[48ch]">
-            Cheatjob n&apos;est pas pour tout le monde. Et on préfère te le dire
-            avant que tu sortes la carte bancaire.
+            {t("body")}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
-          {CARDS.map((card, i) => (
+          {CARD_KEYS.map((card, i) => (
             <motion.div
-              key={card.line}
+              key={card.key}
               initial={reduce ? false : { opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-10%" }}
@@ -76,7 +61,7 @@ export function AntiRec() {
                     : "font-serif italic text-[28px] md:text-[36px] leading-[1.25] text-cream"
                 }
               >
-                {card.line}
+                {t(`cards.${card.key}`)}
               </p>
             </motion.div>
           ))}

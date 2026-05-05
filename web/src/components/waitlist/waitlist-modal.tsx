@@ -2,8 +2,10 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { useLocale, useTranslations } from "next-intl";
 import { X, Mail, Loader2, Check } from "lucide-react";
 import { EVENTS, identify, setPersonProps, track } from "@/lib/analytics/events";
+import type { Locale } from "@/types/locale";
 
 type Props = {
   open: boolean;
@@ -12,13 +14,9 @@ type Props = {
   source?: string;
 };
 
-const PLAN_LABEL: Record<string, string> = {
-  sprint: "Sprint · 29€",
-  mois: "Mois · 14€90",
-  vie: "Vie · 149€",
-};
-
 export function WaitlistModal({ open, onClose, plan, source }: Props) {
+  const t = useTranslations("waitlist");
+  const locale = useLocale() as Locale;
   const reduce = useReducedMotion();
   const emailId = useId();
   const intentId = useId();
@@ -57,7 +55,7 @@ export function WaitlistModal({ open, onClose, plan, source }: Props) {
     const intent = String(data.get("intent") ?? "");
 
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      setErrorMsg("Email invalide.");
+      setErrorMsg(t("errorInvalidEmail"));
       setState("error");
       track(EVENTS.WaitlistError, { reason: "invalid_email" });
       return;
@@ -72,6 +70,7 @@ export function WaitlistModal({ open, onClose, plan, source }: Props) {
         waitlist_plan: plan,
         waitlist_source: source,
         waitlist_intent: intent,
+        waitlist_locale: locale,
         waitlist_joined_at: new Date().toISOString(),
       });
       setPersonProps({ email });
@@ -79,11 +78,12 @@ export function WaitlistModal({ open, onClose, plan, source }: Props) {
         plan,
         source,
         intent,
+        locale,
       });
       setState("done");
     } catch (err) {
       setState("error");
-      setErrorMsg("On n'a pas pu enregistrer. Réessaie dans un instant.");
+      setErrorMsg(t("errorSubmit"));
       track(EVENTS.WaitlistError, {
         reason: "submit_failed",
         message: err instanceof Error ? err.message : "unknown",
@@ -91,7 +91,7 @@ export function WaitlistModal({ open, onClose, plan, source }: Props) {
     }
   }
 
-  const planLabel = plan ? PLAN_LABEL[plan] : undefined;
+  const planLabel = plan ? t(`planLabels.${plan}` as "planLabels.sprint") : undefined;
 
   return (
     <AnimatePresence>
@@ -106,7 +106,7 @@ export function WaitlistModal({ open, onClose, plan, source }: Props) {
         >
           <button
             type="button"
-            aria-label="Fermer"
+            aria-label={t("closeAria")}
             onClick={onClose}
             className="absolute inset-0 bg-ink/70 backdrop-blur-[2px]"
           />
@@ -123,7 +123,7 @@ export function WaitlistModal({ open, onClose, plan, source }: Props) {
           >
             <button
               type="button"
-              aria-label="Fermer"
+              aria-label={t("closeAria")}
               onClick={onClose}
               className="absolute top-4 right-4 size-9 rounded-full flex items-center justify-center text-muted hover:bg-ink/5 transition-colors"
             >
@@ -139,20 +139,18 @@ export function WaitlistModal({ open, onClose, plan, source }: Props) {
                   id="waitlist-title"
                   className="font-serif text-[32px] md:text-[40px] leading-[1.05] tracking-[-0.02em] text-ink"
                 >
-                  Tu es dans la liste.{" "}
-                  <span className="italic">On t&apos;écrit au lancement.</span>
+                  {t("doneHeadlineLead")}{" "}
+                  <span className="italic">{t("doneHeadlineItalic")}</span>
                 </h2>
                 <p className="font-sans text-[15px] leading-[1.6] text-muted">
-                  Lancement prévu en juin 2026. Tu recevras un email direct
-                  du fondateur avec un lien d&apos;accès prioritaire — pas de
-                  newsletter, pas de spam.
+                  {t("doneBody")}
                 </p>
                 <button
                   type="button"
                   onClick={onClose}
                   className="mt-2 h-12 rounded-[10px] bg-ink text-cream text-[14px] font-semibold font-sans hover:-translate-y-0.5 transition-transform"
                 >
-                  Retour au site
+                  {t("doneBack")}
                 </button>
               </div>
             ) : (
@@ -160,29 +158,24 @@ export function WaitlistModal({ open, onClose, plan, source }: Props) {
                 <div className="flex items-center gap-3 mb-5">
                   <span className="h-px w-8 bg-burgundy" aria-hidden />
                   <span className="text-[11px] uppercase tracking-[0.22em] font-sans font-medium text-muted">
-                    Pré-commande · Livraison juin 2026
+                    {t("preOrderEyebrow")}
                   </span>
                 </div>
                 <h2
                   id="waitlist-title"
                   className="font-serif text-[30px] md:text-[38px] leading-[1.05] tracking-[-0.02em] text-ink mb-3"
                 >
-                  Garde ta place avant le lancement.
+                  {t("headlineDefault")}
                 </h2>
                 <p className="font-sans text-[14.5px] leading-[1.6] text-muted mb-7">
                   {planLabel ? (
                     <>
-                      Tu réserves l&apos;accès au plan{" "}
-                      <span className="text-ink font-medium">{planLabel}</span>.
-                      Aucun prélèvement maintenant — tu recevras un lien de
-                      paiement quand on lance.
+                      {t("bodyWithPlanLead")}{" "}
+                      <span className="text-ink font-medium">{planLabel}</span>
+                      {t("bodyWithPlanTrail")}
                     </>
                   ) : (
-                    <>
-                      Aucun prélèvement maintenant. On te prévient par email
-                      dès que Cheatjob est prêt, avec un tarif early-bird
-                      garanti.
-                    </>
+                    t("bodyDefault")
                   )}
                 </p>
 
@@ -197,7 +190,7 @@ export function WaitlistModal({ open, onClose, plan, source }: Props) {
                       htmlFor={emailId}
                       className="font-sans text-[12px] uppercase tracking-[0.18em] text-muted font-medium"
                     >
-                      Ton email
+                      {t("emailLabel")}
                     </label>
                     <div className="relative">
                       <Mail
@@ -211,7 +204,7 @@ export function WaitlistModal({ open, onClose, plan, source }: Props) {
                         type="email"
                         required
                         autoComplete="email"
-                        placeholder="prenom.nom@exemple.com"
+                        placeholder={t("emailPlaceholder")}
                         className="w-full h-12 pl-10 pr-4 bg-white border border-border-subtle rounded-[10px] font-sans text-[14px] text-ink placeholder:text-muted-soft focus:outline-none focus:border-burgundy transition-colors"
                       />
                     </div>
@@ -222,7 +215,7 @@ export function WaitlistModal({ open, onClose, plan, source }: Props) {
                       htmlFor={intentId}
                       className="font-sans text-[12px] uppercase tracking-[0.18em] text-muted font-medium"
                     >
-                      Tu cherches
+                      {t("intentLabel")}
                     </label>
                     <select
                       id={intentId}
@@ -231,12 +224,12 @@ export function WaitlistModal({ open, onClose, plan, source }: Props) {
                       className="w-full h-12 px-4 bg-white border border-border-subtle rounded-[10px] font-sans text-[14px] text-ink focus:outline-none focus:border-burgundy transition-colors appearance-none cursor-pointer"
                     >
                       <option value="" disabled>
-                        Choisis une option
+                        {t("intentDefault")}
                       </option>
-                      <option value="stage">Un stage</option>
-                      <option value="alternance">Une alternance</option>
-                      <option value="cdi">Un premier CDI</option>
-                      <option value="other">Autre chose</option>
+                      <option value="stage">{t("intentStage")}</option>
+                      <option value="alternance">{t("intentAlternance")}</option>
+                      <option value="cdi">{t("intentCdi")}</option>
+                      <option value="other">{t("intentOther")}</option>
                     </select>
                   </div>
 
@@ -257,16 +250,15 @@ export function WaitlistModal({ open, onClose, plan, source }: Props) {
                     {state === "submitting" ? (
                       <>
                         <Loader2 className="size-4 animate-spin" aria-hidden />
-                        Enregistrement…
+                        {t("submitting")}
                       </>
                     ) : (
-                      "Réserver ma place"
+                      t("submit")
                     )}
                   </button>
 
                   <p className="font-sans italic text-[12px] text-muted-soft text-center leading-[1.5]">
-                    Pas de spam. Pas de partage. Juste un mail du fondateur
-                    quand Cheatjob est prêt.
+                    {t("microcopy")}
                   </p>
                 </form>
               </>

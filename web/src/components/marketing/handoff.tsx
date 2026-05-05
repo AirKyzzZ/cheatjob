@@ -2,16 +2,13 @@
 
 import { useRef } from "react";
 import { motion, useReducedMotion } from "motion/react";
+import { useTranslations } from "next-intl";
 import { BypassPath } from "@/components/ui/bypass-path";
 import { useSectionViewed } from "@/hooks/use-section-viewed";
 
-/**
- * Handoff — a confident dark editorial moment featuring the signature
- * bypass diagram. Stays dark; the Receipts band below handles the
- * natural visual transition to cream.
- */
 export function Handoff() {
   const reduce = useReducedMotion();
+  const t = useTranslations("handoff");
   const sectionRef = useRef<HTMLElement>(null);
   useSectionViewed("handoff", sectionRef);
 
@@ -40,7 +37,7 @@ export function Handoff() {
           transition={{ duration: 0.5 }}
           className="text-[11px] uppercase tracking-[0.22em] font-sans font-semibold text-cream/60"
         >
-          Le chemin que Cheatjob trace
+          {t("eyebrow")}
         </motion.span>
 
         <motion.div
@@ -64,7 +61,7 @@ export function Handoff() {
           transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           className="font-serif italic text-[22px] md:text-[32px] leading-[1.3] text-center max-w-[30ch] text-cream/90"
         >
-          Quand la voie normale ne t&apos;ouvre rien, tu prends la voie utile.
+          {t("italicLine")}
         </motion.p>
       </div>
     </section>

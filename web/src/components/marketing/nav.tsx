@@ -1,17 +1,20 @@
 "use client";
 
 import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
+import { useTranslations } from "next-intl";
 import { EVENTS, track } from "@/lib/analytics/events";
-
-const SECONDARY_LINKS = [
-  { label: "Comment ça marche", href: "#wedge", id: "wedge" },
-  { label: "Preuves", href: "#evidence", id: "evidence" },
-  { label: "FAQ", href: "#faq", id: "faq" },
-] as const;
+import { LocaleSwitcher } from "@/components/i18n/locale-switcher";
 
 export function Nav() {
+  const t = useTranslations("nav");
   const reduce = useReducedMotion();
   const { scrollY } = useScroll();
+
+  const secondaryLinks = [
+    { label: t("wedge"), href: "#wedge", id: "wedge" },
+    { label: t("evidence"), href: "#evidence", id: "evidence" },
+    { label: t("faq"), href: "#faq", id: "faq" },
+  ] as const;
 
   const bg = useTransform(
     scrollY,
@@ -62,7 +65,7 @@ export function Nav() {
       >
         <a
           href="#top"
-          aria-label="Cheatjob — retour en haut"
+          aria-label={t("wordmarkAria")}
           onClick={() => track(EVENTS.NavLinkClick, { target: "top" })}
           className="flex items-baseline font-serif"
         >
@@ -76,7 +79,7 @@ export function Nav() {
 
         <nav className="flex items-center gap-1 lg:gap-2">
           <div className="hidden lg:flex items-center gap-1 pr-2">
-            {SECONDARY_LINKS.map((link) => (
+            {secondaryLinks.map((link) => (
               <motion.a
                 key={link.id}
                 href={link.href}
@@ -98,8 +101,9 @@ export function Nav() {
             style={{ color: linkColor }}
             className="hidden md:inline-block text-[13px] font-medium hover:opacity-80 transition-opacity px-3 py-1.5 font-sans"
           >
-            Tarifs
+            {t("pricing")}
           </motion.a>
+          <LocaleSwitcher linkColor={linkColor} />
           <motion.a
             href="#pricing"
             onClick={() =>
@@ -108,7 +112,7 @@ export function Nav() {
             style={{ backgroundColor: ctaBg, color: ctaFg }}
             className="inline-flex items-center h-10 px-4 md:px-5 rounded-full text-[13px] font-semibold font-sans hover:-translate-y-0.5 hover:shadow-lg transition-all"
           >
-            Commencer
+            {t("cta")}
           </motion.a>
         </nav>
       </motion.div>

@@ -9,6 +9,7 @@ import {
   animate,
 } from "motion/react";
 import { useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 import { BlurText } from "@/components/ui/blur-text";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { useSectionViewed } from "@/hooks/use-section-viewed";
@@ -47,38 +48,31 @@ function CountUp({
 }
 
 export function Pain() {
+  const t = useTranslations("pain");
   const sectionRef = useRef<HTMLElement>(null);
   useSectionViewed("pain", sectionRef);
   return (
     <section
       ref={sectionRef}
       className="relative bg-cream py-28 md:py-40 px-6 md:px-10"
-      aria-label="Le problème du recrutement étudiant"
+      aria-label={t("ariaLabel")}
     >
       <div className="mx-auto max-w-[1200px] grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20">
-        {/* Left: copy */}
         <div className="md:col-span-6 flex flex-col gap-8">
-          <Eyebrow>Le problème</Eyebrow>
+          <Eyebrow>{t("eyebrow")}</Eyebrow>
           <h2 className="font-serif text-[44px] md:text-[64px] leading-[1.02] tracking-[-0.03em] text-ink max-w-[18ch]">
+            <BlurText text={t("headlineLine1")} as="span" className="block" />
             <BlurText
-              text="Les RH cherchent des clones."
-              as="span"
-              className="block"
-            />
-            <BlurText
-              text="Les managers cherchent des solutions."
+              text={t("headlineLine2")}
               as="span"
               className="block text-muted"
             />
           </h2>
           <p className="font-sans text-[17px] md:text-[18px] leading-[1.65] text-muted max-w-[44ch]">
-            Le recrutement classique est un jeu truqué. Tu envoies un PDF dans le
-            vide, en espérant qu&apos;un algorithme te remarque. Pendant ce
-            temps, ceux qui connaissent le manager obtiennent l&apos;entretien.
+            {t("body")}
           </p>
         </div>
 
-        {/* Right: stats + quote */}
         <div className="md:col-span-6 flex flex-col gap-14">
           <div className="grid grid-cols-2 gap-8 md:gap-12 border-b border-border-subtle pb-12">
             <motion.div
@@ -91,10 +85,10 @@ export function Pain() {
                 <CountUp target={40} />
               </div>
               <p className="text-[13px] font-sans text-muted leading-[1.5] max-w-[22ch]">
-                des étudiants cherchent plus de 3 mois
+                {t("stat1Label")}
               </p>
               <p className="text-[11px] font-sans italic text-muted-soft mt-2">
-                Baromètre Seekube, 2024
+                {t("stat1Source")}
               </p>
             </motion.div>
 
@@ -112,15 +106,14 @@ export function Pain() {
                 <CountUp target={85} negative />
               </div>
               <p className="text-[13px] font-sans text-muted leading-[1.5] max-w-[22ch]">
-                d&apos;offres d&apos;alternance en PME en 2024
+                {t("stat2Label")}
               </p>
               <p className="text-[11px] font-sans italic text-muted-soft mt-2">
-                Rapport JobTeaser, 2024
+                {t("stat2Source")}
               </p>
             </motion.div>
           </div>
 
-          {/* ONE italic line — the cutting pull quote */}
           <motion.blockquote
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -135,10 +128,10 @@ export function Pain() {
               &ldquo;
             </span>
             <p className="font-serif italic text-[28px] md:text-[36px] leading-[1.2] text-ink pl-6">
-              Le système marche très bien. Juste pas pour toi.
+              {t("pullQuote")}
             </p>
             <footer className="font-sans text-[12px] uppercase tracking-[0.22em] font-medium text-muted mt-5 pl-6">
-              Maxime, fondateur
+              {t("pullQuoteAttribution")}
             </footer>
           </motion.blockquote>
         </div>
