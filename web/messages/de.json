@@ -5,7 +5,310 @@
     "translator": "claude-opus-4-7",
     "translatedAt": "2026-05-05",
     "locale": "de",
-    "qualityFlag": "beta",
-    "status": "stub"
+    "qualityFlag": "beta"
+  },
+  "meta": {
+    "title": {
+      "default": "Cheatjob — Die Software, die Recruiter für dich anschreibt",
+      "template": "%s · Cheatjob"
+    },
+    "description": "Cheatjob findet die direkte Email der Hiring Manager und schreibt für dich. Du landest in deren Inbox, nicht im HR-Stapel.",
+    "ogTitle": "Cheatjob — Der unfaire Vorteil",
+    "ogDescription": "Kein Netzwerk? Wir bauen dir eines. Die Software, die Recruiter für dich anschreibt."
+  },
+  "nav": {
+    "wedge": "So funktioniert's",
+    "evidence": "Belege",
+    "faq": "FAQ",
+    "pricing": "Preise",
+    "cta": "Loslegen",
+    "wordmarkAria": "Cheatjob — zurück nach oben",
+    "localeSwitcherLabel": "Sprache"
+  },
+  "hero": {
+    "headline": "Du bekommst dein Praktikum nicht",
+    "headlineItalic": "indem du auf Indeed bewirbst.",
+    "subhead": "Cheatjob findet die Email des Managers, der wirklich einstellt, schreibt deine Nachricht, bringt dich in die richtige Inbox.",
+    "subheadEmphasis": "Seine Inbox. Nicht die von HR.",
+    "ctaPrimaryStripe": "Den Shortcut für 29€ nehmen",
+    "ctaPrimaryWaitlist": "Meinen Platz für 29€ reservieren",
+    "ctaSecondary": "Sehen, wie es funktioniert",
+    "microproof": "Nenn es Frechheit. Bis du unterschreibst."
+  },
+  "handoff": {
+    "eyebrow": "Der Weg, den Cheatjob zeichnet",
+    "italicLine": "Wenn die Vordertür geschlossen bleibt, nimmst du die Seitentür."
+  },
+  "receipts": {
+    "label": "Belege · Woche 15",
+    "ariaLabel": "Aktuelle Ergebnisse",
+    "outcomes": {
+      "interview": "Interview gebucht",
+      "fastReply2h": "Antwort in 2h",
+      "fastReply40min": "Antwort in 40min"
+    },
+    "roles": {
+      "growth": "Growth Werkstudent",
+      "data": "Data Praktikum",
+      "product": "Product Werkstudent",
+      "marketing": "Marketing Praktikum",
+      "hr": "HR Werkstudent",
+      "ops": "Ops Praktikum"
+    }
+  },
+  "pain": {
+    "eyebrow": "Das Problem",
+    "ariaLabel": "Das Problem im Studi-Recruiting",
+    "headlineLine1": "HR sucht Klone.",
+    "headlineLine2": "Manager suchen Lösungen.",
+    "body": "Klassisches Recruiting ist ein gezinktes Spiel. Du wirfst eine PDF ins Leere und hoffst, dass ein Algorithmus dich bemerkt. Währenddessen kriegen die, die den Manager kennen, das Interview.",
+    "stat1Label": "der Studierenden suchen länger als 3 Monate",
+    "stat1Source": "Seekube-Umfrage, 2024",
+    "stat2Label": "weniger Werkstudenten-Stellen in KMU 2024",
+    "stat2Source": "JobTeaser-Bericht, 2024",
+    "pullQuote": "Das System funktioniert sehr gut. Nur nicht für dich.",
+    "pullQuoteAttribution": "Maxime, Gründer"
+  },
+  "versus": {
+    "eyebrow": "Ihre Regeln. Unser Spiel.",
+    "ariaLabel": "Vergleich",
+    "headline": "Zwei Wege, zwei Ausgänge.",
+    "body": "Links die Warteschlange. Rechts die nützliche Tür. Wähl, was zu dir passt.",
+    "beforeColumn": "Die Warteschlange",
+    "afterColumn": "Die nützliche Tür",
+    "rows": {
+      "row1Before": "In ein schwarzes Loch bewerben.",
+      "row1After": "In der Inbox des Entscheiders landen.",
+      "row2Before": "Gegen 500 identische Bewerbungen kämpfen.",
+      "row2After": "Der einzige Name auf seinem Bildschirm sein.",
+      "row3Before": "Drei Wochen auf eine automatische Absage warten.",
+      "row3After": "Am selben Tag eine Antwort bekommen.",
+      "row4Before": "HR anflehen.",
+      "row4After": "Mit dem Manager reden."
+    }
+  },
+  "wedge": {
+    "eyebrow": "So funktioniert's",
+    "headlineLine1": "Finde, wer entscheidet.",
+    "headlineLine2": "Schreib genau richtig.",
+    "headlineLine3": "Komm vor den anderen an.",
+    "body": "Du gibst uns den Firmennamen und die gewünschte Rolle. Cheatjob findet die Email des Managers, der einstellt, schreibt eine personalisierte Nachricht basierend auf deinem CV und dem Stellenkontext, und lässt dich direkt aus deinem Postfach senden. Kein HR-Postfach. Kein ATS. Keine Warteschlange.",
+    "terminalLabel": "cheatjob · cli",
+    "messageDraftLabel": "Verfasste Nachricht",
+    "messageTemplate": "Hallo Thomas, ich bin M2-Marketingstudent in Dauphine. Ich habe die Growth-Werkstudentenstelle bei Qonto gesehen. Bevor ich das Formular ausfülle, wollte ich dich direkt fragen, ob..."
+  },
+  "evidence": {
+    "eyebrow": "Belege",
+    "ariaLabel": "Belege — gesendete Emails und erhaltene Antworten",
+    "headlineLine1": "Das ist kein Versprechen.",
+    "headlineItalic": "Das ist eine Inbox.",
+    "body": "Verschickte Nachrichten. Erhaltene Antworten. Die Art Beweis, die Indeed dir nie zeigt.",
+    "placeholderLabel": "Beleg kommt",
+    "footerCaption": "Echte Emails, vom Gründer mit der Cheatjob-Methode verschickt. Recruiter-Namen anonymisiert, Firmen aus Transparenzgründen erhalten.",
+    "altPattern": "Email an {company} für {role}",
+    "items": {
+      "01": {
+        "company": "Dataiku",
+        "role": "Software Engineer Intern",
+        "outcome": "Interview bestätigt",
+        "date": "März 2026"
+      },
+      "02": {
+        "company": "Deezer",
+        "role": "Werkstudent Fullstack",
+        "outcome": "Bewerbung weiter",
+        "date": "März 2026"
+      },
+      "03": {
+        "company": "ExtraJool",
+        "role": "Entwicklungs-Praktikum",
+        "outcome": "Direkte CEO-Antwort",
+        "date": "Okt 2025"
+      },
+      "04": {
+        "company": "HOP HOP IMMO",
+        "role": "Praktikumsvereinbarung",
+        "outcome": "Praktikum unterschrieben",
+        "date": "Nov 2025"
+      },
+      "05": {
+        "company": "SQLI",
+        "role": "Werkstudent Fullstack",
+        "outcome": "Call geplant",
+        "date": "März 2026"
+      }
+    }
+  },
+  "founder": {
+    "eyebrow": "Warum Cheatjob existiert",
+    "ariaLabel": "Warum Cheatjob existiert",
+    "headline": "So habe ich mein Praktikum bekommen. Dann einen Job in einem Unicorn.",
+    "name": "Maxime Mansiet",
+    "title": "Gründer",
+    "place": "Bordeaux, 2026",
+    "paragraph1": "2024 habe ich mich auf 80 Praktika via Indeed und Welcome to the Jungle beworben. Null Antworten. Ich habe aufgehört, die Emails der Verantwortlichen gesucht, 15 personalisierte Nachrichten geschrieben. Ich hatte 4 Interviews und in 3 Wochen unterschrieben.",
+    "paragraph2Lead": "Ein Jahr später habe ich dieselbe Methode genutzt, um einen Job in einem französischen Unicorn zu bekommen.",
+    "paragraph2Italic": "Die Vordertür ist verschlossen. Wir haben einfach den Service-Schlüssel kopiert."
+  },
+  "antiRec": {
+    "eyebrow": "Wer nicht weiterlesen sollte",
+    "ariaLabel": "Dieses Produkt ist nicht für jeden",
+    "headlineLead": "Wenn du noch an reines Verdienst glaubst,",
+    "headlineItalic": "schließ diesen Tab.",
+    "body": "Cheatjob ist nicht für jeden. Wir sagen dir das lieber, bevor du die Karte zückst.",
+    "cards": {
+      "out1": "Wenn du noch denkst, ein sauberes CV reicht, lass es.",
+      "out2": "Wenn du Formulare ausfüllen und warten magst, lass es.",
+      "out3": "Wenn dir der direkte Manager-Kontakt unangenehm ist, lass es.",
+      "in": "Wenn du eine Antwort mehr willst als ein Ritual, komm rein."
+    }
+  },
+  "pricing": {
+    "eyebrow": "Preise",
+    "ariaLabel": "Cheatjob-Preise",
+    "headlineLead": "Der Preis eines Abends.",
+    "headlineItalic": "Der Vertrag eines ganzen Jahres.",
+    "popularBadge": "Beliebt",
+    "ctaWaitlistFallback": "Meinen Platz reservieren",
+    "deliveryLabel": "Lieferung Juni 2026",
+    "preOrderCaption": "Vorbestellung · {delivery}",
+    "footerNote": "Sichere Zahlung über Stripe. Abrechnung in Euro, MwSt. inkl. Vorbestellung mit geschätzter Lieferung im Juni 2026, volle Rückerstattung bei Nicht-Lieferung.",
+    "plans": {
+      "sprint": {
+        "name": "Sprint",
+        "subtitle": "Das One-Shot-Format",
+        "price": "29€",
+        "priceSub": "einmalig, 30 Tage Zugang",
+        "cta": "Sprint wählen",
+        "features": [
+          "50 rekonstruierte Emails",
+          "Unbegrenzte personalisierte Nachrichten",
+          "Praktikums- und Werkstudenten-Templates",
+          "Automatisches J+7 Follow-up",
+          "Bewerbungs-Dashboard",
+          "Auto-Stopp am Periodenende"
+        ]
+      },
+      "mois": {
+        "name": "Monat",
+        "subtitle": "Das flexible Format",
+        "price": "14€90",
+        "priceSub": "pro Monat, jederzeit kündbar",
+        "cta": "Loslegen",
+        "features": [
+          "100 rekonstruierte Emails pro Monat",
+          "Alles aus Sprint",
+          "Priorisierter Email-Support",
+          "CSV-Export deiner Bewerbungen",
+          "Gmail- und Outlook-Integration",
+          "Vollständige Sende-Historie",
+          "Ein smartes Follow-up pro Prospekt"
+        ]
+      },
+      "vie": {
+        "name": "Lebenslang",
+        "subtitle": "Das endgültige Format",
+        "price": "149€",
+        "priceSub": "einmalig, lebenslang",
+        "cta": "Lebenslang holen",
+        "features": [
+          "Alles aus Monat",
+          "Kein Monatslimit",
+          "Früher Zugang zu neuen Features",
+          "Lebenslange Updates",
+          "Priorisierter Support",
+          "Eine Stunde Bewerbungs-Coaching inklusive"
+        ]
+      }
+    }
+  },
+  "faq": {
+    "eyebrow": "Fragen",
+    "ariaLabel": "Häufig gestellte Fragen",
+    "headline": "Die Fragen, die sich die in der Schlange immer stellen.",
+    "items": {
+      "legal": {
+        "q": "Ist es legal, jemanden zu mailen, den man nicht kennt?",
+        "a": "Ja, im Rahmen relevanter B2B-Ansprache. Die DSGVO erlaubt Kontakt zu einer beruflichen Email unter berechtigtem Interesse, was bei der Praktikums- oder Werkstudentensuche der Fall ist. Cheatjob speichert keine Email-Datenbank. Adressen werden in Echtzeit aus öffentlichen Infos rekonstruiert. Jede Nachricht enthält die nötige Abmelde-Option."
+      },
+      "robot": {
+        "q": "Merkt der Recruiter, dass es ein Bot ist?",
+        "a": "Nein. Cheatjob schreibt einen ersten Entwurf, den du liest, korrigierst und freigibst, bevor du ihn sendest. Du bist es, der sendet, aus deinem eigenen Postfach. Du bleibst der Autor. Und ehrlich, niemand schreibt 2026 eine Cold-Mail komplett selbst, nicht mal die Sales-Leute."
+      },
+      "early": {
+        "q": "Wenn ich meine Werkstudentenstelle in 2 Wochen finde, kann ich aufhören?",
+        "a": "Ja. Sprint endet automatisch nach 30 Tagen, ohne Verlängerung. Monat kündigst du in einem Klick im Dashboard. Lebenslang hat keine Verlängerung."
+      },
+      "contracts": {
+        "q": "Für welche Vertragsarten funktioniert das?",
+        "a": "Abschluss-Praktika, Werkstudenten- und Ausbildungsverträge, erste Festanstellung für Absolventen. Templates sind auf den französischen Studi-Markt zugeschnitten. Die Methode klappt auch für Sommerjobs, ist aber nicht unsere Spezialität."
+      },
+      "sender": {
+        "q": "Von welcher Adresse wird meine Email gesendet?",
+        "a": "Von deiner persönlichen Adresse, über dein verbundenes Gmail- oder Outlook-Postfach. Cheatjob sendet nichts in einem Zwischendomain-Namen. Deine Identität bleibt deine, nur so landest du nicht im Spam."
+      },
+      "bts": {
+        "q": "Ich bin im bac+2 BTS, ist das was für mich?",
+        "a": "Ja. BTS-Studierende sind etwa ein Drittel unserer Audience. Templates passen auf kurze Pflichtpraktika genauso wie auf lange Werkstudentenverträge."
+      }
+    }
+  },
+  "finalCta": {
+    "ariaLabel": "Cheatjob starten",
+    "headlineLead": "Hör auf zu hoffen.",
+    "headlineItalic": "Schreib an die richtigen Leute.",
+    "ctaPrimaryStripe": "Den Shortcut für 29€ nehmen",
+    "ctaPrimaryWaitlist": "Meinen Platz reservieren",
+    "subline": "Vorbestellung · Lieferung Juni 2026 · Rückerstattung bei Nicht-Lieferung."
+  },
+  "footer": {
+    "wordmarkAria": "Cheatjob — zurück nach oben",
+    "navAria": "Rechtliche Links",
+    "pricing": "Preise",
+    "faq": "FAQ",
+    "contact": "Kontakt",
+    "place": "Gemacht in Bordeaux, 2026"
+  },
+  "waitlist": {
+    "closeAria": "Schließen",
+    "preOrderEyebrow": "Vorbestellung · Lieferung Juni 2026",
+    "headlineDefault": "Halt dir deinen Platz vor dem Launch.",
+    "bodyWithPlanLead": "Du reservierst Zugang zum Plan",
+    "bodyWithPlanTrail": ". Keine Abbuchung jetzt — du bekommst beim Launch einen Zahlungslink.",
+    "bodyDefault": "Keine Abbuchung jetzt. Wir mailen dich, sobald Cheatjob bereit ist, mit garantiertem Early-Bird-Preis.",
+    "emailLabel": "Deine Email",
+    "emailPlaceholder": "vorname.nachname@beispiel.de",
+    "intentLabel": "Du suchst",
+    "intentDefault": "Wähle eine Option",
+    "intentStage": "Ein Praktikum",
+    "intentAlternance": "Eine Werkstudentenstelle",
+    "intentCdi": "Eine erste Festanstellung",
+    "intentOther": "Etwas anderes",
+    "submit": "Meinen Platz reservieren",
+    "submitting": "Speichern…",
+    "errorInvalidEmail": "Ungültige Email.",
+    "errorSubmit": "Wir konnten das nicht speichern. Versuch es gleich nochmal.",
+    "microcopy": "Kein Spam. Kein Teilen. Nur eine Email vom Gründer, wenn Cheatjob bereit ist.",
+    "doneHeadlineLead": "Du bist auf der Liste.",
+    "doneHeadlineItalic": "Wir mailen dich beim Launch.",
+    "doneBody": "Launch geplant für Juni 2026. Du bekommst eine direkte Email vom Gründer mit Priority-Access-Link, kein Newsletter, kein Spam.",
+    "doneBack": "Zurück zur Seite",
+    "planLabels": {
+      "sprint": "Sprint · 29€",
+      "mois": "Monat · 14€90",
+      "vie": "Lebenslang · 149€"
+    }
+  },
+  "betaBanner": {
+    "message": "Diese Übersetzung ist im Beta. Qualität schwankt. Wechsle zu {defaultLocaleName} für die volle Version.",
+    "dismiss": "Verstanden"
+  },
+  "notFound": {
+    "eyebrow": "Fehler 404",
+    "headlineLead": "Diese Seite existiert nicht.",
+    "headlineItalic": "Wie dein Adressbuch.",
+    "body": "Der Unterschied: dieses hier können wir dir in ein paar Tagen bauen.",
+    "ctaHome": "Zurück zur Startseite",
+    "ctaPricing": "Preise ansehen"
   }
 }

@@ -4,7 +4,310 @@
     "sourceLocale": "fr",
     "translator": "Maxime Mansiet",
     "lastReviewed": "2026-05-05",
-    "locale": "en",
-    "status": "stub"
+    "locale": "en"
+  },
+  "meta": {
+    "title": {
+      "default": "Cheatjob — The software that emails recruiters for you",
+      "template": "%s · Cheatjob"
+    },
+    "description": "Cheatjob finds the hiring manager's direct email and writes the cold message for you. You land in their inbox, not in HR's pile.",
+    "ogTitle": "Cheatjob — The unfair advantage",
+    "ogDescription": "No network? We build you one. The software that emails recruiters for you."
+  },
+  "nav": {
+    "wedge": "How it works",
+    "evidence": "Proof",
+    "faq": "FAQ",
+    "pricing": "Pricing",
+    "cta": "Get started",
+    "wordmarkAria": "Cheatjob — back to top",
+    "localeSwitcherLabel": "Language"
+  },
+  "hero": {
+    "headline": "You won't get your internship",
+    "headlineItalic": "by applying on Indeed.",
+    "subhead": "Cheatjob finds the email of the manager who's actually hiring, writes your message, lands you in the right inbox.",
+    "subheadEmphasis": "Their inbox. Not HR's.",
+    "ctaPrimaryStripe": "Take the shortcut for €29",
+    "ctaPrimaryWaitlist": "Reserve my spot for €29",
+    "ctaSecondary": "See how it works",
+    "microproof": "Call it nerve. Until the day you sign."
+  },
+  "handoff": {
+    "eyebrow": "The path Cheatjob draws",
+    "italicLine": "When the front door stays shut, you take the side one."
+  },
+  "receipts": {
+    "label": "Receipts · week 15",
+    "ariaLabel": "Recent results",
+    "outcomes": {
+      "interview": "Interview booked",
+      "fastReply2h": "Reply in 2h",
+      "fastReply40min": "Reply in 40min"
+    },
+    "roles": {
+      "growth": "Growth Apprenticeship",
+      "data": "Data Internship",
+      "product": "Product Apprenticeship",
+      "marketing": "Marketing Internship",
+      "hr": "HR Apprenticeship",
+      "ops": "Ops Internship"
+    }
+  },
+  "pain": {
+    "eyebrow": "The problem",
+    "ariaLabel": "The student hiring problem",
+    "headlineLine1": "HR is looking for clones.",
+    "headlineLine2": "Managers are looking for solutions.",
+    "body": "Classic recruiting is a rigged game. You drop a PDF into a void, hoping an algorithm notices. Meanwhile, the people who know the manager get the interview.",
+    "stat1Label": "of students search for over 3 months",
+    "stat1Source": "Seekube survey, 2024",
+    "stat2Label": "drop in SME apprenticeship listings in 2024",
+    "stat2Source": "JobTeaser report, 2024",
+    "pullQuote": "The system works fine. Just not for you.",
+    "pullQuoteAttribution": "Maxime, founder"
+  },
+  "versus": {
+    "eyebrow": "Their rules. Our game.",
+    "ariaLabel": "Comparison",
+    "headline": "Two paths, two outcomes.",
+    "body": "On the left, the queue. On the right, the side door. Pick the one that fits.",
+    "beforeColumn": "The queue",
+    "afterColumn": "The side door",
+    "rows": {
+      "row1Before": "Apply into a black hole.",
+      "row1After": "Land in the decider's inbox.",
+      "row2Before": "Fight 500 identical applications.",
+      "row2After": "Be the only name on their screen.",
+      "row3Before": "Wait three weeks for an automated rejection.",
+      "row3After": "Get a reply the same day.",
+      "row4Before": "Beg HR.",
+      "row4After": "Talk to the manager."
+    }
+  },
+  "wedge": {
+    "eyebrow": "How it works",
+    "headlineLine1": "Find who decides.",
+    "headlineLine2": "Write right.",
+    "headlineLine3": "Arrive before the others.",
+    "body": "You give us the company name and the role you want. Cheatjob finds the email of the manager who's hiring, writes a personalized message based on your CV and the offer context, then lets you send it directly from your own inbox. No HR mailbox. No ATS. No queue.",
+    "terminalLabel": "cheatjob · cli",
+    "messageDraftLabel": "Drafted message",
+    "messageTemplate": "Hi Thomas, I'm an M2 Marketing student at Dauphine. I saw the Growth apprenticeship opening at Qonto. Before going through the form, I wanted to reach out directly to ask if..."
+  },
+  "evidence": {
+    "eyebrow": "Proof",
+    "ariaLabel": "Proof — emails sent and replies received",
+    "headlineLine1": "This isn't a promise.",
+    "headlineItalic": "It's an inbox.",
+    "body": "Messages sent. Replies received. The kind of proof Indeed will never show you.",
+    "placeholderLabel": "Proof coming",
+    "footerCaption": "Real emails, sent by the founder using the Cheatjob method. Recruiter names anonymized, companies kept for transparency.",
+    "altPattern": "Email sent to {company} for {role}",
+    "items": {
+      "01": {
+        "company": "Dataiku",
+        "role": "Software Engineer Intern",
+        "outcome": "Interview confirmed",
+        "date": "March 2026"
+      },
+      "02": {
+        "company": "Deezer",
+        "role": "Fullstack Developer Apprenticeship",
+        "outcome": "Application advanced",
+        "date": "March 2026"
+      },
+      "03": {
+        "company": "ExtraJool",
+        "role": "Development Internship",
+        "outcome": "Direct reply from CEO",
+        "date": "Oct 2025"
+      },
+      "04": {
+        "company": "HOP HOP IMMO",
+        "role": "Internship agreement",
+        "outcome": "Internship signed",
+        "date": "Nov 2025"
+      },
+      "05": {
+        "company": "SQLI",
+        "role": "Fullstack Developer Apprenticeship",
+        "outcome": "Call scheduled",
+        "date": "March 2026"
+      }
+    }
+  },
+  "founder": {
+    "eyebrow": "Why Cheatjob exists",
+    "ariaLabel": "Why Cheatjob exists",
+    "headline": "I landed my internship this way. Then a job at a unicorn.",
+    "name": "Maxime Mansiet",
+    "title": "Founder",
+    "place": "Bordeaux, 2026",
+    "paragraph1": "In 2024, I applied to 80 internships through Indeed and Welcome to the Jungle. Zero replies. I stopped, found the managers' emails, wrote 15 personalized messages. I got 4 interviews and signed in 3 weeks.",
+    "paragraph2Lead": "A year later, I used the same method to land a role at a French unicorn.",
+    "paragraph2Italic": "The front door is locked. We just copied the service key."
+  },
+  "antiRec": {
+    "eyebrow": "Who shouldn't read further",
+    "ariaLabel": "This product isn't for everyone",
+    "headlineLead": "If you still believe in pure merit,",
+    "headlineItalic": "close this tab.",
+    "body": "Cheatjob isn't for everyone. We'd rather tell you that before you reach for your card.",
+    "cards": {
+      "out1": "If you still think a clean CV is enough, skip this.",
+      "out2": "If you enjoy filling forms and waiting, skip this.",
+      "out3": "If reaching out to a manager directly makes you uneasy, skip this.",
+      "in": "If you want a reply more than a ritual, come in."
+    }
+  },
+  "pricing": {
+    "eyebrow": "Pricing",
+    "ariaLabel": "Cheatjob pricing",
+    "headlineLead": "The price of one night out.",
+    "headlineItalic": "The contract of one full year.",
+    "popularBadge": "Popular",
+    "ctaWaitlistFallback": "Reserve my spot",
+    "deliveryLabel": "Shipping June 2026",
+    "preOrderCaption": "Pre-order · {delivery}",
+    "footerNote": "Secure payment via Stripe. Billed in euros, VAT included. Pre-order with estimated delivery in June 2026, full refund if the product isn't shipped by then.",
+    "plans": {
+      "sprint": {
+        "name": "Sprint",
+        "subtitle": "The one-shot format",
+        "price": "€29",
+        "priceSub": "one-time, 30-day access",
+        "cta": "Choose Sprint",
+        "features": [
+          "50 reconstructed emails",
+          "Unlimited personalized messages",
+          "Apprenticeship and internship templates",
+          "Automatic J+7 follow-up",
+          "Application dashboard",
+          "Auto-cancellation at the end of the period"
+        ]
+      },
+      "mois": {
+        "name": "Monthly",
+        "subtitle": "The flexible format",
+        "price": "€14.90",
+        "priceSub": "per month, no commitment",
+        "cta": "Get started",
+        "features": [
+          "100 reconstructed emails per month",
+          "Everything in Sprint",
+          "Priority email support",
+          "CSV exports of your applications",
+          "Gmail and Outlook integration",
+          "Full history of your sends",
+          "One smart follow-up per prospect"
+        ]
+      },
+      "vie": {
+        "name": "Lifetime",
+        "subtitle": "The final format",
+        "price": "€149",
+        "priceSub": "one-time, lifetime",
+        "cta": "Get lifetime",
+        "features": [
+          "Everything in Monthly",
+          "No monthly cap",
+          "Early access to new features",
+          "Lifetime updates",
+          "Priority support",
+          "One hour of application coaching included"
+        ]
+      }
+    }
+  },
+  "faq": {
+    "eyebrow": "Questions",
+    "ariaLabel": "Frequently asked questions",
+    "headline": "The questions people in the queue keep asking.",
+    "items": {
+      "legal": {
+        "q": "Is it legal to email someone you don't know?",
+        "a": "Yes, in the context of relevant B2B outreach. GDPR allows contacting a professional email under legitimate interest, which applies to internship and apprenticeship search. Cheatjob doesn't store an email database. Addresses are reconstructed in real time from public information. Every message you send includes the required opt-out option."
+      },
+      "robot": {
+        "q": "Will the recruiter know it's a bot?",
+        "a": "No. Cheatjob writes a first draft that you read, edit, and approve before sending. You're the one sending, from your own inbox. You stay the author of the message. And honestly, nobody writes a cold email from scratch in 2026, not even sales people."
+      },
+      "early": {
+        "q": "If I land my apprenticeship in 2 weeks, can I stop?",
+        "a": "Yes. The Sprint plan ends automatically after 30 days, no renewal. The Monthly plan cancels in one click from your dashboard. The Lifetime plan has no renewal."
+      },
+      "contracts": {
+        "q": "What kind of contracts does this work for?",
+        "a": "End-of-studies internships, apprenticeships (apprentissage and contrat pro), first full-time roles for new grads. Templates are tuned to the French student market. The method also works for summer jobs, but that's not our specialty."
+      },
+      "sender": {
+        "q": "Which address does my email send from?",
+        "a": "From your personal address, via your connected Gmail or Outlook inbox. Cheatjob never sends anything on behalf of an intermediary domain. Your identity stays yours, that's the only way not to land in spam."
+      },
+      "bts": {
+        "q": "I'm a BTS student in bac+2, is this for me?",
+        "a": "Yes. BTS students make up about a third of our audience. Templates work for short mandatory internships and long apprenticeships alike."
+      }
+    }
+  },
+  "finalCta": {
+    "ariaLabel": "Start with Cheatjob",
+    "headlineLead": "Stop hoping.",
+    "headlineItalic": "Write to the right people.",
+    "ctaPrimaryStripe": "Take the shortcut for €29",
+    "ctaPrimaryWaitlist": "Reserve my spot",
+    "subline": "Pre-order · Shipping June 2026 · Refund if not delivered."
+  },
+  "footer": {
+    "wordmarkAria": "Cheatjob — back to top",
+    "navAria": "Legal links",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "place": "Made in Bordeaux, 2026"
+  },
+  "waitlist": {
+    "closeAria": "Close",
+    "preOrderEyebrow": "Pre-order · Shipping June 2026",
+    "headlineDefault": "Hold your spot before launch.",
+    "bodyWithPlanLead": "You're reserving access to the",
+    "bodyWithPlanTrail": " plan. No charge now, you'll get a payment link when we launch.",
+    "bodyDefault": "No charge now. We'll email you the moment Cheatjob is ready, with a guaranteed early-bird price.",
+    "emailLabel": "Your email",
+    "emailPlaceholder": "first.last@example.com",
+    "intentLabel": "You're looking for",
+    "intentDefault": "Choose an option",
+    "intentStage": "An internship",
+    "intentAlternance": "An apprenticeship",
+    "intentCdi": "A first full-time role",
+    "intentOther": "Something else",
+    "submit": "Reserve my spot",
+    "submitting": "Saving…",
+    "errorInvalidEmail": "Invalid email.",
+    "errorSubmit": "We couldn't save that. Try again in a moment.",
+    "microcopy": "No spam. No sharing. Just an email from the founder when Cheatjob is ready.",
+    "doneHeadlineLead": "You're on the list.",
+    "doneHeadlineItalic": "We email you at launch.",
+    "doneBody": "Launch is set for June 2026. You'll get a direct email from the founder with a priority access link, no newsletter, no spam.",
+    "doneBack": "Back to site",
+    "planLabels": {
+      "sprint": "Sprint · €29",
+      "mois": "Monthly · €14.90",
+      "vie": "Lifetime · €149"
+    }
+  },
+  "betaBanner": {
+    "message": "This translation is in beta. Quality varies. Switch back to {defaultLocaleName} for the full version.",
+    "dismiss": "Got it"
+  },
+  "notFound": {
+    "eyebrow": "404 error",
+    "headlineLead": "This page doesn't exist.",
+    "headlineItalic": "Like your address book.",
+    "body": "The difference: this one, we can build for you in a few days.",
+    "ctaHome": "Back home",
+    "ctaPricing": "See pricing"
   }
 }

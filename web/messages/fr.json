@@ -3,7 +3,310 @@
     "translation": "source",
     "locale": "fr",
     "lastReviewed": "2026-05-05",
-    "reviewer": "Maxime Mansiet",
-    "status": "stub"
+    "reviewer": "Maxime Mansiet"
+  },
+  "meta": {
+    "title": {
+      "default": "Cheatjob — Le logiciel qui contacte les recruteurs à ta place",
+      "template": "%s · Cheatjob"
+    },
+    "description": "Cheatjob trouve l'email direct du recruteur et lui écrit à ta place. Tu arrives dans sa boîte, pas dans celle des RH.",
+    "ogTitle": "Cheatjob — L'avantage déloyal",
+    "ogDescription": "Pas de réseau ? On t'en fabrique un. Le logiciel qui contacte les recruteurs à ta place."
+  },
+  "nav": {
+    "wedge": "Comment ça marche",
+    "evidence": "Preuves",
+    "faq": "FAQ",
+    "pricing": "Tarifs",
+    "cta": "Commencer",
+    "wordmarkAria": "Cheatjob — retour en haut",
+    "localeSwitcherLabel": "Langue"
+  },
+  "hero": {
+    "headline": "Tu n'auras pas ton stage",
+    "headlineItalic": "en postulant sur Indeed.",
+    "subhead": "Cheatjob trouve l'email du manager qui recrute, rédige ton message, te fait arriver au bon endroit.",
+    "subheadEmphasis": "Dans sa boîte mail. Pas dans celle des RH.",
+    "ctaPrimaryStripe": "Prendre le raccourci pour 29€",
+    "ctaPrimaryWaitlist": "Réserver ma place pour 29€",
+    "ctaSecondary": "Voir comment ça marche",
+    "microproof": "On appellera ça du culot, jusqu'au moment où tu signes."
+  },
+  "handoff": {
+    "eyebrow": "Le chemin que Cheatjob trace",
+    "italicLine": "Quand la voie normale ne t'ouvre rien, tu prends la voie utile."
+  },
+  "receipts": {
+    "label": "Reçus · semaine 15",
+    "ariaLabel": "Résultats récents",
+    "outcomes": {
+      "interview": "Entretien obtenu",
+      "fastReply2h": "Réponse en 2h",
+      "fastReply40min": "Réponse en 40min"
+    },
+    "roles": {
+      "growth": "Alternance Growth",
+      "data": "Stage Data",
+      "product": "Alternance Product",
+      "marketing": "Stage Marketing",
+      "hr": "Alternance RH",
+      "ops": "Stage Ops"
+    }
+  },
+  "pain": {
+    "eyebrow": "Le problème",
+    "ariaLabel": "Le problème du recrutement étudiant",
+    "headlineLine1": "Les RH cherchent des clones.",
+    "headlineLine2": "Les managers cherchent des solutions.",
+    "body": "Le recrutement classique est un jeu truqué. Tu envoies un PDF dans le vide, en espérant qu'un algorithme te remarque. Pendant ce temps, ceux qui connaissent le manager obtiennent l'entretien.",
+    "stat1Label": "des étudiants cherchent plus de 3 mois",
+    "stat1Source": "Baromètre Seekube, 2024",
+    "stat2Label": "d'offres d'alternance en PME en 2024",
+    "stat2Source": "Rapport JobTeaser, 2024",
+    "pullQuote": "Le système marche très bien. Juste pas pour toi.",
+    "pullQuoteAttribution": "Maxime, fondateur"
+  },
+  "versus": {
+    "eyebrow": "Leurs règles. Notre jeu.",
+    "ariaLabel": "Comparaison",
+    "headline": "Deux routes, deux issues.",
+    "body": "À gauche, la file d'attente. À droite, l'entrée utile. Choisis celle qui te ressemble.",
+    "beforeColumn": "La file d'attente",
+    "afterColumn": "L'entrée utile",
+    "rows": {
+      "row1Before": "Postuler dans un trou noir.",
+      "row1After": "Atterrir dans la boîte du décideur.",
+      "row2Before": "Se battre contre 500 dossiers identiques.",
+      "row2After": "Être le seul nom sur son écran.",
+      "row3Before": "Attendre trois semaines pour un refus automatique.",
+      "row3After": "Obtenir une réponse dans la journée.",
+      "row4Before": "Supplier les RH.",
+      "row4After": "Échanger avec le manager."
+    }
+  },
+  "wedge": {
+    "eyebrow": "Comment ça marche",
+    "headlineLine1": "Trouve qui décide.",
+    "headlineLine2": "Écris juste.",
+    "headlineLine3": "Arrive avant les autres.",
+    "body": "Tu donnes le nom de l'entreprise et le poste visé. Cheatjob trouve l'email du manager qui recrute, rédige un message personnalisé basé sur ton CV et le contexte de l'offre, puis te propose d'envoyer directement depuis ta boîte mail. Pas de boîte RH. Pas d'ATS. Pas de file d'attente.",
+    "terminalLabel": "cheatjob · cli",
+    "messageDraftLabel": "Message rédigé",
+    "messageTemplate": "Bonjour Thomas, je suis étudiant en M2 Marketing à Dauphine. J'ai vu l'offre d'alternance Growth ouverte chez Qonto. Avant de passer par le formulaire, je voulais te contacter directement pour savoir si..."
+  },
+  "evidence": {
+    "eyebrow": "Preuves",
+    "ariaLabel": "Preuves — emails envoyés et réponses obtenues",
+    "headlineLine1": "Ce n'est pas une promesse.",
+    "headlineItalic": "C'est une boîte de réception.",
+    "body": "Des messages envoyés. Des réponses reçues. Le genre de preuve qu'Indeed ne montrera jamais.",
+    "placeholderLabel": "Preuve à venir",
+    "footerCaption": "Emails réels, envoyés par le fondateur avec la méthode Cheatjob. Noms des recruteurs anonymisés, sociétés conservées par transparence.",
+    "altPattern": "Email envoyé à {company} pour {role}",
+    "items": {
+      "01": {
+        "company": "Dataiku",
+        "role": "Software Engineer Intern",
+        "outcome": "Entretien confirmé",
+        "date": "mars 2026"
+      },
+      "02": {
+        "company": "Deezer",
+        "role": "Alternance Développeur Fullstack",
+        "outcome": "Candidature retenue",
+        "date": "mars 2026"
+      },
+      "03": {
+        "company": "ExtraJool",
+        "role": "Stage développement",
+        "outcome": "Réponse directe du CEO",
+        "date": "oct. 2025"
+      },
+      "04": {
+        "company": "HOP HOP IMMO",
+        "role": "Convention de stage",
+        "outcome": "Stage validé",
+        "date": "nov. 2025"
+      },
+      "05": {
+        "company": "SQLI",
+        "role": "Alternance Développeur Fullstack",
+        "outcome": "Échange planifié",
+        "date": "mars 2026"
+      }
+    }
+  },
+  "founder": {
+    "eyebrow": "Pourquoi Cheatjob existe",
+    "ariaLabel": "Pourquoi Cheatjob existe",
+    "headline": "J'ai trouvé mon stage comme ça. Puis un poste dans une licorne.",
+    "name": "Maxime Mansiet",
+    "title": "Fondateur",
+    "place": "Bordeaux, 2026",
+    "paragraph1": "En 2024, j'ai postulé à 80 stages via Indeed et Welcome to the Jungle. Zéro réponse. J'ai arrêté, j'ai cherché les emails des responsables, j'ai écrit 15 messages personnalisés. J'ai eu 4 entretiens et signé en 3 semaines.",
+    "paragraph2Lead": "Un an plus tard, j'ai utilisé la même méthode pour décrocher un poste dans une licorne française.",
+    "paragraph2Italic": "La porte principale est verrouillée. On a juste copié la clé de service."
+  },
+  "antiRec": {
+    "eyebrow": "Qui ne devrait pas lire la suite",
+    "ariaLabel": "Ce produit n'est pas pour tout le monde",
+    "headlineLead": "Si tu crois encore au mérite pur,",
+    "headlineItalic": "ferme cet onglet.",
+    "body": "Cheatjob n'est pas pour tout le monde. Et on préfère te le dire avant que tu sortes la carte bancaire.",
+    "cards": {
+      "out1": "Si tu crois encore qu'un CV bien aligné suffit, passe ton tour.",
+      "out2": "Si tu aimes remplir des formulaires et patienter, passe ton tour.",
+      "out3": "Si contacter directement un manager te gêne, passe ton tour.",
+      "in": "Si tu veux une réponse plus qu'un rituel, entre."
+    }
+  },
+  "pricing": {
+    "eyebrow": "Tarifs",
+    "ariaLabel": "Tarifs Cheatjob",
+    "headlineLead": "Le prix d'une soirée.",
+    "headlineItalic": "Le contrat d'une année.",
+    "popularBadge": "Populaire",
+    "ctaWaitlistFallback": "Réserver ma place",
+    "deliveryLabel": "Livraison juin 2026",
+    "preOrderCaption": "Pré-commande · {delivery}",
+    "footerNote": "Paiement sécurisé par Stripe. Facturation en euros, TVA incluse. Pré-commande avec livraison estimée en juin 2026 — remboursement intégral si le produit n'est pas livré à cette date.",
+    "plans": {
+      "sprint": {
+        "name": "Sprint",
+        "subtitle": "Le format one-shot",
+        "price": "29€",
+        "priceSub": "une fois, 30 jours d'accès",
+        "cta": "Choisir Sprint",
+        "features": [
+          "50 emails reconstruits",
+          "Messages personnalisés illimités",
+          "Templates alternance et stage",
+          "Suivi automatique à J+7",
+          "Tableau de bord des candidatures",
+          "Annulation automatique en fin de période"
+        ]
+      },
+      "mois": {
+        "name": "Mois",
+        "subtitle": "Le format flexible",
+        "price": "14€90",
+        "priceSub": "par mois, sans engagement",
+        "cta": "Commencer",
+        "features": [
+          "100 emails reconstruits par mois",
+          "Tout du plan Sprint",
+          "Priorité support par email",
+          "Exports CSV de tes candidatures",
+          "Intégration Gmail et Outlook",
+          "Historique complet de tes envois",
+          "Une relance intelligente par prospect"
+        ]
+      },
+      "vie": {
+        "name": "Vie",
+        "subtitle": "Le format définitif",
+        "price": "149€",
+        "priceSub": "une fois, à vie",
+        "cta": "Prendre à vie",
+        "features": [
+          "Tout du plan Mois",
+          "Aucune limite mensuelle",
+          "Accès anticipé aux nouveautés",
+          "Mises à jour à vie",
+          "Support prioritaire",
+          "Une heure de coaching candidature incluse"
+        ]
+      }
+    }
+  },
+  "faq": {
+    "eyebrow": "Questions",
+    "ariaLabel": "Questions fréquentes",
+    "headline": "Les questions que se posent ceux qui font encore la queue.",
+    "items": {
+      "legal": {
+        "q": "C'est légal d'envoyer un email à quelqu'un qu'on ne connaît pas ?",
+        "a": "Oui, dans le cadre d'une prospection B2B pertinente. Le RGPD autorise le contact vers un email professionnel sous motif d'intérêt légitime, ce qui est le cas d'une recherche de stage ou d'alternance. Cheatjob ne stocke aucune base d'emails — les adresses sont reconstruites en temps réel à partir d'informations publiques. Chaque message que tu envoies inclut l'option de désinscription requise."
+      },
+      "robot": {
+        "q": "Est-ce que le recruteur va savoir que c'est un robot ?",
+        "a": "Non. Cheatjob écrit un premier brouillon que tu relis, corriges et valides avant envoi. C'est toi qui envoies, depuis ta boîte mail. Tu restes l'auteur du message. Et franchement, personne ne rédige un email de prospection from scratch en 2026, pas même les commerciaux."
+      },
+      "early": {
+        "q": "Si je trouve mon alternance en 2 semaines, je peux arrêter ?",
+        "a": "Oui. Le plan Sprint termine automatiquement au bout de 30 jours, sans renouvellement. Le plan Mois s'annule en un clic depuis ton tableau de bord. Le plan Vie n'a pas de renouvellement."
+      },
+      "contracts": {
+        "q": "Ça marche pour quel type de contrats ?",
+        "a": "Stages de fin d'études, alternance (apprentissage et contrat pro), premier CDI pour jeunes diplômés. Les templates sont optimisés pour le marché étudiant français. La méthode fonctionne aussi pour les jobs d'été, mais ce n'est pas notre spécialité."
+      },
+      "sender": {
+        "q": "Mon email est envoyé depuis quelle adresse ?",
+        "a": "Depuis ton adresse personnelle, via ta boîte Gmail ou Outlook connectée. Cheatjob ne t'envoie rien au nom d'un domaine intermédiaire. Ton identité reste la tienne, c'est la seule façon de ne pas finir en spam."
+      },
+      "bts": {
+        "q": "Je suis en bac+2 en BTS, c'est pour moi ?",
+        "a": "Oui. Les étudiants de BTS représentent environ un tiers de notre audience. Les templates sont adaptés aux stages obligatoires courts autant qu'aux alternances longues."
+      }
+    }
+  },
+  "finalCta": {
+    "ariaLabel": "Lancer Cheatjob",
+    "headlineLead": "Arrête d'espérer.",
+    "headlineItalic": "Écris aux bonnes personnes.",
+    "ctaPrimaryStripe": "Prendre le raccourci pour 29€",
+    "ctaPrimaryWaitlist": "Réserver ma place",
+    "subline": "Pré-commande · Livraison juin 2026 · Remboursement si non livré."
+  },
+  "footer": {
+    "wordmarkAria": "Cheatjob — retour en haut",
+    "navAria": "Liens légaux",
+    "pricing": "Tarifs",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "place": "Fait à Bordeaux, 2026"
+  },
+  "waitlist": {
+    "closeAria": "Fermer",
+    "preOrderEyebrow": "Pré-commande · Livraison juin 2026",
+    "headlineDefault": "Garde ta place avant le lancement.",
+    "bodyWithPlanLead": "Tu réserves l'accès au plan",
+    "bodyWithPlanTrail": ". Aucun prélèvement maintenant — tu recevras un lien de paiement quand on lance.",
+    "bodyDefault": "Aucun prélèvement maintenant. On te prévient par email dès que Cheatjob est prêt, avec un tarif early-bird garanti.",
+    "emailLabel": "Ton email",
+    "emailPlaceholder": "prenom.nom@exemple.com",
+    "intentLabel": "Tu cherches",
+    "intentDefault": "Choisis une option",
+    "intentStage": "Un stage",
+    "intentAlternance": "Une alternance",
+    "intentCdi": "Un premier CDI",
+    "intentOther": "Autre chose",
+    "submit": "Réserver ma place",
+    "submitting": "Enregistrement…",
+    "errorInvalidEmail": "Email invalide.",
+    "errorSubmit": "On n'a pas pu enregistrer. Réessaie dans un instant.",
+    "microcopy": "Pas de spam. Pas de partage. Juste un mail du fondateur quand Cheatjob est prêt.",
+    "doneHeadlineLead": "Tu es dans la liste.",
+    "doneHeadlineItalic": "On t'écrit au lancement.",
+    "doneBody": "Lancement prévu en juin 2026. Tu recevras un email direct du fondateur avec un lien d'accès prioritaire — pas de newsletter, pas de spam.",
+    "doneBack": "Retour au site",
+    "planLabels": {
+      "sprint": "Sprint · 29€",
+      "mois": "Mois · 14€90",
+      "vie": "Vie · 149€"
+    }
+  },
+  "betaBanner": {
+    "message": "Cette traduction est en bêta. La qualité varie. Reviens en {defaultLocaleName} pour la version complète.",
+    "dismiss": "Compris"
+  },
+  "notFound": {
+    "eyebrow": "Erreur 404",
+    "headlineLead": "Cette page n'existe pas.",
+    "headlineItalic": "Comme ton carnet d'adresses.",
+    "body": "La différence : celui-ci, on peut te le construire en quelques jours.",
+    "ctaHome": "Retour à l'accueil",
+    "ctaPricing": "Voir les tarifs"
   }
 }

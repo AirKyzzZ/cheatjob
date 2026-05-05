@@ -1,19 +1,19 @@
 import { setRequestLocale } from "next-intl/server";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
-import { Nav } from "@/components/sections/nav";
-import { Hero } from "@/components/sections/hero";
-import { Handoff } from "@/components/sections/handoff";
-import { Receipts } from "@/components/sections/receipts";
-import { Pain } from "@/components/sections/pain";
-import { Versus } from "@/components/sections/versus";
-import { Wedge } from "@/components/sections/wedge";
-import { Evidence } from "@/components/sections/evidence";
-import { Founder } from "@/components/sections/founder";
-import { AntiRec } from "@/components/sections/anti-rec";
-import { Pricing } from "@/components/sections/pricing";
-import { FAQ } from "@/components/sections/faq";
-import { FinalCTA } from "@/components/sections/final-cta";
-import { Footer } from "@/components/sections/footer";
+import { Nav } from "@/components/marketing/nav";
+import { Hero } from "@/components/marketing/hero";
+import { Handoff } from "@/components/marketing/handoff";
+import { Receipts } from "@/components/marketing/receipts";
+import { Pain } from "@/components/marketing/pain";
+import { Versus } from "@/components/marketing/versus";
+import { Wedge } from "@/components/marketing/wedge";
+import { Evidence } from "@/components/marketing/evidence";
+import { Founder } from "@/components/marketing/founder";
+import { AntiRec } from "@/components/marketing/anti-rec";
+import { Pricing } from "@/components/marketing/pricing";
+import { FAQ } from "@/components/marketing/faq";
+import { FinalCTA } from "@/components/marketing/final-cta";
+import { Footer } from "@/components/marketing/footer";
 
 type LandingPageProps = {
   params: Promise<{ locale: string }>;
