@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
+import { useLocale } from "next-intl";
 import { Eyebrow } from "@/components/ui/eyebrow";
 
 export default function NotFound() {
+  const locale = useLocale();
+
   return (
     <main className="min-h-svh bg-cream text-ink flex items-center justify-center px-6 md:px-10">
       <div className="max-w-[720px] flex flex-col gap-8 text-center">
@@ -15,13 +20,13 @@ export default function NotFound() {
         </p>
         <div className="flex items-center justify-center gap-4 pt-2">
           <Link
-            href="/"
+            href={`/${locale}`}
             className="inline-flex items-center justify-center h-12 px-7 rounded-[10px] bg-ink text-cream text-[14px] font-semibold font-sans hover:-translate-y-0.5 transition-transform"
           >
             Retour à l&apos;accueil
           </Link>
           <Link
-            href="/#pricing"
+            href={`/${locale}#pricing`}
             className="inline-flex items-center justify-center h-12 px-7 rounded-[10px] border border-burgundy text-burgundy text-[14px] font-semibold font-sans hover:bg-burgundy/5 transition-colors"
           >
             Voir les tarifs

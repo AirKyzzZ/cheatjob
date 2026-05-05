@@ -1,11 +1,20 @@
 import { ImageResponse } from "next/og";
+import { setRequestLocale } from "next-intl/server";
 
-export const alt =
-  "Cheatjob — Tu n'auras pas ton stage en postulant sur Indeed.";
+export const alt = "Cheatjob";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default async function Image() {
+type OgProps = {
+  params: Promise<{ locale: string }>;
+};
+
+// Locale-conditional copy lands in Task 9 once the meta namespace exists.
+// For now keep the original French copy so OG remains valid.
+export default async function Image({ params }: OgProps) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return new ImageResponse(
     (
       <div
@@ -94,7 +103,7 @@ export default async function Image() {
             letterSpacing: "0.08em",
           }}
         >
-          <span>cheatjob.fr</span>
+          <span>cheatjob.com</span>
           <span
             style={{
               padding: "10px 22px",
@@ -103,7 +112,7 @@ export default async function Image() {
               fontSize: 18,
             }}
           >
-            29€ · Sprint 30 jours
+            {locale.toUpperCase()}
           </span>
         </div>
       </div>

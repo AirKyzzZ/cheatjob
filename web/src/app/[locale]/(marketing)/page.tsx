@@ -1,3 +1,4 @@
+import { setRequestLocale } from "next-intl/server";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { Nav } from "@/components/sections/nav";
 import { Hero } from "@/components/sections/hero";
@@ -14,7 +15,14 @@ import { FAQ } from "@/components/sections/faq";
 import { FinalCTA } from "@/components/sections/final-cta";
 import { Footer } from "@/components/sections/footer";
 
-export default function Home() {
+type LandingPageProps = {
+  params: Promise<{ locale: string }>;
+};
+
+export default async function LandingPage({ params }: LandingPageProps) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <>
       <ScrollProgress />
