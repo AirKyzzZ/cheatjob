@@ -42,19 +42,15 @@ export function Hero() {
         className="absolute inset-0 w-full h-full object-cover pointer-events-none z-0"
       />
 
-      {/* Section-wide cream radial gradient.
-          The gradient covers the entire section — strong cream in the
-          centre/upper-middle (where the text lives), fading smoothly to
-          fully transparent at the corners and edges. Many stops at
-          decreasing opacities so each step of the fade is subtle and
-          there is no visible boundary. The video reveals itself in the
-          peripheral zones as ambient atmosphere. */}
+      {/* Cream radial — small solid core behind the text, fast fade so
+          the video dominates the rest of the section. No global wash on
+          the video — keeps the imagery sharp. */}
       <div
         aria-hidden
         className="absolute inset-0 z-[5] pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 62% 70% at 50% 42%, #FAF9F6 0%, #FAF9F6 30%, rgba(250,249,246,0.95) 45%, rgba(250,249,246,0.85) 55%, rgba(250,249,246,0.7) 65%, rgba(250,249,246,0.5) 74%, rgba(250,249,246,0.32) 82%, rgba(250,249,246,0.16) 90%, rgba(250,249,246,0.06) 96%, rgba(250,249,246,0) 100%)",
+            "radial-gradient(ellipse 48% 54% at 50% 44%, #FAF9F6 0%, #FAF9F6 16%, rgba(250,249,246,0.9) 30%, rgba(250,249,246,0.65) 46%, rgba(250,249,246,0.35) 62%, rgba(250,249,246,0.14) 78%, rgba(250,249,246,0.04) 90%, rgba(250,249,246,0) 100%)",
         }}
       />
 
