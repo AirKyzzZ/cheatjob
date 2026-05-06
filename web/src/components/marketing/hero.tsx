@@ -73,18 +73,19 @@ export function Hero() {
         }}
       >
         <div className="relative w-full max-w-[920px]">
-          {/* Cream rectangle backdrop — sized roughly to the content area
-              with negative inset so the cream extends beyond the text by
-              a few pixels before the box-shadow takes over. */}
+          {/* Cream rectangle backdrop — closely sized to the content with
+              a tighter halo so the box-shadow doesn't spread the cream
+              across most of the section. */}
           <div
             aria-hidden
-            className="absolute -inset-x-4 -inset-y-6 sm:-inset-x-8 sm:-inset-y-10 md:-inset-x-12 md:-inset-y-14"
+            className="absolute -inset-x-2 -inset-y-3 sm:-inset-x-4 sm:-inset-y-6 md:-inset-x-6 md:-inset-y-8"
             style={{
               backgroundColor: "#FAF9F6",
-              // Two-layer halo: tight + wide. Tight gives a hard core
-              // around the rectangle, wide diffuses far into the video.
+              // Tight three-stop halo: ~150 px max reach (was ~460 px).
+              // Wide enough to soften the rectangle edge into the video,
+              // narrow enough that the video occupies most of the hero.
               boxShadow:
-                "0 0 60px 30px #FAF9F6, 0 0 180px 80px rgba(250,249,246,0.85), 0 0 320px 140px rgba(250,249,246,0.4)",
+                "0 0 24px 6px #FAF9F6, 0 0 64px 16px rgba(250,249,246,0.55), 0 0 140px 32px rgba(250,249,246,0.18)",
             }}
           />
 
