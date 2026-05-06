@@ -25,16 +25,6 @@ export function PageBreak() {
       aria-label={t("ariaLabel")}
     >
       <div className="mx-auto max-w-[1100px] flex flex-col items-center text-center gap-8 md:gap-10">
-        <motion.span
-          initial={reduce ? false : { opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-15%" }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="font-sans text-[10px] md:text-[11px] uppercase tracking-[0.32em] text-muted-soft"
-        >
-          {t("kicker")}
-        </motion.span>
-
         <motion.blockquote
           initial={reduce ? false : { opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -53,16 +43,6 @@ export function PageBreak() {
             {t("quoteItalic")}
           </span>
         </motion.blockquote>
-
-        <motion.cite
-          initial={reduce ? false : { opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-15%" }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="not-italic font-sans text-[11px] uppercase tracking-[0.22em] text-muted-soft"
-        >
-          {t("attribution")}
-        </motion.cite>
       </div>
     </section>
   );

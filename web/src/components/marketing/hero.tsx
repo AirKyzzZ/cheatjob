@@ -16,11 +16,11 @@ const HERO_POSTER = "/videos/hero-poster.jpg";
 /**
  * Hero — cinematic-magazine layout.
  *
- *  Single section-wide cream radial gradient on top of the full-bleed
- *  video — solid cream behind the text, smoothly fading out toward
- *  the corners where the video reveals itself. No "card" shape, no
- *  inset boundary, so the transition reads as a soft atmospheric wash
- *  rather than a pasted panel.
+ *  Full-bleed cinematic video. A rectangular cream "panel" sits behind
+ *  the text, sized to follow the content shape, with a large soft
+ *  box-shadow halo that feathers the rectangle edges into the video.
+ *  Net visual: a clearly defined reading rectangle (matches the div
+ *  shape) with smoothly diffused edges — no oval blob, no hard card.
  */
 export function Hero() {
   const t = useTranslations("hero");
@@ -42,18 +42,6 @@ export function Hero() {
         className="absolute inset-0 w-full h-full object-cover pointer-events-none z-0"
       />
 
-      {/* Cream radial — small solid core behind the text, fast fade so
-          the video dominates the rest of the section. No global wash on
-          the video — keeps the imagery sharp. */}
-      <div
-        aria-hidden
-        className="absolute inset-0 z-[5] pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse 48% 54% at 50% 44%, #FAF9F6 0%, #FAF9F6 16%, rgba(250,249,246,0.9) 30%, rgba(250,249,246,0.65) 46%, rgba(250,249,246,0.35) 62%, rgba(250,249,246,0.14) 78%, rgba(250,249,246,0.04) 90%, rgba(250,249,246,0) 100%)",
-        }}
-      />
-
       {/* Soft top + bottom edge fades — keep nav area always cream and
           hand off cleanly to the next section. */}
       <div
@@ -73,7 +61,10 @@ export function Hero() {
         }}
       />
 
-      {/* Hero content — anchored to top, no card chrome around it. */}
+      {/* Hero content + cream rectangle backdrop. The cream div is
+          rectangular (shaped like the content), and an outsized
+          box-shadow blur creates the soft edge falloff so the rectangle
+          dissolves into the video on all four sides. */}
       <div
         className="relative z-10 mx-auto flex w-full justify-center px-4 sm:px-6 md:px-10"
         style={{
@@ -81,69 +72,87 @@ export function Hero() {
           paddingBottom: "clamp(72px, 10vh, 128px)",
         }}
       >
-        <div className="flex w-full max-w-[920px] flex-col items-center text-center">
-          {/* Cover line */}
-          <h1
-            className="font-serif font-normal text-ink animate-fade-rise max-w-[15ch]"
+        <div className="relative w-full max-w-[920px]">
+          {/* Cream rectangle backdrop — sized roughly to the content area
+              with negative inset so the cream extends beyond the text by
+              a few pixels before the box-shadow takes over. */}
+          <div
+            aria-hidden
+            className="absolute -inset-x-4 -inset-y-6 sm:-inset-x-8 sm:-inset-y-10 md:-inset-x-12 md:-inset-y-14"
             style={{
-              fontSize: "clamp(48px, 9vw, 120px)",
-              lineHeight: 0.94,
-              letterSpacing: "-0.04em",
+              backgroundColor: "#FAF9F6",
+              // Two-layer halo: tight + wide. Tight gives a hard core
+              // around the rectangle, wide diffuses far into the video.
+              boxShadow:
+                "0 0 60px 30px #FAF9F6, 0 0 180px 80px rgba(250,249,246,0.85), 0 0 320px 140px rgba(250,249,246,0.4)",
             }}
-          >
-            {t("headline")}{" "}
-            <em className="not-italic font-serif italic text-muted">
-              {t("headlineItalic")}
-            </em>
-          </h1>
+          />
 
-          {/* Dek */}
-          <p className="font-sans text-muted text-[15px] sm:text-[17px] leading-relaxed max-w-[56ch] mt-6 animate-fade-rise-delay">
-            {t("subhead")}{" "}
-            <span className="text-ink">{t("subheadEmphasis")}</span>
-          </p>
-
-          {/* CTA */}
-          <div className="flex flex-col sm:flex-row items-center gap-4 mt-8 animate-fade-rise-delay-2">
-            {STRIPE_LINK_SPRINT ? (
-              <a
-                href={STRIPE_LINK_SPRINT}
-                onClick={() =>
-                  track(EVENTS.HeroPrimaryCta, { destination: "stripe" })
-                }
-                rel="noopener"
-                className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-9 py-3.5 text-[14.5px] font-medium font-sans transition-transform hover:scale-[1.03]"
-              >
-                {t("ctaPrimaryStripe")}
-                <ArrowUpRight className="size-4" strokeWidth={2} aria-hidden />
-              </a>
-            ) : (
-              <button
-                type="button"
-                onClick={() => {
-                  track(EVENTS.HeroPrimaryCta, { destination: "waitlist" });
-                  waitlist.open({ source: "hero" });
-                }}
-                className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-9 py-3.5 text-[14.5px] font-medium font-sans transition-transform hover:scale-[1.03]"
-              >
-                {t("ctaPrimaryWaitlist")}
-                <ArrowUpRight className="size-4" strokeWidth={2} aria-hidden />
-              </button>
-            )}
-            <a
-              href="#wedge"
-              onClick={() => track(EVENTS.HeroSecondaryCta, { target: "wedge" })}
-              className="inline-flex items-center gap-2 px-3 py-2 text-ink/70 hover:text-ink text-[13.5px] font-medium font-sans transition-colors"
+          {/* Content sits on top of the rectangle. */}
+          <div className="relative flex flex-col items-center text-center px-4 sm:px-8 md:px-12 lg:px-16">
+            {/* Cover line — bigger mobile floor so phones read confidently. */}
+            <h1
+              className="font-serif font-normal text-ink animate-fade-rise max-w-[15ch]"
+              style={{
+                fontSize: "clamp(60px, 10vw, 124px)",
+                lineHeight: 0.94,
+                letterSpacing: "-0.04em",
+              }}
             >
-              <Play className="size-3" fill="currentColor" strokeWidth={0} aria-hidden />
-              {t("ctaSecondary")}
-            </a>
-          </div>
+              {t("headline")}{" "}
+              <em className="not-italic font-serif italic text-muted">
+                {t("headlineItalic")}
+              </em>
+            </h1>
 
-          {/* Microproof */}
-          <p className="font-sans italic text-[12.5px] text-muted mt-5 animate-fade-rise-delay-3 max-w-[40ch]">
-            {t("microproof")}
-          </p>
+            {/* Dek */}
+            <p className="font-sans text-muted text-[15px] sm:text-[17px] leading-relaxed max-w-[56ch] mt-6 animate-fade-rise-delay">
+              {t("subhead")}{" "}
+              <span className="text-ink">{t("subheadEmphasis")}</span>
+            </p>
+
+            {/* CTA */}
+            <div className="flex flex-col sm:flex-row items-center gap-4 mt-8 animate-fade-rise-delay-2">
+              {STRIPE_LINK_SPRINT ? (
+                <a
+                  href={STRIPE_LINK_SPRINT}
+                  onClick={() =>
+                    track(EVENTS.HeroPrimaryCta, { destination: "stripe" })
+                  }
+                  rel="noopener"
+                  className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-9 py-3.5 text-[14.5px] font-medium font-sans transition-transform hover:scale-[1.03]"
+                >
+                  {t("ctaPrimaryStripe")}
+                  <ArrowUpRight className="size-4" strokeWidth={2} aria-hidden />
+                </a>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => {
+                    track(EVENTS.HeroPrimaryCta, { destination: "waitlist" });
+                    waitlist.open({ source: "hero" });
+                  }}
+                  className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-9 py-3.5 text-[14.5px] font-medium font-sans transition-transform hover:scale-[1.03]"
+                >
+                  {t("ctaPrimaryWaitlist")}
+                  <ArrowUpRight className="size-4" strokeWidth={2} aria-hidden />
+                </button>
+              )}
+              <a
+                href="#wedge"
+                onClick={() => track(EVENTS.HeroSecondaryCta, { target: "wedge" })}
+                className="inline-flex items-center gap-2 px-3 py-2 text-ink/70 hover:text-ink text-[13.5px] font-medium font-sans transition-colors"
+              >
+                <Play className="size-3" fill="currentColor" strokeWidth={0} aria-hidden />
+                {t("ctaSecondary")}
+              </a>
+            </div>
+
+            {/* Microproof */}
+            <p className="font-sans italic text-[12.5px] text-muted mt-5 animate-fade-rise-delay-3 max-w-[40ch]">
+              {t("microproof")}
+            </p>
+          </div>
         </div>
       </div>
     </section>
