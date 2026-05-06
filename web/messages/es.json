@@ -33,7 +33,19 @@
     "ctaPrimaryStripe": "Tomar el atajo por 29€",
     "ctaPrimaryWaitlist": "Reservar mi sitio por 29€",
     "ctaSecondary": "Ver cómo funciona",
-    "microproof": "Llámalo descaro. Hasta el día que firmas."
+    "microproof": "Llámalo descaro. Hasta el día que firmas.",
+    "magazineSpread": {
+      "ariaLabel": "Respuesta de un reclutador, ejemplo anonimizado",
+      "metaLabel": "Recibido vía cheatjob",
+      "senderName": "Marc D.",
+      "senderRole": "Engineering Manager",
+      "senderCompany": "Dataiku",
+      "date": "13 de marzo de 2026",
+      "subject": "Re: Prácticas Software Engineer · H1 2026",
+      "bodyOpening": "Hola Maxime, tu mensaje me llega directo, eso cambia. He visto tu perfil y encaja el timing.",
+      "pullQuote": "Muy interesante. ¿Puedes mandarme tu CV en PDF?",
+      "caption": "Respuesta real, anonimizada"
+    }
   },
   "handoff": {
     "eyebrow": "El camino que Cheatjob traza",

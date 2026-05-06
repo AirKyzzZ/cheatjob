@@ -70,7 +70,6 @@ export function Wedge() {
           }}
         />
       </div>
-      <div className="light-grain opacity-20" aria-hidden />
 
       <div className="relative z-10 mx-auto max-w-[1200px] grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-20 items-center">
         <div className="lg:col-span-6 flex flex-col gap-8">

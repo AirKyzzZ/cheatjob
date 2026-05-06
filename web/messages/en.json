@@ -32,7 +32,19 @@
     "ctaPrimaryStripe": "Take the shortcut for €29",
     "ctaPrimaryWaitlist": "Reserve my spot for €29",
     "ctaSecondary": "See how it works",
-    "microproof": "Call it nerve. Until the day you sign."
+    "microproof": "Call it nerve. Until the day you sign.",
+    "magazineSpread": {
+      "ariaLabel": "Recruiter reply, anonymized example",
+      "metaLabel": "Received via cheatjob",
+      "senderName": "Marc D.",
+      "senderRole": "Engineering Manager",
+      "senderCompany": "Dataiku",
+      "date": "March 13, 2026",
+      "subject": "Re: Software Engineer Intern · H1 2026",
+      "bodyOpening": "Hi Maxime, your message landed directly in my inbox, that's a change. I had a look at your profile and the timing fits.",
+      "pullQuote": "Really interesting. Can you send me your CV as a PDF?",
+      "caption": "Real reply, anonymized"
+    }
   },
   "handoff": {
     "eyebrow": "The path Cheatjob draws",

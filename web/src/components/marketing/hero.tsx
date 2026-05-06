@@ -4,24 +4,16 @@ import { useRef } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { useTranslations } from "next-intl";
 import { BlurText } from "@/components/ui/blur-text";
-import { ProofPanel } from "@/components/ui/proof-panel";
 import { ScrollHint } from "@/components/ui/scroll-hint";
 import { Play } from "lucide-react";
 import { EVENTS, track } from "@/lib/analytics/events";
 import { useWaitlist } from "@/components/waitlist/waitlist-context";
 import { useSectionViewed } from "@/hooks/use-section-viewed";
+import { MagazineSpread } from "./magazine-spread";
 
 const STRIPE_LINK_SPRINT = process.env.NEXT_PUBLIC_STRIPE_LINK_SPRINT;
 
-type HeroProps = {
-  /**
-   * Optional full-bleed ambient video. If provided, renders under the
-   * cinematic CSS backdrop. Leave undefined for the pure-CSS hero.
-   */
-  backgroundVideoSrc?: string;
-};
-
-export function Hero({ backgroundVideoSrc }: HeroProps) {
+export function Hero() {
   const t = useTranslations("hero");
   const reduce = useReducedMotion();
   const waitlist = useWaitlist();
@@ -34,29 +26,12 @@ export function Hero({ backgroundVideoSrc }: HeroProps) {
       id="top"
       className="relative min-h-[100svh] w-full overflow-hidden bg-ink text-cream isolate pt-36 pb-24"
     >
-      {backgroundVideoSrc && (
-        <video
-          className="absolute inset-0 w-full h-full object-cover opacity-60"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          aria-hidden
-        >
-          <source src={backgroundVideoSrc} type="video/mp4" />
-        </video>
-      )}
-
-      <div className="cinematic-backdrop" aria-hidden>
-        <div className="cinematic-backdrop-accent" aria-hidden />
-      </div>
-      <div className="light-grain" aria-hidden />
-      <div className="cinematic-fade-bottom" aria-hidden />
-
       <div className="relative z-10 mx-auto max-w-[1280px] px-6 md:px-10 lg:px-16 h-full flex flex-col">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center flex-1">
+          {/* LEFT — Copy */}
           <div className="lg:col-span-7 flex flex-col gap-6 md:gap-8">
+            {/* Headline — ONE italic moment per screen (charter rule).
+                BlurText entrance is the only motion in this hero. */}
             <h1 className="font-serif text-[56px] md:text-[88px] lg:text-[112px] xl:text-[124px] leading-[0.92] tracking-[-0.04em] text-cream max-w-[13ch]">
               <BlurText
                 text={t("headline")}
@@ -79,22 +54,12 @@ export function Hero({ backgroundVideoSrc }: HeroProps) {
               />
             </h1>
 
-            <motion.p
-              initial={reduce ? false : { opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
-              className="font-sans text-[17px] md:text-[20px] leading-[1.55] text-cream/80 max-w-[42rem]"
-            >
+            <p className="font-sans text-[17px] md:text-[20px] leading-[1.55] text-cream/80 max-w-[42rem]">
               {t("subhead")}{" "}
               <span className="text-cream">{t("subheadEmphasis")}</span>
-            </motion.p>
+            </p>
 
-            <motion.div
-              initial={reduce ? false : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 1.35, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2"
-            >
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-2">
               {STRIPE_LINK_SPRINT ? (
                 <a
                   href={STRIPE_LINK_SPRINT}
@@ -124,7 +89,7 @@ export function Hero({ backgroundVideoSrc }: HeroProps) {
                 <Play className="size-3.5" fill="currentColor" strokeWidth={0} aria-hidden />
                 {t("ctaSecondary")}
               </a>
-            </motion.div>
+            </div>
 
             <motion.p
               initial={reduce ? false : { opacity: 0 }}
@@ -136,8 +101,9 @@ export function Hero({ backgroundVideoSrc }: HeroProps) {
             </motion.p>
           </div>
 
+          {/* RIGHT — Magazine spread (typographic transcription of one real reply) */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <ProofPanel />
+            <MagazineSpread />
           </div>
         </div>
       </div>

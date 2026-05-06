@@ -33,7 +33,19 @@
     "ctaPrimaryStripe": "Den Shortcut für 29€ nehmen",
     "ctaPrimaryWaitlist": "Meinen Platz für 29€ reservieren",
     "ctaSecondary": "Sehen, wie es funktioniert",
-    "microproof": "Nenn es Frechheit. Bis du unterschreibst."
+    "microproof": "Nenn es Frechheit. Bis du unterschreibst.",
+    "magazineSpread": {
+      "ariaLabel": "Recruiter-Antwort, anonymisiertes Beispiel",
+      "metaLabel": "Empfangen via cheatjob",
+      "senderName": "Marc D.",
+      "senderRole": "Engineering Manager",
+      "senderCompany": "Dataiku",
+      "date": "13. März 2026",
+      "subject": "Re: Software Engineer Praktikum · H1 2026",
+      "bodyOpening": "Hallo Maxime, deine Nachricht landet direkt bei mir, das ist neu. Ich habe dein Profil angesehen und das Timing passt.",
+      "pullQuote": "Wirklich interessant. Kannst du mir deinen Lebenslauf als PDF schicken?",
+      "caption": "Echte Antwort, anonymisiert"
+    }
   },
   "handoff": {
     "eyebrow": "Der Weg, den Cheatjob zeichnet",

@@ -31,7 +31,19 @@
     "ctaPrimaryStripe": "Prendre le raccourci pour 29€",
     "ctaPrimaryWaitlist": "Réserver ma place pour 29€",
     "ctaSecondary": "Voir comment ça marche",
-    "microproof": "On appellera ça du culot, jusqu'au moment où tu signes."
+    "microproof": "On appellera ça du culot, jusqu'au moment où tu signes.",
+    "magazineSpread": {
+      "ariaLabel": "Réponse d'un recruteur, exemple anonymisé",
+      "metaLabel": "Reçu via cheatjob",
+      "senderName": "Marc D.",
+      "senderRole": "Engineering Manager",
+      "senderCompany": "Dataiku",
+      "date": "13 mars 2026",
+      "subject": "Re: Stage Software Engineer · H1 2026",
+      "bodyOpening": "Bonjour Maxime, ton message m'arrive directement, ça change. J'ai regardé ton profil et le timing colle.",
+      "pullQuote": "Vraiment intéressant. Tu peux m'envoyer ton CV en PDF ?",
+      "caption": "Réponse réelle, anonymisée"
+    }
   },
   "handoff": {
     "eyebrow": "Le chemin que Cheatjob trace",
