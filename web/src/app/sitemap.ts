@@ -1,7 +1,9 @@
 import type { MetadataRoute } from "next";
 import { locales } from "@/lib/i18n/config";
 
-const HOSTNAME = "https://cheatjob.com";
+// www is the primary domain in Vercel; using apex would force every link
+// through a 307 redirect.
+const HOSTNAME = "https://www.cheatjob.com";
 
 // Phase 0 only ships the landing per locale. Legal pages (Phase 1) and
 // blog posts (Phase 5) extend STATIC_PATHS when those phases ship.

@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/", "/_next/"],
     },
-    sitemap: "https://cheatjob.com/sitemap.xml",
-    host: "https://cheatjob.com",
+    sitemap: "https://www.cheatjob.com/sitemap.xml",
+    host: "https://www.cheatjob.com",
   };
 }

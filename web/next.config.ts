@@ -12,22 +12,21 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // .fr → .com migration. Note: Vercel's domain config ALREADY 307s
+      // cheatjob.com → www.cheatjob.com at the platform layer. Don't add a
+      // www.cheatjob.com → cheatjob.com rule here — it creates a redirect
+      // loop. If you want apex (no www) as canonical, change the primary
+      // domain in Vercel dashboard instead, then rewrite the targets here.
       {
         source: "/:path*",
         has: [{ type: "host", value: "cheatjob.fr" }],
-        destination: "https://cheatjob.com/fr/:path*",
+        destination: "https://www.cheatjob.com/fr/:path*",
         permanent: true,
       },
       {
         source: "/:path*",
         has: [{ type: "host", value: "www.cheatjob.fr" }],
-        destination: "https://cheatjob.com/fr/:path*",
-        permanent: true,
-      },
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "www.cheatjob.com" }],
-        destination: "https://cheatjob.com/:path*",
+        destination: "https://www.cheatjob.com/fr/:path*",
         permanent: true,
       },
     ];

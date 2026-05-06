@@ -101,7 +101,7 @@ export default async function Image({ params }: OgProps) {
             letterSpacing: "0.08em",
           }}
         >
-          <span>cheatjob.com</span>
+          <span>www.cheatjob.com</span>
           <span
             style={{
               padding: "10px 22px",
