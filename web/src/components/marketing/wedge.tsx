@@ -74,7 +74,7 @@ export function Wedge() {
       <div className="relative z-10 mx-auto max-w-[1200px] grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-20 items-center">
         <div className="lg:col-span-6 flex flex-col gap-8">
           <Eyebrow tone="dark">{t("eyebrow")}</Eyebrow>
-          <h2 className="font-serif text-[48px] md:text-[72px] leading-[0.95] tracking-[-0.03em] text-cream">
+          <h2 className="font-serif text-[56px] md:text-[88px] lg:text-[104px] leading-[0.95] tracking-[-0.035em] text-cream">
             <BlurText text={t("headlineLine1")} as="span" className="block" />
             <BlurText
               text={t("headlineLine2")}

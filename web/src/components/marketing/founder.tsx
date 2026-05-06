@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { useTranslations } from "next-intl";
 import { Eyebrow } from "@/components/ui/eyebrow";
+import { ScrollRevealText } from "@/components/ui/scroll-reveal-text";
 import { useSectionViewed } from "@/hooks/use-section-viewed";
 
 export function Founder() {
@@ -27,7 +28,7 @@ export function Founder() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-10%" }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-            className="font-serif text-[40px] md:text-[56px] lg:text-[64px] leading-[1.05] tracking-[-0.03em] text-ink max-w-[20ch]"
+            className="font-serif text-[48px] md:text-[72px] lg:text-[88px] leading-[1.0] tracking-[-0.035em] text-ink max-w-[20ch]"
           >
             {t("headline")}
           </motion.h2>
@@ -47,10 +48,15 @@ export function Founder() {
               </div>
             </aside>
 
+            {/* Story — scroll-driven word reveal for editorial pacing */}
             <div className="md:col-span-9 flex flex-col gap-8 font-sans text-[18px] md:text-[19px] leading-[1.7] text-ink">
-              <p>{t("paragraph1")}</p>
-              <p>
-                {t("paragraph2Lead")}{" "}
+              <ScrollRevealText className="text-ink">
+                {t("paragraph1")}
+              </ScrollRevealText>
+              <p className="text-ink relative">
+                <ScrollRevealText as="span" className="inline">
+                  {t("paragraph2Lead")}
+                </ScrollRevealText>{" "}
                 <span className="font-serif italic text-burgundy">
                   {t("paragraph2Italic")}
                 </span>

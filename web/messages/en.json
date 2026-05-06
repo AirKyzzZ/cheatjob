@@ -25,6 +25,7 @@
     "localeSwitcherLabel": "Language"
   },
   "hero": {
+    "masthead": "Issue 01 · Internship edition — Spring 2026",
     "headline": "You won't get your internship",
     "headlineItalic": "by applying on Indeed.",
     "subhead": "Cheatjob finds the email of the manager who's actually hiring, writes your message, lands you in the right inbox.",
@@ -48,7 +49,12 @@
   },
   "handoff": {
     "eyebrow": "The path Cheatjob draws",
-    "italicLine": "When the front door stays shut, you take the side one."
+    "italicLine": "When the front door stays shut, you take the side one.",
+    "stationCv": "Your CV",
+    "stationTrash": "ATS · HR inbox",
+    "stationManager": "Manager",
+    "deadPath": "Dead end",
+    "replay": "Replay"
   },
   "receipts": {
     "label": "Receipts · week 15",
@@ -160,6 +166,13 @@
     "paragraph1": "In 2024, I applied to 80 internships through Indeed and Welcome to the Jungle. Zero replies. I stopped, found the managers' emails, wrote 15 personalized messages. I got 4 interviews and signed in 3 weeks.",
     "paragraph2Lead": "A year later, I used the same method to land a role at a French unicorn.",
     "paragraph2Italic": "The front door is locked. We just copied the service key."
+  },
+  "pageBreak": {
+    "ariaLabel": "Editorial break",
+    "kicker": "Page break",
+    "quote": "The system isn't broken.",
+    "quoteItalic": "It's just closed.",
+    "attribution": "Charter — Cheatjob"
   },
   "antiRec": {
     "eyebrow": "Who shouldn't read further",
@@ -278,7 +291,29 @@
     "pricing": "Pricing",
     "faq": "FAQ",
     "contact": "Contact",
-    "place": "Made in Bordeaux, 2026"
+    "place": "Made in Bordeaux, 2026",
+    "tagline": "The software that emails recruiters for you.",
+    "taglineAccent": "Straight into their inbox.",
+    "socialLabel": "Stay in touch",
+    "navTitleProduct": "The product",
+    "navTitleHouse": "The house",
+    "navProduct": {
+      "wedge": "How it works",
+      "evidence": "Proof",
+      "pricing": "Pricing",
+      "faq": "FAQ"
+    },
+    "navHouse": {
+      "founder": "The founder",
+      "mentions": "Legal notice",
+      "privacy": "Privacy",
+      "rgpd": "GDPR"
+    },
+    "ctaLead": "The system is closed.",
+    "ctaStrong": "You take the shortcut.",
+    "subscribePlaceholder": "your email",
+    "subscribeCta": "Reserve",
+    "copyright": "© 2026 Cheatjob · Bordeaux"
   },
   "waitlist": {
     "closeAria": "Close",

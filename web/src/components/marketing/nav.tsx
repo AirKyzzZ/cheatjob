@@ -16,24 +16,24 @@ export function Nav() {
     { label: t("faq"), href: "#faq", id: "faq" },
   ] as const;
 
+  // Hero is cream-on-cream now (was dark before), so the nav needs a
+  // visible baseline state at scrollY=0 — otherwise it reads as empty.
+  // The pill stays cream-tinted with backdrop-blur throughout, just
+  // intensifies slightly as you scroll into solid sections.
   const bg = useTransform(
     scrollY,
     [0, 600],
-    ["rgba(250, 249, 246, 0)", "rgba(250, 249, 246, 0.96)"]
+    ["rgba(250, 249, 246, 0.78)", "rgba(250, 249, 246, 0.96)"]
   );
   const border = useTransform(
     scrollY,
     [0, 600],
-    ["rgba(255, 255, 255, 0.14)", "rgba(232, 230, 225, 1)"]
+    ["rgba(232, 230, 225, 0.6)", "rgba(232, 230, 225, 1)"]
   );
-  const wordmarkColor = useTransform(scrollY, [0, 600], ["#faf9f6", "#6b1f28"]);
-  const linkColor = useTransform(
-    scrollY,
-    [0, 600],
-    ["rgba(250, 249, 246, 0.8)", "#0a0a0a"]
-  );
-  const ctaBg = useTransform(scrollY, [0, 600], ["#faf9f6", "#6b1f28"]);
-  const ctaFg = useTransform(scrollY, [0, 600], ["#0a0a0a", "#faf9f6"]);
+  const wordmarkColor = useTransform(scrollY, [0, 600], ["#6b1f28", "#6b1f28"]);
+  const linkColor = useTransform(scrollY, [0, 600], ["#0a0a0a", "#0a0a0a"]);
+  const ctaBg = useTransform(scrollY, [0, 600], ["#6b1f28", "#6b1f28"]);
+  const ctaFg = useTransform(scrollY, [0, 600], ["#faf9f6", "#faf9f6"]);
   const glassBlur = useTransform(scrollY, [0, 600], ["blur(18px)", "blur(12px)"]);
   const glassSaturate = useTransform(
     scrollY,
@@ -61,7 +61,7 @@ export function Nav() {
           boxShadow:
             "inset 0 1px 0 rgba(255,255,255,0.08), 0 20px 60px rgba(0,0,0,0.25)",
         }}
-        className="rounded-full h-14 flex items-center justify-between px-5 md:px-6 border"
+        className="glass-pill rounded-full h-14 flex items-center justify-between px-5 md:px-6 border"
       >
         <a
           href="#top"

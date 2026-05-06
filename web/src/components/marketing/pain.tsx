@@ -60,7 +60,7 @@ export function Pain() {
       <div className="mx-auto max-w-[1200px] grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20">
         <div className="md:col-span-6 flex flex-col gap-8">
           <Eyebrow>{t("eyebrow")}</Eyebrow>
-          <h2 className="font-serif text-[44px] md:text-[64px] leading-[1.02] tracking-[-0.03em] text-ink max-w-[18ch]">
+          <h2 className="font-serif text-[52px] md:text-[80px] lg:text-[96px] leading-[0.98] tracking-[-0.035em] text-ink max-w-[18ch]">
             <BlurText text={t("headlineLine1")} as="span" className="block" />
             <BlurText
               text={t("headlineLine2")}

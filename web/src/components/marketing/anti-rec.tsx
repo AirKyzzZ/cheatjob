@@ -27,7 +27,7 @@ export function AntiRec() {
       <div className="mx-auto max-w-[1100px] flex flex-col gap-14 md:gap-16">
         <div className="flex flex-col gap-6 max-w-[720px]">
           <Eyebrow>{t("eyebrow")}</Eyebrow>
-          <h2 className="font-serif text-[44px] md:text-[64px] leading-[1.02] tracking-[-0.03em] text-ink max-w-[20ch]">
+          <h2 className="font-serif text-[52px] md:text-[80px] lg:text-[96px] leading-[0.98] tracking-[-0.035em] text-ink max-w-[20ch]">
             {t("headlineLead")}{" "}
             <span className="italic">{t("headlineItalic")}</span>
           </h2>

@@ -23,7 +23,7 @@ export function Versus() {
       <div className="mx-auto max-w-[1200px] flex flex-col gap-14 md:gap-20">
         <div className="flex flex-col gap-5 max-w-[720px]">
           <Eyebrow>{t("eyebrow")}</Eyebrow>
-          <h2 className="font-serif text-[44px] md:text-[64px] leading-[1.02] tracking-[-0.03em] text-ink">
+          <h2 className="font-serif text-[52px] md:text-[80px] lg:text-[96px] leading-[0.98] tracking-[-0.035em] text-ink">
             {t("headline")}
           </h2>
           <p className="font-sans text-[17px] md:text-[18px] leading-[1.65] text-muted max-w-[48ch]">

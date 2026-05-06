@@ -26,6 +26,7 @@
     "localeSwitcherLabel": "Sprache"
   },
   "hero": {
+    "masthead": "Nr. 01 · Praktikum-Ausgabe — Frühling 2026",
     "headline": "Du bekommst dein Praktikum nicht",
     "headlineItalic": "indem du auf Indeed bewirbst.",
     "subhead": "Cheatjob findet die Email des Managers, der wirklich einstellt, schreibt deine Nachricht, bringt dich in die richtige Inbox.",
@@ -49,7 +50,12 @@
   },
   "handoff": {
     "eyebrow": "Der Weg, den Cheatjob zeichnet",
-    "italicLine": "Wenn die Vordertür geschlossen bleibt, nimmst du die Seitentür."
+    "italicLine": "Wenn die Vordertür geschlossen bleibt, nimmst du die Seitentür.",
+    "stationCv": "Dein CV",
+    "stationTrash": "ATS · HR-Posteingang",
+    "stationManager": "Manager",
+    "deadPath": "Sackgasse",
+    "replay": "Wiederholen"
   },
   "receipts": {
     "label": "Belege · Woche 15",
@@ -161,6 +167,13 @@
     "paragraph1": "2024 habe ich mich auf 80 Praktika via Indeed und Welcome to the Jungle beworben. Null Antworten. Ich habe aufgehört, die Emails der Verantwortlichen gesucht, 15 personalisierte Nachrichten geschrieben. Ich hatte 4 Interviews und in 3 Wochen unterschrieben.",
     "paragraph2Lead": "Ein Jahr später habe ich dieselbe Methode genutzt, um einen Job in einem französischen Unicorn zu bekommen.",
     "paragraph2Italic": "Die Vordertür ist verschlossen. Wir haben einfach den Service-Schlüssel kopiert."
+  },
+  "pageBreak": {
+    "ariaLabel": "Redaktionelle Pause",
+    "kicker": "Page break",
+    "quote": "Das System ist nicht kaputt.",
+    "quoteItalic": "Es ist nur verschlossen.",
+    "attribution": "Charter — Cheatjob"
   },
   "antiRec": {
     "eyebrow": "Wer nicht weiterlesen sollte",
@@ -279,7 +292,29 @@
     "pricing": "Preise",
     "faq": "FAQ",
     "contact": "Kontakt",
-    "place": "Gemacht in Bordeaux, 2026"
+    "place": "Gemacht in Bordeaux, 2026",
+    "tagline": "Die Software, die Recruiter für dich anschreibt.",
+    "taglineAccent": "Direkt in ihre Inbox.",
+    "socialLabel": "Bleib in Kontakt",
+    "navTitleProduct": "Das Produkt",
+    "navTitleHouse": "Das Haus",
+    "navProduct": {
+      "wedge": "So funktioniert's",
+      "evidence": "Belege",
+      "pricing": "Preise",
+      "faq": "FAQ"
+    },
+    "navHouse": {
+      "founder": "Der Gründer",
+      "mentions": "Impressum",
+      "privacy": "Datenschutz",
+      "rgpd": "DSGVO"
+    },
+    "ctaLead": "Das System ist verschlossen.",
+    "ctaStrong": "Du nimmst die Abkürzung.",
+    "subscribePlaceholder": "deine email",
+    "subscribeCta": "Reservieren",
+    "copyright": "© 2026 Cheatjob · Bordeaux"
   },
   "waitlist": {
     "closeAria": "Schließen",

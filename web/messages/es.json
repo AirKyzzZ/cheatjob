@@ -26,6 +26,7 @@
     "localeSwitcherLabel": "Idioma"
   },
   "hero": {
+    "masthead": "N° 01 · Edición prácticas — Primavera 2026",
     "headline": "No conseguirás tus prácticas",
     "headlineItalic": "echando CVs en Indeed.",
     "subhead": "Cheatjob encuentra el email del manager que contrata, redacta tu mensaje, te coloca en la bandeja correcta.",
@@ -49,7 +50,12 @@
   },
   "handoff": {
     "eyebrow": "El camino que Cheatjob traza",
-    "italicLine": "Cuando la puerta principal no se abre, tomas la puerta útil."
+    "italicLine": "Cuando la puerta principal no se abre, tomas la puerta útil.",
+    "stationCv": "Tu CV",
+    "stationTrash": "ATS · RRHH",
+    "stationManager": "Manager",
+    "deadPath": "Vía muerta",
+    "replay": "Repetir"
   },
   "receipts": {
     "label": "Recibos · semana 15",
@@ -161,6 +167,13 @@
     "paragraph1": "En 2024 postulé a 80 prácticas vía Indeed y Welcome to the Jungle. Cero respuestas. Paré, busqué los emails de los responsables, escribí 15 mensajes personalizados. Conseguí 4 entrevistas y firmé en 3 semanas.",
     "paragraph2Lead": "Un año más tarde usé el mismo método para conseguir un puesto en un unicornio francés.",
     "paragraph2Italic": "La puerta principal está cerrada. Solo copiamos la llave de servicio."
+  },
+  "pageBreak": {
+    "ariaLabel": "Pausa editorial",
+    "kicker": "Page break",
+    "quote": "El sistema no está roto.",
+    "quoteItalic": "Solo está cerrado.",
+    "attribution": "Charter — Cheatjob"
   },
   "antiRec": {
     "eyebrow": "Quién no debería seguir leyendo",
@@ -279,7 +292,29 @@
     "pricing": "Precios",
     "faq": "FAQ",
     "contact": "Contacto",
-    "place": "Hecho en Burdeos, 2026"
+    "place": "Hecho en Burdeos, 2026",
+    "tagline": "El software que escribe a los reclutadores por ti.",
+    "taglineAccent": "Directo a su bandeja.",
+    "socialLabel": "Mantente en contacto",
+    "navTitleProduct": "El producto",
+    "navTitleHouse": "La casa",
+    "navProduct": {
+      "wedge": "Cómo funciona",
+      "evidence": "Pruebas",
+      "pricing": "Precios",
+      "faq": "FAQ"
+    },
+    "navHouse": {
+      "founder": "El fundador",
+      "mentions": "Aviso legal",
+      "privacy": "Privacidad",
+      "rgpd": "RGPD"
+    },
+    "ctaLead": "El sistema está cerrado.",
+    "ctaStrong": "Tú tomas el atajo.",
+    "subscribePlaceholder": "tu email",
+    "subscribeCta": "Reservar",
+    "copyright": "© 2026 Cheatjob · Burdeos"
   },
   "waitlist": {
     "closeAria": "Cerrar",

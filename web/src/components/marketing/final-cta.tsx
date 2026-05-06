@@ -29,7 +29,7 @@ export function FinalCTA() {
           <BypassPath variant="diagonal" tone="light" className="w-full h-auto" />
         </div>
 
-        <h2 className="font-serif text-[56px] md:text-[96px] lg:text-[120px] leading-[0.92] tracking-[-0.04em] text-ink max-w-[16ch]">
+        <h2 className="font-serif text-[64px] md:text-[112px] lg:text-[144px] leading-[0.9] tracking-[-0.045em] text-ink max-w-[16ch]">
           <BlurText text={t("headlineLead")} as="span" className="block" />
           <BlurText
             text={t("headlineItalic")}

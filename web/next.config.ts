@@ -10,6 +10,27 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.resolve(__dirname),
   },
+  images: {
+    // Pexels-hosted assets (editorial hero photography). Provisional —
+    // designer's custom shoot replaces these later. Photographer credits
+    // live in code comments next to each Image src.
+    remotePatterns: [
+      { protocol: "https", hostname: "images.pexels.com" },
+    ],
+  },
+  async headers() {
+    // Static video + poster assets are content-addressed (filename baked
+    // into commit). Cache them forever at the edge — saves bandwidth and
+    // makes repeat visits + nav back-forward instant.
+    return [
+      {
+        source: "/videos/:path*",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+        ],
+      },
+    ];
+  },
   async redirects() {
     return [
       // .fr → .com migration. Note: Vercel's domain config ALREADY 307s

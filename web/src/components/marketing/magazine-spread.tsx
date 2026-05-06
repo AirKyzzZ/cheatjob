@@ -19,10 +19,10 @@ export function MagazineSpread() {
       role="figure"
       aria-label={t("ariaLabel")}
       className="
-        relative w-full max-w-[460px]
+        relative w-full max-w-[380px]
         bg-cream text-ink
         rounded-[16px] border border-[#E8E6E1]
-        p-8 md:p-10
+        p-7 md:p-8
       "
     >
       {/* Eyebrow */}
