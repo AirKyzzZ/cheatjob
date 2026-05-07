@@ -5,6 +5,7 @@ import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { Nav } from "@/components/marketing/nav";
 import { Hero } from "@/components/marketing/hero";
 import { Receipts } from "@/components/marketing/receipts";
+import { RejectionBin } from "@/components/marketing/rejection-bin";
 import { Pain } from "@/components/marketing/pain";
 import { Versus } from "@/components/marketing/versus";
 import { Wedge } from "@/components/marketing/wedge";
@@ -78,6 +79,7 @@ export default async function LandingPage({ params }: LandingPageProps) {
         <Hero />
         <Receipts />
         <Pain />
+        <RejectionBin />
         <Versus />
         <Wedge />
         <Evidence />

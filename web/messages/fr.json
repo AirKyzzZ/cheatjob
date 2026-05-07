@@ -72,6 +72,11 @@
       "ops": "Stage Ops"
     }
   },
+  "rejectionBin": {
+    "eyebrow": "Là où finit ton CV",
+    "headline": "Avec eux, ton dossier finit ici.",
+    "caption": "Indeed, LinkedIn, Welcome to the Jungle. 400 dossiers identiques par offre. Le tien, dedans. Survole pour voir où ton CV passe vraiment ses journées."
+  },
   "pain": {
     "eyebrow": "Le problème",
     "ariaLabel": "Le problème du recrutement étudiant",

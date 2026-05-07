@@ -2,7 +2,11 @@ import type { Locale } from "@/types/locale";
 
 export const locales = ["fr", "en", "es", "de"] as const satisfies readonly Locale[];
 
-export const defaultLocale: Locale = "fr";
+// English is the fallback for browsers whose Accept-Language header does
+// not match any supported locale. Browsers in French/Spanish/German will
+// still be detected and routed to their respective locale via the
+// next-intl middleware (Accept-Language → matching prefix).
+export const defaultLocale: Locale = "en";
 
 export const productionLocales: readonly Locale[] = ["fr", "en"];
 export const betaLocales: readonly Locale[] = ["es", "de"];

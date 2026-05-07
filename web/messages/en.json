@@ -73,6 +73,11 @@
       "ops": "Ops Internship"
     }
   },
+  "rejectionBin": {
+    "eyebrow": "Where your CV ends up",
+    "headline": "With them, your application lands here.",
+    "caption": "Indeed, LinkedIn, Welcome to the Jungle. 400 identical applications per role. Yours, in there. Hover to see where your CV actually spends its days."
+  },
   "pain": {
     "eyebrow": "The problem",
     "ariaLabel": "The student hiring problem",

@@ -41,22 +41,25 @@ export function Hero() {
       className="relative w-full min-h-screen overflow-hidden bg-cream"
     >
       {/* Hero content — normal flow, always on cream, never overlapped
-          by the video. Top padding clears the floating nav pill (top-4 +
-          h-14 = 72 px) with breathing room. */}
+          by the video. Top padding clears the floating nav pill with
+          breathing room; total content height stays compact so the
+          video band gets most of the viewport on big screens (Aethera
+          template proportions). */}
       <div
         className="relative z-10 flex flex-col items-center text-center px-6"
         style={{
-          paddingTop: "clamp(112px, 14vh, 168px)",
-          paddingBottom: "clamp(40px, 6vh, 80px)",
+          paddingTop: "clamp(104px, 12vh, 144px)",
+          paddingBottom: "clamp(28px, 4vh, 56px)",
         }}
       >
-        {/* Cover line */}
+        {/* Cover line — bigger mobile floor so phones read with weight,
+            smaller cap on ultrawide so the video band gets generous room. */}
         <h1
-          className="font-serif font-normal text-ink animate-fade-rise max-w-[16ch]"
+          className="font-serif font-normal text-ink animate-fade-rise max-w-[18ch]"
           style={{
-            fontSize: "clamp(56px, 9vw, 124px)",
-            lineHeight: 0.95,
-            letterSpacing: "-0.04em",
+            fontSize: "clamp(60px, 7vw, 100px)",
+            lineHeight: 0.96,
+            letterSpacing: "-0.035em",
           }}
         >
           {t("headline")}{" "}
@@ -66,13 +69,13 @@ export function Hero() {
         </h1>
 
         {/* Description */}
-        <p className="font-sans text-muted text-base sm:text-lg max-w-2xl mt-7 leading-relaxed animate-fade-rise-delay">
+        <p className="font-sans text-muted text-base sm:text-lg max-w-2xl mt-6 leading-relaxed animate-fade-rise-delay">
           {t("subhead")}{" "}
           <span className="text-ink">{t("subheadEmphasis")}</span>
         </p>
 
         {/* CTA */}
-        <div className="flex flex-col sm:flex-row items-center gap-4 mt-9 animate-fade-rise-delay-2">
+        <div className="flex flex-col sm:flex-row items-center gap-4 mt-7 animate-fade-rise-delay-2">
           {STRIPE_LINK_SPRINT ? (
             <a
               href={STRIPE_LINK_SPRINT}
@@ -107,40 +110,41 @@ export function Hero() {
         </div>
 
         {/* Microproof */}
-        <p className="font-sans italic text-[13px] text-muted mt-6 animate-fade-rise-delay-3 max-w-[40ch]">
+        <p className="font-sans italic text-[13px] text-muted mt-5 animate-fade-rise-delay-3 max-w-[40ch]">
           {t("microproof")}
         </p>
       </div>
 
-      {/* Video — lives in the lower band. Height taken from the section
-          minimum so the video starts where the text ends and fills down
-          to the bottom of the hero. Cream gradients top + bottom soften
-          the seams. */}
+      {/* Video — lower band. Bigger on wide screens (up to 60 vh) so it
+          dominates the section like the Aethera reference. Cream
+          gradients top + bottom soften the seams. */}
       <div
         aria-hidden
         className="absolute inset-x-0 z-0 pointer-events-none"
         style={{
           bottom: 0,
           top: "auto",
-          height: "clamp(280px, 38vh, 460px)",
+          height: "clamp(320px, 52vh, 640px)",
         }}
       >
         <FadingVideo
           src={HERO_VIDEO}
           poster={HERO_POSTER}
           className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectPosition: "center 35%" }}
         />
-        {/* Top fade — cream into video */}
+        {/* Top fade — shorter so it eases the seam without eating into
+            the visible video frame. */}
         <div
-          className="absolute inset-x-0 top-0 h-24"
+          className="absolute inset-x-0 top-0 h-14"
           style={{
             background:
-              "linear-gradient(180deg, #FAF9F6 0%, rgba(250,249,246,0.6) 45%, rgba(250,249,246,0) 100%)",
+              "linear-gradient(180deg, #FAF9F6 0%, rgba(250,249,246,0.5) 50%, rgba(250,249,246,0) 100%)",
           }}
         />
         {/* Bottom fade — video into next section */}
         <div
-          className="absolute inset-x-0 bottom-0 h-20"
+          className="absolute inset-x-0 bottom-0 h-16"
           style={{
             background:
               "linear-gradient(0deg, rgba(250,249,246,0.55) 0%, rgba(250,249,246,0) 100%)",

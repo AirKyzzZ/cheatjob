@@ -3,6 +3,8 @@
 import { useRef, type ElementType } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 
+type ScrollOffset = ["start 0.85", "end 0.4"] | [string, string];
+
 type Props = {
   children: string;
   className?: string;
@@ -12,6 +14,8 @@ type Props = {
   fromOpacity?: number;
   /** Color words fade TO — default 1. */
   toOpacity?: number;
+  /** Scroll offset window for the reveal — see motion.dev/useScroll. */
+  offset?: ScrollOffset;
 };
 
 /**
@@ -28,11 +32,14 @@ export function ScrollRevealText({
   as = "p",
   fromOpacity = 0.18,
   toOpacity = 1,
+  offset = ["start 0.85", "end 0.4"],
 }: Props) {
   const ref = useRef<HTMLElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: ref as React.RefObject<HTMLElement>,
-    offset: ["start 0.85", "end 0.4"],
+    // motion's offset is typed as a string-tuple; cast keeps the
+    // `ScrollOffset` shape narrow at the call site.
+    offset: offset as unknown as ["start 0.85", "end 0.4"],
   });
 
   const words = children.split(" ");

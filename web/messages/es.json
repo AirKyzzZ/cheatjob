@@ -74,6 +74,11 @@
       "ops": "Prácticas Ops"
     }
   },
+  "rejectionBin": {
+    "eyebrow": "Donde acaba tu CV",
+    "headline": "Con ellos, tu candidatura acaba aquí.",
+    "caption": "Indeed, LinkedIn, Welcome to the Jungle. 400 candidaturas idénticas por puesto. La tuya, ahí dentro. Pasa el cursor para ver dónde pasa los días tu CV."
+  },
   "pain": {
     "eyebrow": "El problema",
     "ariaLabel": "El problema del reclutamiento estudiantil",

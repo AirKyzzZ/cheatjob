@@ -74,6 +74,11 @@
       "ops": "Ops Praktikum"
     }
   },
+  "rejectionBin": {
+    "eyebrow": "Wo dein CV endet",
+    "headline": "Mit denen landet deine Bewerbung hier.",
+    "caption": "Indeed, LinkedIn, Welcome to the Jungle. 400 identische Bewerbungen pro Stelle. Deine, da drin. Fahr drüber und sieh, wo dein Lebenslauf seine Tage verbringt."
+  },
   "pain": {
     "eyebrow": "Das Problem",
     "ariaLabel": "Das Problem im Studi-Recruiting",

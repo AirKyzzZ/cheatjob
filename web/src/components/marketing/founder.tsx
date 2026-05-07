@@ -48,13 +48,23 @@ export function Founder() {
               </div>
             </aside>
 
-            {/* Story — scroll-driven word reveal for editorial pacing */}
+            {/* Story — scroll-driven word reveal for editorial pacing.
+                Paragraphs reveal sequentially: paragraph 1 is finished
+                before paragraph 2 begins. Different offset windows do
+                the staging so the timing reads as deliberate prose. */}
             <div className="md:col-span-9 flex flex-col gap-8 font-sans text-[18px] md:text-[19px] leading-[1.7] text-ink">
-              <ScrollRevealText className="text-ink">
+              <ScrollRevealText
+                className="text-ink"
+                offset={["start 0.9", "end 0.6"]}
+              >
                 {t("paragraph1")}
               </ScrollRevealText>
               <p className="text-ink relative">
-                <ScrollRevealText as="span" className="inline">
+                <ScrollRevealText
+                  as="span"
+                  className="inline"
+                  offset={["start 0.6", "end 0.3"]}
+                >
                   {t("paragraph2Lead")}
                 </ScrollRevealText>{" "}
                 <span className="font-serif italic text-burgundy">
