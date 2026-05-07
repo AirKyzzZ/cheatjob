@@ -56,21 +56,8 @@
     "replay": "Rejouer"
   },
   "receipts": {
-    "label": "Reçus · semaine 15",
-    "ariaLabel": "Résultats récents",
-    "outcomes": {
-      "interview": "Entretien obtenu",
-      "fastReply2h": "Réponse en 2h",
-      "fastReply40min": "Réponse en 40min"
-    },
-    "roles": {
-      "growth": "Alternance Growth",
-      "data": "Stage Data",
-      "product": "Alternance Product",
-      "marketing": "Stage Marketing",
-      "hr": "Alternance RH",
-      "ops": "Stage Ops"
-    }
+    "ariaLabel": "Boîtes qui ont répondu",
+    "trustLine": "Ils ont répondu — et toi tu n'as pas leur DRH dans ton réseau."
   },
   "rejectionBin": {
     "eyebrow": "Là où finit ton CV",

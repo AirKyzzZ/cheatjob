@@ -57,21 +57,8 @@
     "replay": "Replay"
   },
   "receipts": {
-    "label": "Receipts · week 15",
-    "ariaLabel": "Recent results",
-    "outcomes": {
-      "interview": "Interview booked",
-      "fastReply2h": "Reply in 2h",
-      "fastReply40min": "Reply in 40min"
-    },
-    "roles": {
-      "growth": "Growth Apprenticeship",
-      "data": "Data Internship",
-      "product": "Product Apprenticeship",
-      "marketing": "Marketing Internship",
-      "hr": "HR Apprenticeship",
-      "ops": "Ops Internship"
-    }
+    "ariaLabel": "Companies that replied",
+    "trustLine": "They replied — and you don't have their head of HR on speed dial."
   },
   "rejectionBin": {
     "eyebrow": "Where your CV ends up",

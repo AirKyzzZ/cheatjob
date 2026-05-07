@@ -58,21 +58,8 @@
     "replay": "Repetir"
   },
   "receipts": {
-    "label": "Recibos · semana 15",
-    "ariaLabel": "Resultados recientes",
-    "outcomes": {
-      "interview": "Entrevista conseguida",
-      "fastReply2h": "Respuesta en 2h",
-      "fastReply40min": "Respuesta en 40min"
-    },
-    "roles": {
-      "growth": "Prácticas Growth",
-      "data": "Prácticas Data",
-      "product": "Prácticas Product",
-      "marketing": "Prácticas Marketing",
-      "hr": "Prácticas RRHH",
-      "ops": "Prácticas Ops"
-    }
+    "ariaLabel": "Empresas que respondieron",
+    "trustLine": "Respondieron — y tú no tienes a su jefa de RRHH en marcado rápido."
   },
   "rejectionBin": {
     "eyebrow": "Donde acaba tu CV",

@@ -58,21 +58,8 @@
     "replay": "Wiederholen"
   },
   "receipts": {
-    "label": "Belege · Woche 15",
-    "ariaLabel": "Aktuelle Ergebnisse",
-    "outcomes": {
-      "interview": "Interview gebucht",
-      "fastReply2h": "Antwort in 2h",
-      "fastReply40min": "Antwort in 40min"
-    },
-    "roles": {
-      "growth": "Growth Werkstudent",
-      "data": "Data Praktikum",
-      "product": "Product Werkstudent",
-      "marketing": "Marketing Praktikum",
-      "hr": "HR Werkstudent",
-      "ops": "Ops Praktikum"
-    }
+    "ariaLabel": "Unternehmen, die geantwortet haben",
+    "trustLine": "Sie haben geantwortet — und du hast ihre HR-Leiterin nicht auf Kurzwahl."
   },
   "rejectionBin": {
     "eyebrow": "Wo dein CV endet",

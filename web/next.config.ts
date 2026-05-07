@@ -16,6 +16,8 @@ const nextConfig: NextConfig = {
     // live in code comments next to each Image src.
     remotePatterns: [
       { protocol: "https", hostname: "images.pexels.com" },
+      // Brandfetch — brand wordmark/lockup CDN used by the Receipts ticker.
+      { protocol: "https", hostname: "cdn.brandfetch.io" },
     ],
   },
   async headers() {
