@@ -24,6 +24,52 @@
     "wordmarkAria": "Cheatjob — back to top",
     "localeSwitcherLabel": "Language"
   },
+  "auth": {
+    "signIn": {
+      "title": "Sign in",
+      "subtitle": "Welcome back.",
+      "emailLabel": "Email",
+      "passwordLabel": "Password",
+      "submit": "Sign in",
+      "googleCta": "Continue with Google",
+      "or": "or",
+      "noAccount": "No account yet?",
+      "signUpLink": "Create one",
+      "forgotPassword": "Forgot your password?"
+    },
+    "signUp": {
+      "title": "Create your account",
+      "subtitle": "We will send you a confirmation email.",
+      "emailLabel": "Email",
+      "passwordLabel": "Password",
+      "submit": "Sign up",
+      "googleCta": "Continue with Google",
+      "or": "or",
+      "hasAccount": "Already have an account?",
+      "signInLink": "Sign in",
+      "checkEmailTitle": "Check your inbox.",
+      "checkEmailBody": "We sent a confirmation link to {email}."
+    },
+    "reset": {
+      "title": "Reset your password",
+      "subtitle": "We will email you a link.",
+      "emailLabel": "Email",
+      "submit": "Send link",
+      "sentTitle": "Done.",
+      "sentBody": "If an account exists, we sent you a reset link.",
+      "newPasswordTitle": "Set a new password",
+      "newPasswordLabel": "New password",
+      "savePassword": "Save",
+      "backToSignIn": "Back to sign in"
+    },
+    "errors": {
+      "generic": "Something went wrong. Try again.",
+      "expiredToken": "This link expired. Request a new one.",
+      "invalidCredentials": "Wrong email or password.",
+      "passwordTooShort": "Password must be at least 8 characters.",
+      "missingCode": "Authentication code missing. Try again."
+    }
+  },
   "hero": {
     "masthead": "Issue 01 · Internship edition — Spring 2026",
     "headline": "You won't get your internship",
