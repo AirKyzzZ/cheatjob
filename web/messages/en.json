@@ -118,8 +118,10 @@
       },
       "cv": {
         "title": "CV",
-        "comingInTask12": "CV upload lands in the next pass.",
         "uploadHint": "Drop your CV here. PDF or DOCX, up to 5 MB.",
+        "clickOrDrop": "Click or drop a file",
+        "uploading": "Uploading...",
+        "filename": "Your CV.{ext}",
         "uploadedAt": "Uploaded {date}",
         "download": "Download",
         "replace": "Replace",
