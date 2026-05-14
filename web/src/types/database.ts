@@ -72,6 +72,7 @@ export type Database = {
           field_of_study: string | null
           full_name: string | null
           locale: string
+          onboarded_at: string | null
           plan_ends_at: string | null
           plan_started_at: string | null
           quota_resets_at: string | null
@@ -96,6 +97,7 @@ export type Database = {
           field_of_study?: string | null
           full_name?: string | null
           locale?: string
+          onboarded_at?: string | null
           plan_ends_at?: string | null
           plan_started_at?: string | null
           quota_resets_at?: string | null
@@ -120,6 +122,7 @@ export type Database = {
           field_of_study?: string | null
           full_name?: string | null
           locale?: string
+          onboarded_at?: string | null
           plan_ends_at?: string | null
           plan_started_at?: string | null
           quota_resets_at?: string | null
