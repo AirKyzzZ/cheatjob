@@ -87,6 +87,14 @@
     },
     "userMenu": {
       "signOut": "Sign out"
+    },
+    "dashboard": {
+      "eyebrow": "Your candidatures",
+      "emptyTitle": "You have not contacted anyone yet.",
+      "emptyDescription": "Soon you will draft cold outreach to hiring managers from here. The wizard is in build.",
+      "newCandidatureCta": "New candidature",
+      "soonTag": "Soon",
+      "soonItalic": "Reserved for first beta cohort."
     }
   },
   "hero": {
