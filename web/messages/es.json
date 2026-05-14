@@ -25,6 +25,122 @@
     "wordmarkAria": "Cheatjob — volver arriba",
     "localeSwitcherLabel": "Idioma"
   },
+  "auth": {
+    "layout": {
+      "signature": "¿Sin red? Te construimos una."
+    },
+    "signIn": {
+      "eyebrow": "Bienvenido de vuelta",
+      "title": "Iniciar sesión",
+      "subtitle": "Sigues donde lo dejaste.",
+      "emailLabel": "Email",
+      "passwordLabel": "Contraseña",
+      "submit": "Entrar",
+      "googleCta": "Continuar con Google",
+      "or": "o",
+      "noAccount": "¿Aún no tienes cuenta?",
+      "signUpLink": "Crea una",
+      "forgotPassword": "¿Olvidaste tu contraseña?"
+    },
+    "signUp": {
+      "eyebrow": "Empezamos",
+      "title": "Crea tu cuenta",
+      "subtitle": "Te mandamos un enlace de confirmación por email.",
+      "emailLabel": "Email",
+      "passwordLabel": "Contraseña",
+      "submit": "Registrarse",
+      "googleCta": "Continuar con Google",
+      "or": "o",
+      "hasAccount": "¿Ya tienes cuenta?",
+      "signInLink": "Iniciar sesión",
+      "checkEmailTitle": "Mira tu bandeja.",
+      "checkEmailBody": "Hemos enviado un enlace de confirmación a {email}."
+    },
+    "reset": {
+      "eyebrow": "Contraseña",
+      "newPasswordEyebrow": "Nueva contraseña",
+      "title": "Restablecer tu contraseña",
+      "subtitle": "Te mandamos un enlace por email.",
+      "emailLabel": "Email",
+      "submit": "Enviar enlace",
+      "sentTitle": "Listo.",
+      "sentBody": "Si la cuenta existe, te hemos mandado un enlace para restablecerla.",
+      "newPasswordTitle": "Define una contraseña nueva",
+      "newPasswordLabel": "Nueva contraseña",
+      "savePassword": "Guardar",
+      "backToSignIn": "Volver a iniciar sesión"
+    },
+    "errors": {
+      "generic": "Algo ha salido mal. Reintenta.",
+      "expiredToken": "Este enlace ha caducado. Pide uno nuevo.",
+      "invalidCredentials": "Email o contraseña incorrectos.",
+      "passwordTooShort": "La contraseña debe tener al menos 8 caracteres.",
+      "missingCode": "Falta el código de autenticación. Reintenta."
+    }
+  },
+  "onboarding": {
+    "eyebrow": "Bienvenido",
+    "title": "Vamos a conocerte.",
+    "accentLine": "¿Sin red? Te construimos una.",
+    "fullNameLabel": "¿Cómo te llamas?",
+    "schoolLabel": "¿Dónde estudias?",
+    "studyLevelLabel": "Nivel de estudios",
+    "localeLabel": "Idioma",
+    "submit": "Empezar"
+  },
+  "app": {
+    "sidebar": {
+      "candidatures": "Candidaturas",
+      "profile": "Perfil",
+      "signOut": "Cerrar sesión"
+    },
+    "userMenu": {
+      "signOut": "Cerrar sesión"
+    },
+    "dashboard": {
+      "eyebrow": "Tus candidaturas",
+      "emptyTitle": "Aún no has contactado con nadie.",
+      "emptyDescription": "Pronto redactarás tus mensajes a los managers desde aquí. El wizard está en camino.",
+      "newCandidatureCta": "Nueva candidatura",
+      "soonTag": "Pronto",
+      "soonItalic": "Reservado al primer círculo beta."
+    },
+    "profile": {
+      "eyebrow": "Cuenta",
+      "title": "Tu perfil",
+      "dangerZone": "Cuenta",
+      "deleteAccountComingSoon": "La eliminación de cuenta llega antes del lanzamiento público. Mientras tanto, puedes cerrar sesión cuando quieras.",
+      "signOutLabel": "Cerrar sesión",
+      "identity": {
+        "title": "Identidad",
+        "fullName": "Nombre completo",
+        "school": "Escuela",
+        "studyLevel": "Nivel de estudios",
+        "edit": "Editar",
+        "save": "Guardar",
+        "cancel": "Cancelar"
+      },
+      "locale": {
+        "title": "Idioma",
+        "description": "Traducimos el producto al idioma que elijas.",
+        "saving": "Guardando..."
+      },
+      "cv": {
+        "title": "CV",
+        "uploadHint": "Sube tu CV aquí. PDF o DOCX, 5 MB máx.",
+        "clickOrDrop": "Haz clic o arrastra un archivo",
+        "uploading": "Subiendo...",
+        "filename": "Tu CV.{ext}",
+        "uploadedAt": "Subido el {date}",
+        "download": "Descargar",
+        "replace": "Reemplazar",
+        "delete": "Eliminar",
+        "uploadError": "La subida falló. Reintenta.",
+        "wrongType": "Solo PDF o DOCX.",
+        "tooLarge": "El archivo supera los 5 MB."
+      }
+    }
+  },
   "hero": {
     "masthead": "N° 01 · Edición prácticas — Primavera 2026",
     "headline": "No conseguirás tus prácticas",

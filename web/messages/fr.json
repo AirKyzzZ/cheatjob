@@ -23,6 +23,122 @@
     "wordmarkAria": "Cheatjob — retour en haut",
     "localeSwitcherLabel": "Langue"
   },
+  "auth": {
+    "layout": {
+      "signature": "Pas de réseau ? On t'en fabrique un."
+    },
+    "signIn": {
+      "eyebrow": "Content de te revoir",
+      "title": "Connexion",
+      "subtitle": "Tu reprends là où tu t'étais arrêté.",
+      "emailLabel": "Email",
+      "passwordLabel": "Mot de passe",
+      "submit": "Se connecter",
+      "googleCta": "Continuer avec Google",
+      "or": "ou",
+      "noAccount": "Pas encore de compte ?",
+      "signUpLink": "En créer un",
+      "forgotPassword": "Mot de passe oublié ?"
+    },
+    "signUp": {
+      "eyebrow": "On commence",
+      "title": "Crée ton compte",
+      "subtitle": "On t'envoie un lien de confirmation par mail.",
+      "emailLabel": "Email",
+      "passwordLabel": "Mot de passe",
+      "submit": "S'inscrire",
+      "googleCta": "Continuer avec Google",
+      "or": "ou",
+      "hasAccount": "Déjà un compte ?",
+      "signInLink": "Se connecter",
+      "checkEmailTitle": "Regarde dans ta boîte.",
+      "checkEmailBody": "On a envoyé un lien de confirmation à {email}."
+    },
+    "reset": {
+      "eyebrow": "Mot de passe",
+      "newPasswordEyebrow": "Nouveau mot de passe",
+      "title": "Réinitialiser ton mot de passe",
+      "subtitle": "On t'envoie un lien par mail.",
+      "emailLabel": "Email",
+      "submit": "Envoyer le lien",
+      "sentTitle": "C'est parti.",
+      "sentBody": "Si un compte existe, on t'a envoyé un lien de réinitialisation.",
+      "newPasswordTitle": "Définis un nouveau mot de passe",
+      "newPasswordLabel": "Nouveau mot de passe",
+      "savePassword": "Enregistrer",
+      "backToSignIn": "Retour à la connexion"
+    },
+    "errors": {
+      "generic": "Quelque chose a mal tourné. Réessaie.",
+      "expiredToken": "Ce lien a expiré. Demandes-en un nouveau.",
+      "invalidCredentials": "Mauvais email ou mot de passe.",
+      "passwordTooShort": "Le mot de passe doit faire au moins 8 caractères.",
+      "missingCode": "Code d'authentification manquant. Réessaie."
+    }
+  },
+  "onboarding": {
+    "eyebrow": "Bienvenue",
+    "title": "On t'apprend à te connaître.",
+    "accentLine": "Pas de réseau ? On t'en fabrique un.",
+    "fullNameLabel": "Comment tu t'appelles ?",
+    "schoolLabel": "Tu études où ?",
+    "studyLevelLabel": "Niveau d'études",
+    "localeLabel": "Langue",
+    "submit": "Commencer"
+  },
+  "app": {
+    "sidebar": {
+      "candidatures": "Candidatures",
+      "profile": "Profil",
+      "signOut": "Se déconnecter"
+    },
+    "userMenu": {
+      "signOut": "Se déconnecter"
+    },
+    "dashboard": {
+      "eyebrow": "Tes candidatures",
+      "emptyTitle": "Tu n'as encore contacté personne.",
+      "emptyDescription": "Bientôt, tu rédigeras tes messages aux managers depuis ici. Le wizard arrive.",
+      "newCandidatureCta": "Nouvelle candidature",
+      "soonTag": "Bientôt",
+      "soonItalic": "Réservé au premier cercle bêta."
+    },
+    "profile": {
+      "eyebrow": "Compte",
+      "title": "Ton profil",
+      "dangerZone": "Compte",
+      "deleteAccountComingSoon": "La suppression de compte arrive avant le lancement public. En attendant, tu peux te déconnecter à tout moment.",
+      "signOutLabel": "Se déconnecter",
+      "identity": {
+        "title": "Identité",
+        "fullName": "Nom complet",
+        "school": "École",
+        "studyLevel": "Niveau d'études",
+        "edit": "Modifier",
+        "save": "Enregistrer",
+        "cancel": "Annuler"
+      },
+      "locale": {
+        "title": "Langue",
+        "description": "On traduit le produit dans la langue que tu choisis.",
+        "saving": "Enregistrement..."
+      },
+      "cv": {
+        "title": "CV",
+        "uploadHint": "Dépose ton CV ici. PDF ou DOCX, 5 Mo max.",
+        "clickOrDrop": "Clique ou glisse un fichier",
+        "uploading": "Envoi en cours...",
+        "filename": "Ton CV.{ext}",
+        "uploadedAt": "Déposé le {date}",
+        "download": "Télécharger",
+        "replace": "Remplacer",
+        "delete": "Supprimer",
+        "uploadError": "L'envoi a échoué. Réessaie.",
+        "wrongType": "PDF ou DOCX uniquement.",
+        "tooLarge": "Le fichier dépasse 5 Mo."
+      }
+    }
+  },
   "hero": {
     "masthead": "N° 01 · Édition stages — printemps 2026",
     "headline": "Tu n'auras pas ton stage",

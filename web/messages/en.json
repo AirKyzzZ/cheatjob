@@ -25,6 +25,9 @@
     "localeSwitcherLabel": "Language"
   },
   "auth": {
+    "layout": {
+      "signature": "No network? We build you one."
+    },
     "signIn": {
       "eyebrow": "Welcome back",
       "title": "Sign in",

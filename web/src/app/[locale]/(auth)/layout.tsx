@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 export default async function AuthLayout({
   children,
@@ -10,6 +10,7 @@ export default async function AuthLayout({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
+  const t = await getTranslations("auth.layout");
 
   return (
     <div className="min-h-screen bg-cream flex flex-col">
@@ -26,7 +27,7 @@ export default async function AuthLayout({
       </main>
       <footer className="px-6 pb-10 pt-4 text-center">
         <p className="font-serif italic text-[15px] text-burgundy/80">
-          No network? We build you one.
+          {t("signature")}
         </p>
       </footer>
     </div>

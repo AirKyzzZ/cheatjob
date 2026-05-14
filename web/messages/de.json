@@ -25,6 +25,122 @@
     "wordmarkAria": "Cheatjob — zurück nach oben",
     "localeSwitcherLabel": "Sprache"
   },
+  "auth": {
+    "layout": {
+      "signature": "Kein Netzwerk? Wir bauen dir eins."
+    },
+    "signIn": {
+      "eyebrow": "Schön, dich wiederzusehen",
+      "title": "Anmelden",
+      "subtitle": "Du machst da weiter, wo du aufgehört hast.",
+      "emailLabel": "Email",
+      "passwordLabel": "Passwort",
+      "submit": "Anmelden",
+      "googleCta": "Mit Google fortfahren",
+      "or": "oder",
+      "noAccount": "Noch kein Konto?",
+      "signUpLink": "Eins erstellen",
+      "forgotPassword": "Passwort vergessen?"
+    },
+    "signUp": {
+      "eyebrow": "Geht los",
+      "title": "Erstelle dein Konto",
+      "subtitle": "Wir schicken dir einen Bestätigungslink per Email.",
+      "emailLabel": "Email",
+      "passwordLabel": "Passwort",
+      "submit": "Registrieren",
+      "googleCta": "Mit Google fortfahren",
+      "or": "oder",
+      "hasAccount": "Schon ein Konto?",
+      "signInLink": "Anmelden",
+      "checkEmailTitle": "Schau in dein Postfach.",
+      "checkEmailBody": "Wir haben einen Bestätigungslink an {email} geschickt."
+    },
+    "reset": {
+      "eyebrow": "Passwort",
+      "newPasswordEyebrow": "Neues Passwort",
+      "title": "Passwort zurücksetzen",
+      "subtitle": "Wir schicken dir einen Link per Email.",
+      "emailLabel": "Email",
+      "submit": "Link senden",
+      "sentTitle": "Erledigt.",
+      "sentBody": "Wenn ein Konto existiert, haben wir dir einen Reset-Link geschickt.",
+      "newPasswordTitle": "Setz ein neues Passwort",
+      "newPasswordLabel": "Neues Passwort",
+      "savePassword": "Speichern",
+      "backToSignIn": "Zurück zur Anmeldung"
+    },
+    "errors": {
+      "generic": "Etwas ist schiefgelaufen. Versuch's nochmal.",
+      "expiredToken": "Dieser Link ist abgelaufen. Fordere einen neuen an.",
+      "invalidCredentials": "Falsche Email oder falsches Passwort.",
+      "passwordTooShort": "Das Passwort muss mindestens 8 Zeichen haben.",
+      "missingCode": "Authentifizierungscode fehlt. Versuch's nochmal."
+    }
+  },
+  "onboarding": {
+    "eyebrow": "Willkommen",
+    "title": "Wir lernen dich kennen.",
+    "accentLine": "Kein Netzwerk? Wir bauen dir eins.",
+    "fullNameLabel": "Wie heißt du?",
+    "schoolLabel": "Wo studierst du?",
+    "studyLevelLabel": "Studienniveau",
+    "localeLabel": "Sprache",
+    "submit": "Loslegen"
+  },
+  "app": {
+    "sidebar": {
+      "candidatures": "Bewerbungen",
+      "profile": "Profil",
+      "signOut": "Abmelden"
+    },
+    "userMenu": {
+      "signOut": "Abmelden"
+    },
+    "dashboard": {
+      "eyebrow": "Deine Bewerbungen",
+      "emptyTitle": "Du hast noch niemanden kontaktiert.",
+      "emptyDescription": "Bald schreibst du deine Nachrichten an Manager von hier aus. Der Wizard kommt.",
+      "newCandidatureCta": "Neue Bewerbung",
+      "soonTag": "Bald",
+      "soonItalic": "Reserviert für den ersten Beta-Kreis."
+    },
+    "profile": {
+      "eyebrow": "Konto",
+      "title": "Dein Profil",
+      "dangerZone": "Konto",
+      "deleteAccountComingSoon": "Konto-Löschung kommt vor dem öffentlichen Launch. Bis dahin kannst du dich jederzeit abmelden.",
+      "signOutLabel": "Abmelden",
+      "identity": {
+        "title": "Identität",
+        "fullName": "Vollständiger Name",
+        "school": "Schule",
+        "studyLevel": "Studienniveau",
+        "edit": "Bearbeiten",
+        "save": "Speichern",
+        "cancel": "Abbrechen"
+      },
+      "locale": {
+        "title": "Sprache",
+        "description": "Wir übersetzen das Produkt in die Sprache, die du wählst.",
+        "saving": "Speichern..."
+      },
+      "cv": {
+        "title": "CV",
+        "uploadHint": "Lade deinen CV hier hoch. PDF oder DOCX, max. 5 MB.",
+        "clickOrDrop": "Klicken oder Datei reinziehen",
+        "uploading": "Wird hochgeladen...",
+        "filename": "Dein CV.{ext}",
+        "uploadedAt": "Hochgeladen am {date}",
+        "download": "Herunterladen",
+        "replace": "Ersetzen",
+        "delete": "Löschen",
+        "uploadError": "Upload fehlgeschlagen. Versuch's nochmal.",
+        "wrongType": "Nur PDF oder DOCX.",
+        "tooLarge": "Datei ist größer als 5 MB."
+      }
+    }
+  },
   "hero": {
     "masthead": "Nr. 01 · Praktikum-Ausgabe — Frühling 2026",
     "headline": "Du bekommst dein Praktikum nicht",
