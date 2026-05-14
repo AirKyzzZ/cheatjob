@@ -79,6 +79,16 @@
     "localeLabel": "Language",
     "submit": "Get started"
   },
+  "app": {
+    "sidebar": {
+      "candidatures": "Candidatures",
+      "profile": "Profile",
+      "signOut": "Sign out"
+    },
+    "userMenu": {
+      "signOut": "Sign out"
+    }
+  },
   "hero": {
     "masthead": "Issue 01 · Internship edition — Spring 2026",
     "headline": "You won't get your internship",
