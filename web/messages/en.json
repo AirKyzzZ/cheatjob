@@ -70,6 +70,15 @@
       "missingCode": "Authentication code missing. Try again."
     }
   },
+  "onboarding": {
+    "title": "Welcome. Let us get to know you.",
+    "accentLine": "No network? We build you one.",
+    "fullNameLabel": "Full name",
+    "schoolLabel": "School",
+    "studyLevelLabel": "Study level",
+    "localeLabel": "Language",
+    "submit": "Get started"
+  },
   "hero": {
     "masthead": "Issue 01 · Internship edition — Spring 2026",
     "headline": "You won't get your internship",
