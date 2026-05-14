@@ -95,6 +95,39 @@
       "newCandidatureCta": "New candidature",
       "soonTag": "Soon",
       "soonItalic": "Reserved for first beta cohort."
+    },
+    "profile": {
+      "eyebrow": "Account",
+      "title": "Your profile",
+      "dangerZone": "Account",
+      "deleteAccountComingSoon": "Account deletion lands before public launch. For now, sign out anytime.",
+      "signOutLabel": "Sign out",
+      "identity": {
+        "title": "Identity",
+        "fullName": "Full name",
+        "school": "School",
+        "studyLevel": "Study level",
+        "edit": "Edit",
+        "save": "Save",
+        "cancel": "Cancel"
+      },
+      "locale": {
+        "title": "Language",
+        "description": "We translate the product into your chosen language.",
+        "saving": "Saving..."
+      },
+      "cv": {
+        "title": "CV",
+        "comingInTask12": "CV upload lands in the next pass.",
+        "uploadHint": "Drop your CV here. PDF or DOCX, up to 5 MB.",
+        "uploadedAt": "Uploaded {date}",
+        "download": "Download",
+        "replace": "Replace",
+        "delete": "Delete",
+        "uploadError": "Upload failed. Try again.",
+        "wrongType": "PDF or DOCX only.",
+        "tooLarge": "File is over 5 MB."
+      }
     }
   },
   "hero": {
