@@ -26,6 +26,7 @@
   },
   "auth": {
     "signIn": {
+      "eyebrow": "Welcome back",
       "title": "Sign in",
       "subtitle": "Welcome back.",
       "emailLabel": "Email",
@@ -38,6 +39,7 @@
       "forgotPassword": "Forgot your password?"
     },
     "signUp": {
+      "eyebrow": "Get started",
       "title": "Create your account",
       "subtitle": "We will send you a confirmation email.",
       "emailLabel": "Email",
@@ -51,6 +53,8 @@
       "checkEmailBody": "We sent a confirmation link to {email}."
     },
     "reset": {
+      "eyebrow": "Password",
+      "newPasswordEyebrow": "New password",
       "title": "Reset your password",
       "subtitle": "We will email you a link.",
       "emailLabel": "Email",
@@ -71,6 +75,7 @@
     }
   },
   "onboarding": {
+    "eyebrow": "Onboarding",
     "title": "Welcome. Let us get to know you.",
     "accentLine": "No network? We build you one.",
     "fullNameLabel": "Full name",

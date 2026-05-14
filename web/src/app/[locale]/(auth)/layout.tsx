@@ -22,8 +22,13 @@ export default async function AuthLayout({
         </Link>
       </header>
       <main className="flex-1 flex items-center justify-center px-6 py-12">
-        <div className="w-full max-w-md">{children}</div>
+        <div className="w-full max-w-md animate-fade-rise">{children}</div>
       </main>
+      <footer className="px-6 pb-10 pt-4 text-center">
+        <p className="font-serif italic text-[15px] text-burgundy/80">
+          No network? We build you one.
+        </p>
+      </footer>
     </div>
   );
 }

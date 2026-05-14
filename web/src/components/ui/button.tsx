@@ -62,7 +62,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     );
 
     const content = loading ? (
-      <>…</>
+      <span
+        className="inline-block size-4 border-2 border-current border-t-transparent rounded-full animate-spin"
+        aria-label="Loading"
+      />
     ) : (
       <>
         {children}

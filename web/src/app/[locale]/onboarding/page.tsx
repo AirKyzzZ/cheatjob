@@ -20,10 +20,13 @@ export default async function OnboardingPage({
 
   return (
     <div>
-      <h1 className="font-serif text-[40px] md:text-[48px] leading-tight tracking-[-0.02em] text-ink mb-3">
+      <p className="text-[11px] uppercase tracking-[0.22em] font-sans font-medium text-muted-soft mb-3">
+        {t("eyebrow")}
+      </p>
+      <h1 className="font-serif text-[40px] md:text-[48px] leading-tight tracking-[-0.03em] text-ink mb-3">
         {t("title")}
       </h1>
-      <p className="font-serif italic text-[18px] text-burgundy mb-10">
+      <p className="font-serif italic text-[18px] md:text-[20px] text-burgundy mb-10">
         {t("accentLine")}
       </p>
       <OnboardingForm locale={locale} initialFullName={profile?.full_name ?? ""} />

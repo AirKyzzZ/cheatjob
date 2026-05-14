@@ -25,7 +25,8 @@ export function Sidebar({ locale }: { locale: string }) {
           cheatjob
         </Link>
       </div>
-      <nav className="flex-1 px-3 space-y-1">
+      <div className="mx-6 h-px bg-border-subtle" />
+      <nav className="flex-1 px-3 pt-4 space-y-1">
         {items.map((item) => {
           const isActive = pathname === item.href;
           return (
