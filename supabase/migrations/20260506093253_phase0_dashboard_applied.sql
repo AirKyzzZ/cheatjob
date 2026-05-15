@@ -1,0 +1,4 @@
+-- Phase 0 migration applied via the Supabase dashboard on 2026-05-06.
+-- This is a history-alignment placeholder: the schema it represents is already
+-- live on the remote project (recorded in supabase_migrations.schema_migrations).
+-- Kept so `supabase db push` history matches remote. Intentionally a no-op.
