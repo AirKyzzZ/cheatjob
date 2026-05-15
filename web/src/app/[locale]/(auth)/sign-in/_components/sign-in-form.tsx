@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { FieldError } from "@/components/ui/field-error";
 import { signInWithPassword } from "@/server/actions/auth";
+import { track, EVENTS } from "@/lib/analytics/events";
 
 function isRedirect(e: unknown): boolean {
   return (
@@ -29,6 +30,7 @@ export function SignInForm({ locale }: { locale: string }) {
         const formData = new FormData(e.currentTarget);
         startTransition(async () => {
           try {
+            track(EVENTS.AuthSigninCompleted, { method: "password" });
             await signInWithPassword(
               {
                 email: String(formData.get("email") ?? ""),

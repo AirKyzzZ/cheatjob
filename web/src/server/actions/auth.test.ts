@@ -4,7 +4,7 @@ import {
   SignInSchema,
   ResetRequestSchema,
   UpdatePasswordSchema,
-} from "./auth";
+} from "./auth.schemas";
 
 describe("auth schemas", () => {
   it("SignUpSchema rejects short passwords", () => {

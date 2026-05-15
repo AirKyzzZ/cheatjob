@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { FieldError } from "@/components/ui/field-error";
 import { signUpWithPassword } from "@/server/actions/auth";
+import { track, EVENTS } from "@/lib/analytics/events";
 
 export function SignUpForm({ locale }: { locale: string }) {
   const t = useTranslations("auth.signUp");
@@ -39,9 +40,12 @@ export function SignUpForm({ locale }: { locale: string }) {
           setError(tErrors("passwordTooShort"));
           return;
         }
+        track(EVENTS.AuthSignupStarted, { method: "password" });
         startTransition(async () => {
           try {
             await signUpWithPassword({ email, password, locale });
+            track(EVENTS.AuthSignupCompleted, { method: "password" });
+            track(EVENTS.AuthConfirmationSent);
             setSubmittedEmail(email);
           } catch (err) {
             setError(err instanceof Error ? err.message : tErrors("generic"));

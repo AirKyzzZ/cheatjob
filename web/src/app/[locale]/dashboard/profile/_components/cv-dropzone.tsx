@@ -4,6 +4,7 @@ import { useState, useRef, type DragEvent, type ChangeEvent } from "react";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 import { getCvUploadUrl, finalizeCvUpload } from "@/server/actions/profile";
+import { track, EVENTS } from "@/lib/analytics/events";
 
 const MAX_SIZE = 5 * 1024 * 1024;
 const ALLOWED = [
@@ -39,6 +40,7 @@ export function CvDropzone({
     }
 
     setUploading(true);
+    track(EVENTS.CvUploadStarted);
     try {
       const { uploadUrl, path } = await getCvUploadUrl({
         filename: file.name,
@@ -55,8 +57,12 @@ export function CvDropzone({
       }
 
       await finalizeCvUpload({ storagePath: path, mimeType: file.type });
+      track(EVENTS.CvUploadCompleted);
       onUploaded();
     } catch (e) {
+      track(EVENTS.CvUploadFailed, {
+        reason: e instanceof Error ? e.message : "unknown",
+      });
       setError(e instanceof Error ? e.message : t("uploadError"));
     } finally {
       setUploading(false);

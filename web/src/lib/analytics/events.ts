@@ -25,6 +25,17 @@ export const EVENTS = {
   WaitlistOpened: "waitlist_opened",
   WaitlistSubmitted: "waitlist_submitted",
   WaitlistError: "waitlist_error",
+
+  AuthSignupStarted: "auth_signup_started",
+  AuthSignupCompleted: "auth_signup_completed",
+  AuthSigninCompleted: "auth_signin_completed",
+  AuthConfirmationSent: "auth_confirmation_sent",
+  OnboardingStarted: "onboarding_started",
+  OnboardingCompleted: "onboarding_completed",
+  CvUploadStarted: "cv_upload_started",
+  CvUploadCompleted: "cv_upload_completed",
+  CvUploadFailed: "cv_upload_failed",
+  ProfileUpdated: "profile_updated",
 } as const;
 
 export type EventName = (typeof EVENTS)[keyof typeof EVENTS];

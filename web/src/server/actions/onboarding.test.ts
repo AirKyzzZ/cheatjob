@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { OnboardingSchema } from "./onboarding";
+import { OnboardingSchema } from "./onboarding.schemas";
 
 describe("OnboardingSchema", () => {
   it("requires fullName", () => {

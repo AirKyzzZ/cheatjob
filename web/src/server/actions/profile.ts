@@ -2,36 +2,15 @@
 
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
-import { z } from "zod";
 import { getServerClient } from "@/lib/supabase/server";
 import { updateProfile } from "@/lib/db/profiles";
-
-const MIME_TYPES = [
-  "application/pdf",
-  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-] as const;
-
-const LocaleEnum = z.enum(["fr", "en", "es", "de"]);
-
-export const UpdateProfileSchema = z.object({
-  fullName: z.string().min(2).max(100).optional(),
-  school: z.string().min(2).max(200).optional(),
-  studyLevel: z.enum(["L3", "M1", "M2", "BTS2", "DUT2", "other"]).optional(),
-});
-
-export const UpdateLocaleSchema = z.object({
-  locale: LocaleEnum,
-});
-
-export const GetUploadUrlSchema = z.object({
-  filename: z.string().max(255),
-  mimeType: z.enum(MIME_TYPES),
-});
-
-export const FinalizeUploadSchema = z.object({
-  storagePath: z.string().max(500),
-  mimeType: z.enum(MIME_TYPES),
-});
+import {
+  LocaleEnum,
+  UpdateProfileSchema,
+  UpdateLocaleSchema,
+  GetUploadUrlSchema,
+  FinalizeUploadSchema,
+} from "./profile.schemas";
 
 async function requireUser() {
   const supabase = await getServerClient();

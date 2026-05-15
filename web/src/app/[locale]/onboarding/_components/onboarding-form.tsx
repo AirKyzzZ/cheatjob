@@ -1,12 +1,13 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { RadioGroup } from "@/components/ui/radio-group";
 import { FieldError } from "@/components/ui/field-error";
 import { completeOnboarding } from "@/server/actions/onboarding";
+import { track, EVENTS } from "@/lib/analytics/events";
 
 function isRedirect(e: unknown): boolean {
   return (
@@ -35,6 +36,10 @@ export function OnboardingForm({
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
 
+  useEffect(() => {
+    track(EVENTS.OnboardingStarted);
+  }, []);
+
   return (
     <form
       onSubmit={(e) => {
@@ -42,6 +47,7 @@ export function OnboardingForm({
         setError(null);
         startTransition(async () => {
           try {
+            track(EVENTS.OnboardingCompleted);
             await completeOnboarding({
               fullName,
               school,

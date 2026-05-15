@@ -4,7 +4,7 @@ import {
   UpdateLocaleSchema,
   GetUploadUrlSchema,
   FinalizeUploadSchema,
-} from "./profile";
+} from "./profile.schemas";
 
 describe("profile schemas", () => {
   it("UpdateProfileSchema accepts partial updates", () => {

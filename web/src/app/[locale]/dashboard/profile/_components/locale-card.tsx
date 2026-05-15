@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { RadioGroup } from "@/components/ui/radio-group";
 import { updateLocaleAction } from "@/server/actions/profile";
+import { track, EVENTS } from "@/lib/analytics/events";
 
 const LOCALES = ["fr", "en", "es", "de"] as const;
 
@@ -38,6 +39,7 @@ export function LocaleCard({
         onChange={(v) =>
           startTransition(async () => {
             try {
+              track(EVENTS.ProfileUpdated, { field: "locale" });
               await updateLocaleAction({ locale: v }, locale);
             } catch (err) {
               if (isRedirect(err)) throw err;

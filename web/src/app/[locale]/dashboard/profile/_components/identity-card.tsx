@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { RadioGroup } from "@/components/ui/radio-group";
 import { FieldError } from "@/components/ui/field-error";
 import { updateProfileAction } from "@/server/actions/profile";
+import { track, EVENTS } from "@/lib/analytics/events";
 
 const LEVELS = ["L3", "M1", "M2", "BTS2", "DUT2", "other"] as const;
 
@@ -99,6 +100,7 @@ export function IdentityCard({ profile }: { profile: Profile }) {
                       ? (studyLevel as (typeof LEVELS)[number])
                       : undefined,
                   });
+                  track(EVENTS.ProfileUpdated, { field: "identity" });
                   setEditing(false);
                 } catch (err) {
                   setError(err instanceof Error ? err.message : tErrors("generic"));

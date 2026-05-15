@@ -3,6 +3,7 @@
 import { useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
 import { signInWithGoogle } from "@/server/actions/auth";
+import { track, EVENTS } from "@/lib/analytics/events";
 
 function isRedirect(e: unknown): boolean {
   return (
@@ -26,6 +27,7 @@ export function GoogleButton({ locale, label }: { locale: string; label: string 
         onClick={() =>
           startTransition(async () => {
             setError(null);
+            track(EVENTS.AuthSignupStarted, { method: "google" });
             try {
               await signInWithGoogle(locale);
             } catch (e) {
