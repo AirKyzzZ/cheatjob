@@ -8,7 +8,19 @@ export async function GET(
   const { locale } = await params;
   const url = new URL(request.url);
   const code = url.searchParams.get("code");
+  const oauthError =
+    url.searchParams.get("error") ?? url.searchParams.get("error_description");
   const next = url.searchParams.get("next") ?? `/${locale}/dashboard`;
+
+  if (oauthError) {
+    const mapped =
+      url.searchParams.get("error") === "access_denied"
+        ? "oauth_cancelled"
+        : "oauth_error";
+    return NextResponse.redirect(
+      new URL(`/${locale}/sign-in?error=${mapped}`, request.url),
+    );
+  }
 
   if (!code) {
     return NextResponse.redirect(
