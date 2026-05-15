@@ -5,10 +5,13 @@ import { SignUpForm } from "./_components/sign-up-form";
 
 export default async function SignUpPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string }>;
+  searchParams: Promise<{ email?: string }>;
 }) {
   const { locale } = await params;
+  const { email } = await searchParams;
   setRequestLocale(locale);
   const t = await getTranslations("auth.signUp");
 
@@ -30,7 +33,7 @@ export default async function SignUpPage({
         <div className="flex-1 h-px bg-border-subtle" />
       </div>
 
-      <SignUpForm locale={locale} />
+      <SignUpForm locale={locale} defaultEmail={email ?? ""} />
 
       <div className="mt-10 pt-6 border-t border-border-subtle text-[14px] font-sans text-muted text-center">
         <p>

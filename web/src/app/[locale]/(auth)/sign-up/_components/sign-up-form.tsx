@@ -8,7 +8,13 @@ import { FieldError } from "@/components/ui/field-error";
 import { signUpWithPassword } from "@/server/actions/auth";
 import { track, EVENTS } from "@/lib/analytics/events";
 
-export function SignUpForm({ locale }: { locale: string }) {
+export function SignUpForm({
+  locale,
+  defaultEmail = "",
+}: {
+  locale: string;
+  defaultEmail?: string;
+}) {
   const t = useTranslations("auth.signUp");
   const tErrors = useTranslations("auth.errors");
   const [error, setError] = useState<string | null>(null);
@@ -58,7 +64,13 @@ export function SignUpForm({ locale }: { locale: string }) {
         <label className="block text-[13px] font-medium text-ink mb-2 font-sans">
           {t("emailLabel")}
         </label>
-        <Input name="email" type="email" required autoComplete="email" />
+        <Input
+          name="email"
+          type="email"
+          required
+          autoComplete="email"
+          defaultValue={defaultEmail}
+        />
       </div>
       <div>
         <label className="block text-[13px] font-medium text-ink mb-2 font-sans">
