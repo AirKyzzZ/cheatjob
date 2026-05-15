@@ -30,7 +30,7 @@ export function SignInForm({ locale }: { locale: string }) {
         const formData = new FormData(e.currentTarget);
         startTransition(async () => {
           try {
-            track(EVENTS.AuthSigninCompleted, { method: "password" });
+            track(EVENTS.AuthSigninAttempted, { method: "password" });
             await signInWithPassword(
               {
                 email: String(formData.get("email") ?? ""),

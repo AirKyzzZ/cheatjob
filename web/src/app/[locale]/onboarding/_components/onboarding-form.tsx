@@ -47,7 +47,7 @@ export function OnboardingForm({
         setError(null);
         startTransition(async () => {
           try {
-            track(EVENTS.OnboardingCompleted);
+            track(EVENTS.OnboardingSubmitted);
             await completeOnboarding({
               fullName,
               school,

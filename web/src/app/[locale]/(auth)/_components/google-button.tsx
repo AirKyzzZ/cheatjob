@@ -13,7 +13,15 @@ function isRedirect(e: unknown): boolean {
   );
 }
 
-export function GoogleButton({ locale, label }: { locale: string; label: string }) {
+export function GoogleButton({
+  locale,
+  label,
+  intent,
+}: {
+  locale: string;
+  label: string;
+  intent: "signin" | "signup";
+}) {
   const [pending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
 
@@ -27,7 +35,12 @@ export function GoogleButton({ locale, label }: { locale: string; label: string 
         onClick={() =>
           startTransition(async () => {
             setError(null);
-            track(EVENTS.AuthSignupStarted, { method: "google" });
+            track(
+              intent === "signup"
+                ? EVENTS.AuthSignupStarted
+                : EVENTS.AuthSigninAttempted,
+              { method: "google" },
+            );
             try {
               await signInWithGoogle(locale);
             } catch (e) {

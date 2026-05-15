@@ -22,7 +22,7 @@ export default async function SignUpPage({
       </h1>
       <p className="font-sans text-[15px] text-muted mb-8">{t("subtitle")}</p>
 
-      <GoogleButton locale={locale} label={t("googleCta")} />
+      <GoogleButton locale={locale} label={t("googleCta")} intent="signup" />
 
       <div className="my-6 flex items-center gap-3 text-muted-soft text-[13px] font-sans">
         <div className="flex-1 h-px bg-border-subtle" />

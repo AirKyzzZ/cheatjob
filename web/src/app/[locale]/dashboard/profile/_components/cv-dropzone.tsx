@@ -60,9 +60,13 @@ export function CvDropzone({
       track(EVENTS.CvUploadCompleted);
       onUploaded();
     } catch (e) {
-      track(EVENTS.CvUploadFailed, {
-        reason: e instanceof Error ? e.message : "unknown",
-      });
+      const reason =
+        e instanceof Error && e.message.startsWith("Upload failed:")
+          ? "upload_http_error"
+          : e instanceof Error
+            ? "finalize_or_network_error"
+            : "unknown";
+      track(EVENTS.CvUploadFailed, { reason });
       setError(e instanceof Error ? e.message : t("uploadError"));
     } finally {
       setUploading(false);

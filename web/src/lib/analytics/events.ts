@@ -28,9 +28,11 @@ export const EVENTS = {
 
   AuthSignupStarted: "auth_signup_started",
   AuthSignupCompleted: "auth_signup_completed",
+  AuthSigninAttempted: "auth_signin_attempted",
   AuthSigninCompleted: "auth_signin_completed",
   AuthConfirmationSent: "auth_confirmation_sent",
   OnboardingStarted: "onboarding_started",
+  OnboardingSubmitted: "onboarding_submitted",
   OnboardingCompleted: "onboarding_completed",
   CvUploadStarted: "cv_upload_started",
   CvUploadCompleted: "cv_upload_completed",
