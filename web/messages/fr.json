@@ -74,7 +74,10 @@
       "expiredToken": "Ce lien a expiré. Demandes-en un nouveau.",
       "invalidCredentials": "Mauvais email ou mot de passe.",
       "passwordTooShort": "Le mot de passe doit faire au moins 8 caractères.",
-      "missingCode": "Code d'authentification manquant. Réessaie."
+      "missingCode": "Code d'authentification manquant. Réessaie.",
+      "rateLimited": "Trop de tentatives. Attends un instant et réessaie.",
+      "emailTaken": "Cet email a déjà un compte. Connecte-toi plutôt.",
+      "emailNotConfirmed": "Confirme ton email d'abord. Regarde ta boîte mail."
     }
   },
   "onboarding": {

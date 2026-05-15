@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { FieldError } from "@/components/ui/field-error";
 import { signUpWithPassword } from "@/server/actions/auth";
 import { track, EVENTS } from "@/lib/analytics/events";
+import { authErrorKey } from "@/lib/auth-error-message";
 
 export function SignUpForm({
   locale,
@@ -54,7 +55,7 @@ export function SignUpForm({
             track(EVENTS.AuthConfirmationSent);
             setSubmittedEmail(email);
           } catch (err) {
-            setError(err instanceof Error ? err.message : tErrors("generic"));
+            setError(tErrors(authErrorKey(err)));
           }
         });
       }}

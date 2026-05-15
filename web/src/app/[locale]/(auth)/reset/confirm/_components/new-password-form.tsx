@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { FieldError } from "@/components/ui/field-error";
 import { updatePassword } from "@/server/actions/auth";
+import { authErrorKey } from "@/lib/auth-error-message";
 
 function isRedirect(e: unknown): boolean {
   return (
@@ -37,7 +38,7 @@ export function NewPasswordForm({ locale }: { locale: string }) {
             await updatePassword({ password }, locale);
           } catch (err) {
             if (isRedirect(err)) throw err;
-            setError(err instanceof Error ? err.message : tErrors("generic"));
+            setError(tErrors(authErrorKey(err)));
           }
         });
       }}

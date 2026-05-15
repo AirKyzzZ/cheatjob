@@ -1,9 +1,11 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { signInWithGoogle } from "@/server/actions/auth";
 import { track, EVENTS } from "@/lib/analytics/events";
+import { authErrorKey } from "@/lib/auth-error-message";
 
 function isRedirect(e: unknown): boolean {
   return (
@@ -22,6 +24,7 @@ export function GoogleButton({
   label: string;
   intent: "signin" | "signup";
 }) {
+  const tErrors = useTranslations("auth.errors");
   const [pending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
 
@@ -45,7 +48,7 @@ export function GoogleButton({
               await signInWithGoogle(locale);
             } catch (e) {
               if (isRedirect(e)) throw e;
-              setError(e instanceof Error ? e.message : "Unknown error");
+              setError(tErrors(authErrorKey(e)));
             }
           })
         }

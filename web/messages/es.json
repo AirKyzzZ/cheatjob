@@ -76,7 +76,10 @@
       "expiredToken": "Este enlace ha caducado. Pide uno nuevo.",
       "invalidCredentials": "Email o contraseña incorrectos.",
       "passwordTooShort": "La contraseña debe tener al menos 8 caracteres.",
-      "missingCode": "Falta el código de autenticación. Reintenta."
+      "missingCode": "Falta el código de autenticación. Reintenta.",
+      "rateLimited": "Demasiados intentos. Espera un momento y vuelve a intentarlo.",
+      "emailTaken": "Este correo ya tiene una cuenta. Inicia sesión.",
+      "emailNotConfirmed": "Confirma tu correo primero. Revisa tu bandeja."
     }
   },
   "onboarding": {

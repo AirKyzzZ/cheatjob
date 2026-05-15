@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { FieldError } from "@/components/ui/field-error";
 import { requestPasswordReset } from "@/server/actions/auth";
+import { authErrorKey } from "@/lib/auth-error-message";
 
 export function ResetRequestForm({ locale }: { locale: string }) {
   const t = useTranslations("auth.reset");
@@ -37,7 +38,7 @@ export function ResetRequestForm({ locale }: { locale: string }) {
             await requestPasswordReset({ email, locale });
             setSent(true);
           } catch (err) {
-            setError(err instanceof Error ? err.message : tErrors("generic"));
+            setError(tErrors(authErrorKey(err)));
           }
         });
       }}

@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { FieldError } from "@/components/ui/field-error";
 import { signInWithPassword } from "@/server/actions/auth";
 import { track, EVENTS } from "@/lib/analytics/events";
+import { authErrorKey } from "@/lib/auth-error-message";
 
 function isRedirect(e: unknown): boolean {
   return (
@@ -40,11 +41,7 @@ export function SignInForm({ locale }: { locale: string }) {
             );
           } catch (err) {
             if (isRedirect(err)) throw err;
-            setError(
-              err instanceof Error && err.message.toLowerCase().includes("invalid")
-                ? tErrors("invalidCredentials")
-                : tErrors("generic"),
-            );
+            setError(tErrors(authErrorKey(err)));
           }
         });
       }}
