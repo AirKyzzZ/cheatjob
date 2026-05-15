@@ -22,6 +22,7 @@
     "faq": "FAQ",
     "pricing": "Precios",
     "cta": "Empezar",
+    "login": "Iniciar sesión",
     "wordmarkAria": "Cheatjob — volver arriba",
     "localeSwitcherLabel": "Idioma"
   },
@@ -148,7 +149,7 @@
     "subhead": "Cheatjob encuentra el email del manager que contrata, redacta tu mensaje, te coloca en la bandeja correcta.",
     "subheadEmphasis": "Su bandeja. No la de RRHH.",
     "ctaPrimaryStripe": "Tomar el atajo por 29€",
-    "ctaPrimaryWaitlist": "Reservar mi sitio por 29€",
+    "ctaPrimaryWaitlist": "Crear mi cuenta",
     "ctaSecondary": "Ver cómo funciona",
     "microproof": "Llámalo descaro. Hasta el día que firmas.",
     "magazineSpread": {
@@ -302,7 +303,7 @@
     "headlineLead": "El precio de una noche.",
     "headlineItalic": "El contrato de un año entero.",
     "popularBadge": "Popular",
-    "ctaWaitlistFallback": "Reservar mi sitio",
+    "ctaWaitlistFallback": "Empezar",
     "deliveryLabel": "Entrega junio 2026",
     "preOrderCaption": "Pre-orden · {delivery}",
     "footerNote": "Pago seguro vía Stripe. Facturación en euros, IVA incluido. Pre-orden con entrega estimada en junio 2026, reembolso íntegro si el producto no se entrega antes.",
@@ -391,7 +392,7 @@
     "headlineLead": "Deja de esperar.",
     "headlineItalic": "Escribe a las personas correctas.",
     "ctaPrimaryStripe": "Tomar el atajo por 29€",
-    "ctaPrimaryWaitlist": "Reservar mi sitio",
+    "ctaPrimaryWaitlist": "Crear mi cuenta",
     "subline": "Pre-orden · Entrega junio 2026 · Reembolso si no se entrega."
   },
   "footer": {

@@ -1,13 +1,13 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Check } from "lucide-react";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { cn } from "@/lib/utils";
 import { EVENTS, track } from "@/lib/analytics/events";
-import { useWaitlist } from "@/components/waitlist/waitlist-context";
 import { useSectionViewed } from "@/hooks/use-section-viewed";
 
 const STRIPE_LINKS: Record<string, string | undefined> = {
@@ -22,7 +22,7 @@ const FEATURED_PLAN = "mois";
 export function Pricing() {
   const t = useTranslations("pricing");
   const reduce = useReducedMotion();
-  const waitlist = useWaitlist();
+  const locale = useLocale();
   const sectionRef = useRef<HTMLElement>(null);
   useSectionViewed("pricing", sectionRef);
   return (
@@ -125,19 +125,18 @@ export function Pricing() {
                     );
                   }
                   return (
-                    <button
-                      type="button"
-                      onClick={() => {
+                    <Link
+                      href={`/${locale}/sign-up?plan=${planId}`}
+                      onClick={() =>
                         track(EVENTS.PricingCtaClick, {
                           plan: planId,
-                          destination: "waitlist",
-                        });
-                        waitlist.open({ plan: planId, source: "pricing" });
-                      }}
+                          destination: "sign-up",
+                        })
+                      }
                       className={className}
                     >
                       {t("ctaWaitlistFallback")}
-                    </button>
+                    </Link>
                   );
                 })()}
 

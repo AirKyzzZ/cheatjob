@@ -1,12 +1,16 @@
 "use client";
 
+import Link from "next/link";
 import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { EVENTS, track } from "@/lib/analytics/events";
 import { LocaleSwitcher } from "@/components/i18n/locale-switcher";
 
+const MotionLink = motion.create(Link);
+
 export function Nav() {
   const t = useTranslations("nav");
+  const locale = useLocale();
   const reduce = useReducedMotion();
   const { scrollY } = useScroll();
 
@@ -104,16 +108,26 @@ export function Nav() {
             {t("pricing")}
           </motion.a>
           <LocaleSwitcher linkColor={linkColor} />
-          <motion.a
-            href="#pricing"
+          <MotionLink
+            href={`/${locale}/sign-in`}
             onClick={() =>
-              track(EVENTS.NavLinkClick, { target: "pricing", source: "cta" })
+              track(EVENTS.NavLinkClick, { target: "sign-in", source: "link" })
+            }
+            style={{ color: linkColor }}
+            className="hidden md:inline-block text-[13px] font-medium hover:opacity-80 transition-opacity px-3 py-1.5 font-sans"
+          >
+            {t("login")}
+          </MotionLink>
+          <MotionLink
+            href={`/${locale}/sign-up`}
+            onClick={() =>
+              track(EVENTS.NavLinkClick, { target: "sign-up", source: "cta" })
             }
             style={{ backgroundColor: ctaBg, color: ctaFg }}
             className="inline-flex items-center h-10 px-4 md:px-5 rounded-full text-[13px] font-semibold font-sans hover:-translate-y-0.5 hover:shadow-lg transition-all"
           >
             {t("cta")}
-          </motion.a>
+          </MotionLink>
         </nav>
       </motion.div>
     </motion.header>

@@ -1,12 +1,12 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { BlurText } from "@/components/ui/blur-text";
 import { BypassPath } from "@/components/ui/bypass-path";
 import { EVENTS, track } from "@/lib/analytics/events";
-import { useWaitlist } from "@/components/waitlist/waitlist-context";
 import { useSectionViewed } from "@/hooks/use-section-viewed";
 
 const STRIPE_LINK_SPRINT = process.env.NEXT_PUBLIC_STRIPE_LINK_SPRINT;
@@ -14,7 +14,7 @@ const STRIPE_LINK_SPRINT = process.env.NEXT_PUBLIC_STRIPE_LINK_SPRINT;
 export function FinalCTA() {
   const t = useTranslations("finalCta");
   const reduce = useReducedMotion();
-  const waitlist = useWaitlist();
+  const locale = useLocale();
   const sectionRef = useRef<HTMLElement>(null);
   useSectionViewed("final_cta", sectionRef);
 
@@ -56,16 +56,13 @@ export function FinalCTA() {
               {t("ctaPrimaryStripe")}
             </a>
           ) : (
-            <button
-              type="button"
-              onClick={() => {
-                track(EVENTS.FinalCtaClick, { destination: "waitlist" });
-                waitlist.open({ source: "final_cta" });
-              }}
+            <Link
+              href={`/${locale}/sign-up`}
+              onClick={() => track(EVENTS.FinalCtaClick, { destination: "sign-up" })}
               className="inline-flex items-center justify-center h-16 px-10 rounded-[12px] bg-burgundy text-cream text-[17px] font-semibold font-sans hover:bg-burgundy-deep hover:-translate-y-0.5 transition-all"
             >
               {t("ctaPrimaryWaitlist")}
-            </button>
+            </Link>
           )}
           <p className="text-[13px] text-muted font-sans">{t("subline")}</p>
         </motion.div>

@@ -1,11 +1,11 @@
 "use client";
 
 import { useRef } from "react";
-import { useTranslations } from "next-intl";
+import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
 import { ArrowUpRight, Play } from "lucide-react";
 import { FadingVideo } from "@/components/ui/fading-video";
 import { EVENTS, track } from "@/lib/analytics/events";
-import { useWaitlist } from "@/components/waitlist/waitlist-context";
 import { useSectionViewed } from "@/hooks/use-section-viewed";
 
 const STRIPE_LINK_SPRINT = process.env.NEXT_PUBLIC_STRIPE_LINK_SPRINT;
@@ -30,7 +30,7 @@ const HERO_POSTER = "/videos/hero-poster.jpg";
  */
 export function Hero() {
   const t = useTranslations("hero");
-  const waitlist = useWaitlist();
+  const locale = useLocale();
   const sectionRef = useRef<HTMLElement>(null);
   useSectionViewed("hero", sectionRef);
 
@@ -87,17 +87,14 @@ export function Hero() {
               <ArrowUpRight className="size-4" strokeWidth={2} aria-hidden />
             </a>
           ) : (
-            <button
-              type="button"
-              onClick={() => {
-                track(EVENTS.HeroPrimaryCta, { destination: "waitlist" });
-                waitlist.open({ source: "hero" });
-              }}
+            <Link
+              href={`/${locale}/sign-up`}
+              onClick={() => track(EVENTS.HeroPrimaryCta, { destination: "sign-up" })}
               className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-12 py-4 text-[15px] font-medium font-sans transition-transform hover:scale-[1.03]"
             >
               {t("ctaPrimaryWaitlist")}
               <ArrowUpRight className="size-4" strokeWidth={2} aria-hidden />
-            </button>
+            </Link>
           )}
           <a
             href="#wedge"

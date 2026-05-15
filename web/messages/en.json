@@ -21,6 +21,7 @@
     "faq": "FAQ",
     "pricing": "Pricing",
     "cta": "Get started",
+    "login": "Log in",
     "wordmarkAria": "Cheatjob — back to top",
     "localeSwitcherLabel": "Language"
   },
@@ -147,7 +148,7 @@
     "subhead": "Cheatjob finds the email of the manager who's actually hiring, writes your message, lands you in the right inbox.",
     "subheadEmphasis": "Their inbox. Not HR's.",
     "ctaPrimaryStripe": "Take the shortcut for €29",
-    "ctaPrimaryWaitlist": "Reserve my spot for €29",
+    "ctaPrimaryWaitlist": "Create my account",
     "ctaSecondary": "See how it works",
     "microproof": "Call it nerve. Until the day you sign.",
     "magazineSpread": {
@@ -301,7 +302,7 @@
     "headlineLead": "The price of one night out.",
     "headlineItalic": "The contract of one full year.",
     "popularBadge": "Popular",
-    "ctaWaitlistFallback": "Reserve my spot",
+    "ctaWaitlistFallback": "Get started",
     "deliveryLabel": "Shipping June 2026",
     "preOrderCaption": "Pre-order · {delivery}",
     "footerNote": "Secure payment via Stripe. Billed in euros, VAT included. Pre-order with estimated delivery in June 2026, full refund if the product isn't shipped by then.",
@@ -390,7 +391,7 @@
     "headlineLead": "Stop hoping.",
     "headlineItalic": "Write to the right people.",
     "ctaPrimaryStripe": "Take the shortcut for €29",
-    "ctaPrimaryWaitlist": "Reserve my spot",
+    "ctaPrimaryWaitlist": "Create my account",
     "subline": "Pre-order · Shipping June 2026 · Refund if not delivered."
   },
   "footer": {

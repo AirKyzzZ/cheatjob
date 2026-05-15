@@ -20,6 +20,7 @@
     "faq": "FAQ",
     "pricing": "Tarifs",
     "cta": "Commencer",
+    "login": "Connexion",
     "wordmarkAria": "Cheatjob — retour en haut",
     "localeSwitcherLabel": "Langue"
   },
@@ -146,7 +147,7 @@
     "subhead": "Cheatjob trouve l'email du manager qui recrute, rédige ton message, te fait arriver au bon endroit.",
     "subheadEmphasis": "Dans sa boîte mail. Pas dans celle des RH.",
     "ctaPrimaryStripe": "Prendre le raccourci pour 29€",
-    "ctaPrimaryWaitlist": "Réserver ma place pour 29€",
+    "ctaPrimaryWaitlist": "Créer mon compte",
     "ctaSecondary": "Voir comment ça marche",
     "microproof": "On appellera ça du culot, jusqu'au moment où tu signes.",
     "magazineSpread": {
@@ -300,7 +301,7 @@
     "headlineLead": "Le prix d'une soirée.",
     "headlineItalic": "Le contrat d'une année.",
     "popularBadge": "Populaire",
-    "ctaWaitlistFallback": "Réserver ma place",
+    "ctaWaitlistFallback": "Commencer",
     "deliveryLabel": "Livraison juin 2026",
     "preOrderCaption": "Pré-commande · {delivery}",
     "footerNote": "Paiement sécurisé par Stripe. Facturation en euros, TVA incluse. Pré-commande avec livraison estimée en juin 2026 — remboursement intégral si le produit n'est pas livré à cette date.",
@@ -389,7 +390,7 @@
     "headlineLead": "Arrête d'espérer.",
     "headlineItalic": "Écris aux bonnes personnes.",
     "ctaPrimaryStripe": "Prendre le raccourci pour 29€",
-    "ctaPrimaryWaitlist": "Réserver ma place",
+    "ctaPrimaryWaitlist": "Créer mon compte",
     "subline": "Pré-commande · Livraison juin 2026 · Remboursement si non livré."
   },
   "footer": {

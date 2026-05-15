@@ -22,6 +22,7 @@
     "faq": "FAQ",
     "pricing": "Preise",
     "cta": "Loslegen",
+    "login": "Anmelden",
     "wordmarkAria": "Cheatjob — zurück nach oben",
     "localeSwitcherLabel": "Sprache"
   },
@@ -148,7 +149,7 @@
     "subhead": "Cheatjob findet die Email des Managers, der wirklich einstellt, schreibt deine Nachricht, bringt dich in die richtige Inbox.",
     "subheadEmphasis": "Seine Inbox. Nicht die von HR.",
     "ctaPrimaryStripe": "Den Shortcut für 29€ nehmen",
-    "ctaPrimaryWaitlist": "Meinen Platz für 29€ reservieren",
+    "ctaPrimaryWaitlist": "Konto erstellen",
     "ctaSecondary": "Sehen, wie es funktioniert",
     "microproof": "Nenn es Frechheit. Bis du unterschreibst.",
     "magazineSpread": {
@@ -302,7 +303,7 @@
     "headlineLead": "Der Preis eines Abends.",
     "headlineItalic": "Der Vertrag eines ganzen Jahres.",
     "popularBadge": "Beliebt",
-    "ctaWaitlistFallback": "Meinen Platz reservieren",
+    "ctaWaitlistFallback": "Loslegen",
     "deliveryLabel": "Lieferung Juni 2026",
     "preOrderCaption": "Vorbestellung · {delivery}",
     "footerNote": "Sichere Zahlung über Stripe. Abrechnung in Euro, MwSt. inkl. Vorbestellung mit geschätzter Lieferung im Juni 2026, volle Rückerstattung bei Nicht-Lieferung.",
@@ -391,7 +392,7 @@
     "headlineLead": "Hör auf zu hoffen.",
     "headlineItalic": "Schreib an die richtigen Leute.",
     "ctaPrimaryStripe": "Den Shortcut für 29€ nehmen",
-    "ctaPrimaryWaitlist": "Meinen Platz reservieren",
+    "ctaPrimaryWaitlist": "Konto erstellen",
     "subline": "Vorbestellung · Lieferung Juni 2026 · Rückerstattung bei Nicht-Lieferung."
   },
   "footer": {

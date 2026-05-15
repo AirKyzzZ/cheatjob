@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { motion, useReducedMotion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import { FadingVideo } from "@/components/ui/fading-video";
-import { useWaitlist } from "@/components/waitlist/waitlist-context";
 import { EVENTS, track } from "@/lib/analytics/events";
 import type { Locale } from "@/types/locale";
 
@@ -37,14 +37,14 @@ function houseHref(key: (typeof HOUSE_KEYS)[number], locale: Locale) {
 export function Footer() {
   const t = useTranslations("footer");
   const locale = useLocale() as Locale;
-  const waitlist = useWaitlist();
+  const router = useRouter();
   const reduce = useReducedMotion();
   const [email, setEmail] = useState("");
 
   function onSubscribe(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     track(EVENTS.WaitlistOpened, { source: "footer" });
-    waitlist.open({ source: "footer" });
+    router.push(`/${locale}/sign-up?email=${encodeURIComponent(email)}`);
   }
 
   return (
