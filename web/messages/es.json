@@ -79,7 +79,8 @@
       "missingCode": "Falta el código de autenticación. Reintenta.",
       "rateLimited": "Demasiados intentos. Espera un momento y vuelve a intentarlo.",
       "emailTaken": "Este correo ya tiene una cuenta. Inicia sesión.",
-      "emailNotConfirmed": "Confirma tu correo primero. Revisa tu bandeja."
+      "emailNotConfirmed": "Confirma tu correo primero. Revisa tu bandeja.",
+      "oauthCancelled": "Inicio con Google cancelado. Vuelve a intentarlo."
     }
   },
   "onboarding": {

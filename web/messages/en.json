@@ -78,7 +78,8 @@
       "missingCode": "Authentication code missing. Try again.",
       "rateLimited": "Too many attempts. Wait a moment and try again.",
       "emailTaken": "This email already has an account. Sign in instead.",
-      "emailNotConfirmed": "Confirm your email first. Check your inbox."
+      "emailNotConfirmed": "Confirm your email first. Check your inbox.",
+      "oauthCancelled": "Google sign-in was cancelled. Try again."
     }
   },
   "onboarding": {

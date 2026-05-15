@@ -2,15 +2,30 @@ import Link from "next/link";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { GoogleButton } from "../_components/google-button";
 import { SignInForm } from "./_components/sign-in-form";
+import { authErrorKey } from "@/lib/auth-error-message";
+
+const ERROR_CODE_KEYS: Record<string, string> = {
+  oauth_cancelled: "oauthCancelled",
+  missing_code: "missingCode",
+  oauth_error: "generic",
+};
 
 export default async function SignInPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string }>;
+  searchParams: Promise<{ error?: string }>;
 }) {
   const { locale } = await params;
+  const { error } = await searchParams;
   setRequestLocale(locale);
   const t = await getTranslations("auth.signIn");
+  const tErrors = await getTranslations("auth.errors");
+
+  const errorMessage = error
+    ? tErrors(ERROR_CODE_KEYS[error] ?? authErrorKey(error))
+    : null;
 
   return (
     <div>
@@ -21,6 +36,15 @@ export default async function SignInPage({
         {t("title")}
       </h1>
       <p className="font-sans text-[15px] text-muted mb-8">{t("subtitle")}</p>
+
+      {errorMessage && (
+        <div
+          role="alert"
+          className="mb-6 rounded-xl border border-burgundy/20 bg-burgundy-soft px-4 py-3 text-[14px] font-sans text-burgundy"
+        >
+          {errorMessage}
+        </div>
+      )}
 
       <GoogleButton locale={locale} label={t("googleCta")} intent="signin" />
 

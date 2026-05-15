@@ -77,7 +77,8 @@
       "missingCode": "Code d'authentification manquant. Réessaie.",
       "rateLimited": "Trop de tentatives. Attends un instant et réessaie.",
       "emailTaken": "Cet email a déjà un compte. Connecte-toi plutôt.",
-      "emailNotConfirmed": "Confirme ton email d'abord. Regarde ta boîte mail."
+      "emailNotConfirmed": "Confirme ton email d'abord. Regarde ta boîte mail.",
+      "oauthCancelled": "Connexion Google annulée. Réessaie."
     }
   },
   "onboarding": {

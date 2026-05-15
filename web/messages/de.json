@@ -79,7 +79,8 @@
       "missingCode": "Authentifizierungscode fehlt. Versuch's nochmal.",
       "rateLimited": "Zu viele Versuche. Warte kurz und versuch es erneut.",
       "emailTaken": "Diese E-Mail hat schon ein Konto. Melde dich an.",
-      "emailNotConfirmed": "Bestätige zuerst deine E-Mail. Sieh in dein Postfach."
+      "emailNotConfirmed": "Bestätige zuerst deine E-Mail. Sieh in dein Postfach.",
+      "oauthCancelled": "Google-Anmeldung abgebrochen. Versuch es erneut."
     }
   },
   "onboarding": {
