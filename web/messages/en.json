@@ -196,7 +196,8 @@
         "statDraft": "Drafts",
         "resume": "Resume",
         "view": "View",
-        "newCta": "New candidature"
+        "newCta": "New candidature",
+        "filterAll": "All"
       }
     },
     "profile": {

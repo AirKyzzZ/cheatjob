@@ -195,7 +195,8 @@
         "statDraft": "Brouillons",
         "resume": "Reprendre",
         "view": "Voir",
-        "newCta": "Créer une candidature"
+        "newCta": "Créer une candidature",
+        "filterAll": "Toutes"
       }
     },
     "profile": {

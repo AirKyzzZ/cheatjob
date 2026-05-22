@@ -197,7 +197,8 @@
         "statDraft": "Borradores",
         "resume": "Retomar",
         "view": "Ver",
-        "newCta": "Nueva candidatura"
+        "newCta": "Nueva candidatura",
+        "filterAll": "Todas"
       }
     },
     "profile": {
