@@ -108,6 +108,46 @@
       "soonTag": "Bientôt",
       "soonItalic": "Réservé au premier cercle bêta."
     },
+    "candidatures": {
+      "wizard": {
+        "stepLabel": "Étape {n} sur 5",
+        "step1Title": "La cible",
+        "step2Title": "Le recruteur",
+        "step3Title": "Son email",
+        "step4Title": "Le contexte",
+        "step5Title": "Le message",
+        "next": "Continuer",
+        "back": "Retour",
+        "quotaRemaining": "{n} candidatures restantes",
+        "quotaExhausted": "Tu as utilisé tes 3 candidatures gratuites.",
+        "findEmail": "Trouver l'email",
+        "emailFound": "Email trouvé",
+        "emailNotFound": "On n'a pas trouvé l'email. Saisis-le à la main.",
+        "emailManualLabel": "Email du recruteur",
+        "finderUnavailable": "Service indisponible. Saisis l'email à la main.",
+        "generate": "Générer mon message",
+        "regenerate": "Régénérer",
+        "generationFailed": "La génération a échoué. Réessaie."
+      },
+      "detail": {
+        "openInGmail": "Ouvrir dans Gmail",
+        "copyEmail": "Copier l'email",
+        "copied": "Copié.",
+        "sentConfirmPrompt": "Tu as envoyé ce message ?",
+        "sentYes": "Oui, envoyé",
+        "sentNo": "Pas encore",
+        "markReplied": "Réponse reçue",
+        "close": "Clôturer"
+      },
+      "list": {
+        "statTotal": "Candidatures",
+        "statSent": "Envoyées",
+        "statDraft": "Brouillons",
+        "resume": "Reprendre",
+        "view": "Voir",
+        "newCta": "Créer une candidature"
+      }
+    },
     "profile": {
       "eyebrow": "Compte",
       "title": "Ton profil",

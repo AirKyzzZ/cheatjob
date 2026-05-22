@@ -110,6 +110,46 @@
       "soonTag": "Bald",
       "soonItalic": "Reserviert für den ersten Beta-Kreis."
     },
+    "candidatures": {
+      "wizard": {
+        "stepLabel": "Schritt {n} von 5",
+        "step1Title": "Das Ziel",
+        "step2Title": "Der Recruiter",
+        "step3Title": "Ihre E-Mail",
+        "step4Title": "Der Kontext",
+        "step5Title": "Die Nachricht",
+        "next": "Weiter",
+        "back": "Zurück",
+        "quotaRemaining": "Noch {n} Bewerbungen übrig",
+        "quotaExhausted": "Du hast deine 3 kostenlosen Bewerbungen verbraucht.",
+        "findEmail": "E-Mail finden",
+        "emailFound": "E-Mail gefunden",
+        "emailNotFound": "Wir haben die E-Mail nicht gefunden. Gib sie manuell ein.",
+        "emailManualLabel": "E-Mail des Recruiters",
+        "finderUnavailable": "Dienst nicht verfügbar. Gib die E-Mail manuell ein.",
+        "generate": "Meine Nachricht generieren",
+        "regenerate": "Neu generieren",
+        "generationFailed": "Generierung fehlgeschlagen. Versuch's nochmal."
+      },
+      "detail": {
+        "openInGmail": "In Gmail öffnen",
+        "copyEmail": "E-Mail kopieren",
+        "copied": "Kopiert.",
+        "sentConfirmPrompt": "Hast du diese Nachricht gesendet?",
+        "sentYes": "Ja, gesendet",
+        "sentNo": "Noch nicht",
+        "markReplied": "Antwort erhalten",
+        "close": "Schließen"
+      },
+      "list": {
+        "statTotal": "Bewerbungen",
+        "statSent": "Gesendet",
+        "statDraft": "Entwürfe",
+        "resume": "Fortsetzen",
+        "view": "Ansehen",
+        "newCta": "Neue Bewerbung"
+      }
+    },
     "profile": {
       "eyebrow": "Konto",
       "title": "Dein Profil",

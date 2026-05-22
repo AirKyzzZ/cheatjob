@@ -109,6 +109,46 @@
       "soonTag": "Soon",
       "soonItalic": "Reserved for first beta cohort."
     },
+    "candidatures": {
+      "wizard": {
+        "stepLabel": "Step {n} of 5",
+        "step1Title": "The target",
+        "step2Title": "The recruiter",
+        "step3Title": "Their email",
+        "step4Title": "The context",
+        "step5Title": "The message",
+        "next": "Continue",
+        "back": "Back",
+        "quotaRemaining": "{n} candidatures left",
+        "quotaExhausted": "You've used your 3 free candidatures.",
+        "findEmail": "Find email",
+        "emailFound": "Email found",
+        "emailNotFound": "We couldn't find the email. Enter it manually.",
+        "emailManualLabel": "Recruiter's email",
+        "finderUnavailable": "Service unavailable. Enter the email manually.",
+        "generate": "Generate my message",
+        "regenerate": "Regenerate",
+        "generationFailed": "Generation failed. Try again."
+      },
+      "detail": {
+        "openInGmail": "Open in Gmail",
+        "copyEmail": "Copy email",
+        "copied": "Copied.",
+        "sentConfirmPrompt": "Did you send this message?",
+        "sentYes": "Yes, sent",
+        "sentNo": "Not yet",
+        "markReplied": "Reply received",
+        "close": "Close"
+      },
+      "list": {
+        "statTotal": "Candidatures",
+        "statSent": "Sent",
+        "statDraft": "Drafts",
+        "resume": "Resume",
+        "view": "View",
+        "newCta": "New candidature"
+      }
+    },
     "profile": {
       "eyebrow": "Account",
       "title": "Your profile",
