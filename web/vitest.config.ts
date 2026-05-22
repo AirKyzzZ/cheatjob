@@ -5,6 +5,7 @@ export default defineConfig({
   test: {
     environment: "node",
     env: process.env,
+    include: ["src/**/*.test.ts"],
   },
   resolve: {
     alias: {
