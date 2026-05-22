@@ -7,7 +7,14 @@ import {
   getCandidature,
   updateCandidature,
 } from "@/lib/db/candidatures";
-import { Step1Schema, Step2Schema, Step4Schema } from "./candidatures.schemas";
+import { Step1Schema, Step2Schema, Step4Schema, ManualEmailSchema } from "./candidatures.schemas";
+import { getServiceClient } from "@/lib/supabase/admin";
+import { getProfile } from "@/lib/db/profiles";
+import { insertEmailLookup } from "@/lib/db/email-lookups";
+import { assertQuotaAvailable, decrementQuota } from "@/lib/billing/quotas";
+import { getEmailFinder } from "@/server/integrations/email-finder/findymail";
+import { EmailFinderUnavailableError } from "@/server/integrations/email-finder";
+import type { Json } from "@/types/database";
 
 async function requireUser() {
   const supabase = await getServerClient();
@@ -86,5 +93,95 @@ export async function upsertStep4(id: string, input: unknown) {
     offer_text: parsed.offerText || null,
     wizard_step: Math.max(candidature.wizard_step, 4),
   });
+  return { ok: true as const };
+}
+
+export async function findEmail(id: string) {
+  const { supabase, user, candidature } = await requireOwnedCandidature(id);
+
+  const profile = await getProfile(supabase, user.id);
+  if (!profile) throw new Error("Profile not found");
+  assertQuotaAvailable(profile);
+
+  if (!candidature.manager_first_name || !candidature.manager_last_name) {
+    throw new Error("Manager name is required before lookup");
+  }
+  const domain = candidature.company_domain;
+  if (!domain) throw new Error("Company domain is required before lookup");
+
+  const finder = getEmailFinder();
+  const service = getServiceClient();
+
+  let result;
+  try {
+    result = await finder.findEmail({
+      firstName: candidature.manager_first_name,
+      lastName: candidature.manager_last_name,
+      domain,
+    });
+  } catch (err) {
+    if (err instanceof EmailFinderUnavailableError) {
+      await insertEmailLookup(service, {
+        user_id: user.id,
+        candidature_id: id,
+        query: { first_name: candidature.manager_first_name, last_name: candidature.manager_last_name, domain } as Json,
+        provider: finder.provider,
+        cost_usd: 0,
+        raw_response: { error: "unavailable" },
+      });
+      return { status: "unavailable" as const };
+    }
+    throw err;
+  }
+
+  await insertEmailLookup(service, {
+    user_id: user.id,
+    candidature_id: id,
+    query: { first_name: candidature.manager_first_name, last_name: candidature.manager_last_name, domain } as Json,
+    result_email: result.found ? result.email : null,
+    confidence: result.found ? result.confidence : "not_found",
+    provider: finder.provider,
+    cost_usd: result.costUsd,
+    raw_response: result.raw as Json,
+  });
+
+  if (!result.found) {
+    return { status: "not_found" as const };
+  }
+
+  await updateCandidature(supabase, id, {
+    manager_email: result.email,
+    manager_email_confidence: result.confidence,
+    manager_email_provider: "findymail",
+    wizard_step: Math.max(candidature.wizard_step, 3),
+  });
+
+  const consumed = await decrementQuota(service, user.id);
+  if (!consumed) {
+    console.warn(`quota decrement no-op for user ${user.id} on candidature ${id}`);
+  }
+
+  return { status: "found" as const, email: result.email, confidence: result.confidence };
+}
+
+export async function saveManualEmail(id: string, input: unknown) {
+  const parsed = ManualEmailSchema.parse(input);
+  const { supabase, user, candidature } = await requireOwnedCandidature(id);
+
+  const profile = await getProfile(supabase, user.id);
+  if (!profile) throw new Error("Profile not found");
+  assertQuotaAvailable(profile);
+
+  await updateCandidature(supabase, id, {
+    manager_email: parsed.email,
+    manager_email_confidence: "manual",
+    manager_email_provider: "manual",
+    wizard_step: Math.max(candidature.wizard_step, 3),
+  });
+
+  const service = getServiceClient();
+  const consumed = await decrementQuota(service, user.id);
+  if (!consumed) console.warn(`quota decrement no-op (manual) for user ${user.id}`);
+
   return { ok: true as const };
 }
