@@ -10,6 +10,7 @@ import {
   upsertStep2,
   upsertStep4,
 } from "@/server/actions/candidatures";
+import { track, EVENTS } from "@/lib/analytics/events";
 import { WizardShell } from "./wizard-shell";
 import { StepCible, type StepCibleHandle } from "./step-cible";
 import { StepRecruteur, type StepRecruteurHandle } from "./step-recruteur";
@@ -80,10 +81,12 @@ export function Wizard({ locale, candidature, quotaRemaining }: WizardProps) {
       if (!candidatureId) {
         const { id } = await createDraft(values);
         setCandidatureId(id);
+        track(EVENTS.CandidatureCreated);
         router.replace(`/${locale}/dashboard/candidatures/new?c=${id}`);
       } else {
         await upsertStep1(candidatureId, values);
       }
+      track(EVENTS.CandidatureWizardStep, { step: 2 });
       setStep(2);
     });
   }
@@ -99,11 +102,13 @@ export function Wizard({ locale, candidature, quotaRemaining }: WizardProps) {
       if (candidatureId) {
         await upsertStep2(candidatureId, values);
       }
+      track(EVENTS.CandidatureWizardStep, { step: 3 });
       setStep(3);
     });
   }
 
   function handleStep3Complete() {
+    track(EVENTS.CandidatureWizardStep, { step: 4 });
     setStep(4);
   }
 
@@ -112,6 +117,7 @@ export function Wizard({ locale, candidature, quotaRemaining }: WizardProps) {
       if (candidatureId) {
         await upsertStep4(candidatureId, values);
       }
+      track(EVENTS.CandidatureWizardStep, { step: 5 });
       setStep(5);
     });
   }

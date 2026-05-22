@@ -14,6 +14,8 @@ const ALLOWED = [
 
 type AllowedMime = (typeof ALLOWED)[number];
 
+type UploadPhase = "idle" | "uploading" | "parsing" | "parse_error";
+
 export function CvDropzone({
   onUploaded,
   variant = "empty",
@@ -22,13 +24,16 @@ export function CvDropzone({
   variant?: "empty" | "replace";
 }) {
   const t = useTranslations("app.profile.cv");
-  const [uploading, setUploading] = useState(false);
+  const [phase, setPhase] = useState<UploadPhase>("idle");
   const [error, setError] = useState<string | null>(null);
   const [dragging, setDragging] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
+  const uploading = phase === "uploading" || phase === "parsing";
+
   async function upload(file: File) {
     setError(null);
+    setPhase("idle");
 
     if (!ALLOWED.includes(file.type as AllowedMime)) {
       setError(t("wrongType"));
@@ -39,7 +44,7 @@ export function CvDropzone({
       return;
     }
 
-    setUploading(true);
+    setPhase("uploading");
     track(EVENTS.CvUploadStarted);
     try {
       const { uploadUrl, path } = await getCvUploadUrl({
@@ -56,8 +61,19 @@ export function CvDropzone({
         throw new Error(`Upload failed: ${res.status}`);
       }
 
-      await finalizeCvUpload({ storagePath: path, mimeType: file.type });
+      setPhase("parsing");
+      const result = await finalizeCvUpload({ storagePath: path, mimeType: file.type });
+
+      if (result.parseError) {
+        track(EVENTS.CvParseFailed);
+        track(EVENTS.CvUploadCompleted);
+        setPhase("parse_error");
+        return;
+      }
+
+      track(EVENTS.CvParsed);
       track(EVENTS.CvUploadCompleted);
+      setPhase("idle");
       onUploaded();
     } catch (e) {
       const reason =
@@ -67,9 +83,8 @@ export function CvDropzone({
             ? "finalize_or_network_error"
             : "unknown";
       track(EVENTS.CvUploadFailed, { reason });
+      setPhase("idle");
       setError(e instanceof Error ? e.message : t("uploadError"));
-    } finally {
-      setUploading(false);
     }
   }
 
@@ -104,6 +119,9 @@ export function CvDropzone({
           className="hidden"
           onChange={onChange}
         />
+        {phase === "parse_error" && (
+          <p className="mt-2 text-[13px] font-sans text-destructive">{t("cvParseError")}</p>
+        )}
         {error && (
           <p className="mt-2 text-[13px] font-sans text-destructive">{error}</p>
         )}
@@ -137,10 +155,15 @@ export function CvDropzone({
             : "border-border-subtle hover:border-burgundy/40 hover:bg-cream",
         )}
       >
-        {uploading ? (
+        {phase === "uploading" ? (
           <div className="space-y-2">
             <div className="inline-block size-6 border-2 border-burgundy border-t-transparent rounded-full animate-spin" />
             <p className="font-sans text-[14px] text-muted">{t("uploading")}</p>
+          </div>
+        ) : phase === "parsing" ? (
+          <div className="space-y-2">
+            <div className="inline-block size-6 border-2 border-burgundy border-t-transparent rounded-full animate-spin" />
+            <p className="font-sans text-[14px] text-muted">{t("cvParsing")}</p>
           </div>
         ) : (
           <>
@@ -158,6 +181,9 @@ export function CvDropzone({
           onChange={onChange}
         />
       </div>
+      {phase === "parse_error" && (
+        <p className="mt-3 text-[13px] font-sans text-destructive">{t("cvParseError")}</p>
+      )}
       {error && (
         <p className="mt-3 text-[13px] font-sans text-destructive">{error}</p>
       )}

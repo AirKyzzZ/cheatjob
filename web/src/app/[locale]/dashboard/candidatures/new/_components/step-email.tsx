@@ -1,12 +1,13 @@
 "use client";
 
-import { forwardRef, useImperativeHandle, useState, useTransition } from "react";
+import { forwardRef, useImperativeHandle, useState, useTransition, useEffect } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { FieldError } from "@/components/ui/field-error";
 import { findEmail, saveManualEmail } from "@/server/actions/candidatures";
 import { ManualEmailSchema } from "@/server/actions/candidatures.schemas";
+import { track, EVENTS } from "@/lib/analytics/events";
 
 export type StepEmailHandle = {
   submit: () => void;
@@ -62,6 +63,12 @@ export const StepEmail = forwardRef<StepEmailHandle, Props>(
 
     const quotaExhausted = quotaRemaining <= 0;
 
+    useEffect(() => {
+      if (quotaExhausted && state.kind !== "found") {
+        track(EVENTS.QuotaExhausted);
+      }
+    }, [quotaExhausted, state.kind]);
+
     useImperativeHandle(ref, () => ({
       submit() {
         if (state.kind === "found") {
@@ -72,14 +79,18 @@ export const StepEmail = forwardRef<StepEmailHandle, Props>(
 
     function handleFind() {
       if (quotaExhausted || findPending) return;
+      track(EVENTS.EmailFinderAttempt);
       setState({ kind: "searching" });
       startFindTransition(async () => {
         const result = await findEmail(candidatureId);
         if (result.status === "found") {
+          track(EVENTS.EmailFinderFound, { confidence: result.confidence });
           setState({ kind: "found", email: result.email, confidence: result.confidence });
         } else if (result.status === "not_found") {
+          track(EVENTS.EmailFinderNotFound);
           setState({ kind: "not_found" });
         } else {
+          track(EVENTS.EmailFinderNotFound);
           setState({ kind: "unavailable" });
         }
       });

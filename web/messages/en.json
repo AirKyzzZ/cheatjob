@@ -232,7 +232,9 @@
         "delete": "Delete",
         "uploadError": "Upload failed. Try again.",
         "wrongType": "PDF or DOCX only.",
-        "tooLarge": "File is over 5 MB."
+        "tooLarge": "File is over 5 MB.",
+        "cvParsing": "Analysing your CV…",
+        "cvParseError": "Couldn't read your CV, try uploading a PDF."
       }
     },
     "upgrade": {

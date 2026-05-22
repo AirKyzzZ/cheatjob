@@ -233,7 +233,9 @@
         "delete": "Löschen",
         "uploadError": "Upload fehlgeschlagen. Versuch's nochmal.",
         "wrongType": "Nur PDF oder DOCX.",
-        "tooLarge": "Datei ist größer als 5 MB."
+        "tooLarge": "Datei ist größer als 5 MB.",
+        "cvParsing": "CV wird analysiert…",
+        "cvParseError": "CV konnte nicht gelesen werden, lade eine PDF hoch."
       }
     },
     "upgrade": {

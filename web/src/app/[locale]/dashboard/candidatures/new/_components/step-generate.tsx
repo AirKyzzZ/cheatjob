@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { generateMessage } from "@/server/actions/drafter";
+import { track, EVENTS } from "@/lib/analytics/events";
 
 type GenerateState =
   | { kind: "initial" }
@@ -21,12 +22,20 @@ export function StepGenerate({ candidatureId, locale }: Props) {
   const router = useRouter();
   const [state, setState] = useState<GenerateState>({ kind: "initial" });
   const [pending, startTransition] = useTransition();
+  const hasGeneratedRef = useRef(false);
 
   function handleGenerate() {
+    const isRegen = hasGeneratedRef.current;
     setState({ kind: "generating" });
     startTransition(async () => {
       const result = await generateMessage(candidatureId);
       if (result.ok) {
+        if (isRegen) {
+          track(EVENTS.DraftRegenerated);
+        } else {
+          track(EVENTS.DraftGenerated);
+          hasGeneratedRef.current = true;
+        }
         setState({ kind: "done", subject: result.subject, body: result.body });
       } else {
         setState({ kind: "failed" });

@@ -233,7 +233,9 @@
         "delete": "Eliminar",
         "uploadError": "La subida falló. Reintenta.",
         "wrongType": "Solo PDF o DOCX.",
-        "tooLarge": "El archivo supera los 5 MB."
+        "tooLarge": "El archivo supera los 5 MB.",
+        "cvParsing": "Analizando tu CV…",
+        "cvParseError": "No se pudo leer tu CV, sube un PDF."
       }
     },
     "upgrade": {

@@ -4,6 +4,7 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { markSent } from "@/server/actions/candidatures";
+import { track, EVENTS } from "@/lib/analytics/events";
 
 type Props = {
   candidatureId: string;
@@ -41,6 +42,7 @@ export function SendBlock({ candidatureId, email, subject, body }: Props) {
   function handleMarkSent() {
     startMarkTransition(async () => {
       await markSent(candidatureId);
+      track(EVENTS.CandidatureSent);
       router.refresh();
     });
   }

@@ -231,7 +231,9 @@
         "delete": "Supprimer",
         "uploadError": "L'envoi a échoué. Réessaie.",
         "wrongType": "PDF ou DOCX uniquement.",
-        "tooLarge": "Le fichier dépasse 5 Mo."
+        "tooLarge": "Le fichier dépasse 5 Mo.",
+        "cvParsing": "Analyse de ton CV en cours…",
+        "cvParseError": "CV illisible, renvoie un PDF."
       }
     },
     "upgrade": {

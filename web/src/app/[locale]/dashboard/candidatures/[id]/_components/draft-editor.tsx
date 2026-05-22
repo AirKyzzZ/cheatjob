@@ -4,6 +4,7 @@ import { useState, useTransition } from "react";
 import { useTranslations } from "next-intl";
 import { saveDraftEdit } from "@/server/actions/candidatures";
 import { generateMessage } from "@/server/actions/drafter";
+import { track, EVENTS } from "@/lib/analytics/events";
 
 type Props = {
   candidatureId: string;
@@ -46,6 +47,7 @@ export function DraftEditor({ candidatureId, initialSubject, initialBody }: Prop
     startRegenTransition(async () => {
       const result = await generateMessage(candidatureId);
       if (result.ok) {
+        track(EVENTS.DraftRegenerated);
         setSubject(result.subject);
         setBody(result.body);
         setRegenState("idle");

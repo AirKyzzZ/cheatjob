@@ -38,6 +38,18 @@ export const EVENTS = {
   CvUploadCompleted: "cv_upload_completed",
   CvUploadFailed: "cv_upload_failed",
   ProfileUpdated: "profile_updated",
+
+  CandidatureCreated: "candidature_created",
+  CandidatureWizardStep: "candidature_wizard_step",
+  EmailFinderAttempt: "email_finder_attempt",
+  EmailFinderFound: "email_finder_found",
+  EmailFinderNotFound: "email_finder_not_found",
+  DraftGenerated: "draft_generated",
+  DraftRegenerated: "draft_regenerated",
+  CandidatureSent: "candidature_sent",
+  QuotaExhausted: "quota_exhausted",
+  CvParsed: "cv_parsed",
+  CvParseFailed: "cv_parse_failed",
 } as const;
 
 export type EventName = (typeof EVENTS)[keyof typeof EVENTS];
