@@ -11,6 +11,8 @@ import {
   GetUploadUrlSchema,
   FinalizeUploadSchema,
 } from "./profile.schemas";
+import { parseCV } from "./cv-parser";
+import { CVParseError } from "./cv-parser.errors";
 
 async function requireUser() {
   const supabase = await getServerClient();
@@ -77,8 +79,19 @@ export async function finalizeCvUpload(input: unknown) {
     cv_uploaded_at: new Date().toISOString(),
   });
 
+  let parseError = false;
+  try {
+    await parseCV(parsed.storagePath);
+  } catch (err) {
+    if (err instanceof CVParseError) {
+      parseError = true;
+    } else {
+      throw err;
+    }
+  }
+
   revalidatePath(`/[locale]/dashboard/profile`, "page");
-  return { ok: true as const };
+  return { ok: true as const, parseError };
 }
 
 export async function deleteCv() {
