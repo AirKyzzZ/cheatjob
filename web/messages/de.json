@@ -129,7 +129,20 @@
         "finderUnavailable": "Dienst nicht verfügbar. Gib die E-Mail manuell ein.",
         "generate": "Meine Nachricht generieren",
         "regenerate": "Neu generieren",
-        "generationFailed": "Generierung fehlgeschlagen. Versuch's nochmal."
+        "generationFailed": "Generierung fehlgeschlagen. Versuch's nochmal.",
+        "step1CompanyNameLabel": "Unternehmen",
+        "step1CompanyWebsiteLabel": "Website",
+        "step1Optional": "optional",
+        "step1Hint": "Das Unternehmen, bei dem du dein Praktikum oder deine Ausbildung machen möchtest. Schau in das LinkedIn-Profil oder auf die Website, um den genauen Namen zu bestätigen.",
+        "step2FirstNameLabel": "Vorname",
+        "step2LastNameLabel": "Nachname",
+        "step2ManagerRoleLabel": "Position des Recruiters",
+        "step2LinkedinLabel": "LinkedIn",
+        "step2TargetRoleLabel": "Angestrebte Stelle",
+        "step2Hint": "Finde auf LinkedIn die Person, die für die gewünschte Stelle einstellt. Oft der Head of {team} oder der Gründer in einem kleinen Unternehmen.",
+        "errorRequired": "Dieses Feld ist erforderlich.",
+        "errorTooLong": "Dieses Feld überschreitet das erlaubte Limit.",
+        "errorInvalidUrl": "Die URL ist ungültig."
       },
       "detail": {
         "openInGmail": "In Gmail öffnen",

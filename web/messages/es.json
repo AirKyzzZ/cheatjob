@@ -129,7 +129,20 @@
         "finderUnavailable": "Servicio no disponible. Introduce el email a mano.",
         "generate": "Generar mi mensaje",
         "regenerate": "Regenerar",
-        "generationFailed": "La generación falló. Reintenta."
+        "generationFailed": "La generación falló. Reintenta.",
+        "step1CompanyNameLabel": "Empresa",
+        "step1CompanyWebsiteLabel": "Sitio web",
+        "step1Optional": "opcional",
+        "step1Hint": "La empresa donde quieres hacer tus prácticas o formación. Busca en LinkedIn o en su web para asegurarte del nombre exacto.",
+        "step2FirstNameLabel": "Nombre",
+        "step2LastNameLabel": "Apellido",
+        "step2ManagerRoleLabel": "Cargo del reclutador",
+        "step2LinkedinLabel": "LinkedIn",
+        "step2TargetRoleLabel": "Puesto buscado",
+        "step2Hint": "Encuentra en LinkedIn a la persona que contrata para el puesto que buscas. Normalmente el Head of {team} o el fundador en una empresa pequeña.",
+        "errorRequired": "Este campo es obligatorio.",
+        "errorTooLong": "Este campo supera el límite permitido.",
+        "errorInvalidUrl": "La URL no es válida."
       },
       "detail": {
         "openInGmail": "Abrir en Gmail",

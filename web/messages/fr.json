@@ -127,7 +127,20 @@
         "finderUnavailable": "Service indisponible. Saisis l'email à la main.",
         "generate": "Générer mon message",
         "regenerate": "Régénérer",
-        "generationFailed": "La génération a échoué. Réessaie."
+        "generationFailed": "La génération a échoué. Réessaie.",
+        "step1CompanyNameLabel": "Entreprise",
+        "step1CompanyWebsiteLabel": "Site web",
+        "step1Optional": "facultatif",
+        "step1Hint": "L'entreprise dans laquelle tu veux décrocher ton stage ou ton alternance. Cherche la page LinkedIn ou le site pour t'assurer d'avoir le bon nom.",
+        "step2FirstNameLabel": "Prénom",
+        "step2LastNameLabel": "Nom",
+        "step2ManagerRoleLabel": "Poste du recruteur",
+        "step2LinkedinLabel": "LinkedIn",
+        "step2TargetRoleLabel": "Poste visé",
+        "step2Hint": "Trouve sur LinkedIn la personne qui recrute pour le poste que tu vises. Souvent le Head of {team} ou le fondateur dans une petite boîte.",
+        "errorRequired": "Ce champ est obligatoire.",
+        "errorTooLong": "Ce champ dépasse la limite autorisée.",
+        "errorInvalidUrl": "L'URL n'est pas valide."
       },
       "detail": {
         "openInGmail": "Ouvrir dans Gmail",

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import type { Candidature } from "@/lib/db/candidatures";
@@ -11,6 +11,8 @@ import {
   upsertStep4,
 } from "@/server/actions/candidatures";
 import { WizardShell } from "./wizard-shell";
+import { StepCible, type StepCibleHandle } from "./step-cible";
+import { StepRecruteur, type StepRecruteurHandle } from "./step-recruteur";
 
 type WizardProps = {
   locale: string;
@@ -28,28 +30,8 @@ export function Wizard({ locale, candidature, quotaRemaining }: WizardProps) {
     candidature?.id ?? null,
   );
 
-  const [companyName, setCompanyName] = useState(
-    candidature?.company_name ?? "",
-  );
-  const [companyWebsite, setCompanyWebsite] = useState(
-    candidature?.company_website ?? "",
-  );
-
-  const [managerFirstName, setManagerFirstName] = useState(
-    candidature?.manager_first_name ?? "",
-  );
-  const [managerLastName, setManagerLastName] = useState(
-    candidature?.manager_last_name ?? "",
-  );
-  const [managerRole, setManagerRole] = useState(
-    candidature?.manager_role ?? "",
-  );
-  const [managerLinkedinUrl, setManagerLinkedinUrl] = useState(
-    candidature?.manager_linkedin_url ?? "",
-  );
-  const [targetRole, setTargetRole] = useState(
-    candidature?.target_role ?? "",
-  );
+  const step1Ref = useRef<StepCibleHandle>(null);
+  const step2Ref = useRef<StepRecruteurHandle>(null);
 
   const [offerUrl, setOfferUrl] = useState(candidature?.offer_url ?? "");
   const [offerText, setOfferText] = useState(candidature?.offer_text ?? "");
@@ -73,28 +55,16 @@ export function Wizard({ locale, candidature, quotaRemaining }: WizardProps) {
   }
 
   function handleNext() {
+    if (step === 1) {
+      step1Ref.current?.submit();
+      return;
+    }
+    if (step === 2) {
+      step2Ref.current?.submit();
+      return;
+    }
     startTransition(async () => {
-      if (step === 1) {
-        if (!candidatureId) {
-          const { id } = await createDraft({ companyName, companyWebsite });
-          setCandidatureId(id);
-          router.replace(`/${locale}/dashboard/candidatures/new?c=${id}`);
-        } else {
-          await upsertStep1(candidatureId, { companyName, companyWebsite });
-        }
-        setStep(2);
-      } else if (step === 2) {
-        if (candidatureId) {
-          await upsertStep2(candidatureId, {
-            managerFirstName,
-            managerLastName,
-            managerRole,
-            managerLinkedinUrl,
-            targetRole,
-          });
-        }
-        setStep(3);
-      } else if (step === 3) {
+      if (step === 3) {
         setStep(4);
       } else if (step === 4) {
         if (candidatureId) {
@@ -102,6 +72,34 @@ export function Wizard({ locale, candidature, quotaRemaining }: WizardProps) {
         }
         setStep(5);
       }
+    });
+  }
+
+  function handleStep1Complete(values: { companyName: string; companyWebsite: string }) {
+    startTransition(async () => {
+      if (!candidatureId) {
+        const { id } = await createDraft(values);
+        setCandidatureId(id);
+        router.replace(`/${locale}/dashboard/candidatures/new?c=${id}`);
+      } else {
+        await upsertStep1(candidatureId, values);
+      }
+      setStep(2);
+    });
+  }
+
+  function handleStep2Complete(values: {
+    managerFirstName: string;
+    managerLastName: string;
+    managerRole: string;
+    managerLinkedinUrl: string;
+    targetRole: string;
+  }) {
+    startTransition(async () => {
+      if (candidatureId) {
+        await upsertStep2(candidatureId, values);
+      }
+      setStep(3);
     });
   }
 
@@ -117,108 +115,27 @@ export function Wizard({ locale, candidature, quotaRemaining }: WizardProps) {
       onNext={isLastStep ? undefined : handleNext}
       nextLabel={t("next")}
       backLabel={t("back")}
-      nextDisabled={step === 1 && !companyName.trim()}
       busy={pending}
     >
       {step === 1 && (
-        <div className="space-y-6">
-          <div>
-            <label className="block text-[13px] font-medium text-ink mb-2 font-sans">
-              Entreprise
-            </label>
-            <input
-              className="w-full h-11 px-4 rounded-xl border border-ink/15 bg-white font-sans text-[14px] text-ink placeholder:text-muted-soft focus:outline-none focus:ring-2 focus:ring-ink/20"
-              value={companyName}
-              onChange={(e) => setCompanyName(e.target.value)}
-              placeholder="Dataiku, Qonto…"
-              autoFocus
-            />
-          </div>
-          <div>
-            <label className="block text-[13px] font-medium text-ink mb-2 font-sans">
-              Site web{" "}
-              <span className="text-muted-soft font-normal">(facultatif)</span>
-            </label>
-            <input
-              className="w-full h-11 px-4 rounded-xl border border-ink/15 bg-white font-sans text-[14px] text-ink placeholder:text-muted-soft focus:outline-none focus:ring-2 focus:ring-ink/20"
-              value={companyWebsite}
-              onChange={(e) => setCompanyWebsite(e.target.value)}
-              placeholder="https://dataiku.com"
-              type="url"
-            />
-          </div>
-          <p className="font-serif italic text-[15px] text-burgundy">
-            À venir — les champs détaillés arrivent en tâche 14.
-          </p>
-        </div>
+        <StepCible
+          ref={step1Ref}
+          initialCompanyName={candidature?.company_name ?? ""}
+          initialCompanyWebsite={candidature?.company_website ?? ""}
+          onComplete={handleStep1Complete}
+        />
       )}
 
       {step === 2 && (
-        <div className="space-y-6">
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className="block text-[13px] font-medium text-ink mb-2 font-sans">
-                Prénom
-              </label>
-              <input
-                className="w-full h-11 px-4 rounded-xl border border-ink/15 bg-white font-sans text-[14px] text-ink placeholder:text-muted-soft focus:outline-none focus:ring-2 focus:ring-ink/20"
-                value={managerFirstName}
-                onChange={(e) => setManagerFirstName(e.target.value)}
-                placeholder="Thomas"
-              />
-            </div>
-            <div>
-              <label className="block text-[13px] font-medium text-ink mb-2 font-sans">
-                Nom
-              </label>
-              <input
-                className="w-full h-11 px-4 rounded-xl border border-ink/15 bg-white font-sans text-[14px] text-ink placeholder:text-muted-soft focus:outline-none focus:ring-2 focus:ring-ink/20"
-                value={managerLastName}
-                onChange={(e) => setManagerLastName(e.target.value)}
-                placeholder="Dupont"
-              />
-            </div>
-          </div>
-          <div>
-            <label className="block text-[13px] font-medium text-ink mb-2 font-sans">
-              Poste du recruteur
-            </label>
-            <input
-              className="w-full h-11 px-4 rounded-xl border border-ink/15 bg-white font-sans text-[14px] text-ink placeholder:text-muted-soft focus:outline-none focus:ring-2 focus:ring-ink/20"
-              value={managerRole}
-              onChange={(e) => setManagerRole(e.target.value)}
-              placeholder="Engineering Manager"
-            />
-          </div>
-          <div>
-            <label className="block text-[13px] font-medium text-ink mb-2 font-sans">
-              LinkedIn{" "}
-              <span className="text-muted-soft font-normal">(facultatif)</span>
-            </label>
-            <input
-              className="w-full h-11 px-4 rounded-xl border border-ink/15 bg-white font-sans text-[14px] text-ink placeholder:text-muted-soft focus:outline-none focus:ring-2 focus:ring-ink/20"
-              value={managerLinkedinUrl}
-              onChange={(e) => setManagerLinkedinUrl(e.target.value)}
-              placeholder="https://linkedin.com/in/…"
-              type="url"
-            />
-          </div>
-          <div>
-            <label className="block text-[13px] font-medium text-ink mb-2 font-sans">
-              Poste visé{" "}
-              <span className="text-muted-soft font-normal">(facultatif)</span>
-            </label>
-            <input
-              className="w-full h-11 px-4 rounded-xl border border-ink/15 bg-white font-sans text-[14px] text-ink placeholder:text-muted-soft focus:outline-none focus:ring-2 focus:ring-ink/20"
-              value={targetRole}
-              onChange={(e) => setTargetRole(e.target.value)}
-              placeholder="Stage Software Engineer"
-            />
-          </div>
-          <p className="font-serif italic text-[15px] text-burgundy">
-            À venir — les champs détaillés arrivent en tâche 14.
-          </p>
-        </div>
+        <StepRecruteur
+          ref={step2Ref}
+          initialManagerFirstName={candidature?.manager_first_name ?? ""}
+          initialManagerLastName={candidature?.manager_last_name ?? ""}
+          initialManagerRole={candidature?.manager_role ?? ""}
+          initialManagerLinkedinUrl={candidature?.manager_linkedin_url ?? ""}
+          initialTargetRole={candidature?.target_role ?? ""}
+          onComplete={handleStep2Complete}
+        />
       )}
 
       {step === 3 && (

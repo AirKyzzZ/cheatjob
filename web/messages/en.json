@@ -128,7 +128,20 @@
         "finderUnavailable": "Service unavailable. Enter the email manually.",
         "generate": "Generate my message",
         "regenerate": "Regenerate",
-        "generationFailed": "Generation failed. Try again."
+        "generationFailed": "Generation failed. Try again.",
+        "step1CompanyNameLabel": "Company",
+        "step1CompanyWebsiteLabel": "Website",
+        "step1Optional": "optional",
+        "step1Hint": "The company where you want to land your internship or apprenticeship. Look up the LinkedIn page or website to make sure the name is right.",
+        "step2FirstNameLabel": "First name",
+        "step2LastNameLabel": "Last name",
+        "step2ManagerRoleLabel": "Recruiter's role",
+        "step2LinkedinLabel": "LinkedIn",
+        "step2TargetRoleLabel": "Target role",
+        "step2Hint": "Find on LinkedIn the person hiring for the role you're after. Usually the Head of {team} or the founder in a small company.",
+        "errorRequired": "This field is required.",
+        "errorTooLong": "This field exceeds the allowed limit.",
+        "errorInvalidUrl": "The URL is not valid."
       },
       "detail": {
         "openInGmail": "Open in Gmail",
