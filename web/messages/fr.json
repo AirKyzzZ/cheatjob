@@ -148,7 +148,13 @@
         "confidenceLow": "Faible confiance",
         "confidenceManual": "Saisi manuellement",
         "emailSaveLabel": "Enregistrer l'email",
-        "emailSaving": "Enregistrement…"
+        "emailSaving": "Enregistrement…",
+        "step4OfferUrlLabel": "URL de l'offre",
+        "step4OfferUrlHint": "Conservé pour référence — l'URL n'est pas analysée automatiquement.",
+        "step4OfferTextLabel": "Texte de l'offre",
+        "step4OfferTextPlaceholder": "Colle le texte de l'offre ici…",
+        "generating": "Génération en cours…",
+        "viewCandidature": "Voir ma candidature"
       },
       "detail": {
         "openInGmail": "Ouvrir dans Gmail",

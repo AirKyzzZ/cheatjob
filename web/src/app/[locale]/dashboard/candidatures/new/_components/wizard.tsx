@@ -14,6 +14,8 @@ import { WizardShell } from "./wizard-shell";
 import { StepCible, type StepCibleHandle } from "./step-cible";
 import { StepRecruteur, type StepRecruteurHandle } from "./step-recruteur";
 import { StepEmail, type StepEmailHandle } from "./step-email";
+import { StepOffer, type StepOfferHandle } from "./step-offer";
+import { StepGenerate } from "./step-generate";
 
 type WizardProps = {
   locale: string;
@@ -34,9 +36,7 @@ export function Wizard({ locale, candidature, quotaRemaining }: WizardProps) {
   const step1Ref = useRef<StepCibleHandle>(null);
   const step2Ref = useRef<StepRecruteurHandle>(null);
   const step3Ref = useRef<StepEmailHandle>(null);
-
-  const [offerUrl, setOfferUrl] = useState(candidature?.offer_url ?? "");
-  const [offerText, setOfferText] = useState(candidature?.offer_text ?? "");
+  const step4Ref = useRef<StepOfferHandle>(null);
 
   const stepTitle = [
     t("step1Title"),
@@ -69,14 +69,10 @@ export function Wizard({ locale, candidature, quotaRemaining }: WizardProps) {
       step3Ref.current?.submit();
       return;
     }
-    startTransition(async () => {
-      if (step === 4) {
-        if (candidatureId) {
-          await upsertStep4(candidatureId, { offerUrl, offerText });
-        }
-        setStep(5);
-      }
-    });
+    if (step === 4) {
+      step4Ref.current?.submit();
+      return;
+    }
   }
 
   function handleStep1Complete(values: { companyName: string; companyWebsite: string }) {
@@ -109,6 +105,15 @@ export function Wizard({ locale, candidature, quotaRemaining }: WizardProps) {
 
   function handleStep3Complete() {
     setStep(4);
+  }
+
+  function handleStep4Complete(values: { offerUrl: string; offerText: string }) {
+    startTransition(async () => {
+      if (candidatureId) {
+        await upsertStep4(candidatureId, values);
+      }
+      setStep(5);
+    });
   }
 
   const isLastStep = step === 5;
@@ -158,42 +163,16 @@ export function Wizard({ locale, candidature, quotaRemaining }: WizardProps) {
       )}
 
       {step === 4 && (
-        <div className="space-y-6">
-          <div>
-            <label className="block text-[13px] font-medium text-ink mb-2 font-sans">
-              URL de l&apos;offre{" "}
-              <span className="text-muted-soft font-normal">(facultatif)</span>
-            </label>
-            <input
-              className="w-full h-11 px-4 rounded-xl border border-ink/15 bg-white font-sans text-[14px] text-ink placeholder:text-muted-soft focus:outline-none focus:ring-2 focus:ring-ink/20"
-              value={offerUrl}
-              onChange={(e) => setOfferUrl(e.target.value)}
-              placeholder="https://…"
-              type="url"
-            />
-          </div>
-          <div>
-            <label className="block text-[13px] font-medium text-ink mb-2 font-sans">
-              Texte de l&apos;offre{" "}
-              <span className="text-muted-soft font-normal">(facultatif)</span>
-            </label>
-            <textarea
-              className="w-full px-4 py-3 rounded-xl border border-ink/15 bg-white font-sans text-[14px] text-ink placeholder:text-muted-soft focus:outline-none focus:ring-2 focus:ring-ink/20 min-h-[120px] resize-y"
-              value={offerText}
-              onChange={(e) => setOfferText(e.target.value)}
-              placeholder="Colle le texte de l'offre ici…"
-            />
-          </div>
-          <p className="font-serif italic text-[15px] text-burgundy">
-            À venir — les champs détaillés arrivent en tâche 16.
-          </p>
-        </div>
+        <StepOffer
+          ref={step4Ref}
+          initialOfferUrl={candidature?.offer_url ?? ""}
+          initialOfferText={candidature?.offer_text ?? ""}
+          onComplete={handleStep4Complete}
+        />
       )}
 
-      {step === 5 && (
-        <p className="font-serif italic text-[17px] text-burgundy">
-          La génération du message arrive en tâche 16.
-        </p>
+      {step === 5 && candidatureId && (
+        <StepGenerate candidatureId={candidatureId} locale={locale} />
       )}
     </WizardShell>
   );

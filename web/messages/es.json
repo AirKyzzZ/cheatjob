@@ -150,7 +150,13 @@
         "confidenceLow": "Baja confianza",
         "confidenceManual": "Introducido manualmente",
         "emailSaveLabel": "Guardar email",
-        "emailSaving": "Guardando…"
+        "emailSaving": "Guardando…",
+        "step4OfferUrlLabel": "URL de la oferta",
+        "step4OfferUrlHint": "Solo guardada como referencia — la URL no se analiza automáticamente.",
+        "step4OfferTextLabel": "Descripción del puesto",
+        "step4OfferTextPlaceholder": "Pega aquí el texto de la oferta…",
+        "generating": "Generando…",
+        "viewCandidature": "Ver mi candidatura"
       },
       "detail": {
         "openInGmail": "Abrir en Gmail",

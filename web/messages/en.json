@@ -149,7 +149,13 @@
         "confidenceLow": "Low confidence",
         "confidenceManual": "Entered manually",
         "emailSaveLabel": "Save email",
-        "emailSaving": "Saving…"
+        "emailSaving": "Saving…",
+        "step4OfferUrlLabel": "Job posting URL",
+        "step4OfferUrlHint": "Kept for reference — the URL is not auto-parsed.",
+        "step4OfferTextLabel": "Job description",
+        "step4OfferTextPlaceholder": "Paste the job description here…",
+        "generating": "Generating…",
+        "viewCandidature": "View my application"
       },
       "detail": {
         "openInGmail": "Open in Gmail",
