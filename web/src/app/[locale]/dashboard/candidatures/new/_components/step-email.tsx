@@ -26,7 +26,9 @@ type EmailState =
   | { kind: "searching" }
   | { kind: "found"; email: string; confidence: string }
   | { kind: "not_found" }
-  | { kind: "unavailable" };
+  | { kind: "unavailable" }
+  | { kind: "quota_exceeded" }
+  | { kind: "error" };
 
 function confidenceKey(confidence: string): "confidenceHigh" | "confidenceMedium" | "confidenceLow" | "confidenceManual" {
   if (confidence === "high") return "confidenceHigh";
@@ -82,16 +84,23 @@ export const StepEmail = forwardRef<StepEmailHandle, Props>(
       track(EVENTS.EmailFinderAttempt);
       setState({ kind: "searching" });
       startFindTransition(async () => {
-        const result = await findEmail(candidatureId);
-        if (result.status === "found") {
-          track(EVENTS.EmailFinderFound, { confidence: result.confidence });
-          setState({ kind: "found", email: result.email, confidence: result.confidence });
-        } else if (result.status === "not_found") {
-          track(EVENTS.EmailFinderNotFound);
-          setState({ kind: "not_found" });
-        } else {
-          track(EVENTS.EmailFinderNotFound);
-          setState({ kind: "unavailable" });
+        try {
+          const result = await findEmail(candidatureId);
+          if (result.status === "found") {
+            track(EVENTS.EmailFinderFound, { confidence: result.confidence });
+            setState({ kind: "found", email: result.email, confidence: result.confidence });
+          } else if (result.status === "quota_exceeded") {
+            track(EVENTS.QuotaExhausted);
+            setState({ kind: "quota_exceeded" });
+          } else if (result.status === "not_found") {
+            track(EVENTS.EmailFinderNotFound);
+            setState({ kind: "not_found" });
+          } else {
+            track(EVENTS.EmailFinderNotFound);
+            setState({ kind: "unavailable" });
+          }
+        } catch {
+          setState({ kind: "error" });
         }
       });
     }
@@ -99,17 +108,29 @@ export const StepEmail = forwardRef<StepEmailHandle, Props>(
     function handleManualSave() {
       const parsed = ManualEmailSchema.safeParse({ email: manualEmail });
       if (!parsed.success) {
-        setManualError(t("errorInvalidUrl"));
+        setManualError(t("errorInvalidEmail"));
         return;
       }
       setManualError(undefined);
       startSaveTransition(async () => {
-        await saveManualEmail(candidatureId, { email: manualEmail });
-        setState({ kind: "found", email: manualEmail, confidence: "manual" });
+        try {
+          const result = await saveManualEmail(candidatureId, { email: manualEmail });
+          if (!result.ok) {
+            if (result.error === "quota_exceeded") {
+              setState({ kind: "quota_exceeded" });
+            } else {
+              setState({ kind: "error" });
+            }
+            return;
+          }
+          setState({ kind: "found", email: manualEmail, confidence: "manual" });
+        } catch {
+          setState({ kind: "error" });
+        }
       });
     }
 
-    if (quotaExhausted && state.kind !== "found") {
+    if ((quotaExhausted && state.kind !== "found") || state.kind === "quota_exceeded") {
       return (
         <div className="space-y-4">
           <p className="font-serif italic text-[15px] text-burgundy leading-snug">
@@ -121,6 +142,23 @@ export const StepEmail = forwardRef<StepEmailHandle, Props>(
           >
             {t("step3UpgradeLink")}
           </Link>
+        </div>
+      );
+    }
+
+    if (state.kind === "error") {
+      return (
+        <div className="space-y-4">
+          <p className="font-serif italic text-[15px] text-burgundy leading-snug">
+            {t("actionFailed")}
+          </p>
+          <button
+            type="button"
+            onClick={() => setState({ kind: "idle" })}
+            className="h-11 px-6 rounded-xl bg-ink text-cream font-sans text-[14px] font-medium transition-opacity"
+          >
+            {t("findEmail")}
+          </button>
         </div>
       );
     }

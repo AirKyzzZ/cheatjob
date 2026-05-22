@@ -12,7 +12,7 @@ import { getLatestMessage, insertMessage } from "@/lib/db/messages";
 import { getServiceClient } from "@/lib/supabase/admin";
 import { getProfile } from "@/lib/db/profiles";
 import { insertEmailLookup } from "@/lib/db/email-lookups";
-import { assertQuotaAvailable, decrementQuota } from "@/lib/billing/quotas";
+import { assertQuotaAvailable, decrementQuota, QuotaExceededError } from "@/lib/billing/quotas";
 import { getEmailFinder } from "@/server/integrations/email-finder/findymail";
 import { EmailFinderUnavailableError } from "@/server/integrations/email-finder";
 import type { Json } from "@/types/database";
@@ -100,9 +100,24 @@ export async function upsertStep4(id: string, input: unknown) {
 export async function findEmail(id: string) {
   const { supabase, user, candidature } = await requireOwnedCandidature(id);
 
+  if (candidature.manager_email) {
+    return {
+      status: "found" as const,
+      email: candidature.manager_email,
+      confidence: candidature.manager_email_confidence ?? "manual",
+    };
+  }
+
   const profile = await getProfile(supabase, user.id);
   if (!profile) throw new Error("Profile not found");
-  assertQuotaAvailable(profile);
+  try {
+    assertQuotaAvailable(profile);
+  } catch (err) {
+    if (err instanceof QuotaExceededError) {
+      return { status: "quota_exceeded" as const };
+    }
+    throw err;
+  }
 
   if (!candidature.manager_first_name || !candidature.manager_last_name) {
     throw new Error("Manager name is required before lookup");
@@ -171,7 +186,14 @@ export async function saveManualEmail(id: string, input: unknown) {
 
   const profile = await getProfile(supabase, user.id);
   if (!profile) throw new Error("Profile not found");
-  assertQuotaAvailable(profile);
+  try {
+    assertQuotaAvailable(profile);
+  } catch (err) {
+    if (err instanceof QuotaExceededError) {
+      return { ok: false as const, error: "quota_exceeded" as const };
+    }
+    throw err;
+  }
 
   await updateCandidature(supabase, id, {
     manager_email: parsed.email,

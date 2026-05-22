@@ -33,6 +33,7 @@ export function Wizard({ locale, candidature, quotaRemaining }: WizardProps) {
   const [candidatureId, setCandidatureId] = useState<string | null>(
     candidature?.id ?? null,
   );
+  const [actionError, setActionError] = useState<string | null>(null);
 
   const step1Ref = useRef<StepCibleHandle>(null);
   const step2Ref = useRef<StepRecruteurHandle>(null);
@@ -77,17 +78,22 @@ export function Wizard({ locale, candidature, quotaRemaining }: WizardProps) {
   }
 
   function handleStep1Complete(values: { companyName: string; companyWebsite: string }) {
+    setActionError(null);
     startTransition(async () => {
-      if (!candidatureId) {
-        const { id } = await createDraft(values);
-        setCandidatureId(id);
-        track(EVENTS.CandidatureCreated);
-        router.replace(`/${locale}/dashboard/candidatures/new?c=${id}`);
-      } else {
-        await upsertStep1(candidatureId, values);
+      try {
+        if (!candidatureId) {
+          const { id } = await createDraft(values);
+          setCandidatureId(id);
+          track(EVENTS.CandidatureCreated);
+          router.replace(`/${locale}/dashboard/candidatures/new?c=${id}`);
+        } else {
+          await upsertStep1(candidatureId, values);
+        }
+        track(EVENTS.CandidatureWizardStep, { step: 2 });
+        setStep(2);
+      } catch {
+        setActionError(t("actionFailed"));
       }
-      track(EVENTS.CandidatureWizardStep, { step: 2 });
-      setStep(2);
     });
   }
 
@@ -98,33 +104,45 @@ export function Wizard({ locale, candidature, quotaRemaining }: WizardProps) {
     managerLinkedinUrl: string;
     targetRole: string;
   }) {
+    setActionError(null);
     startTransition(async () => {
-      if (candidatureId) {
-        await upsertStep2(candidatureId, values);
+      try {
+        if (candidatureId) {
+          await upsertStep2(candidatureId, values);
+        }
+        track(EVENTS.CandidatureWizardStep, { step: 3 });
+        setStep(3);
+      } catch {
+        setActionError(t("actionFailed"));
       }
-      track(EVENTS.CandidatureWizardStep, { step: 3 });
-      setStep(3);
     });
   }
 
   function handleStep3Complete() {
+    setActionError(null);
     track(EVENTS.CandidatureWizardStep, { step: 4 });
     setStep(4);
   }
 
   function handleStep4Complete(values: { offerUrl: string; offerText: string }) {
+    setActionError(null);
     startTransition(async () => {
-      if (candidatureId) {
-        await upsertStep4(candidatureId, values);
+      try {
+        if (candidatureId) {
+          await upsertStep4(candidatureId, values);
+        }
+        track(EVENTS.CandidatureWizardStep, { step: 5 });
+        setStep(5);
+      } catch {
+        setActionError(t("actionFailed"));
       }
-      track(EVENTS.CandidatureWizardStep, { step: 5 });
-      setStep(5);
     });
   }
 
   const isLastStep = step === 5;
 
   return (
+    <div>
     <WizardShell
       step={step}
       title={stepTitle}
@@ -181,5 +199,11 @@ export function Wizard({ locale, candidature, quotaRemaining }: WizardProps) {
         <StepGenerate candidatureId={candidatureId} locale={locale} />
       )}
     </WizardShell>
+    {actionError && (
+      <p className="mt-4 font-serif italic text-[14px] text-burgundy leading-snug">
+        {actionError}
+      </p>
+    )}
+    </div>
   );
 }

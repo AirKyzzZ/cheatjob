@@ -156,7 +156,9 @@
         "step4OfferTextLabel": "Stellenbeschreibung",
         "step4OfferTextPlaceholder": "Füge hier den Text des Stellenangebots ein…",
         "generating": "Wird generiert…",
-        "viewCandidature": "Meine Bewerbung ansehen"
+        "viewCandidature": "Meine Bewerbung ansehen",
+        "actionFailed": "Ein Fehler ist aufgetreten. Versuch's nochmal.",
+        "errorInvalidEmail": "Diese E-Mail-Adresse ist ungültig."
       },
       "detail": {
         "openInGmail": "In Gmail öffnen",

@@ -156,7 +156,9 @@
         "step4OfferTextLabel": "Descripción del puesto",
         "step4OfferTextPlaceholder": "Pega aquí el texto de la oferta…",
         "generating": "Generando…",
-        "viewCandidature": "Ver mi candidatura"
+        "viewCandidature": "Ver mi candidatura",
+        "actionFailed": "Algo salió mal. Inténtalo de nuevo.",
+        "errorInvalidEmail": "Este email no es válido."
       },
       "detail": {
         "openInGmail": "Abrir en Gmail",

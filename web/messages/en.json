@@ -155,7 +155,9 @@
         "step4OfferTextLabel": "Job description",
         "step4OfferTextPlaceholder": "Paste the job description here…",
         "generating": "Generating…",
-        "viewCandidature": "View my application"
+        "viewCandidature": "View my application",
+        "actionFailed": "Something went wrong. Try again.",
+        "errorInvalidEmail": "This email address is not valid."
       },
       "detail": {
         "openInGmail": "Open in Gmail",
