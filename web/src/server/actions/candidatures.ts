@@ -7,7 +7,8 @@ import {
   getCandidature,
   updateCandidature,
 } from "@/lib/db/candidatures";
-import { Step1Schema, Step2Schema, Step4Schema, ManualEmailSchema } from "./candidatures.schemas";
+import { Step1Schema, Step2Schema, Step4Schema, ManualEmailSchema, SetStatusSchema, SaveDraftEditSchema } from "./candidatures.schemas";
+import { getLatestMessage, insertMessage } from "@/lib/db/messages";
 import { getServiceClient } from "@/lib/supabase/admin";
 import { getProfile } from "@/lib/db/profiles";
 import { insertEmailLookup } from "@/lib/db/email-lookups";
@@ -183,5 +184,59 @@ export async function saveManualEmail(id: string, input: unknown) {
   const consumed = await decrementQuota(service, user.id);
   if (!consumed) console.warn(`quota decrement no-op (manual) for user ${user.id}`);
 
+  return { ok: true as const };
+}
+
+export async function markSent(id: string) {
+  const { supabase, candidature } = await requireOwnedCandidature(id);
+  if (candidature.status !== "ready") {
+    throw new Error("Candidature is not ready to send");
+  }
+  await updateCandidature(supabase, id, {
+    status: "sent",
+    sent_at: new Date().toISOString(),
+  });
+  // Phase 1c: insert a scheduled_emails follow-up row here.
+  revalidatePath(`/[locale]/dashboard`, "page");
+  revalidatePath(`/[locale]/dashboard/candidatures/[id]`, "page");
+  return { ok: true as const };
+}
+
+export async function setCandidatureStatus(input: unknown) {
+  const parsed = SetStatusSchema.parse(input);
+  const { supabase } = await requireOwnedCandidature(parsed.id);
+  const now = new Date().toISOString();
+  const patch: Record<string, string> = { status: parsed.status };
+  if (parsed.status === "replied") {
+    patch.replied_at = now;
+  } else if (parsed.status === "closed") {
+    patch.closed_at = now;
+    patch.closed_reason = parsed.closedReason ?? "other";
+  }
+  await updateCandidature(supabase, parsed.id, patch);
+  revalidatePath(`/[locale]/dashboard`, "page");
+  revalidatePath(`/[locale]/dashboard/candidatures/[id]`, "page");
+  return { ok: true as const };
+}
+
+export async function saveDraftEdit(input: unknown) {
+  const parsed = SaveDraftEditSchema.parse(input);
+  const { supabase, user } = await requireOwnedCandidature(parsed.candidatureId);
+  const latest = await getLatestMessage(supabase, parsed.candidatureId);
+  if (!latest) throw new Error("No draft to edit");
+
+  const service = getServiceClient();
+  await insertMessage(service, {
+    candidature_id: parsed.candidatureId,
+    user_id: user.id,
+    type: "initial",
+    subject: parsed.subject,
+    body: parsed.body,
+    generated_by_model: latest.generated_by_model,
+    prompt_version: latest.prompt_version,
+    edited_by_user: true,
+    user_edited_body: parsed.body,
+  });
+  revalidatePath(`/[locale]/dashboard/candidatures/[id]`, "page");
   return { ok: true as const };
 }
