@@ -142,7 +142,15 @@
         "step2Hint": "Encuentra en LinkedIn a la persona que contrata para el puesto que buscas. Normalmente el Head of {team} o el fundador en una empresa pequeña.",
         "errorRequired": "Este campo es obligatorio.",
         "errorTooLong": "Este campo supera el límite permitido.",
-        "errorInvalidUrl": "La URL no es válida."
+        "errorInvalidUrl": "La URL no es válida.",
+        "step3Searching": "Buscando…",
+        "step3UpgradeLink": "Mejorar el plan",
+        "confidenceHigh": "Alta confianza",
+        "confidenceMedium": "Confianza media",
+        "confidenceLow": "Baja confianza",
+        "confidenceManual": "Introducido manualmente",
+        "emailSaveLabel": "Guardar email",
+        "emailSaving": "Guardando…"
       },
       "detail": {
         "openInGmail": "Abrir en Gmail",
@@ -197,6 +205,11 @@
         "wrongType": "Solo PDF o DOCX.",
         "tooLarge": "El archivo supera los 5 MB."
       }
+    },
+    "upgrade": {
+      "eyebrow": "Acceso premium",
+      "title": "Más candidaturas, más oportunidades.",
+      "body": "Las suscripciones llegan pronto."
     }
   },
   "hero": {

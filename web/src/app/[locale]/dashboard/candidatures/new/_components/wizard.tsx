@@ -13,6 +13,7 @@ import {
 import { WizardShell } from "./wizard-shell";
 import { StepCible, type StepCibleHandle } from "./step-cible";
 import { StepRecruteur, type StepRecruteurHandle } from "./step-recruteur";
+import { StepEmail, type StepEmailHandle } from "./step-email";
 
 type WizardProps = {
   locale: string;
@@ -32,6 +33,7 @@ export function Wizard({ locale, candidature, quotaRemaining }: WizardProps) {
 
   const step1Ref = useRef<StepCibleHandle>(null);
   const step2Ref = useRef<StepRecruteurHandle>(null);
+  const step3Ref = useRef<StepEmailHandle>(null);
 
   const [offerUrl, setOfferUrl] = useState(candidature?.offer_url ?? "");
   const [offerText, setOfferText] = useState(candidature?.offer_text ?? "");
@@ -63,10 +65,12 @@ export function Wizard({ locale, candidature, quotaRemaining }: WizardProps) {
       step2Ref.current?.submit();
       return;
     }
+    if (step === 3) {
+      step3Ref.current?.submit();
+      return;
+    }
     startTransition(async () => {
-      if (step === 3) {
-        setStep(4);
-      } else if (step === 4) {
+      if (step === 4) {
         if (candidatureId) {
           await upsertStep4(candidatureId, { offerUrl, offerText });
         }
@@ -101,6 +105,10 @@ export function Wizard({ locale, candidature, quotaRemaining }: WizardProps) {
       }
       setStep(3);
     });
+  }
+
+  function handleStep3Complete() {
+    setStep(4);
   }
 
   const isLastStep = step === 5;
@@ -138,10 +146,15 @@ export function Wizard({ locale, candidature, quotaRemaining }: WizardProps) {
         />
       )}
 
-      {step === 3 && (
-        <p className="font-serif italic text-[17px] text-burgundy">
-          La recherche d&apos;email arrive en tâche 15.
-        </p>
+      {step === 3 && candidatureId && (
+        <StepEmail
+          ref={step3Ref}
+          candidatureId={candidatureId}
+          initialEmail={candidature?.manager_email ?? null}
+          initialConfidence={candidature?.manager_email_confidence ?? null}
+          quotaRemaining={quotaRemaining}
+          onComplete={handleStep3Complete}
+        />
       )}
 
       {step === 4 && (

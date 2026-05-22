@@ -141,7 +141,15 @@
         "step2Hint": "Find on LinkedIn the person hiring for the role you're after. Usually the Head of {team} or the founder in a small company.",
         "errorRequired": "This field is required.",
         "errorTooLong": "This field exceeds the allowed limit.",
-        "errorInvalidUrl": "The URL is not valid."
+        "errorInvalidUrl": "The URL is not valid.",
+        "step3Searching": "Searching…",
+        "step3UpgradeLink": "Upgrade your plan",
+        "confidenceHigh": "High confidence",
+        "confidenceMedium": "Medium confidence",
+        "confidenceLow": "Low confidence",
+        "confidenceManual": "Entered manually",
+        "emailSaveLabel": "Save email",
+        "emailSaving": "Saving…"
       },
       "detail": {
         "openInGmail": "Open in Gmail",
@@ -196,6 +204,11 @@
         "wrongType": "PDF or DOCX only.",
         "tooLarge": "File is over 5 MB."
       }
+    },
+    "upgrade": {
+      "eyebrow": "Premium access",
+      "title": "More applications, more opportunities.",
+      "body": "Subscriptions are coming soon."
     }
   },
   "hero": {

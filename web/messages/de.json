@@ -142,7 +142,15 @@
         "step2Hint": "Finde auf LinkedIn die Person, die für die gewünschte Stelle einstellt. Oft der Head of {team} oder der Gründer in einem kleinen Unternehmen.",
         "errorRequired": "Dieses Feld ist erforderlich.",
         "errorTooLong": "Dieses Feld überschreitet das erlaubte Limit.",
-        "errorInvalidUrl": "Die URL ist ungültig."
+        "errorInvalidUrl": "Die URL ist ungültig.",
+        "step3Searching": "Suche läuft…",
+        "step3UpgradeLink": "Upgrade durchführen",
+        "confidenceHigh": "Hohe Konfidenz",
+        "confidenceMedium": "Mittlere Konfidenz",
+        "confidenceLow": "Niedrige Konfidenz",
+        "confidenceManual": "Manuell eingegeben",
+        "emailSaveLabel": "E-Mail speichern",
+        "emailSaving": "Speichern…"
       },
       "detail": {
         "openInGmail": "In Gmail öffnen",
@@ -197,6 +205,11 @@
         "wrongType": "Nur PDF oder DOCX.",
         "tooLarge": "Datei ist größer als 5 MB."
       }
+    },
+    "upgrade": {
+      "eyebrow": "Premium-Zugang",
+      "title": "Mehr Bewerbungen, mehr Chancen.",
+      "body": "Abonnements kommen bald."
     }
   },
   "hero": {

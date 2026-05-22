@@ -140,7 +140,15 @@
         "step2Hint": "Trouve sur LinkedIn la personne qui recrute pour le poste que tu vises. Souvent le Head of {team} ou le fondateur dans une petite boîte.",
         "errorRequired": "Ce champ est obligatoire.",
         "errorTooLong": "Ce champ dépasse la limite autorisée.",
-        "errorInvalidUrl": "L'URL n'est pas valide."
+        "errorInvalidUrl": "L'URL n'est pas valide.",
+        "step3Searching": "Recherche en cours…",
+        "step3UpgradeLink": "Passer à l'offre supérieure",
+        "confidenceHigh": "Haute confiance",
+        "confidenceMedium": "Confiance moyenne",
+        "confidenceLow": "Faible confiance",
+        "confidenceManual": "Saisi manuellement",
+        "emailSaveLabel": "Enregistrer l'email",
+        "emailSaving": "Enregistrement…"
       },
       "detail": {
         "openInGmail": "Ouvrir dans Gmail",
@@ -195,6 +203,11 @@
         "wrongType": "PDF ou DOCX uniquement.",
         "tooLarge": "Le fichier dépasse 5 Mo."
       }
+    },
+    "upgrade": {
+      "eyebrow": "Accès premium",
+      "title": "Plus de candidatures, plus d'opportunités.",
+      "body": "Les abonnements arrivent bientôt."
     }
   },
   "hero": {
