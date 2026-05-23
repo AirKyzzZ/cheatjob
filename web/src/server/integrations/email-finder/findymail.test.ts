@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, afterEach } from "vitest";
+import { describe, it, expect, vi, afterEach, beforeEach } from "vitest";
 import { FindymailAdapter } from "./findymail";
 import { EmailFinderUnavailableError } from "./index";
 
@@ -34,5 +34,43 @@ describe("FindymailAdapter", () => {
     const adapter = new FindymailAdapter("key");
     await expect(adapter.findEmail(QUERY)).rejects.toBeInstanceOf(EmailFinderUnavailableError);
     expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
+});
+
+describe("FindymailAdapter — E2E_MOCK", () => {
+  beforeEach(() => {
+    process.env.E2E_MOCK = "1";
+  });
+  afterEach(() => {
+    delete process.env.E2E_MOCK;
+  });
+
+  it("returns canned found result without calling fetch", async () => {
+    const fetchSpy = vi.spyOn(global, "fetch");
+    const adapter = new FindymailAdapter("e2e-mock");
+    const result = await adapter.findEmail(QUERY);
+    expect(result.found).toBe(true);
+    if (result.found) {
+      expect(result.email).toBe("jean.dupont@qonto.com");
+      expect(result.confidence).toBe("high");
+    }
+    expect(fetchSpy).not.toHaveBeenCalled();
+  });
+
+  it("returns not-found for lastName containing 'notfound' without calling fetch", async () => {
+    const fetchSpy = vi.spyOn(global, "fetch");
+    const adapter = new FindymailAdapter("e2e-mock");
+    const result = await adapter.findEmail({ firstName: "Test", lastName: "Notfound", domain: "x.com" });
+    expect(result.found).toBe(false);
+    expect(fetchSpy).not.toHaveBeenCalled();
+  });
+
+  it("throws EmailFinderUnavailableError for lastName containing 'unavailable' without calling fetch", async () => {
+    const fetchSpy = vi.spyOn(global, "fetch");
+    const adapter = new FindymailAdapter("e2e-mock");
+    await expect(
+      adapter.findEmail({ firstName: "Test", lastName: "Unavailable", domain: "x.com" }),
+    ).rejects.toBeInstanceOf(EmailFinderUnavailableError);
+    expect(fetchSpy).not.toHaveBeenCalled();
   });
 });

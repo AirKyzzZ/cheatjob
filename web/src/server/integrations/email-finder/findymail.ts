@@ -17,6 +17,19 @@ export class FindymailAdapter implements EmailFinder {
   constructor(private readonly apiKey: string) {}
 
   async findEmail(query: EmailFinderQuery): Promise<EmailFinderResult> {
+    if (process.env.E2E_MOCK === "1") {
+      const last = query.lastName.toLowerCase();
+      if (last.includes("notfound")) return { found: false, costUsd: 0, raw: { mock: true } };
+      if (last.includes("unavailable")) throw new EmailFinderUnavailableError();
+      return {
+        found: true,
+        email: `${query.firstName.toLowerCase()}.${query.lastName.toLowerCase()}@${query.domain}`,
+        confidence: "high",
+        costUsd: 0,
+        raw: { mock: true },
+      };
+    }
+
     const body = JSON.stringify({
       name: `${query.firstName} ${query.lastName}`,
       domain: query.domain,
@@ -63,6 +76,7 @@ export class FindymailAdapter implements EmailFinder {
 }
 
 export function getEmailFinder(): EmailFinder {
+  if (process.env.E2E_MOCK === "1") return new FindymailAdapter("e2e-mock");
   const key = process.env.FINDYMAIL_API_KEY;
   if (!key) throw new Error("FINDYMAIL_API_KEY is not set");
   return new FindymailAdapter(key);

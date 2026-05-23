@@ -24,6 +24,21 @@ export class OpenRouterAdapter implements AIProvider {
   }
 
   async complete(model: string, messages: ChatMessage[]): Promise<CompletionResult> {
+    if (process.env.E2E_MOCK === "1") {
+      const text = model.includes("haiku")
+        ? JSON.stringify({
+            full_name: "Test User",
+            school: "Test School",
+            field_of_study: "Test Field",
+            experiences: [],
+            skills: ["test"],
+            projects: [],
+            languages: ["FR"],
+          })
+        : JSON.stringify({ subject: "Test subject", body: "Test body for E2E mock." });
+      return { text, model, costUsd: 0 };
+    }
+
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
     try {
@@ -99,6 +114,7 @@ export class OpenRouterAdapter implements AIProvider {
 }
 
 export function getAIProvider(): AIProvider {
+  if (process.env.E2E_MOCK === "1") return new OpenRouterAdapter("e2e-mock");
   const key = process.env.OPENROUTER_API_KEY;
   if (!key) throw new Error("OPENROUTER_API_KEY is not set");
   return new OpenRouterAdapter(key);

@@ -5,10 +5,17 @@ import { mkdirSync } from "node:fs";
 /**
  * Phase 1b — Candidature wizard E2E journey.
  *
- * External services are mocked at the network layer with page.route:
- *   - Findymail  → fulfilled with a shaped JSON response.
- *   - OpenRouter → fulfilled with an OpenAI-compatible chat-completions
- *                  response whose content is JSON {subject, body}.
+ * Mocking strategy: sentinel-driven server-side test doubles.
+ *
+ * Server Actions (findEmail, generateMessage) make HTTP calls from the
+ * Next.js server process — page.route cannot intercept those. Instead, when
+ * the dev server is started with E2E_MOCK=1 (set by playwright.config.ts
+ * webServer.env), the Findymail and OpenRouter adapters short-circuit and
+ * return canned responses based on the recruiter's lastName:
+ *   - lastName contains "notfound"   → EmailFinderResult { found: false }
+ *   - lastName contains "unavailable" → EmailFinderUnavailableError
+ *   - any other lastName             → found result with generated email
+ * OpenRouter always returns { subject: "Test subject", body: "Test body for E2E mock." }.
  *
  * Auth: admin-created confirmed user (same pattern as phase1a-auth.spec.ts).
  * Each test that needs a seeded state creates its own candidature via
@@ -29,56 +36,6 @@ const TEST_PASSWORD = "Cheatjob-Phase1b-E2E-9!";
 let admin: SupabaseClient;
 let createdUserId: string | null = null;
 const createdUserIds: string[] = [];
-
-// ---------------------------------------------------------------------------
-// Mock helpers
-// ---------------------------------------------------------------------------
-
-async function mockFindymailFound(page: Page, email = "thomas.dupont@acme.com") {
-  await page.route("**/app.findymail.com/**", async (route) => {
-    await route.fulfill({
-      status: 200,
-      contentType: "application/json",
-      body: JSON.stringify({ contact: { name: "Thomas Dupont", email, domain: "acme.com" } }),
-    });
-  });
-}
-
-async function mockFindymailNotFound(page: Page) {
-  await page.route("**/app.findymail.com/**", async (route) => {
-    await route.fulfill({
-      status: 200,
-      contentType: "application/json",
-      body: JSON.stringify({ contact: null }),
-    });
-  });
-}
-
-async function mockOpenRouter(page: Page) {
-  await page.route("**/openrouter.ai/**", async (route) => {
-    const responseContent = JSON.stringify({
-      subject: "Candidature spontanée — Stage Software Engineer",
-      body: "Bonjour Thomas,\n\nJe me permets de vous contacter au sujet d'un stage.\n\nCordialement,\nJourney Test Student",
-    });
-    await route.fulfill({
-      status: 200,
-      contentType: "application/json",
-      body: JSON.stringify({
-        id: "mock-completion-id",
-        model: "openai/gpt-4o-mini",
-        choices: [
-          {
-            message: {
-              role: "assistant",
-              content: responseContent,
-            },
-          },
-        ],
-        usage: { cost: 0.0001 },
-      }),
-    });
-  });
-}
 
 // ---------------------------------------------------------------------------
 // Auth helpers
@@ -159,9 +116,6 @@ test("J1. full wizard: company → recruiter → email found → offer → gener
 }) => {
   test.setTimeout(180_000);
 
-  await mockFindymailFound(page);
-  await mockOpenRouter(page);
-
   await signIn(page);
   await page.screenshot({ path: `${SHOTS}/j1_dashboard.png` });
 
@@ -204,7 +158,7 @@ test("J1. full wizard: company → recruiter → email found → offer → gener
   // --- Step 5: Generate (mocked OpenRouter)
   await expect(page.getByText("Étape 5 sur 5")).toBeVisible({ timeout: 10_000 });
   await page.getByRole("button", { name: "Générer mon message" }).click();
-  await expect(page.getByText("Candidature spontanée")).toBeVisible({ timeout: 20_000 });
+  await expect(page.getByText("Test subject")).toBeVisible({ timeout: 20_000 });
   await page.screenshot({ path: `${SHOTS}/j1_step5_generated.png` });
 
   // Navigate to candidature detail
@@ -238,9 +192,6 @@ test("J2. email not found → manual entry → wizard advances to step 4", async
 }) => {
   test.setTimeout(120_000);
 
-  await mockFindymailNotFound(page);
-  await mockOpenRouter(page);
-
   await signIn(page);
   await page.goto("/fr/dashboard/candidatures/new", { waitUntil: "domcontentloaded" });
 
@@ -249,11 +200,11 @@ test("J2. email not found → manual entry → wizard advances to step 4", async
   await page.locator('input').first().fill("Gamma Ltd");
   await page.getByRole("button", { name: "Continuer" }).click();
 
-  // Step 2
+  // Step 2 — lastName "Notfound" triggers the E2E_MOCK not-found branch
   await expect(page.getByText("Étape 2 sur 5")).toBeVisible({ timeout: 10_000 });
   const inputs = page.locator('input[type="text"], input:not([type]):not([name="email"]):not([name="password"]):not([type="url"])');
   await inputs.nth(0).fill("Marie");
-  await inputs.nth(1).fill("Martin");
+  await inputs.nth(1).fill("Notfound");
   await inputs.nth(2).fill("CTO");
   await page.getByRole("button", { name: "Continuer" }).click();
 

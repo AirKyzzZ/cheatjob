@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, afterEach } from "vitest";
+import { describe, it, expect, vi, afterEach, beforeEach } from "vitest";
 import { OpenRouterAdapter } from "./openrouter";
 import { AIGenerationError } from "./index";
 
@@ -33,5 +33,40 @@ describe("OpenRouterAdapter.complete", () => {
     await expect(
       adapter.complete("anthropic/claude-haiku-4.5", [{ role: "user", content: "hi" }]),
     ).rejects.toBeInstanceOf(AIGenerationError);
+  });
+});
+
+describe("OpenRouterAdapter.complete — E2E_MOCK", () => {
+  beforeEach(() => {
+    process.env.E2E_MOCK = "1";
+  });
+  afterEach(() => {
+    delete process.env.E2E_MOCK;
+  });
+
+  it("returns canned drafter response without calling fetch", async () => {
+    const fetchSpy = vi.spyOn(global, "fetch");
+    const adapter = new OpenRouterAdapter("e2e-mock");
+    const result = await adapter.complete("anthropic/claude-sonnet-4-6", [
+      { role: "user", content: "draft" },
+    ]);
+    const parsed = JSON.parse(result.text) as { subject: string; body: string };
+    expect(parsed.subject).toBe("Test subject");
+    expect(parsed.body).toBe("Test body for E2E mock.");
+    expect(result.costUsd).toBe(0);
+    expect(fetchSpy).not.toHaveBeenCalled();
+  });
+
+  it("returns canned CV-extract response for haiku model without calling fetch", async () => {
+    const fetchSpy = vi.spyOn(global, "fetch");
+    const adapter = new OpenRouterAdapter("e2e-mock");
+    const result = await adapter.complete("anthropic/claude-haiku-4.5", [
+      { role: "user", content: "extract" },
+    ]);
+    const parsed = JSON.parse(result.text) as { full_name: string; skills: string[] };
+    expect(parsed.full_name).toBe("Test User");
+    expect(parsed.skills).toContain("test");
+    expect(result.costUsd).toBe(0);
+    expect(fetchSpy).not.toHaveBeenCalled();
   });
 });
