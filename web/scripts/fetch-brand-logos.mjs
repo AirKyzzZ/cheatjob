@@ -22,7 +22,9 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
 const COMPANIES_PATH = join(ROOT, "src/lib/brand-companies.ts");
 const LOGOS_PATH = join(ROOT, "src/lib/brand-logos.json");
-const ENV_PATH = join(ROOT, ".env.local");
+// `.env` is the project's single source of truth. `.env.local` kept as a
+// fallback for contributors who still use it.
+const ENV_PATHS = [join(ROOT, ".env"), join(ROOT, ".env.local")];
 
 const API = "https://api.brandfetch.io/v2";
 const FORMAT_ORDER = ["svg", "png", "webp", "jpeg"];
@@ -30,12 +32,14 @@ const FORMAT_ORDER = ["svg", "png", "webp", "jpeg"];
 const FORCE = process.argv.includes("--force");
 
 function loadEnvKey() {
-  try {
-    const raw = readFileSync(ENV_PATH, "utf8");
-    const match = raw.match(/^BRANDFETCH_API_KEY=(.+)$/m);
-    if (match) return match[1].trim().replace(/^['"]|['"]$/g, "");
-  } catch {
-    // fall through to process.env
+  for (const path of ENV_PATHS) {
+    try {
+      const raw = readFileSync(path, "utf8");
+      const match = raw.match(/^BRANDFETCH_API_KEY=(.+)$/m);
+      if (match) return match[1].trim().replace(/^['"]|['"]$/g, "");
+    } catch {
+      // try next file
+    }
   }
   return process.env.BRANDFETCH_API_KEY;
 }
