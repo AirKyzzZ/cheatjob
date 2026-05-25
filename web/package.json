@@ -8,8 +8,7 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run",
-    "fetch:brand-logos": "node scripts/fetch-brand-logos.mjs"
+    "test": "vitest run"
   },
   "dependencies": {
     "@supabase/ssr": "^0.10.2",
