@@ -52,6 +52,12 @@ export class OpenRouterAdapter implements AIProvider {
       const json = (await res.json()) as ORResponse;
       const text = json.choices?.[0]?.message?.content;
       if (!text) throw new AIGenerationError("Empty completion");
+      // OpenRouter usually echoes usage.cost; if it doesn't, log so we notice
+      // — cost tracking silently dropping to 0 is the kind of thing you only
+      // catch when reconciling against your OpenRouter bill at month-end.
+      if (json.usage?.cost == null) {
+        console.warn(`OpenRouter response for model="${model}" omitted usage.cost; recording 0`);
+      }
       return { text, model: json.model ?? model, costUsd: json.usage?.cost ?? 0 };
     } catch (err) {
       if (err instanceof AIGenerationError) throw err;

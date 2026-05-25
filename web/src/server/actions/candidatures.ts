@@ -15,7 +15,7 @@ import { insertEmailLookup } from "@/lib/db/email-lookups";
 import { assertQuotaAvailable, decrementQuota, QuotaExceededError } from "@/lib/billing/quotas";
 import { getEmailFinder } from "@/server/integrations/email-finder/findymail";
 import { EmailFinderUnavailableError } from "@/server/integrations/email-finder";
-import type { Json } from "@/types/database";
+import type { Json, TablesUpdate } from "@/types/database";
 
 async function requireUser() {
   const supabase = await getServerClient();
@@ -209,6 +209,9 @@ export async function saveManualEmail(id: string, input: unknown) {
   return { ok: true as const };
 }
 
+// `revalidatePath` invalidates the server-rendered cache so the *next* visit
+// (or a parallel tab) sees fresh data; the calling client component also calls
+// `router.refresh()` to update the current view immediately. Different jobs.
 export async function markSent(id: string) {
   const { supabase, candidature } = await requireOwnedCandidature(id);
   if (candidature.status !== "ready") {
@@ -228,7 +231,7 @@ export async function setCandidatureStatus(input: unknown) {
   const parsed = SetStatusSchema.parse(input);
   const { supabase } = await requireOwnedCandidature(parsed.id);
   const now = new Date().toISOString();
-  const patch: Record<string, string> = { status: parsed.status };
+  const patch: TablesUpdate<"candidatures"> = { status: parsed.status };
   if (parsed.status === "replied") {
     patch.replied_at = now;
   } else if (parsed.status === "closed") {
@@ -241,6 +244,9 @@ export async function setCandidatureStatus(input: unknown) {
   return { ok: true as const };
 }
 
+// Edits are stored as a NEW `messages` row (append-only). `getLatestMessage`
+// orders by created_at desc so the UI always reflects the latest edit; the
+// older rows preserve the generation history for prompt-quality analysis.
 export async function saveDraftEdit(input: unknown) {
   const parsed = SaveDraftEditSchema.parse(input);
   const { supabase, user } = await requireOwnedCandidature(parsed.candidatureId);
