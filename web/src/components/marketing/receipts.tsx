@@ -1,23 +1,20 @@
 import { BRAND_COMPANIES } from "@/lib/brand-companies";
+import brandLogos from "@/lib/brand-logos.json";
 import { ReceiptsTicker } from "./receipts-ticker";
 
+type BrandLogoEntry = { logoUrl: string | null; error?: string; fetchedAt?: string };
+const logos = brandLogos as Record<string, BrandLogoEntry | undefined>;
+
 /**
- * Server Component — composes each brand's Brandfetch Logo Link URL.
- * The clientId is public (it ships in every <img> src that hits Brandfetch's
- * CDN); per Brandfetch's docs the Logo API is designed for direct browser
- * embedding, so we ship the URL and let the user's browser fetch the image —
- * no server-side calls, no API quota, no JSON cache to maintain.
- *
- * Theme `dark` = dark-colored asset for our cream background. Defaults to
- * `webp`, full-color horizontal wordmark.
+ * Server Component — reads pre-fetched brand logo URLs from
+ * `src/lib/brand-logos.json` (populated by `npm run fetch:brand-logos`).
+ * No Brandfetch API calls at runtime: the JSON is committed, deterministic,
+ * and immune to quota issues. Refresh by re-running the script.
  */
 export function Receipts() {
-  const clientId = process.env.BRANDFETCH_CLIENT_ID;
   const enriched = BRAND_COMPANIES.map((c) => ({
     ...c,
-    logoUrl: clientId
-      ? `https://cdn.brandfetch.io/${c.domain}/theme/dark/logo?c=${clientId}`
-      : null,
+    logoUrl: logos[c.domain]?.logoUrl ?? null,
   }));
   return <ReceiptsTicker companies={enriched} />;
 }
