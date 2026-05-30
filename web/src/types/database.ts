@@ -59,6 +59,45 @@ export type Database = {
         }
         Relationships: []
       }
+      scheduled_emails: {
+        Row: {
+          attempts: number
+          candidature_id: string | null
+          created_at: string
+          id: string
+          kind: string
+          last_error: string | null
+          send_after: string
+          sent_at: string | null
+          status: string
+          user_id: string
+        }
+        Insert: {
+          attempts?: number
+          candidature_id?: string | null
+          created_at?: string
+          id?: string
+          kind: string
+          last_error?: string | null
+          send_after: string
+          sent_at?: string | null
+          status?: string
+          user_id: string
+        }
+        Update: {
+          attempts?: number
+          candidature_id?: string | null
+          created_at?: string
+          id?: string
+          kind?: string
+          last_error?: string | null
+          send_after?: string
+          sent_at?: string | null
+          status?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       candidatures: {
         Row: {
           closed_at: string | null

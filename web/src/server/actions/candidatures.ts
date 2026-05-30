@@ -12,6 +12,7 @@ import { getLatestMessage, insertMessage } from "@/lib/db/messages";
 import { getServiceClient } from "@/lib/supabase/admin";
 import { getProfile } from "@/lib/db/profiles";
 import { insertEmailLookup } from "@/lib/db/email-lookups";
+import { enqueueFollowUp, followUpDueDate } from "@/lib/db/scheduled-emails";
 import { assertQuotaAvailable, decrementQuota, QuotaExceededError } from "@/lib/billing/quotas";
 import { getEmailFinder } from "@/server/integrations/email-finder/findymail";
 import { EmailFinderUnavailableError } from "@/server/integrations/email-finder";
@@ -213,7 +214,7 @@ export async function saveManualEmail(id: string, input: unknown) {
 // (or a parallel tab) sees fresh data; the calling client component also calls
 // `router.refresh()` to update the current view immediately. Different jobs.
 export async function markSent(id: string) {
-  const { supabase, candidature } = await requireOwnedCandidature(id);
+  const { supabase, user, candidature } = await requireOwnedCandidature(id);
   if (candidature.status !== "ready") {
     throw new Error("Candidature is not ready to send");
   }
@@ -221,7 +222,16 @@ export async function markSent(id: string) {
     status: "sent",
     sent_at: new Date().toISOString(),
   });
-  // Phase 1c: insert a scheduled_emails follow-up row here.
+  // Best-effort J+7 follow-up reminder; never block the send on it.
+  try {
+    await enqueueFollowUp(getServiceClient(), {
+      userId: user.id,
+      candidatureId: id,
+      sendAfter: followUpDueDate(new Date()),
+    });
+  } catch (err) {
+    console.warn(`follow-up enqueue failed for candidature ${id}:`, err);
+  }
   revalidatePath(`/[locale]/dashboard`, "page");
   revalidatePath(`/[locale]/dashboard/candidatures/[id]`, "page");
   return { ok: true as const };
