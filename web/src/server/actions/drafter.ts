@@ -1,5 +1,6 @@
 "use server";
 
+import { z } from "zod";
 import { getServerClient } from "@/lib/supabase/server";
 import { getServiceClient } from "@/lib/supabase/admin";
 import { getProfile } from "@/lib/db/profiles";
@@ -7,6 +8,7 @@ import { getCandidature, updateCandidature } from "@/lib/db/candidatures";
 import { insertMessage } from "@/lib/db/messages";
 import { getAIProvider } from "@/server/integrations/ai/openrouter";
 import { type AIProvider, MODELS, AIGenerationError } from "@/server/integrations/ai";
+import { extractJsonObject } from "@/server/integrations/ai/json";
 import { buildDraftPrompt, DRAFT_PROMPT_VERSION } from "@/server/integrations/ai/prompts/draft-initial";
 
 type DraftResult =
@@ -56,10 +58,12 @@ export async function generateMessage(candidatureId: string): Promise<DraftResul
   let subject: string;
   let body: string;
   try {
-    const json = JSON.parse(completion.text.trim()) as { subject?: string; body?: string };
-    if (!json.subject || !json.body) throw new Error("missing fields");
-    subject = json.subject;
-    body = json.body;
+    const parsed = z
+      .object({ subject: z.string().min(1), body: z.string().min(1) })
+      .safeParse(extractJsonObject(completion.text));
+    if (!parsed.success) throw new Error("invalid draft shape");
+    subject = parsed.data.subject;
+    body = parsed.data.body;
   } catch {
     return { ok: false, error: "generation_failed" };
   }

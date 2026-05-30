@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { extractJsonObject } from "@/server/integrations/ai/json";
 
 export const CvExtractedSchema = z.object({
   full_name: z.string().nullable().default(null),
@@ -26,7 +27,7 @@ export function parseCvExtraction(aiOutput: string, rawText: string): CvExtracte
     raw: rawText,
   };
   try {
-    const json = JSON.parse(aiOutput.trim());
+    const json = extractJsonObject(aiOutput);
     const parsed = CvExtractedSchema.safeParse(json);
     if (parsed.success) return { ...parsed.data, raw: rawText };
   } catch {
