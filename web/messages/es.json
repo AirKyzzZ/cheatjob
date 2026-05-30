@@ -24,7 +24,8 @@
     "cta": "Empezar",
     "login": "Iniciar sesión",
     "wordmarkAria": "Cheatjob — volver arriba",
-    "localeSwitcherLabel": "Idioma"
+    "localeSwitcherLabel": "Idioma",
+    "account": "Mi panel"
   },
   "auth": {
     "layout": {
@@ -241,9 +242,22 @@
       }
     },
     "upgrade": {
-      "eyebrow": "Acceso premium",
-      "title": "Más candidaturas, más oportunidades.",
-      "body": "Las suscripciones llegan pronto."
+      "eyebrow": "Sube de nivel",
+      "title": "Elige tu pase.",
+      "subtitle": "1 candidatura = 1 email encontrado + 1 mensaje personalizado + 1 seguimiento. Tus créditos nunca caducan.",
+      "unit": "candidaturas",
+      "neverExpire": "Nunca caduca",
+      "popular": "El más elegido",
+      "currentPlan": "Plan actual",
+      "cta": "Elegir",
+      "tagFree": "Para probar",
+      "tagDecollage": "Empieza tu búsqueda",
+      "tagTerrain": "Una búsqueda seria",
+      "tagReseau": "Amplía tu alcance",
+      "featTerrain": "Seguimientos J+7 y J+14 · optimizador de CV al lanzarse",
+      "featReseau": "Todo Terrain · carta de presentación y LinkedIn al lanzarse",
+      "successTitle": "¡Créditos añadidos!",
+      "successBody": "Tu pase está activo. Ve a contactar reclutadores."
     }
   },
   "hero": {

@@ -23,7 +23,8 @@
     "cta": "Get started",
     "login": "Log in",
     "wordmarkAria": "Cheatjob — back to top",
-    "localeSwitcherLabel": "Language"
+    "localeSwitcherLabel": "Language",
+    "account": "My dashboard"
   },
   "auth": {
     "layout": {
@@ -240,9 +241,22 @@
       }
     },
     "upgrade": {
-      "eyebrow": "Premium access",
-      "title": "More applications, more opportunities.",
-      "body": "Subscriptions are coming soon."
+      "eyebrow": "Level up",
+      "title": "Pick your pass.",
+      "subtitle": "1 application = 1 email found + 1 personalized message + 1 follow-up. Your credits never expire.",
+      "unit": "applications",
+      "neverExpire": "Never expires",
+      "popular": "Most popular",
+      "currentPlan": "Current plan",
+      "cta": "Choose",
+      "tagFree": "To try it",
+      "tagDecollage": "Kick off your search",
+      "tagTerrain": "A serious search",
+      "tagReseau": "Cast a wide net",
+      "featTerrain": "J+7 & J+14 follow-ups · CV optimizer on release",
+      "featReseau": "Everything in Terrain · cover letter & LinkedIn on release",
+      "successTitle": "Credits added!",
+      "successBody": "Your pass is active. Go contact recruiters."
     }
   },
   "hero": {

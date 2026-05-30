@@ -5,7 +5,12 @@ import Stripe from "stripe";
 // not nullish, so `??` would let an empty string reach the SDK constructor
 // and trigger "Neither apiKey nor config.authenticator provided" at build
 // time when Next collects API route data.
-const apiKey = process.env.STRIPE_SECRET_KEY || "sk_placeholder_phase0";
+// Dev prefers the test-mode key (so local checkout uses Stripe test cards);
+// production (Vercel) only has the live STRIPE_SECRET_KEY set.
+const apiKey =
+  (process.env.NODE_ENV !== "production" && process.env.TEST_STRIPE_SECRET_KEY) ||
+  process.env.STRIPE_SECRET_KEY ||
+  "sk_placeholder_phase0";
 
 if (apiKey === "sk_placeholder_phase0" && process.env.NODE_ENV !== "production") {
   console.warn("STRIPE_SECRET_KEY not set; stripe client calls will fail until configured.");

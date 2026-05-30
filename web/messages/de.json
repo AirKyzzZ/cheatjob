@@ -24,7 +24,8 @@
     "cta": "Loslegen",
     "login": "Anmelden",
     "wordmarkAria": "Cheatjob — zurück nach oben",
-    "localeSwitcherLabel": "Sprache"
+    "localeSwitcherLabel": "Sprache",
+    "account": "Mein Bereich"
   },
   "auth": {
     "layout": {
@@ -241,9 +242,22 @@
       }
     },
     "upgrade": {
-      "eyebrow": "Premium-Zugang",
-      "title": "Mehr Bewerbungen, mehr Chancen.",
-      "body": "Abonnements kommen bald."
+      "eyebrow": "Leg los",
+      "title": "Wähle deinen Pass.",
+      "subtitle": "1 Bewerbung = 1 gefundene E-Mail + 1 personalisierte Nachricht + 1 Nachfassen. Deine Credits verfallen nie.",
+      "unit": "Bewerbungen",
+      "neverExpire": "Unbegrenzt gültig",
+      "popular": "Am beliebtesten",
+      "currentPlan": "Aktueller Plan",
+      "cta": "Wählen",
+      "tagFree": "Zum Testen",
+      "tagDecollage": "Starte deine Suche",
+      "tagTerrain": "Eine ernsthafte Suche",
+      "tagReseau": "Breit streuen",
+      "featTerrain": "Nachfassen J+7 & J+14 · CV-Optimizer ab Release",
+      "featReseau": "Alles aus Terrain · Anschreiben & LinkedIn ab Release",
+      "successTitle": "Credits hinzugefügt!",
+      "successBody": "Dein Pass ist aktiv. Kontaktiere jetzt Recruiter."
     }
   },
   "hero": {

@@ -22,7 +22,8 @@
     "cta": "Commencer",
     "login": "Connexion",
     "wordmarkAria": "Cheatjob — retour en haut",
-    "localeSwitcherLabel": "Langue"
+    "localeSwitcherLabel": "Langue",
+    "account": "Mon espace"
   },
   "auth": {
     "layout": {
@@ -239,9 +240,22 @@
       }
     },
     "upgrade": {
-      "eyebrow": "Accès premium",
-      "title": "Plus de candidatures, plus d'opportunités.",
-      "body": "Les abonnements arrivent bientôt."
+      "eyebrow": "Passe à la vitesse supérieure",
+      "title": "Choisis ton pass.",
+      "subtitle": "1 candidature = 1 email trouvé + 1 message personnalisé + 1 relance. Tes crédits n'expirent jamais.",
+      "unit": "candidatures",
+      "neverExpire": "Valable à vie",
+      "popular": "Le plus choisi",
+      "currentPlan": "Offre actuelle",
+      "cta": "Choisir",
+      "tagFree": "Pour tester",
+      "tagDecollage": "Lancer ta recherche",
+      "tagTerrain": "Une recherche sérieuse",
+      "tagReseau": "Ratisser large",
+      "featTerrain": "Relances J+7 & J+14 · CV optimizer dès sa sortie",
+      "featReseau": "Tout Terrain · lettre de motivation & LinkedIn dès leur sortie",
+      "successTitle": "Crédits ajoutés !",
+      "successBody": "Ton pass est actif. File contacter des recruteurs."
     }
   },
   "hero": {

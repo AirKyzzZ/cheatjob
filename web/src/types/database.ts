@@ -393,6 +393,7 @@ export type Database = {
     }
     Functions: {
       consume_quota: { Args: { p_user_id: string }; Returns: boolean }
+      add_credits: { Args: { p_user_id: string; p_credits: number }; Returns: undefined }
     }
     Enums: {
       [_ in never]: never

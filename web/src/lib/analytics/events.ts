@@ -50,6 +50,10 @@ export const EVENTS = {
   QuotaExhausted: "quota_exhausted",
   CvParsed: "cv_parsed",
   CvParseFailed: "cv_parse_failed",
+
+  UpgradeViewed: "upgrade_viewed",
+  UpgradeCheckoutStarted: "upgrade_checkout_started",
+  UpgradePurchased: "upgrade_purchased",
 } as const;
 
 export type EventName = (typeof EVENTS)[keyof typeof EVENTS];
