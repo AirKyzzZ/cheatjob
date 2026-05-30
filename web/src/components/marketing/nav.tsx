@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
+import { getBrowserClient } from "@/lib/supabase/client";
 import { useLocale, useTranslations } from "next-intl";
 import { EVENTS, track } from "@/lib/analytics/events";
 import { LocaleSwitcher } from "@/components/i18n/locale-switcher";
@@ -13,6 +15,19 @@ export function Nav() {
   const locale = useLocale();
   const reduce = useReducedMotion();
   const { scrollY } = useScroll();
+
+  // Resolved client-side so the landing stays static; only a logged-in visitor
+  // (a minority here) sees the buttons swap to their avatar.
+  const [account, setAccount] = useState<{ initial: string } | null>(null);
+  useEffect(() => {
+    getBrowserClient()
+      .auth.getUser()
+      .then(({ data }) => {
+        if (data.user) {
+          setAccount({ initial: (data.user.email ?? "?").charAt(0).toUpperCase() });
+        }
+      });
+  }, []);
 
   const secondaryLinks = [
     { label: t("wedge"), href: "#wedge", id: "wedge" },
@@ -108,26 +123,42 @@ export function Nav() {
             {t("pricing")}
           </motion.a>
           <LocaleSwitcher linkColor={linkColor} />
-          <MotionLink
-            href={`/${locale}/sign-in`}
-            onClick={() =>
-              track(EVENTS.NavLinkClick, { target: "sign-in", source: "link" })
-            }
-            style={{ color: linkColor }}
-            className="hidden md:inline-block text-[13px] font-medium hover:opacity-80 transition-opacity px-3 py-1.5 font-sans"
-          >
-            {t("login")}
-          </MotionLink>
-          <MotionLink
-            href={`/${locale}/sign-up`}
-            onClick={() =>
-              track(EVENTS.NavLinkClick, { target: "sign-up", source: "cta" })
-            }
-            style={{ backgroundColor: ctaBg, color: ctaFg }}
-            className="inline-flex items-center h-10 px-4 md:px-5 rounded-full text-[13px] font-semibold font-sans hover:-translate-y-0.5 hover:shadow-lg transition-all"
-          >
-            {t("cta")}
-          </MotionLink>
+          {account ? (
+            <MotionLink
+              href={`/${locale}/dashboard`}
+              onClick={() =>
+                track(EVENTS.NavLinkClick, { target: "dashboard", source: "avatar" })
+              }
+              style={{ backgroundColor: ctaBg, color: ctaFg }}
+              aria-label={t("account")}
+              className="inline-flex items-center justify-center h-10 w-10 rounded-full text-[14px] font-semibold font-sans hover:-translate-y-0.5 hover:shadow-lg transition-all"
+            >
+              {account.initial}
+            </MotionLink>
+          ) : (
+            <>
+              <MotionLink
+                href={`/${locale}/sign-in`}
+                onClick={() =>
+                  track(EVENTS.NavLinkClick, { target: "sign-in", source: "link" })
+                }
+                style={{ color: linkColor }}
+                className="hidden md:inline-block text-[13px] font-medium hover:opacity-80 transition-opacity px-3 py-1.5 font-sans"
+              >
+                {t("login")}
+              </MotionLink>
+              <MotionLink
+                href={`/${locale}/sign-up`}
+                onClick={() =>
+                  track(EVENTS.NavLinkClick, { target: "sign-up", source: "cta" })
+                }
+                style={{ backgroundColor: ctaBg, color: ctaFg }}
+                className="inline-flex items-center h-10 px-4 md:px-5 rounded-full text-[13px] font-semibold font-sans hover:-translate-y-0.5 hover:shadow-lg transition-all"
+              >
+                {t("cta")}
+              </MotionLink>
+            </>
+          )}
         </nav>
       </motion.div>
     </motion.header>
