@@ -6,6 +6,7 @@ import { listCandidatures } from "@/lib/db/candidatures";
 import { Button } from "@/components/ui/button";
 import { StatsStrip } from "./_components/stats-strip";
 import { CandidatureList } from "./_components/candidature-list";
+import { UpgradeSuccessToast } from "./_components/upgrade-success-toast";
 
 export default async function DashboardPage({
   params,
@@ -26,10 +27,12 @@ export default async function DashboardPage({
 
   const td = await getTranslations("app.dashboard");
   const tl = await getTranslations("app.candidatures.list");
+  const tu = await getTranslations("app.upgrade");
 
   if (isEmpty) {
     return (
       <div className="flex flex-col items-center text-center py-16 md:py-24">
+        <UpgradeSuccessToast title={tu("successTitle")} body={tu("successBody")} />
         <p className="text-[11px] uppercase tracking-[0.22em] font-sans font-medium text-muted-soft mb-6">
           {td("eyebrow")}
         </p>
@@ -53,6 +56,7 @@ export default async function DashboardPage({
 
   return (
     <div className="space-y-8">
+      <UpgradeSuccessToast title={tu("successTitle")} body={tu("successBody")} />
       <div className="flex items-center justify-between gap-4">
         <p className="text-[11px] uppercase tracking-[0.22em] font-sans font-medium text-muted-soft">
           {td("eyebrow")}
