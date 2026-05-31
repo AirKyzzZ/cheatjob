@@ -5,22 +5,33 @@ import type { Database } from "@/types/database";
 type Client = SupabaseClient<Database>;
 
 /**
- * Inserts the event into billing_events. Returns whether the row was new
- * or a duplicate (Stripe retries until 2xx).
+ * Records the event in billing_events and reports whether it has ALREADY been
+ * fully processed. We dedup on `processed_at`, not row existence: an event that
+ * was recorded but whose grant never completed (it threw, or the process
+ * crashed) must re-run on Stripe's retry rather than be swallowed as a
+ * duplicate — otherwise a paid user could end up with zero credits.
  */
 export async function recordEvent(
   client: Client,
   event: Stripe.Event,
-): Promise<{ duplicate: boolean }> {
+): Promise<{ alreadyProcessed: boolean }> {
   const { error } = await client.from("billing_events").insert({
     stripe_event_id: event.id,
     stripe_event_type: event.type,
     raw_event: event as unknown as Database["public"]["Tables"]["billing_events"]["Insert"]["raw_event"],
   });
 
-  if (!error) return { duplicate: false };
-  // 23505 = unique violation on stripe_event_id
-  if (error.code === "23505") return { duplicate: true };
+  if (!error) return { alreadyProcessed: false };
+  // 23505 = unique violation: already recorded. Re-check whether it finished.
+  if (error.code === "23505") {
+    const { data, error: selectError } = await client
+      .from("billing_events")
+      .select("processed_at")
+      .eq("stripe_event_id", event.id)
+      .single();
+    if (selectError) throw new Error(`recordEvent re-check failed: ${selectError.message}`);
+    return { alreadyProcessed: data?.processed_at != null };
+  }
   throw new Error(`recordEvent failed: ${error.message}`);
 }
 

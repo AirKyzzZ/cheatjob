@@ -2,12 +2,14 @@
 
 import { stripe } from "@/lib/billing/stripe";
 import { packPriceId, isPackKey } from "@/lib/billing/packs";
+import { isLocale } from "@/lib/i18n/config";
 import { getServerClient } from "@/lib/supabase/server";
 
 const SITE_URL = (process.env.SITE_URL ?? "https://www.cheatjob.com").replace(/\/$/, "");
 
 export async function createCheckout(pack: string, locale: string): Promise<{ url: string }> {
   if (!isPackKey(pack)) throw new Error(`Unknown pack: ${pack}`);
+  if (!isLocale(locale)) throw new Error(`Unknown locale: ${locale}`);
 
   const supabase = await getServerClient();
   const {
@@ -17,6 +19,7 @@ export async function createCheckout(pack: string, locale: string): Promise<{ ur
 
   const session = await stripe.checkout.sessions.create({
     mode: "payment",
+    payment_method_types: ["card"],
     line_items: [{ price: packPriceId(pack), quantity: 1 }],
     client_reference_id: user.id,
     metadata: { user_id: user.id, pack },

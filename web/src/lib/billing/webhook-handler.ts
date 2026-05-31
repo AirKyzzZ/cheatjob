@@ -1,33 +1,58 @@
+import type { SupabaseClient } from "@supabase/supabase-js";
 import type Stripe from "stripe";
+import type { Database } from "@/types/database";
 import type { WebhookProcessingResult } from "@/types/billing";
 import { getServiceClient } from "@/lib/supabase/admin";
 import { markErrored, markProcessed, recordEvent } from "./webhook-events";
 import { updateProfile } from "@/lib/db/profiles";
 import { creditGrantForSession } from "./packs";
 
-/**
- * Process a Stripe webhook event. Phase 0 only records events; per-event
- * business logic (subscription created, invoice paid, etc.) is added in
- * Phase 4 when real plans exist.
- */
-export async function handleWebhookEvent(event: Stripe.Event): Promise<WebhookProcessingResult> {
-  const client = getServiceClient();
+type Client = SupabaseClient<Database>;
 
+/**
+ * Process a Stripe webhook event. Currently only `checkout.session.completed`
+ * carries business logic (granting pack credits); other event types are
+ * recorded and acked. The `client` is injectable for tests.
+ */
+export async function handleWebhookEvent(
+  event: Stripe.Event,
+  client: Client = getServiceClient(),
+): Promise<WebhookProcessingResult> {
   try {
-    const { duplicate } = await recordEvent(client, event);
-    if (duplicate) return { status: "duplicate", eventId: event.id };
+    const { alreadyProcessed } = await recordEvent(client, event);
+    if (alreadyProcessed) return { status: "duplicate", eventId: event.id };
 
     if (event.type === "checkout.session.completed") {
       const session = event.data.object as Stripe.Checkout.Session;
+
+      // Only grant on a settled payment. Async methods (e.g. SEPA) arrive as
+      // `completed` with payment_status !== "paid"; ack so Stripe stops
+      // retrying — card checkout (our only live method) is "paid" here.
+      if (session.payment_status !== "paid") {
+        await markProcessed(client, event.id);
+        return { status: "ok", eventId: event.id };
+      }
+
       const grant = creditGrantForSession(session.metadata, session.client_reference_id);
       if (grant) {
+        // Idempotent per session id: a retry after a partial failure is a no-op
+        // in the DB, so credits land exactly once.
         const { error } = await client.rpc("add_credits", {
           p_user_id: grant.userId,
           p_credits: grant.credits,
+          p_session_id: session.id,
         });
         if (error) throw error;
         if (typeof session.customer === "string") {
-          await updateProfile(client, grant.userId, { stripe_customer_id: session.customer });
+          // Best effort: the grant already committed (idempotently). A failure
+          // to persist the customer id (e.g. the unique-constraint clash on a
+          // re-created Stripe customer) must not block the ack and trigger an
+          // endless retry of an event whose credits already landed.
+          try {
+            await updateProfile(client, grant.userId, { stripe_customer_id: session.customer });
+          } catch (e) {
+            console.error(`stripe webhook: failed to persist customer id for ${grant.userId}`, e);
+          }
         }
       }
     }
