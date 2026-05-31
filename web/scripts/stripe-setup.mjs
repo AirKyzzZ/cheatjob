@@ -8,11 +8,18 @@ for (const line of readFileSync(ENV_PATH, "utf8").split(/\r?\n/)) {
   if (m) env[m[1]] = m[2].trim().replace(/^["']|["']$/g, "");
 }
 
-const key = env.TEST_STRIPE_SECRET_KEY;
-if (!key || !key.startsWith("sk_test_")) {
-  console.error("TEST_STRIPE_SECRET_KEY missing or not a test key — refusing to run.");
+// Usage: `node scripts/stripe-setup.mjs` (test, default) or `… live`.
+// Idempotently creates the credit-pack products/prices and prints the env lines
+// to copy. Test mode reads TEST_STRIPE_SECRET_KEY and prints TEST_STRIPE_PRICE_*;
+// live mode reads STRIPE_SECRET_KEY and prints STRIPE_PRICE_*.
+const mode = process.argv[2] === "live" ? "live" : "test";
+const key = mode === "live" ? env.STRIPE_SECRET_KEY : env.TEST_STRIPE_SECRET_KEY;
+const expectedPrefix = mode === "live" ? "sk_live_" : "sk_test_";
+if (!key || !key.startsWith(expectedPrefix)) {
+  console.error(`${mode} secret key missing or not a ${expectedPrefix}… key — refusing to run.`);
   process.exit(1);
 }
+const envPrefix = mode === "live" ? "STRIPE_PRICE_" : "TEST_STRIPE_PRICE_";
 const stripe = new Stripe(key);
 
 // €9 / €29 / €59 — the approved good-better-best credit packs.
@@ -45,8 +52,8 @@ for (const p of PACKS) {
       metadata: { pack_key: p.key, credits: String(p.credits) },
     }));
 
-  out.push(`TEST_STRIPE_PRICE_${p.key.toUpperCase()}=${price.id}`);
+  out.push(`${envPrefix}${p.key.toUpperCase()}=${price.id}`);
 }
 
-console.log("\n--- add these to web/.env ---");
+console.log(`\n--- ${mode} price ids ---`);
 console.log(out.join("\n"));
