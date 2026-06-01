@@ -357,6 +357,24 @@ export type Database = {
         }
         Relationships: []
       }
+      tool_rate_limits: {
+        Row: {
+          ip: string
+          day: string
+          count: number
+        }
+        Insert: {
+          ip: string
+          day: string
+          count?: number
+        }
+        Update: {
+          ip?: string
+          day?: string
+          count?: number
+        }
+        Relationships: []
+      }
       waitlist_entries: {
         Row: {
           created_at: string
@@ -394,6 +412,7 @@ export type Database = {
     Functions: {
       consume_quota: { Args: { p_user_id: string }; Returns: boolean }
       add_credits: { Args: { p_user_id: string; p_credits: number; p_session_id: string }; Returns: number }
+      tool_consume: { Args: { p_ip: string; p_cap?: number }; Returns: boolean }
     }
     Enums: {
       [_ in never]: never
