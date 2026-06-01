@@ -73,3 +73,27 @@ export function getEmailSender(): EmailSender {
   if (!key) throw new Error("RESEND_API_KEY is not set");
   return new ResendAdapter(key);
 }
+
+export async function addToAudience(email: string): Promise<void> {
+  const audienceId = process.env.RESEND_AUDIENCE_ID;
+  if (!audienceId) {
+    console.warn("RESEND_AUDIENCE_ID is not set; skipping addToAudience");
+    return;
+  }
+  if (process.env.E2E_MOCK === "1") return;
+  const key = process.env.RESEND_API_KEY;
+  if (!key) throw new Error("RESEND_API_KEY is not set");
+
+  const res = await fetch(`https://api.resend.com/audiences/${audienceId}/contacts`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${key}`,
+    },
+    body: JSON.stringify({ email, unsubscribed: false }),
+  });
+  if (!res.ok) {
+    const detail = await res.text().catch(() => "");
+    throw new EmailSendError(`Resend audience ${res.status}: ${detail.slice(0, 200)}`);
+  }
+}
