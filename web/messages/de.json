@@ -584,5 +584,29 @@
     "body": "Der Unterschied: dieses hier können wir dir in ein paar Tagen bauen.",
     "ctaHome": "Zurück zur Startseite",
     "ctaPricing": "Preise ansehen"
+  },
+  "tools": {
+    "fieldTargetRole": "Angestrebte Stelle",
+    "fieldTargetCompany": "Unternehmen",
+    "fieldRecruiterName": "Name des Recruiters",
+    "fieldYou": "Du, in zwei Zeilen",
+    "fieldWhyCompany": "Warum dieses Unternehmen",
+    "fieldOriginalContext": "Deine ursprüngliche Bewerbung",
+    "fieldOfferContext": "Der Text der Stellenanzeige",
+    "fieldYouPlaceholder": "Masterstudent im Marketing, ich habe eine Kampagne geleitet, die den Traffic in drei Monaten verdoppelt hat…",
+    "generate": "Meine E-Mail generieren",
+    "generating": "Wird verfasst…",
+    "regenerate": "Neu generieren",
+    "copy": "Kopieren",
+    "copied": "Kopiert.",
+    "resultTitle": "Deine E-Mail, bereit zum Senden",
+    "captureTitle": "Erhalte diese E-Mail und die nächsten per Mail.",
+    "capturePlaceholder": "vorname.nachname@beispiel.com",
+    "captureConsent": "Ich stimme zu, meine E-Mail und Tipps für ein Vorstellungsgespräch zu erhalten.",
+    "captureSubmit": "Schick sie mir",
+    "captureDone": "Fertig. Schau in dein Postfach.",
+    "errorRateLimited": "Du hast die kostenlose Testversion ausgeschöpft. Komm morgen wieder oder erstelle dein Konto, um weiterzumachen.",
+    "errorFailed": "Die Generierung ist fehlgeschlagen. Versuch es erneut.",
+    "signupCta": "Konto erstellen"
   }
 }

@@ -582,5 +582,29 @@
     "body": "La différence : celui-ci, on peut te le construire en quelques jours.",
     "ctaHome": "Retour à l'accueil",
     "ctaPricing": "Voir les tarifs"
+  },
+  "tools": {
+    "fieldTargetRole": "Poste visé",
+    "fieldTargetCompany": "Entreprise",
+    "fieldRecruiterName": "Nom du recruteur",
+    "fieldYou": "Toi, en deux lignes",
+    "fieldWhyCompany": "Pourquoi cette entreprise",
+    "fieldOriginalContext": "Ta candidature initiale",
+    "fieldOfferContext": "Le texte de l'offre",
+    "fieldYouPlaceholder": "Étudiant en M2 marketing, j'ai piloté une campagne qui a doublé le trafic en trois mois…",
+    "generate": "Générer mon email",
+    "generating": "Rédaction en cours…",
+    "regenerate": "Régénérer",
+    "copy": "Copier",
+    "copied": "Copié.",
+    "resultTitle": "Ton email, prêt à partir",
+    "captureTitle": "Reçois cet email et les prochains par mail.",
+    "capturePlaceholder": "prenom.nom@exemple.com",
+    "captureConsent": "J'accepte de recevoir mon email et des conseils pour décrocher un entretien.",
+    "captureSubmit": "Me l'envoyer",
+    "captureDone": "C'est parti. Regarde ta boîte mail.",
+    "errorRateLimited": "Tu as fait le tour de l'essai gratuit. Reviens demain ou crée ton compte pour continuer.",
+    "errorFailed": "La génération a échoué. Réessaie.",
+    "signupCta": "Crée ton compte"
   }
 }

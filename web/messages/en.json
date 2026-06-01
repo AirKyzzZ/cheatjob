@@ -583,5 +583,29 @@
     "body": "The difference: this one, we can build for you in a few days.",
     "ctaHome": "Back home",
     "ctaPricing": "See pricing"
+  },
+  "tools": {
+    "fieldTargetRole": "Target role",
+    "fieldTargetCompany": "Company",
+    "fieldRecruiterName": "Recruiter's name",
+    "fieldYou": "You, in two lines",
+    "fieldWhyCompany": "Why this company",
+    "fieldOriginalContext": "Your original application",
+    "fieldOfferContext": "The job posting text",
+    "fieldYouPlaceholder": "M2 marketing student, I ran a campaign that doubled traffic in three months…",
+    "generate": "Generate my email",
+    "generating": "Writing…",
+    "regenerate": "Regenerate",
+    "copy": "Copy",
+    "copied": "Copied.",
+    "resultTitle": "Your email, ready to send",
+    "captureTitle": "Get this email and the next ones by mail.",
+    "capturePlaceholder": "first.last@example.com",
+    "captureConsent": "I agree to receive my email and tips to land an interview.",
+    "captureSubmit": "Send it to me",
+    "captureDone": "Done. Check your inbox.",
+    "errorRateLimited": "You've used up the free trial. Come back tomorrow or create your account to keep going.",
+    "errorFailed": "Generation failed. Try again.",
+    "signupCta": "Create your account"
   }
 }

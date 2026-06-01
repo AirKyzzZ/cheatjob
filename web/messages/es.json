@@ -584,5 +584,29 @@
     "body": "La diferencia: esta, te la podemos construir en unos días.",
     "ctaHome": "Volver al inicio",
     "ctaPricing": "Ver precios"
+  },
+  "tools": {
+    "fieldTargetRole": "Puesto al que aspiras",
+    "fieldTargetCompany": "Empresa",
+    "fieldRecruiterName": "Nombre del reclutador",
+    "fieldYou": "Tú, en dos líneas",
+    "fieldWhyCompany": "Por qué esta empresa",
+    "fieldOriginalContext": "Tu candidatura inicial",
+    "fieldOfferContext": "El texto de la oferta",
+    "fieldYouPlaceholder": "Estudiante de M2 en marketing, dirigí una campaña que duplicó el tráfico en tres meses…",
+    "generate": "Generar mi email",
+    "generating": "Redactando…",
+    "regenerate": "Regenerar",
+    "copy": "Copiar",
+    "copied": "Copiado.",
+    "resultTitle": "Tu email, listo para enviar",
+    "captureTitle": "Recibe este email y los siguientes por correo.",
+    "capturePlaceholder": "nombre.apellido@ejemplo.com",
+    "captureConsent": "Acepto recibir mi email y consejos para conseguir una entrevista.",
+    "captureSubmit": "Enviármelo",
+    "captureDone": "Listo. Mira tu bandeja de entrada.",
+    "errorRateLimited": "Has agotado la prueba gratuita. Vuelve mañana o crea tu cuenta para seguir.",
+    "errorFailed": "La generación falló. Inténtalo de nuevo.",
+    "signupCta": "Crea tu cuenta"
   }
 }
