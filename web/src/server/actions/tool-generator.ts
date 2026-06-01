@@ -4,9 +4,7 @@ import { getServiceClient } from "@/lib/supabase/admin";
 import { getAIProvider } from "@/server/integrations/ai/openrouter";
 import { MODELS } from "@/server/integrations/ai";
 import { buildToolPrompt, parseToolEmail, type ToolMode, type ToolInputs } from "@/server/integrations/ai/prompts/tool-generator";
-import { addToAudience, getEmailSender } from "@/server/integrations/email/resend";
-
-const FROM = process.env.EMAIL_FROM_TRANSACTIONAL ?? "Cheatjob <notifications@cheatjob.com>";
+import { addToAudience } from "@/server/integrations/email/resend";
 
 type GenResult = { ok: true; subject: string; body: string } | { ok: false; error: "blocked" | "rate_limited" | "generation_failed" };
 
@@ -25,17 +23,19 @@ export async function generateToolEmail(args: { mode: ToolMode; inputs: ToolInpu
   }
 }
 
-export async function captureToolLead(args: { email: string; mode: ToolMode; locale: string; subject: string; body: string }): Promise<{ ok: boolean }> {
+export async function captureToolLead(args: { email: string }): Promise<{ ok: boolean }> {
   const email = args.email.trim().toLowerCase();
   if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return { ok: false };
-  try { await addToAudience(email); } catch (e) { console.error("addToAudience failed", e); }
+  // Per-IP/day rate limit so this can't mass-add arbitrary addresses to the
+  // audience. Deliberately sends NO mail: emailing client-supplied content (or
+  // to a client-supplied recipient) from our domain would be an open relay.
+  const ip = (await headers()).get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+  const { data: allowed } = await getServiceClient().rpc("tool_consume", { p_ip: ip, p_cap: 10 });
+  if (allowed === false) return { ok: false };
   try {
-    await getEmailSender().send({
-      to: email,
-      from: FROM,
-      subject: args.subject,
-      html: `<pre style="font:inherit;white-space:pre-wrap">${args.body}</pre><p><a href="https://www.cheatjob.com/${args.locale}/sign-up?from=outils">Crée ton compte Cheatjob</a></p>`,
-    });
-  } catch (e) { console.error("sendEmail failed", e); }
+    await addToAudience(email);
+  } catch (e) {
+    console.error("addToAudience failed", e);
+  }
   return { ok: true };
 }

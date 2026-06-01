@@ -94,13 +94,7 @@ export function ToolGenerator({ mode, locale }: { mode: ToolMode; locale: string
     e.preventDefault();
     if (!result) return;
     startCapture(async () => {
-      const res = await captureToolLead({
-        email,
-        mode,
-        locale,
-        subject: result.subject,
-        body: result.body,
-      });
+      const res = await captureToolLead({ email });
       if (res.ok) {
         setCaptureSent(true);
         track(EVENTS.ToolEmailCaptured, { tool: mode });
