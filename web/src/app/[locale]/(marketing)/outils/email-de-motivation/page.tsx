@@ -18,6 +18,7 @@ export async function generateMetadata({
     title: content.metaTitle,
     description: content.metaDescription,
     alternates: { canonical: url },
+    robots: locale === "fr" ? undefined : { index: false, follow: true },
     openGraph: {
       title: content.metaTitle,
       description: content.metaDescription,

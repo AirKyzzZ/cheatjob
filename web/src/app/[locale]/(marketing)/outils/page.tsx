@@ -24,6 +24,7 @@ export async function generateMetadata({
     title: HUB_TITLE,
     description: HUB_DESCRIPTION,
     alternates: { canonical: url },
+    robots: locale === "fr" ? undefined : { index: false, follow: true },
     openGraph: {
       title: HUB_TITLE,
       description: HUB_DESCRIPTION,
