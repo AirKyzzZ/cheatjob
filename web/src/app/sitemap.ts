@@ -7,7 +7,13 @@ const HOSTNAME = "https://www.cheatjob.com";
 
 // Phase 0 only ships the landing per locale. Legal pages (Phase 1) and
 // blog posts (Phase 5) extend STATIC_PATHS when those phases ship.
-const STATIC_PATHS = [""] as const;
+const STATIC_PATHS = [
+  "",
+  "/outils",
+  "/outils/email-candidature-spontanee",
+  "/outils/relancer-un-recruteur",
+  "/outils/email-de-motivation",
+] as const;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
