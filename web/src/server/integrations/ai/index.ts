@@ -20,4 +20,5 @@ export interface AIProvider {
 export const MODELS = {
   draft: "anthropic/claude-sonnet-4.6",
   cvExtract: "anthropic/claude-haiku-4.5",
+  tool: "anthropic/claude-haiku-4.5",
 } as const;
