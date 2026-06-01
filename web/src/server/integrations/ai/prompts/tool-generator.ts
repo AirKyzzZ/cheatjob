@@ -22,6 +22,27 @@ export function buildToolPrompt(mode: ToolMode, i: ToolInputs): ChatMessage[] {
   ].filter(Boolean);
   return [
     { role: "system", content: SYSTEM[mode] },
-    { role: "user", content: `${lines.join("\n")}\n\nRéponds UNIQUEMENT avec un objet JSON: {"subject": "...", "body": "..."}. Le body en français, sauts de ligne avec \\n.` },
+    {
+      role: "user",
+      content: `${lines.join("\n")}\n\nRéponds EXACTEMENT dans ce format, sans rien d'autre, sans JSON, sans balises :\nObjet: <l'objet de l'email sur une seule ligne>\nMessage:\n<le corps de l'email, en français, sur plusieurs lignes si besoin>`,
+    },
   ];
+}
+
+// Parse the "Objet: …\nMessage:\n…" contract. Deliberately NOT JSON: a cheap model
+// routinely emits raw unescaped newlines inside a JSON string, which JSON.parse
+// rejects. A line-delimited format is newline-proof.
+export function parseToolEmail(raw: string): { subject: string; body: string } | null {
+  const text = raw.replace(/```/g, "").trim();
+  const subjectMatch = text.match(/^\s*objet\s*:\s*(.+?)\s*$/im);
+  if (!subjectMatch) return null;
+  const subject = subjectMatch[1].trim();
+  const msgMatch = text.match(/^\s*message\s*:/im);
+  const after =
+    msgMatch && msgMatch.index !== undefined
+      ? text.slice(msgMatch.index + msgMatch[0].length)
+      : text.slice((subjectMatch.index ?? 0) + subjectMatch[0].length);
+  const body = after.trim();
+  if (!subject || !body) return null;
+  return { subject, body };
 }

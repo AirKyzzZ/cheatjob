@@ -3,8 +3,7 @@ import { headers } from "next/headers";
 import { getServiceClient } from "@/lib/supabase/admin";
 import { getAIProvider } from "@/server/integrations/ai/openrouter";
 import { MODELS } from "@/server/integrations/ai";
-import { extractJsonObject } from "@/server/integrations/ai/json";
-import { buildToolPrompt, type ToolMode, type ToolInputs } from "@/server/integrations/ai/prompts/tool-generator";
+import { buildToolPrompt, parseToolEmail, type ToolMode, type ToolInputs } from "@/server/integrations/ai/prompts/tool-generator";
 import { addToAudience, getEmailSender } from "@/server/integrations/email/resend";
 
 const FROM = process.env.EMAIL_FROM_TRANSACTIONAL ?? "Cheatjob <notifications@cheatjob.com>";
@@ -18,8 +17,8 @@ export async function generateToolEmail(args: { mode: ToolMode; inputs: ToolInpu
   if (rlErr || allowed === false) return { ok: false, error: "rate_limited" };
   try {
     const { text } = await getAIProvider().complete(MODELS.tool, buildToolPrompt(args.mode, args.inputs));
-    const parsed = extractJsonObject(text) as { subject?: unknown; body?: unknown };
-    if (typeof parsed?.subject !== "string" || typeof parsed?.body !== "string") return { ok: false, error: "generation_failed" };
+    const parsed = parseToolEmail(text);
+    if (!parsed) return { ok: false, error: "generation_failed" };
     return { ok: true, subject: parsed.subject, body: parsed.body };
   } catch {
     return { ok: false, error: "generation_failed" };

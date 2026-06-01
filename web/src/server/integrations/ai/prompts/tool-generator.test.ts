@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { buildToolPrompt, type ToolInputs } from "./tool-generator";
+import { buildToolPrompt, parseToolEmail, type ToolInputs } from "./tool-generator";
 
 const inputs: ToolInputs = {
   targetRole: "Stage produit",
@@ -19,11 +19,12 @@ describe("buildToolPrompt", () => {
     expect(messages[1].role).toBe("user");
   });
 
-  it("includes the target company, role and asks for JSON in the user message", () => {
+  it("includes the company, role and the Objet/Message format in the user message", () => {
     const user = buildToolPrompt("candidature_spontanee", inputs)[1].content;
     expect(user).toContain("Qonto");
     expect(user).toContain("Stage produit");
-    expect(user).toContain("JSON");
+    expect(user).toContain("Objet:");
+    expect(user).toContain("Message:");
   });
 
   it("uses a different system prompt for each mode", () => {
@@ -33,5 +34,33 @@ describe("buildToolPrompt", () => {
     expect(spont).not.toBe(relance);
     expect(relance).not.toBe(motivation);
     expect(spont).not.toBe(motivation);
+  });
+});
+
+describe("parseToolEmail", () => {
+  it("parses a well-formed response with a multiline body", () => {
+    const out = parseToolEmail(
+      "Objet: Relance candidature\nMessage:\nBonjour,\n\nJe reviens vers vous.\n\nCordialement",
+    );
+    expect(out).toEqual({
+      subject: "Relance candidature",
+      body: "Bonjour,\n\nJe reviens vers vous.\n\nCordialement",
+    });
+  });
+
+  it("tolerates code fences and surrounding noise", () => {
+    expect(parseToolEmail("```\nObjet: Test\nMessage:\nCorps ici\n```")).toEqual({
+      subject: "Test",
+      body: "Corps ici",
+    });
+  });
+
+  it("returns null when the Objet line is missing", () => {
+    expect(parseToolEmail("juste du texte sans format")).toBeNull();
+    expect(parseToolEmail("Message:\nun corps sans objet")).toBeNull();
+  });
+
+  it("returns null when the body is empty", () => {
+    expect(parseToolEmail("Objet: Coucou\nMessage:\n   ")).toBeNull();
   });
 });

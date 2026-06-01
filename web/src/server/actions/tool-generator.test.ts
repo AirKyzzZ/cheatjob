@@ -44,7 +44,7 @@ describe("generateToolEmail", () => {
   });
 
   it("returns the parsed subject and body on success", async () => {
-    complete.mockResolvedValue({ text: JSON.stringify({ subject: "S", body: "B" }) });
+    complete.mockResolvedValue({ text: "Objet: S\nMessage:\nB" });
     const result = await generateToolEmail({ mode: "motivation", inputs });
     expect(result).toEqual({ ok: true, subject: "S", body: "B" });
   });
@@ -55,14 +55,14 @@ describe("generateToolEmail", () => {
     expect(result).toEqual({ ok: false, error: "generation_failed" });
   });
 
-  it("returns generation_failed when the model output has no usable JSON", async () => {
-    complete.mockResolvedValue({ text: "désolé, pas de json ici" });
+  it("returns generation_failed when the model output has no usable format", async () => {
+    complete.mockResolvedValue({ text: "désolé, aucun format exploitable ici" });
     const result = await generateToolEmail({ mode: "candidature_spontanee", inputs });
     expect(result).toEqual({ ok: false, error: "generation_failed" });
   });
 
-  it("returns generation_failed when the JSON is missing the subject", async () => {
-    complete.mockResolvedValue({ text: JSON.stringify({ body: "B" }) });
+  it("returns generation_failed when the Objet line is missing", async () => {
+    complete.mockResolvedValue({ text: "Message:\njuste un corps sans objet" });
     const result = await generateToolEmail({ mode: "candidature_spontanee", inputs });
     expect(result).toEqual({ ok: false, error: "generation_failed" });
   });
