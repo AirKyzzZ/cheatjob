@@ -54,6 +54,12 @@ export const EVENTS = {
   UpgradeViewed: "upgrade_viewed",
   UpgradeCheckoutStarted: "upgrade_checkout_started",
   UpgradePurchased: "upgrade_purchased",
+
+  ToolViewed: "tool_viewed",
+  ToolGenerated: "tool_generated",
+  ToolEmailCaptured: "tool_email_captured",
+  ToolSignupClicked: "tool_signup_clicked",
+  ToolRateLimited: "tool_rate_limited",
 } as const;
 
 export type EventName = (typeof EVENTS)[keyof typeof EVENTS];
