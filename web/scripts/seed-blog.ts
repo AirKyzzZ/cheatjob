@@ -1,6 +1,11 @@
 // Usage: npm run seed:blog [count]   (default 3). Writes validated posts to
 // content/blog/ locally for review. No GitHub commit, no deploy. Needs
-// OPENROUTER_API_KEY in web/.env.
+// OPENROUTER_API_KEY in web/.env. With E2E_MOCK=1 it only checks wiring (the
+// mock returns non-MDX, so every run is reported skipped/validation-failed).
+//
+// Requires scripts/package.json and src/package.json (both {"type":"module"}):
+// they force tsx's ESM loader so the @/ alias resolves and the ESM-only
+// @mdx-js/mdx (via the validator) loads. Do not delete those two files.
 import path from "node:path";
 import { runBlogPipeline } from "../src/server/blog/pipeline";
 
