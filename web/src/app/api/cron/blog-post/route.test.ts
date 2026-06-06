@@ -43,4 +43,11 @@ describe("GET /api/cron/blog-post", () => {
     expect(await res.json()).toMatchObject({ status: "published", slug: "x" });
     expect(run).toHaveBeenCalledTimes(1);
   });
+
+  it("returns 500 JSON when the pipeline throws", async () => {
+    run.mockRejectedValue(new Error("infra error"));
+    const res = await GET(req("Bearer s3cr3t"));
+    expect(res.status).toBe(500);
+    expect(await res.json()).toMatchObject({ error: "infra error" });
+  });
 });

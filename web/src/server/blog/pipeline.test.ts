@@ -72,4 +72,13 @@ describe("runBlogPipeline", () => {
     expect(commit).not.toHaveBeenCalled();
     expect(await fs.readFile(path.join(dir, "first.mdx"), "utf8")).toContain("raw-doc");
   });
+
+  it("treats a generation throw as a failed attempt and retries", async () => {
+    generate.mockRejectedValueOnce(new Error("OpenRouter 503"));
+    generate.mockResolvedValueOnce("raw");
+    validate.mockResolvedValue({ ok: true, frontmatter: {}, body: "b" });
+    const res = await runBlogPipeline("2026-06-05", { contentDir: dir });
+    expect(res.status).toBe("published");
+    expect(generate).toHaveBeenCalledTimes(2);
+  });
 });

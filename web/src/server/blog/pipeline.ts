@@ -12,7 +12,7 @@ const MAX_ATTEMPTS = 3;
 export type PipelineOptions = { contentDir?: string; dryRun?: boolean };
 
 export type PipelineResult =
-  | { status: "published"; slug: string; attempts: number; commitSha: string }
+  | { status: "published"; slug: string; attempts: number; commitSha: string; triggered: boolean }
   | { status: "skipped"; reason: string; slug?: string; violations?: string[] };
 
 async function existingSlugs(dir: string): Promise<Set<string>> {
@@ -24,6 +24,9 @@ async function existingSlugs(dir: string): Promise<Set<string>> {
   }
 }
 
+// Reads the running deployment's filesystem, which reflects the previous deploy.
+// A post committed by this run only appears here after the deploy hook rebuilds,
+// so dedup has a lag window equal to the deploy time. Safe for the daily cadence.
 export async function pickNextTopic(dir: string = DEFAULT_DIR): Promise<BlogTopic | null> {
   const have = await existingSlugs(dir);
   return BLOG_QUEUE.find((t) => !have.has(t.slug)) ?? null;
@@ -39,7 +42,15 @@ export async function runBlogPipeline(
 
   let lastViolations: string[] = [];
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
-    const raw = await generateBlogPost(topic, dateISO);
+    let raw: string;
+    try {
+      raw = await generateBlogPost(topic, dateISO);
+    } catch (err) {
+      // A transient model/network error is a failed attempt, not a fatal abort —
+      // the retry loop exists precisely to absorb these.
+      lastViolations = [`generation: ${err instanceof Error ? err.message : "unknown"}`];
+      continue;
+    }
     const result = await validateBlogPost(raw, topic);
     if (!result.ok) {
       lastViolations = result.violations;
@@ -49,15 +60,16 @@ export async function runBlogPipeline(
     if (opts.dryRun) {
       await fs.mkdir(dir, { recursive: true });
       await fs.writeFile(path.join(dir, `${topic.slug}.mdx`), content, "utf8");
-      return { status: "published", slug: topic.slug, attempts: attempt, commitSha: "dry-run" };
+      return { status: "published", slug: topic.slug, attempts: attempt, commitSha: "dry-run", triggered: false };
     }
     const { commitSha } = await commitFile({
       path: `web/content/blog/${topic.slug}.mdx`,
       content,
       message: `feat(blog): ${topic.title}`,
     });
-    await triggerDeploy();
-    return { status: "published", slug: topic.slug, attempts: attempt, commitSha };
+    const { triggered } = await triggerDeploy();
+    if (!triggered) console.warn(`[blog-post] deploy hook did not fire for ${topic.slug}`);
+    return { status: "published", slug: topic.slug, attempts: attempt, commitSha, triggered };
   }
   return { status: "skipped", reason: "validation failed", slug: topic.slug, violations: lastViolations };
 }

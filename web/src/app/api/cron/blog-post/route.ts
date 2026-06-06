@@ -20,6 +20,14 @@ export async function GET(request: Request) {
   }
 
   const dateISO = new Date().toISOString().slice(0, 10);
-  const result = await runBlogPipeline(dateISO);
-  return NextResponse.json(result);
+  try {
+    const result = await runBlogPipeline(dateISO);
+    return NextResponse.json(result);
+  } catch (err) {
+    console.error("[blog-post cron] pipeline error:", err);
+    return NextResponse.json(
+      { error: err instanceof Error ? err.message : "unknown" },
+      { status: 500 },
+    );
+  }
 }
