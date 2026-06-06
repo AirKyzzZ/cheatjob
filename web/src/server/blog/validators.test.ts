@@ -93,4 +93,10 @@ describe("validateBlogPost", () => {
     const res = await validateBlogPost("no frontmatter here, just text " + "mot ".repeat(700), topic);
     expect(res.ok).toBe(false);
   });
+  it("rejects a charter violation in the FAQ frontmatter", async () => {
+    const doc = buildDoc(goodBody).replace('"Après cinq jours ouvrés."', '"Vous devez attendre cinq jours."');
+    const res = await validateBlogPost(doc, topic);
+    expect(res.ok).toBe(false);
+    if (!res.ok) expect(res.violations.some((v) => v.includes("frontmatter"))).toBe(true);
+  });
 });

@@ -22,7 +22,11 @@ export async function GET(request: Request) {
   const dateISO = new Date().toISOString().slice(0, 10);
   try {
     const result = await runBlogPipeline(dateISO);
-    return NextResponse.json(result);
+    // Surface a persistent generation failure as non-2xx so Vercel's cron
+    // monitor flags it. Queue exhaustion is intentional and stays 200.
+    const httpStatus =
+      result.status === "skipped" && result.reason === "validation failed" ? 503 : 200;
+    return NextResponse.json(result, { status: httpStatus });
   } catch (err) {
     console.error("[blog-post cron] pipeline error:", err);
     return NextResponse.json(

@@ -14,4 +14,8 @@ describe("stripFences", () => {
     const doc = "hello";
     expect(stripFences("```\n" + doc + "\n```")).toBe(doc);
   });
+  it("unwraps a double-wrapped fence", () => {
+    const doc = "---\ntitle: x\n---\n\ncorps";
+    expect(stripFences("```\n```mdx\n" + doc + "\n```\n```")).toBe(doc);
+  });
 });

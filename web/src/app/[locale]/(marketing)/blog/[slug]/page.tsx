@@ -62,6 +62,7 @@ export default async function BlogPostPage({
         description: post.description,
         datePublished: post.date,
         dateModified: post.date,
+        // Posts are authored in French at every locale (non-FR routes are noindex).
         inLanguage: "fr",
         author: { "@type": "Organization", name: "Cheatjob" },
         publisher: { "@type": "Organization", name: "Cheatjob" },

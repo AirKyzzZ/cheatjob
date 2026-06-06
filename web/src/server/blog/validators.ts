@@ -42,6 +42,15 @@ export async function validateBlogPost(raw: string, topic: BlogTopic): Promise<B
     if (re.test(body)) violations.push(`charter: ${msg}`);
   }
 
+  // The frontmatter strings (title, description, FAQ) are rendered too, so they
+  // must clear the same charter bar as the body.
+  if (fm.success) {
+    const meta = [fm.data.title, fm.data.description, ...fm.data.faq.flatMap((f) => [f.q, f.a])].join(" ");
+    for (const { re, msg } of CHARTER_RULES) {
+      if (re.test(meta)) violations.push(`charter(frontmatter): ${msg}`);
+    }
+  }
+
   const words = body.split(/\s+/).filter(Boolean).length;
   if (words < 600) violations.push(`structure: ${words} words (need >= 600)`);
 

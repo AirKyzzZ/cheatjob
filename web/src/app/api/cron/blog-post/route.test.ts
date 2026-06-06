@@ -50,4 +50,16 @@ describe("GET /api/cron/blog-post", () => {
     expect(res.status).toBe(500);
     expect(await res.json()).toMatchObject({ error: "infra error" });
   });
+
+  it("returns 503 when generation persistently fails", async () => {
+    run.mockResolvedValue({ status: "skipped", reason: "validation failed", slug: "x", violations: ["charter: vous"] });
+    const res = await GET(req("Bearer s3cr3t"));
+    expect(res.status).toBe(503);
+  });
+
+  it("returns 200 when the queue is exhausted", async () => {
+    run.mockResolvedValue({ status: "skipped", reason: "queue exhausted" });
+    const res = await GET(req("Bearer s3cr3t"));
+    expect(res.status).toBe(200);
+  });
 });
