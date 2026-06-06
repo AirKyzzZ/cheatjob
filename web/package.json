@@ -12,19 +12,23 @@
     "fetch:brand-logos": "node scripts/fetch-brand-logos.mjs"
   },
   "dependencies": {
+    "@mdx-js/mdx": "^3.1.1",
     "@supabase/ssr": "^0.10.2",
     "@supabase/supabase-js": "^2.105.3",
     "@vercel/analytics": "^2.0.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "gray-matter": "^4.0.3",
     "lucide-react": "^1.8.0",
     "motion": "^12.38.0",
     "next": "16.2.4",
     "next-intl": "^4.11.0",
+    "next-mdx-remote": "^6.0.0",
     "pdf-parse": "^2.4.5",
     "posthog-js": "^1.369.3",
     "react": "19.2.4",
     "react-dom": "19.2.4",
+    "reading-time": "^1.5.0",
     "stripe": "^22.1.0",
     "tailwind-merge": "^3.5.0",
     "zod": "^4.4.3"
