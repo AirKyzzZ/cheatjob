@@ -60,6 +60,10 @@ export const EVENTS = {
   ToolEmailCaptured: "tool_email_captured",
   ToolSignupClicked: "tool_signup_clicked",
   ToolRateLimited: "tool_rate_limited",
+
+  BlogPostViewed: "blog_post_viewed",
+  BlogToolClicked: "blog_tool_clicked",
+  BlogSignupClicked: "blog_signup_clicked",
 } as const;
 
 export type EventName = (typeof EVENTS)[keyof typeof EVENTS];
