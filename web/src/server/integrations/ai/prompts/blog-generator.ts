@@ -1,7 +1,7 @@
 import type { ChatMessage } from "../index";
 import type { BlogTopic } from "@/lib/blog/queue";
 
-export const BLOG_PROMPT_VERSION = "blog-v1";
+export const BLOG_PROMPT_VERSION = "blog-v2";
 
 export function buildBlogPrompt(topic: BlogTopic, dateISO: string): ChatMessage[] {
   const system = [
@@ -9,7 +9,7 @@ export function buildBlogPrompt(topic: BlogTopic, dateISO: string): ChatMessage[
     "Tu écris un article de blog long, éditorial, en français, prêt à publier.",
     "",
     "RÈGLES DE STYLE (charte de marque, non négociables) :",
-    "- Tutoie le lecteur. N'emploie jamais \"vous\".",
+    "- Tutoie le lecteur. N'emploie jamais le mot \"vous\", même dans un exemple d'email : tutoie partout.",
     "- Phrases courtes. Une idée par phrase.",
     "- Affirmatif plutôt qu'interrogatif.",
     "- Confiant, légèrement insolent, jamais lourd. Une blague par section au maximum.",
@@ -22,17 +22,29 @@ export function buildBlogPrompt(topic: BlogTopic, dateISO: string): ChatMessage[
     "",
     "FORMAT DE SORTIE :",
     "Réponds UNIQUEMENT avec un document MDX complet : un frontmatter YAML entre --- puis le corps en markdown.",
-    "N'ajoute aucune balise de code (pas de ```), aucun texte avant ni après.",
+    "N'ajoute aucune balise de code (pas de ```), aucun texte avant ni après le document.",
     "",
-    "Le frontmatter doit contenir EXACTEMENT ces clés :",
-    "title: un titre de 10 à 70 caractères",
-    "description: 110 à 170 caractères, accrocheuse, pensée pour le référencement",
-    `date: ${dateISO}`,
-    "tags: liste YAML de 1 à 4 tags",
+    "FRONTMATTER (YAML strict, c'est la partie la plus fragile, suis-la à la lettre) :",
+    "- Mets chaque valeur texte entre guillemets droits doubles : title, description, et chaque q et chaque a de la faq.",
+    "- N'utilise JAMAIS de guillemet droit double À L'INTÉRIEUR d'une valeur. Pour citer, emploie les guillemets français « » ou rien.",
+    "- Respecte EXACTEMENT ce gabarit, mêmes clés, même ordre :",
+    "---",
+    "title: \"<titre de 10 à 70 caractères>\"",
+    "description: \"<accroche de 110 à 170 caractères, pensée pour le référencement>\"",
+    `date: "${dateISO}"`,
+    "tags:",
+    "  - <tag 1>",
+    "  - <tag 2>",
     `tool: ${topic.tool}`,
-    "faq: 2 à 4 paires q/a (clés q et a)",
+    "faq:",
+    "  - q: \"<question 1 ?>\"",
+    "    a: \"<réponse 1.>\"",
+    "  - q: \"<question 2 ?>\"",
+    "    a: \"<réponse 2.>\"",
+    "---",
+    "(1 à 4 tags, 2 à 4 paires faq.)",
     "",
-    "Le corps doit :",
+    "Le corps (après le second ---) doit :",
     "- faire au moins 700 mots,",
     "- contenir au moins deux titres de section au format \"## \",",
     `- contenir au moins un lien markdown vers /fr/outils/${topic.tool} avec une ancre naturelle,`,
