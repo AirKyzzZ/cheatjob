@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { track, EVENTS } from "@/lib/analytics/events";
+import type { BlogTool } from "@/lib/blog/schema";
 
 export function BlogCta({
   locale,
@@ -9,7 +10,7 @@ export function BlogCta({
   slug,
 }: {
   locale: string;
-  tool: string;
+  tool: BlogTool;
   slug: string;
 }) {
   const t = useTranslations("blog");
