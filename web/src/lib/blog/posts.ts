@@ -21,6 +21,18 @@ async function listMdx(dir: string): Promise<string[]> {
   }
 }
 
+function parsePost(raw: string, slug: string): BlogPost | null {
+  const { data, content } = matter(raw);
+  const fm = frontmatterSchema.safeParse(data);
+  if (!fm.success) return null;
+  return {
+    ...fm.data,
+    slug,
+    body: content.trim(),
+    readingMinutes: Math.max(1, Math.round(readingTime(content).minutes)),
+  };
+}
+
 export async function getAllSlugs(dir: string = DEFAULT_DIR): Promise<string[]> {
   return (await listMdx(dir)).map((f) => f.replace(/\.mdx$/, ""));
 }
@@ -29,16 +41,13 @@ export async function getAllPosts(dir: string = DEFAULT_DIR): Promise<BlogPost[]
   const files = await listMdx(dir);
   const posts: BlogPost[] = [];
   for (const file of files) {
-    const raw = await fs.readFile(path.join(dir, file), "utf8");
-    const { data, content } = matter(raw);
-    const fm = frontmatterSchema.safeParse(data);
-    if (!fm.success) continue;
-    posts.push({
-      ...fm.data,
-      slug: file.replace(/\.mdx$/, ""),
-      body: content.trim(),
-      readingMinutes: Math.max(1, Math.round(readingTime(content).minutes)),
-    });
+    try {
+      const raw = await fs.readFile(path.join(dir, file), "utf8");
+      const post = parsePost(raw, file.replace(/\.mdx$/, ""));
+      if (post) posts.push(post);
+    } catch {
+      continue;
+    }
   }
   return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
@@ -47,5 +56,10 @@ export async function getPostBySlug(
   slug: string,
   dir: string = DEFAULT_DIR,
 ): Promise<BlogPost | null> {
-  return (await getAllPosts(dir)).find((p) => p.slug === slug) ?? null;
+  try {
+    const raw = await fs.readFile(path.join(dir, `${slug}.mdx`), "utf8");
+    return parsePost(raw, slug);
+  } catch {
+    return null;
+  }
 }
