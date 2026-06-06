@@ -53,6 +53,15 @@ describe("validateBlogPost", () => {
     const res = await validateBlogPost(buildDoc(goodBody.replace("Tu relances", "Vous relancez")), topic);
     expect(res.ok).toBe(false);
   });
+  it("allows rendez-vous without flagging a vous violation", async () => {
+    const res = await validateBlogPost(buildDoc(goodBody + "\n\nPrends rendez-vous avec le manager."), topic);
+    expect(res.ok).toBe(true);
+  });
+  it("rejects emoji", async () => {
+    const res = await validateBlogPost(buildDoc(goodBody + "\n\nBeau boulot 🚀"), topic);
+    expect(res.ok).toBe(false);
+    if (!res.ok) expect(res.violations.some((v) => v.includes("emoji"))).toBe(true);
+  });
   it("rejects a missing internal link", async () => {
     const res = await validateBlogPost(buildDoc(goodBody.replace("[outil de relance](/fr/outils/relancer-un-recruteur)", "rien")), topic);
     expect(res.ok).toBe(false);

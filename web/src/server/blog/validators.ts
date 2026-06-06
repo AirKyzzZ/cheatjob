@@ -4,10 +4,10 @@ import { frontmatterSchema, type Frontmatter } from "@/lib/blog/schema";
 import type { BlogTopic } from "@/lib/blog/queue";
 
 const CHARTER_RULES: { re: RegExp; msg: string }[] = [
-  { re: /[—–]/, msg: "em/en dash (use commas, periods, colons)" },
-  { re: /\bpiston\b/i, msg: "banned word: piston" },
+  { re: /[—–‒―−]/, msg: "em/en/figure dash or minus (use commas, periods, colons)" },
+  { re: /\bpiston/i, msg: "banned word: piston (incl. pistonné/pistonner)" },
   { re: /\b(unleash|empower|leverage|game[\s-]?changer|nouvelle\s+génération)\b/i, msg: "banned jargon" },
-  { re: /\bvous\b/i, msg: "vous (always tutoie)" },
+  { re: /(?<!-)\bvous\b/i, msg: "vous (tutoie; rendez-vous is allowed)" },
   { re: /\p{Extended_Pictographic}/u, msg: "emoji" },
   { re: /<\/?[a-zA-Z]/, msg: "raw HTML/JSX tag" },
 ];
@@ -57,6 +57,6 @@ export async function validateBlogPost(raw: string, topic: BlogTopic): Promise<B
     violations.push(`compile: ${e instanceof Error ? e.message.split("\n")[0] : "MDX compile failed"}`);
   }
 
-  if (violations.length) return { ok: false, violations };
-  return { ok: true, frontmatter: (fm as { data: Frontmatter }).data, body };
+  if (violations.length || !fm.success) return { ok: false, violations };
+  return { ok: true, frontmatter: fm.data, body };
 }

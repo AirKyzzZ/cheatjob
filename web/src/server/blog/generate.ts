@@ -5,7 +5,7 @@ import type { BlogTopic } from "@/lib/blog/queue";
 
 export function stripFences(raw: string): string {
   const t = raw.trim();
-  const fence = t.match(/^```[a-zA-Z]*\n([\s\S]*?)\n```$/);
+  const fence = t.match(/^```[\w-]*\n([\s\S]*?)\n```$/);
   return fence ? fence[1].trim() : t;
 }
 
