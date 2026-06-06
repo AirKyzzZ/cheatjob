@@ -40,6 +40,11 @@ describe("validateBlogPost", () => {
     const res = await validateBlogPost(buildDoc(goodBody), topic);
     expect(res.ok).toBe(true);
   });
+  it("accepts an unquoted YAML date (gray-matter parses it as a Date)", async () => {
+    const doc = buildDoc(goodBody).replace('date: "2026-06-05"', "date: 2026-06-05");
+    const res = await validateBlogPost(doc, topic);
+    expect(res.ok).toBe(true);
+  });
   it("rejects an em dash", async () => {
     const res = await validateBlogPost(buildDoc(goodBody.replace("Sois bref.", "Sois bref — vraiment.")), topic);
     expect(res.ok).toBe(false);

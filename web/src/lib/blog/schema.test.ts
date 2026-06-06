@@ -27,6 +27,11 @@ describe("frontmatterSchema", () => {
   it("rejects fewer than 2 faq items", () => {
     expect(frontmatterSchema.safeParse({ ...valid, faq: [valid.faq[0]] }).success).toBe(false);
   });
+  it("coerces a YAML-parsed Date back to a YYYY-MM-DD string", () => {
+    const parsed = frontmatterSchema.safeParse({ ...valid, date: new Date("2026-06-06T00:00:00Z") });
+    expect(parsed.success).toBe(true);
+    if (parsed.success) expect(parsed.data.date).toBe("2026-06-06");
+  });
   it("exposes the 3 funnel tools", () => {
     expect(BLOG_TOOLS).toHaveLength(3);
   });
