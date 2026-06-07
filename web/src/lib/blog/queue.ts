@@ -1,3 +1,4 @@
+// Topic backlog read by the daily scheduled blog routine. No TS importers by design.
 import type { BlogTool } from "./schema";
 
 export type BlogTopic = {
