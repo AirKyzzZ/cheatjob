@@ -89,6 +89,11 @@ describe("validateBlogPost", () => {
     );
     expect(res.ok).toBe(false);
   });
+  it("rejects MDX expression braces in the body", async () => {
+    const res = await validateBlogPost(buildDoc(goodBody + "\n\nUn calcul {1 + 1} ici."), topic);
+    expect(res.ok).toBe(false);
+    if (!res.ok) expect(res.violations.some((v) => v.includes("mdx"))).toBe(true);
+  });
   it("rejects malformed frontmatter", async () => {
     const res = await validateBlogPost("no frontmatter here, just text " + "mot ".repeat(700), topic);
     expect(res.ok).toBe(false);

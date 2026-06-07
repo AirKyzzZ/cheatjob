@@ -19,16 +19,17 @@ function escapeXml(s: string): string {
 export async function GET() {
   const posts = await getAllPosts();
   const items = posts
-    .map(
-      (p) => `
+    .map((p) => {
+      const url = `${HOSTNAME}/fr/blog/${encodeURIComponent(p.slug)}`;
+      return `
     <item>
       <title>${escapeXml(p.title)}</title>
-      <link>${HOSTNAME}/fr/blog/${p.slug}</link>
-      <guid>${HOSTNAME}/fr/blog/${p.slug}</guid>
+      <link>${url}</link>
+      <guid>${url}</guid>
       <pubDate>${new Date(p.date).toUTCString()}</pubDate>
       <description>${escapeXml(p.description)}</description>
-    </item>`,
-    )
+    </item>`;
+    })
     .join("");
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

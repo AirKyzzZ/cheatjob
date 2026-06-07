@@ -15,7 +15,14 @@ export const frontmatterSchema = z.object({
   // YYYY-MM-DD string the rest of the app expects.
   date: z.preprocess(
     (v) => (v instanceof Date ? v.toISOString().slice(0, 10) : v),
-    z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+    z
+      .string()
+      .regex(/^\d{4}-\d{2}-\d{2}$/)
+      .refine((v) => {
+        const [y, m, d] = v.split("-").map(Number);
+        const dt = new Date(Date.UTC(y, m - 1, d));
+        return dt.getUTCFullYear() === y && dt.getUTCMonth() === m - 1 && dt.getUTCDate() === d;
+      }, "invalid calendar date"),
   ),
   tags: z.array(z.string().min(1)).min(1).max(4),
   tool: z.enum(BLOG_TOOLS),

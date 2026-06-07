@@ -27,6 +27,10 @@ describe("frontmatterSchema", () => {
   it("rejects fewer than 2 faq items", () => {
     expect(frontmatterSchema.safeParse({ ...valid, faq: [valid.faq[0]] }).success).toBe(false);
   });
+  it("rejects an impossible calendar date", () => {
+    expect(frontmatterSchema.safeParse({ ...valid, date: "2026-13-40" }).success).toBe(false);
+    expect(frontmatterSchema.safeParse({ ...valid, date: "2026-02-30" }).success).toBe(false);
+  });
   it("coerces a YAML-parsed Date back to a YYYY-MM-DD string", () => {
     const parsed = frontmatterSchema.safeParse({ ...valid, date: new Date("2026-06-06T00:00:00Z") });
     expect(parsed.success).toBe(true);

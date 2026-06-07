@@ -42,6 +42,11 @@ export async function validateBlogPost(raw: string, topic: BlogTopic): Promise<B
     if (re.test(body)) violations.push(`charter: ${msg}`);
   }
 
+  // next-mdx-remote@6 strips JS by default, but reject executable MDX constructs
+  // in the body too so a render-config change can't turn a committed post into RCE.
+  if (/[{}]/.test(body)) violations.push("mdx: expression braces { }");
+  if (/^\s*(import|export)\s/m.test(body)) violations.push("mdx: import/export statement");
+
   // The frontmatter strings (title, description, FAQ) are rendered too, so they
   // must clear the same charter bar as the body.
   if (fm.success) {

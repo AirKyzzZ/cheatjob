@@ -49,7 +49,7 @@ export async function getAllPosts(dir: string = DEFAULT_DIR): Promise<BlogPost[]
       continue;
     }
   }
-  return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
+  return posts.sort((a, b) => (a.date === b.date ? 0 : a.date < b.date ? 1 : -1));
 }
 
 export async function getPostBySlug(
