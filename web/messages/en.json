@@ -19,6 +19,7 @@
     "wedge": "How it works",
     "evidence": "Proof",
     "faq": "FAQ",
+    "blog": "Blog",
     "pricing": "Pricing",
     "cta": "Get started",
     "login": "Log in",
@@ -607,5 +608,17 @@
     "errorRateLimited": "You've used up the free trial. Come back tomorrow or create your account to keep going.",
     "errorFailed": "Generation failed. Try again.",
     "signupCta": "Create your account"
+  },
+  "blog": {
+    "eyebrow": "The blog",
+    "title": "Land a job without losing your mind.",
+    "intro": "Practical methods to write the right messages, reach the right people, and stop vanishing into HR inboxes.",
+    "empty": "First articles coming very soon.",
+    "metaTitle": "Cheatjob Blog: applications, follow-ups and jobs",
+    "metaDescription": "Concrete advice to land an interview: cold outreach, recruiter follow-up, motivation email. No fluff.",
+    "ctaTitle": "Go from reading to doing.",
+    "ctaBody": "We have a free tool to write the exact message this article is about. Try it, it takes two minutes.",
+    "ctaTool": "Try the free tool",
+    "ctaSignup": "Create an account"
   }
 }

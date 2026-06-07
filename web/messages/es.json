@@ -20,6 +20,7 @@
     "wedge": "Cómo funciona",
     "evidence": "Pruebas",
     "faq": "FAQ",
+    "blog": "Blog",
     "pricing": "Precios",
     "cta": "Empezar",
     "login": "Iniciar sesión",
@@ -608,5 +609,17 @@
     "errorRateLimited": "Has agotado la prueba gratuita. Vuelve mañana o crea tu cuenta para seguir.",
     "errorFailed": "La generación falló. Inténtalo de nuevo.",
     "signupCta": "Crea tu cuenta"
+  },
+  "blog": {
+    "eyebrow": "El blog",
+    "title": "Conseguir trabajo sin perder la cabeza.",
+    "intro": "Métodos concretos para escribir los mensajes correctos, llegar a las personas adecuadas y dejar de desaparecer en las bandejas de RR.HH.",
+    "empty": "Los primeros artículos llegan muy pronto.",
+    "metaTitle": "Blog Cheatjob: candidaturas, seguimientos y empleo",
+    "metaDescription": "Consejos concretos para conseguir una entrevista: candidatura espontánea, seguimiento de reclutador, email de motivación. Sin rodeos.",
+    "ctaTitle": "Pasa de leer a actuar.",
+    "ctaBody": "Tenemos una herramienta gratuita para escribir el mensaje del que habla este artículo. Pruébala, son dos minutos.",
+    "ctaTool": "Probar la herramienta gratis",
+    "ctaSignup": "Crear una cuenta"
   }
 }

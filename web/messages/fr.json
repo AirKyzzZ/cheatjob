@@ -18,6 +18,7 @@
     "wedge": "Comment ça marche",
     "evidence": "Preuves",
     "faq": "FAQ",
+    "blog": "Blog",
     "pricing": "Tarifs",
     "cta": "Commencer",
     "login": "Connexion",
@@ -606,5 +607,17 @@
     "errorRateLimited": "Tu as fait le tour de l'essai gratuit. Reviens demain ou crée ton compte pour continuer.",
     "errorFailed": "La génération a échoué. Réessaie.",
     "signupCta": "Crée ton compte"
+  },
+  "blog": {
+    "eyebrow": "Le blog",
+    "title": "Décrocher un job, sans y laisser ta santé mentale.",
+    "intro": "Des méthodes concrètes pour écrire les bons messages, viser les bonnes personnes et arrêter de disparaître dans les boîtes RH.",
+    "empty": "Les premiers articles arrivent très bientôt.",
+    "metaTitle": "Blog Cheatjob : candidature, relance et emploi",
+    "metaDescription": "Conseils concrets pour décrocher un entretien : candidature spontanée, relance de recruteur, email de motivation. Sans bla-bla.",
+    "ctaTitle": "Passe de la lecture à l'action.",
+    "ctaBody": "On a un outil gratuit pour écrire le message dont parle cet article. Essaie-le, ça prend deux minutes.",
+    "ctaTool": "Essayer l'outil gratuit",
+    "ctaSignup": "Créer un compte"
   }
 }

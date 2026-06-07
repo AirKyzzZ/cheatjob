@@ -20,6 +20,7 @@
     "wedge": "So funktioniert's",
     "evidence": "Belege",
     "faq": "FAQ",
+    "blog": "Blog",
     "pricing": "Preise",
     "cta": "Loslegen",
     "login": "Anmelden",
@@ -608,5 +609,17 @@
     "errorRateLimited": "Du hast die kostenlose Testversion ausgeschöpft. Komm morgen wieder oder erstelle dein Konto, um weiterzumachen.",
     "errorFailed": "Die Generierung ist fehlgeschlagen. Versuch es erneut.",
     "signupCta": "Konto erstellen"
+  },
+  "blog": {
+    "eyebrow": "Der Blog",
+    "title": "Einen Job finden, ohne den Verstand zu verlieren.",
+    "intro": "Konkrete Methoden, um die richtigen Nachrichten zu schreiben, die richtigen Personen zu erreichen und nicht mehr in HR-Postfächern zu verschwinden.",
+    "empty": "Die ersten Artikel kommen sehr bald.",
+    "metaTitle": "Cheatjob Blog: Bewerbungen, Nachfassen und Jobs",
+    "metaDescription": "Konkrete Tipps für ein Vorstellungsgespräch: Initiativbewerbung, Recruiter-Follow-up, Motivationsschreiben. Ohne Blabla.",
+    "ctaTitle": "Vom Lesen zum Handeln.",
+    "ctaBody": "Wir haben ein kostenloses Tool, um genau die Nachricht zu schreiben, um die es in diesem Artikel geht. Probier es aus, es dauert zwei Minuten.",
+    "ctaTool": "Das kostenlose Tool ausprobieren",
+    "ctaSignup": "Konto erstellen"
   }
 }

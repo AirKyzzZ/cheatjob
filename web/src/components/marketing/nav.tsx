@@ -112,6 +112,16 @@ export function Nav() {
               </motion.a>
             ))}
           </div>
+          <MotionLink
+            href={`/${locale}/blog`}
+            onClick={() =>
+              track(EVENTS.NavLinkClick, { target: "blog", source: "link" })
+            }
+            style={{ color: linkColor }}
+            className="hidden md:inline-block text-[13px] font-medium hover:opacity-80 transition-opacity px-3 py-1.5 font-sans"
+          >
+            {t("blog")}
+          </MotionLink>
           <motion.a
             href="#pricing"
             onClick={() =>
