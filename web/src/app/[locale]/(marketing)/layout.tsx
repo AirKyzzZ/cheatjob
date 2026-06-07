@@ -17,7 +17,7 @@ export default async function MarketingLayout({ children, params }: MarketingLay
   return (
     <>
       <BetaLocaleBanner locale={locale} />
-      {children}
+      <div style={{ paddingTop: "var(--beta-banner-h, 0px)" }}>{children}</div>
     </>
   );
 }
