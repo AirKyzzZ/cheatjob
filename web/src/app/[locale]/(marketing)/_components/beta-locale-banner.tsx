@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { isBetaLocale, defaultLocale } from "@/lib/i18n/config";
 import { localeDisplay } from "@/lib/i18n/locale-data";
@@ -10,6 +10,10 @@ import "@/lib/analytics/locale";
 import type { Locale } from "@/types/locale";
 
 const STORAGE_KEY = "cheatjob.betaBannerDismissed";
+
+// useLayoutEffect on the client (set the CSS var before paint, no flash); plain
+// useEffect on the server to avoid React's SSR useLayoutEffect warning.
+const useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 export function BetaLocaleBanner({ locale }: { locale: string }) {
   const t = useTranslations("betaBanner");
@@ -26,7 +30,7 @@ export function BetaLocaleBanner({ locale }: { locale: string }) {
   // The bar is position:fixed, so it no longer pushes content. Broadcast its
   // height as --beta-banner-h; the nav and the page content offset by it so they
   // sit below the bar instead of under the fixed nav. Reset to 0 when hidden.
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const root = document.documentElement;
     const el = ref.current;
     if (!visible || !el) {
