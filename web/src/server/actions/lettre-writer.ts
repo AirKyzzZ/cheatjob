@@ -28,11 +28,13 @@ export async function writeLettre(args: {
   const targetRole = args.targetRole.trim();
   const targetCompany = args.targetCompany.trim();
   const offerContext = args.offerContext.trim();
+  const recruiterName = args.recruiterName?.trim() || undefined;
   if (
     !targetRole ||
     targetRole.length > 200 ||
     !targetCompany ||
     targetCompany.length > 200 ||
+    (recruiterName && recruiterName.length > 200) ||
     offerContext.length < 50 ||
     offerContext.length > 6000
   ) {
@@ -66,7 +68,7 @@ export async function writeLettre(args: {
           about_me: profile.about_me,
         },
         cvExtracted: profile.cv_extracted,
-        lettre: { targetRole, targetCompany, recruiterName: args.recruiterName, offerContext },
+        lettre: { targetRole, targetCompany, recruiterName, offerContext },
       }),
     );
     const result = LettreOutputSchema.safeParse(extractJsonObject(text));

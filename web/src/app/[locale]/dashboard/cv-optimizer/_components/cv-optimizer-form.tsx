@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { track, EVENTS } from "@/lib/analytics/events";
@@ -24,8 +24,14 @@ export function CvOptimizerForm({
   const [offerText, setOfferText] = useState("");
   const [pending, startTransition] = useTransition();
   const [analysis, setAnalysis] = useState<CvAnalysis | null>(null);
-  const [errorKind, setErrorKind] = useState<"quota" | "failed" | "invalid" | null>(null);
+  const [errorKind, setErrorKind] = useState<"quota" | "failed" | "invalid" | "no_cv" | null>(
+    null,
+  );
   const [creditsUsed, setCreditsUsed] = useState(0);
+
+  useEffect(() => {
+    track(EVENTS.ToolViewed, { tool: "cv_optimizer_dashboard" });
+  }, []);
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -44,6 +50,8 @@ export function CvOptimizerForm({
         track(EVENTS.QuotaExhausted, { source: "cv_optimizer" });
       } else if (res.error === "invalid_input") {
         setErrorKind("invalid");
+      } else if (res.error === "no_cv") {
+        setErrorKind("no_cv");
       } else {
         setErrorKind("failed");
       }
@@ -94,7 +102,7 @@ export function CvOptimizerForm({
             disabled={pending}
             className="inline-flex h-12 items-center justify-center rounded-xl bg-ink px-7 font-sans text-[15px] font-medium text-cream transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
           >
-            {pending ? tt("analyzing") : t("cvSubmit")}
+            {pending ? tt("analyzing") : analysis ? tt("reanalyze") : t("cvSubmit")}
           </button>
         </div>
       </form>
@@ -113,6 +121,17 @@ export function CvOptimizerForm({
             className="mt-4 inline-flex h-11 items-center justify-center rounded-xl bg-burgundy px-5 font-sans text-[14px] font-medium text-cream transition-colors hover:bg-burgundy-deep"
           >
             {t("quotaCta")}
+          </Link>
+        </div>
+      )}
+      {errorKind === "no_cv" && (
+        <div className="mt-6 rounded-xl border border-burgundy/20 bg-burgundy/[0.04] p-5">
+          <p className="font-sans text-[14px] leading-relaxed text-ink">{t("cvNeedsCv")}</p>
+          <Link
+            href={`/${locale}/dashboard/profile`}
+            className="mt-4 inline-flex h-11 items-center justify-center rounded-xl bg-burgundy px-5 font-sans text-[14px] font-medium text-cream transition-colors hover:bg-burgundy-deep"
+          >
+            {t("cvNeedsCvCta")}
           </Link>
         </div>
       )}

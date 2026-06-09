@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { track, EVENTS } from "@/lib/analytics/events";
@@ -27,6 +27,10 @@ export function LettreForm({
   const [errorKind, setErrorKind] = useState<"quota" | "failed" | "invalid" | null>(null);
   const [copied, setCopied] = useState(false);
   const [creditsUsed, setCreditsUsed] = useState(0);
+
+  useEffect(() => {
+    track(EVENTS.ToolViewed, { tool: "lettre_dashboard" });
+  }, []);
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
