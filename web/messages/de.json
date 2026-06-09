@@ -98,6 +98,8 @@
   "app": {
     "sidebar": {
       "candidatures": "Bewerbungen",
+      "cvOptimizer": "CV-Optimierer",
+      "lettre": "Anschreiben",
       "profile": "Profil",
       "signOut": "Abmelden"
     },
@@ -259,6 +261,19 @@
       "featReseau": "Alles aus Terrain · Anschreiben & LinkedIn ab Release",
       "successTitle": "Credits hinzugefügt!",
       "successBody": "Dein Pass ist aktiv. Kontaktiere jetzt Recruiter."
+    },
+    "tools": {
+      "cvTitle": "Dein Lebenslauf, optimiert für das Angebot",
+      "cvSubmit": "Analysieren (1 Credit)",
+      "cvNeedsCv": "Wir brauchen deinen Lebenslauf, um ihn zu analysieren. Füge ihn in deinem Profil hinzu, die Extraktion erfolgt automatisch.",
+      "cvNeedsCvCta": "Meinen Lebenslauf hinzufügen",
+      "cvReecritures": "Vorgeschlagene Umformulierungen",
+      "lettreTitle": "Dein Anschreiben, verankert in deinem Lebenslauf",
+      "lettreSubmit": "Verfassen (1 Credit)",
+      "lettreInvalid": "Wir brauchen die Stelle, das Unternehmen und das Angebot (mindestens 50 Zeichen) für ein echtes Anschreiben.",
+      "creditsRemaining": "{count} Credits verbleibend",
+      "quotaExceeded": "Keine Credits mehr. Lade ein Paket auf, um weiterzumachen, deine Credits verfallen nie.",
+      "quotaCta": "Aufladen"
     }
   },
   "hero": {

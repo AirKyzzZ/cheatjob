@@ -96,6 +96,8 @@
   "app": {
     "sidebar": {
       "candidatures": "Candidatures",
+      "cvOptimizer": "Optimiseur de CV",
+      "lettre": "Lettre de motivation",
       "profile": "Profil",
       "signOut": "Se déconnecter"
     },
@@ -257,6 +259,19 @@
       "featReseau": "Tout Terrain · lettre de motivation & LinkedIn dès leur sortie",
       "successTitle": "Crédits ajoutés !",
       "successBody": "Ton pass est actif. File contacter des recruteurs."
+    },
+    "tools": {
+      "cvTitle": "Ton CV, optimisé pour l'offre",
+      "cvSubmit": "Analyser (1 crédit)",
+      "cvNeedsCv": "Il nous faut ton CV pour l'analyser. Ajoute-le sur ton profil, l'extraction se fait toute seule.",
+      "cvNeedsCvCta": "Ajouter mon CV",
+      "cvReecritures": "Réécritures proposées",
+      "lettreTitle": "Ta lettre de motivation, ancrée dans ton CV",
+      "lettreSubmit": "Rédiger (1 crédit)",
+      "lettreInvalid": "Il faut le poste, l'entreprise et l'offre (au moins 50 caractères) pour une vraie lettre.",
+      "creditsRemaining": "{count} crédits restants",
+      "quotaExceeded": "Plus de crédits. Recharge un pack pour continuer, tes crédits n'expirent jamais.",
+      "quotaCta": "Recharger"
     }
   },
   "hero": {

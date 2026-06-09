@@ -98,6 +98,8 @@
   "app": {
     "sidebar": {
       "candidatures": "Candidaturas",
+      "cvOptimizer": "Optimizador de CV",
+      "lettre": "Carta de presentación",
       "profile": "Perfil",
       "signOut": "Cerrar sesión"
     },
@@ -259,6 +261,19 @@
       "featReseau": "Todo Terrain · carta de presentación y LinkedIn al lanzarse",
       "successTitle": "¡Créditos añadidos!",
       "successBody": "Tu pase está activo. Ve a contactar reclutadores."
+    },
+    "tools": {
+      "cvTitle": "Tu CV, optimizado para la oferta",
+      "cvSubmit": "Analizar (1 crédito)",
+      "cvNeedsCv": "Necesitamos tu CV para analizarlo. Añádelo en tu perfil, la extracción es automática.",
+      "cvNeedsCvCta": "Añadir mi CV",
+      "cvReecritures": "Reescrituras sugeridas",
+      "lettreTitle": "Tu carta de presentación, anclada en tu CV",
+      "lettreSubmit": "Redactar (1 crédito)",
+      "lettreInvalid": "Necesitamos el puesto, la empresa y la oferta (al menos 50 caracteres) para una carta real.",
+      "creditsRemaining": "{count} créditos restantes",
+      "quotaExceeded": "Sin créditos. Recarga un pack para continuar, tus créditos nunca caducan.",
+      "quotaCta": "Recargar"
     }
   },
   "hero": {

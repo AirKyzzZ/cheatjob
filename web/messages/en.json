@@ -97,6 +97,8 @@
   "app": {
     "sidebar": {
       "candidatures": "Candidatures",
+      "cvOptimizer": "CV optimizer",
+      "lettre": "Cover letter",
       "profile": "Profile",
       "signOut": "Sign out"
     },
@@ -258,6 +260,19 @@
       "featReseau": "Everything in Terrain · cover letter & LinkedIn on release",
       "successTitle": "Credits added!",
       "successBody": "Your pass is active. Go contact recruiters."
+    },
+    "tools": {
+      "cvTitle": "Your CV, optimized for the offer",
+      "cvSubmit": "Analyze (1 credit)",
+      "cvNeedsCv": "We need your CV to analyze it. Add it on your profile, extraction is automatic.",
+      "cvNeedsCvCta": "Add my CV",
+      "cvReecritures": "Suggested rewrites",
+      "lettreTitle": "Your cover letter, grounded in your CV",
+      "lettreSubmit": "Write (1 credit)",
+      "lettreInvalid": "We need the role, the company and the offer (at least 50 characters) for a real letter.",
+      "creditsRemaining": "{count} credits left",
+      "quotaExceeded": "Out of credits. Top up a pack to continue, your credits never expire.",
+      "quotaCta": "Top up"
     }
   },
   "hero": {
