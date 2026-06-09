@@ -24,6 +24,10 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.cheatjob.com"),
+  title: { default: "Cheatjob", template: "%s · Cheatjob" },
+  description:
+    "Décroche des entretiens en écrivant les bons messages : candidature spontanée, relance de recruteur, email de motivation.",
+  verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION },
 };
 
 export const viewport: Viewport = {

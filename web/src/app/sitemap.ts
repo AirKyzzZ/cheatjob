@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { locales } from "@/lib/i18n/config";
-import { getAllSlugs } from "@/lib/blog/posts";
+import { getAllPosts } from "@/lib/blog/posts";
 
 const HOSTNAME = "https://www.cheatjob.com";
 
@@ -30,10 +30,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   );
 
-  const slugs = await getAllSlugs();
-  const blogEntries = slugs.map((slug) => ({
-    url: `${HOSTNAME}/fr/blog/${slug}`,
-    lastModified,
+  const posts = await getAllPosts();
+  const blogEntries = posts.map((post) => ({
+    url: `${HOSTNAME}/fr/blog/${post.slug}`,
+    lastModified: new Date(post.date),
     changeFrequency: "monthly" as const,
     priority: 0.6,
   }));
