@@ -31,9 +31,13 @@ describe("buildToolPrompt", () => {
     const spont = buildToolPrompt("candidature_spontanee", inputs)[0].content;
     const relance = buildToolPrompt("relance", inputs)[0].content;
     const motivation = buildToolPrompt("motivation", inputs)[0].content;
+    const lettre = buildToolPrompt("lettre", inputs)[0].content;
     expect(spont).not.toBe(relance);
     expect(relance).not.toBe(motivation);
     expect(spont).not.toBe(motivation);
+    expect(lettre).not.toBe(spont);
+    expect(lettre).not.toBe(relance);
+    expect(lettre).not.toBe(motivation);
   });
 
   it("builds a lettre prompt with the lettre system voice", () => {
