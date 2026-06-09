@@ -55,6 +55,10 @@ describe("parseCvAnalysis", () => {
   it("clamps via schema: rejects out-of-range score", () => {
     expect(parseCvAnalysis(JSON.stringify({ ...valid, score: 150 }))).toBeNull();
   });
+
+  it("strips extra keys returned by the model", () => {
+    expect(parseCvAnalysis(JSON.stringify({ ...valid, reasoning: "blabla" }))).toEqual(valid);
+  });
 });
 
 describe("CvAnalysisSchema", () => {

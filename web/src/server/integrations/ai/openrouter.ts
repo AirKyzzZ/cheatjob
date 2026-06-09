@@ -25,7 +25,9 @@ export class OpenRouterAdapter implements AIProvider {
 
   async complete(model: string, messages: ChatMessage[]): Promise<CompletionResult> {
     if (process.env.E2E_MOCK === "1") {
-      const wantsCvAnalysis = messages.some((m) => m.content.includes('"lacunes"'));
+      const wantsCvAnalysis = messages.some(
+        (m) => m.content.includes('"lacunes"') && m.content.includes('"mots_cles"'),
+      );
       const text = wantsCvAnalysis
         ? JSON.stringify({
             score: 64,
