@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, afterEach, beforeEach } from "vitest";
 import { OpenRouterAdapter } from "./openrouter";
 import { AIGenerationError } from "./index";
+import { buildCvOptimizerPrompt } from "./prompts/cv-optimizer";
 
 afterEach(() => vi.unstubAllGlobals());
 
@@ -70,12 +71,12 @@ describe("OpenRouterAdapter.complete — E2E_MOCK", () => {
     expect(fetchSpy).not.toHaveBeenCalled();
   });
 
-  it("E2E mock returns a CV analysis when the prompt asks for one", async () => {
+  it("E2E mock returns a CV analysis for the real cv-optimizer prompt", async () => {
     const adapter = new OpenRouterAdapter("e2e-mock");
-    const { text } = await adapter.complete("anthropic/claude-sonnet-4.6", [
-      { role: "system", content: "coach" },
-      { role: "user", content: 'Réponds en JSON avec "lacunes" et "score"' },
-    ]);
+    const { text } = await adapter.complete(
+      "anthropic/claude-sonnet-4.6",
+      buildCvOptimizerPrompt({ cv: "M2 droit", offer: "Juriste junior", full: true }),
+    );
     const parsed = JSON.parse(text);
     expect(parsed.score).toBeTypeOf("number");
     expect(Array.isArray(parsed.lacunes)).toBe(true);
