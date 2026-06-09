@@ -9,8 +9,11 @@ const jsonLd = {
       logo: "https://www.cheatjob.com/logo-mark.png",
       description:
         "Cheatjob aide à décrocher des entretiens en écrivant les bons messages : candidature spontanée, relance de recruteur, email de motivation. Vise le manager qui décide, pas la boîte RH.",
-      // TODO: social profile URLs
-      sameAs: [],
+      sameAs: [
+        "https://x.com/maximecodes",
+        "https://www.linkedin.com/in/maxime-mansiet/",
+        "https://github.com/AirKyzzZ/cheatjob",
+      ],
     },
     {
       "@type": "WebSite",
