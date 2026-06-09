@@ -10,6 +10,8 @@ const STATIC_PATHS = [
   "/outils/email-candidature-spontanee",
   "/outils/relancer-un-recruteur",
   "/outils/email-de-motivation",
+  "/outils/lettre-de-motivation",
+  "/outils/optimiser-son-cv",
   "/blog",
 ] as const;
 
