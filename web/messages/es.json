@@ -273,7 +273,8 @@
       "lettreInvalid": "Necesitamos el puesto, la empresa y la oferta (al menos 50 caracteres) para una carta real.",
       "creditsRemaining": "{count} créditos restantes",
       "quotaExceeded": "Sin créditos. Recarga un pack para continuar, tus créditos nunca caducan.",
-      "quotaCta": "Recargar"
+      "quotaCta": "Recargar",
+      "optional": "opcional"
     }
   },
   "hero": {

@@ -272,7 +272,8 @@
       "lettreInvalid": "We need the role, the company and the offer (at least 50 characters) for a real letter.",
       "creditsRemaining": "{count} credits left",
       "quotaExceeded": "Out of credits. Top up a pack to continue, your credits never expire.",
-      "quotaCta": "Top up"
+      "quotaCta": "Top up",
+      "optional": "optional"
     }
   },
   "hero": {

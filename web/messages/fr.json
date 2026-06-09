@@ -271,7 +271,8 @@
       "lettreInvalid": "Il faut le poste, l'entreprise et l'offre (au moins 50 caractères) pour une vraie lettre.",
       "creditsRemaining": "{count} crédits restants",
       "quotaExceeded": "Plus de crédits. Recharge un pack pour continuer, tes crédits n'expirent jamais.",
-      "quotaCta": "Recharger"
+      "quotaCta": "Recharger",
+      "optional": "optionnel"
     }
   },
   "hero": {

@@ -26,6 +26,7 @@ export function LettreForm({
   const [result, setResult] = useState<{ subject: string; body: string } | null>(null);
   const [errorKind, setErrorKind] = useState<"quota" | "failed" | "invalid" | null>(null);
   const [copied, setCopied] = useState(false);
+  const [creditsUsed, setCreditsUsed] = useState(0);
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -39,6 +40,7 @@ export function LettreForm({
       });
       if (res.ok) {
         setResult({ subject: res.subject, body: res.body });
+        setCreditsUsed((n) => n + 1);
         track(EVENTS.LettreGenerated, {});
         return;
       }
@@ -65,7 +67,7 @@ export function LettreForm({
     <div className="max-w-2xl">
       <h1 className="font-serif text-[32px] tracking-[-0.01em] text-ink">{t("lettreTitle")}</h1>
       <p className="mt-2 font-sans text-[14px] text-muted-soft">
-        {t("creditsRemaining", { count: quotaRemaining })}
+        {t("creditsRemaining", { count: Math.max(0, quotaRemaining - creditsUsed) })}
       </p>
 
       <form onSubmit={onSubmit} className="mt-8 grid gap-5">
@@ -84,7 +86,7 @@ export function LettreForm({
         <div>
           <label htmlFor="recruiter" className="mb-2 block font-sans text-[13px] font-medium text-ink">
             {tt("fieldRecruiterName")}
-            <span className="ml-2 font-normal text-muted-soft">(optionnel)</span>
+            <span className="ml-2 font-normal text-muted-soft">({t("optional")})</span>
           </label>
           <input id="recruiter" type="text" value={recruiterName} onChange={(e) => setRecruiterName(e.target.value)} className={inputClass} />
         </div>

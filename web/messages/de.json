@@ -273,7 +273,8 @@
       "lettreInvalid": "Wir brauchen die Stelle, das Unternehmen und das Angebot (mindestens 50 Zeichen) für ein echtes Anschreiben.",
       "creditsRemaining": "{count} Credits verbleibend",
       "quotaExceeded": "Keine Credits mehr. Lade ein Paket auf, um weiterzumachen, deine Credits verfallen nie.",
-      "quotaCta": "Aufladen"
+      "quotaCta": "Aufladen",
+      "optional": "optional"
     }
   },
   "hero": {

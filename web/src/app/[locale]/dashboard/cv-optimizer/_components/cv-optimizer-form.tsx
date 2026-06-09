@@ -25,6 +25,7 @@ export function CvOptimizerForm({
   const [pending, startTransition] = useTransition();
   const [analysis, setAnalysis] = useState<CvAnalysis | null>(null);
   const [errorKind, setErrorKind] = useState<"quota" | "failed" | "invalid" | null>(null);
+  const [creditsUsed, setCreditsUsed] = useState(0);
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -33,6 +34,7 @@ export function CvOptimizerForm({
       const res = await analyzeCvFull({ offerText });
       if (res.ok) {
         setAnalysis(res.analysis);
+        setCreditsUsed((n) => n + 1);
         track(EVENTS.CvOptimized, {});
         return;
       }
@@ -69,7 +71,7 @@ export function CvOptimizerForm({
     <div className="max-w-2xl">
       <h1 className="font-serif text-[32px] tracking-[-0.01em] text-ink">{t("cvTitle")}</h1>
       <p className="mt-2 font-sans text-[14px] text-muted-soft">
-        {t("creditsRemaining", { count: quotaRemaining })}
+        {t("creditsRemaining", { count: Math.max(0, quotaRemaining - creditsUsed) })}
       </p>
 
       <form onSubmit={onSubmit} className="mt-8 grid gap-5">
@@ -153,8 +155,8 @@ export function CvOptimizerForm({
                 {t("cvReecritures")}
               </p>
               <div className="mt-3 grid gap-4">
-                {analysis.reecritures.map((r) => (
-                  <div key={r.avant} className="rounded-xl border border-ink/10 p-4">
+                {analysis.reecritures.map((r, i) => (
+                  <div key={i} className="rounded-xl border border-ink/10 p-4">
                     <p className="font-sans text-[14px] leading-relaxed text-muted-soft line-through">
                       {r.avant}
                     </p>
