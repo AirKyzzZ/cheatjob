@@ -18,8 +18,10 @@ export function buildLettrePrompt(args: {
   const lines = [
     `Candidat: ${args.profile.full_name ?? "inconnu"}`,
     args.profile.school ? `Formation: ${args.profile.school}` : null,
-    args.profile.about_me ? `À propos: ${args.profile.about_me}` : null,
-    args.cvExtracted ? `CV (extrait structuré): ${JSON.stringify(args.cvExtracted)}` : null,
+    args.profile.about_me ? `À propos: ${args.profile.about_me.slice(0, 2000)}` : null,
+    args.cvExtracted
+      ? `CV (extrait structuré): ${JSON.stringify(args.cvExtracted).slice(0, 10000)}`
+      : null,
     `Poste visé: ${args.lettre.targetRole}`,
     `Entreprise: ${args.lettre.targetCompany}`,
     args.lettre.recruiterName ? `Destinataire: ${args.lettre.recruiterName}` : null,

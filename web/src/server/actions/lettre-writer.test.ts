@@ -60,6 +60,18 @@ describe("writeLettre", () => {
       ok: false,
       error: "invalid_input",
     });
+    expect(await writeLettre({ ...INPUT, targetRole: "x".repeat(201) })).toEqual({
+      ok: false,
+      error: "invalid_input",
+    });
+    expect(await writeLettre({ ...INPUT, targetCompany: "x".repeat(201) })).toEqual({
+      ok: false,
+      error: "invalid_input",
+    });
+    expect(await writeLettre({ ...INPUT, offerContext: "o".repeat(6001) })).toEqual({
+      ok: false,
+      error: "invalid_input",
+    });
   });
 
   it("returns quota_exceeded when out of credits", async () => {

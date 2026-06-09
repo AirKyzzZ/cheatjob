@@ -28,7 +28,14 @@ export async function writeLettre(args: {
   const targetRole = args.targetRole.trim();
   const targetCompany = args.targetCompany.trim();
   const offerContext = args.offerContext.trim();
-  if (!targetRole || !targetCompany || offerContext.length < 50 || offerContext.length > 6000) {
+  if (
+    !targetRole ||
+    targetRole.length > 200 ||
+    !targetCompany ||
+    targetCompany.length > 200 ||
+    offerContext.length < 50 ||
+    offerContext.length > 6000
+  ) {
     return { ok: false, error: "invalid_input" };
   }
 
