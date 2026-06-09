@@ -25,17 +25,27 @@ export class OpenRouterAdapter implements AIProvider {
 
   async complete(model: string, messages: ChatMessage[]): Promise<CompletionResult> {
     if (process.env.E2E_MOCK === "1") {
-      const text = model.includes("haiku")
+      const wantsCvAnalysis = messages.some((m) => m.content.includes('"lacunes"'));
+      const text = wantsCvAnalysis
         ? JSON.stringify({
-            full_name: "Test User",
-            school: "Test School",
-            field_of_study: "Test Field",
-            experiences: [],
-            skills: ["test"],
-            projects: [],
-            languages: ["FR"],
+            score: 64,
+            forces: ["Stage pertinent pour le poste"],
+            lacunes: ["Aucun résultat chiffré"],
+            mots_cles: ["gestion de projet"],
+            conseils: ["Quantifie tes deux dernières expériences"],
+            reecritures: [{ avant: "Participation à des projets", apres: "Pilotage de 3 projets, 2 livrés en avance" }],
           })
-        : JSON.stringify({ subject: "Test subject", body: "Test body for E2E mock." });
+        : model.includes("haiku")
+          ? JSON.stringify({
+              full_name: "Test User",
+              school: "Test School",
+              field_of_study: "Test Field",
+              experiences: [],
+              skills: ["test"],
+              projects: [],
+              languages: ["FR"],
+            })
+          : JSON.stringify({ subject: "Test subject", body: "Test body for E2E mock." });
       return { text, model, costUsd: 0 };
     }
 

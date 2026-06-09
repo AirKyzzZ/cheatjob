@@ -69,4 +69,15 @@ describe("OpenRouterAdapter.complete — E2E_MOCK", () => {
     expect(result.costUsd).toBe(0);
     expect(fetchSpy).not.toHaveBeenCalled();
   });
+
+  it("E2E mock returns a CV analysis when the prompt asks for one", async () => {
+    const adapter = new OpenRouterAdapter("e2e-mock");
+    const { text } = await adapter.complete("anthropic/claude-sonnet-4.6", [
+      { role: "system", content: "coach" },
+      { role: "user", content: 'Réponds en JSON avec "lacunes" et "score"' },
+    ]);
+    const parsed = JSON.parse(text);
+    expect(parsed.score).toBeTypeOf("number");
+    expect(Array.isArray(parsed.lacunes)).toBe(true);
+  });
 });
