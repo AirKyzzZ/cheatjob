@@ -1,6 +1,6 @@
 import type { ChatMessage } from "../index";
 export const TOOL_PROMPT_VERSION = "tool-v1";
-export type ToolMode = "candidature_spontanee" | "relance" | "motivation";
+export type ToolMode = "candidature_spontanee" | "relance" | "motivation" | "lettre";
 export type ToolInputs = {
   targetRole: string; targetCompany: string; recruiterName?: string; you: string;
   whyCompany?: string; originalContext?: string; offerContext?: string;
@@ -9,6 +9,8 @@ const SYSTEM: Record<ToolMode, string> = {
   candidature_spontanee: "Tu es un coach emploi français. Rédige un email de candidature spontanée court, percutant et personnalisé (90-130 mots), en français, prêt à envoyer. Pas de blabla.",
   relance: "Tu es un coach emploi français. Rédige une relance polie et concise (60-90 mots) après une candidature ou un entretien, en français, qui donne envie de répondre sans mettre la pression.",
   motivation: "Tu es un coach emploi français. Rédige un email de motivation structuré (120-160 mots) en réponse à une offre, en français, concret et orienté valeur ajoutée.",
+  lettre:
+    "Tu es un coach emploi français. Rédige une lettre de motivation complète (220-300 mots) en français : une accroche directe qui montre que l'offre a été lue, une preuve concrète de valeur tirée du profil, une conclusion qui propose un échange. Pas de « Madame, Monsieur » si un destinataire est connu, pas de formules creuses.",
 };
 export function buildToolPrompt(mode: ToolMode, i: ToolInputs): ChatMessage[] {
   const lines = [
