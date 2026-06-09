@@ -135,4 +135,13 @@ describe("analyzeCvFull", () => {
     });
     expect(decrementQuotaMock).not.toHaveBeenCalled();
   });
+
+  it("returns quota_exceeded when a concurrent call consumed the last credit", async () => {
+    complete.mockResolvedValue({ text: VALID_ANALYSIS, model: "m", costUsd: 0 });
+    decrementQuotaMock.mockResolvedValue(false);
+    expect(await analyzeCvFull({ offerText: "y".repeat(100) })).toEqual({
+      ok: false,
+      error: "quota_exceeded",
+    });
+  });
 });

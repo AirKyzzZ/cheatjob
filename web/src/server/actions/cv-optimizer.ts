@@ -77,18 +77,22 @@ export async function analyzeCvFull(args: { offerText: string }): Promise<FullRe
 
   const cv = [JSON.stringify(profile.cv_extracted), profile.about_me]
     .filter(Boolean)
-    .join("\n\nÀ propos: ");
+    .join("\n\nÀ propos: ")
+    .slice(0, 12000);
+  let analysis: CvAnalysis | null;
   try {
     const { text } = await getAIProvider().complete(
       MODELS.cvOptimize,
       buildCvOptimizerPrompt({ cv, offer, full: true }),
     );
-    const analysis = parseCvAnalysis(text);
-    if (!analysis) return { ok: false, error: "generation_failed" };
-    // Charge only after a successful parse — a failed generation must never cost a credit.
-    await decrementQuota(getServiceClient(), user.id);
-    return { ok: true, analysis };
+    analysis = parseCvAnalysis(text);
   } catch {
     return { ok: false, error: "generation_failed" };
   }
+  if (!analysis) return { ok: false, error: "generation_failed" };
+  // Charge only after a successful parse — a failed generation must never cost a credit.
+  // consume_quota is atomic: false means a concurrent call won the last credit.
+  const consumed = await decrementQuota(getServiceClient(), user.id);
+  if (!consumed) return { ok: false, error: "quota_exceeded" };
+  return { ok: true, analysis };
 }
