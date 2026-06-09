@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
 import { getBrowserClient } from "@/lib/supabase/client";
@@ -13,6 +14,12 @@ const MotionLink = motion.create(Link);
 export function Nav() {
   const t = useTranslations("nav");
   const locale = useLocale();
+  const pathname = usePathname();
+  // On the landing the nav links are in-page anchors; on every other page (blog,
+  // etc.) they must point back to the landing or they no-op (nothing to scroll to).
+  const onLanding = pathname === `/${locale}` || pathname === `/${locale}/`;
+  const sectionHref = (id: string) => (onLanding ? `#${id}` : `/${locale}#${id}`);
+  const homeHref = onLanding ? "#top" : `/${locale}`;
   const reduce = useReducedMotion();
   const { scrollY } = useScroll();
 
@@ -30,9 +37,9 @@ export function Nav() {
   }, []);
 
   const secondaryLinks = [
-    { label: t("wedge"), href: "#wedge", id: "wedge" },
-    { label: t("evidence"), href: "#evidence", id: "evidence" },
-    { label: t("faq"), href: "#faq", id: "faq" },
+    { label: t("wedge"), id: "wedge" },
+    { label: t("evidence"), id: "evidence" },
+    { label: t("faq"), id: "faq" },
   ] as const;
 
   // Hero is cream-on-cream now (was dark before), so the nav needs a
@@ -83,8 +90,8 @@ export function Nav() {
         }}
         className="glass-pill rounded-full h-14 flex items-center justify-between px-5 md:px-6 border"
       >
-        <a
-          href="#top"
+        <Link
+          href={homeHref}
           aria-label={t("wordmarkAria")}
           onClick={() => track(EVENTS.NavLinkClick, { target: "top" })}
           className="flex items-baseline font-serif"
@@ -95,14 +102,14 @@ export function Nav() {
           >
             cheatjob
           </motion.span>
-        </a>
+        </Link>
 
         <nav className="flex items-center gap-1 lg:gap-2">
           <div className="hidden lg:flex items-center gap-1 pr-2">
             {secondaryLinks.map((link) => (
-              <motion.a
+              <MotionLink
                 key={link.id}
-                href={link.href}
+                href={sectionHref(link.id)}
                 onClick={() =>
                   track(EVENTS.NavLinkClick, { target: link.id, source: "link" })
                 }
@@ -110,7 +117,7 @@ export function Nav() {
                 className="text-[13px] font-medium hover:opacity-80 transition-opacity px-3 py-1.5 rounded-full font-sans"
               >
                 {link.label}
-              </motion.a>
+              </MotionLink>
             ))}
           </div>
           <MotionLink
@@ -123,8 +130,8 @@ export function Nav() {
           >
             {t("blog")}
           </MotionLink>
-          <motion.a
-            href="#pricing"
+          <MotionLink
+            href={sectionHref("pricing")}
             onClick={() =>
               track(EVENTS.NavLinkClick, { target: "pricing", source: "link" })
             }
@@ -132,7 +139,7 @@ export function Nav() {
             className="hidden md:inline-block text-[13px] font-medium hover:opacity-80 transition-opacity px-3 py-1.5 font-sans"
           >
             {t("pricing")}
-          </motion.a>
+          </MotionLink>
           <LocaleSwitcher linkColor={linkColor} />
           {account ? (
             <MotionLink
