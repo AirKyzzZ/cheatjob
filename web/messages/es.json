@@ -608,7 +608,18 @@
     "captureDone": "Hecho. Te escribimos muy pronto.",
     "errorRateLimited": "Has agotado la prueba gratuita. Vuelve mañana o crea tu cuenta para seguir.",
     "errorFailed": "La generación falló. Inténtalo de nuevo.",
-    "signupCta": "Crea tu cuenta"
+    "signupCta": "Crea tu cuenta",
+    "fieldCvText": "Tu CV (pega el texto)",
+    "fieldCvTextPlaceholder": "Pega aquí el contenido de tu CV, en texto plano, sin formato.",
+    "analyze": "Analizar mi CV",
+    "analyzing": "Analizando…",
+    "reanalyze": "Volver a analizar",
+    "cvResultTitle": "Tu CV frente a esta oferta",
+    "cvForces": "Puntos fuertes",
+    "cvLacunes": "Lo que falta",
+    "cvMotsCles": "Palabras clave a incluir",
+    "cvConseils": "Consejos concretos",
+    "errorCvTooShort": "Necesitamos un CV real (al menos 200 caracteres) y una oferta real (al menos 50) para un análisis útil."
   },
   "blog": {
     "eyebrow": "El blog",

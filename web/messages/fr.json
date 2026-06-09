@@ -606,7 +606,18 @@
     "captureDone": "C'est noté. On t'écrit très vite.",
     "errorRateLimited": "Tu as fait le tour de l'essai gratuit. Reviens demain ou crée ton compte pour continuer.",
     "errorFailed": "La génération a échoué. Réessaie.",
-    "signupCta": "Crée ton compte"
+    "signupCta": "Crée ton compte",
+    "fieldCvText": "Ton CV (copie-colle le texte)",
+    "fieldCvTextPlaceholder": "Colle ici le contenu de ton CV, brut, sans mise en forme.",
+    "analyze": "Analyser mon CV",
+    "analyzing": "Analyse en cours…",
+    "reanalyze": "Relancer l'analyse",
+    "cvResultTitle": "Ton CV face à cette offre",
+    "cvForces": "Points forts",
+    "cvLacunes": "Ce qui manque",
+    "cvMotsCles": "Mots-clés à placer",
+    "cvConseils": "Conseils concrets",
+    "errorCvTooShort": "Il faut un vrai CV (au moins 200 caractères) et une vraie offre (au moins 50) pour une analyse utile."
   },
   "blog": {
     "eyebrow": "Le blog",

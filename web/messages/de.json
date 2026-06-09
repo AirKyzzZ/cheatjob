@@ -608,7 +608,18 @@
     "captureDone": "Erledigt. Wir melden uns bald.",
     "errorRateLimited": "Du hast die kostenlose Testversion ausgeschöpft. Komm morgen wieder oder erstelle dein Konto, um weiterzumachen.",
     "errorFailed": "Die Generierung ist fehlgeschlagen. Versuch es erneut.",
-    "signupCta": "Konto erstellen"
+    "signupCta": "Konto erstellen",
+    "fieldCvText": "Dein Lebenslauf (Text einfügen)",
+    "fieldCvTextPlaceholder": "Füge hier den Inhalt deines Lebenslaufs ein, unformatiert.",
+    "analyze": "Meinen Lebenslauf analysieren",
+    "analyzing": "Analyse läuft…",
+    "reanalyze": "Erneut analysieren",
+    "cvResultTitle": "Dein Lebenslauf zu diesem Angebot",
+    "cvForces": "Stärken",
+    "cvLacunes": "Was fehlt",
+    "cvMotsCles": "Keywords ergänzen",
+    "cvConseils": "Konkrete Tipps",
+    "errorCvTooShort": "Wir brauchen einen echten Lebenslauf (mindestens 200 Zeichen) und ein echtes Angebot (mindestens 50) für eine nützliche Analyse."
   },
   "blog": {
     "eyebrow": "Der Blog",

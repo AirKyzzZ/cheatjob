@@ -607,7 +607,18 @@
     "captureDone": "You're in. We'll be in touch soon.",
     "errorRateLimited": "You've used up the free trial. Come back tomorrow or create your account to keep going.",
     "errorFailed": "Generation failed. Try again.",
-    "signupCta": "Create your account"
+    "signupCta": "Create your account",
+    "fieldCvText": "Your CV (paste the text)",
+    "fieldCvTextPlaceholder": "Paste your CV content here, raw, no formatting.",
+    "analyze": "Analyze my CV",
+    "analyzing": "Analyzing…",
+    "reanalyze": "Run it again",
+    "cvResultTitle": "Your CV against this offer",
+    "cvForces": "Strengths",
+    "cvLacunes": "What's missing",
+    "cvMotsCles": "Keywords to add",
+    "cvConseils": "Concrete advice",
+    "errorCvTooShort": "We need a real CV (at least 200 characters) and a real offer (at least 50) for a useful analysis."
   },
   "blog": {
     "eyebrow": "The blog",
