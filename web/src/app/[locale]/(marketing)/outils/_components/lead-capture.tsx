@@ -9,15 +9,19 @@ export function LeadCapture({ tool }: { tool: string }) {
   const t = useTranslations("tools");
   const [email, setEmail] = useState("");
   const [captureSent, setCaptureSent] = useState(false);
+  const [captureError, setCaptureError] = useState(false);
   const [capturePending, startCapture] = useTransition();
 
   function onCapture(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setCaptureError(false);
     startCapture(async () => {
       const res = await captureToolLead({ email });
       if (res.ok) {
         setCaptureSent(true);
         track(EVENTS.ToolEmailCaptured, { tool });
+      } else {
+        setCaptureError(true);
       }
     });
   }
@@ -47,6 +51,11 @@ export function LeadCapture({ tool }: { tool: string }) {
               {capturePending ? "…" : t("captureSubmit")}
             </button>
           </div>
+          {captureError && (
+            <p className="mt-3 font-sans text-[13px] leading-relaxed text-cream/85">
+              {t("captureError")}
+            </p>
+          )}
           <p className="mt-3 font-sans text-[12px] leading-relaxed text-cream/55">
             {t("captureConsent")}
           </p>

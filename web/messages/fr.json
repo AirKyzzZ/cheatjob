@@ -620,6 +620,7 @@
     "captureConsent": "J'accepte de recevoir des conseils et des modèles pour décrocher un entretien.",
     "captureSubmit": "Je m'inscris",
     "captureDone": "C'est noté. On t'écrit très vite.",
+    "captureError": "On n'a pas pu enregistrer ton email. Vérifie l'adresse et réessaie.",
     "errorRateLimited": "Tu as fait le tour de l'essai gratuit. Reviens demain ou crée ton compte pour continuer.",
     "errorFailed": "La génération a échoué. Réessaie.",
     "signupCta": "Crée ton compte",

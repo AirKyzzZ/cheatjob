@@ -622,6 +622,7 @@
     "captureConsent": "Ich möchte Tipps und Vorlagen erhalten, um ein Vorstellungsgespräch zu bekommen.",
     "captureSubmit": "Anmelden",
     "captureDone": "Erledigt. Wir melden uns bald.",
+    "captureError": "Wir konnten deine E-Mail nicht speichern. Prüfe die Adresse und versuch es nochmal.",
     "errorRateLimited": "Du hast die kostenlose Testversion ausgeschöpft. Komm morgen wieder oder erstelle dein Konto, um weiterzumachen.",
     "errorFailed": "Die Generierung ist fehlgeschlagen. Versuch es erneut.",
     "signupCta": "Konto erstellen",

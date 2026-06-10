@@ -622,6 +622,7 @@
     "captureConsent": "Acepto recibir consejos y plantillas para conseguir una entrevista.",
     "captureSubmit": "Apuntarme",
     "captureDone": "Hecho. Te escribimos muy pronto.",
+    "captureError": "No pudimos guardar tu email. Revisa la dirección e inténtalo de nuevo.",
     "errorRateLimited": "Has agotado la prueba gratuita. Vuelve mañana o crea tu cuenta para seguir.",
     "errorFailed": "La generación falló. Inténtalo de nuevo.",
     "signupCta": "Crea tu cuenta",
