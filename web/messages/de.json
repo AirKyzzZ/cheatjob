@@ -283,7 +283,6 @@
     "headlineItalic": "indem du auf Indeed bewirbst.",
     "subhead": "Cheatjob findet die Email des Managers, der wirklich einstellt, schreibt deine Nachricht, bringt dich in die richtige Inbox.",
     "subheadEmphasis": "Seine Inbox. Nicht die von HR.",
-    "ctaPrimaryStripe": "Den Shortcut für 29€ nehmen",
     "ctaPrimaryWaitlist": "Konto erstellen",
     "ctaSecondary": "Sehen, wie es funktioniert",
     "microproof": "Nenn es Frechheit. Bis du unterschreibst.",
@@ -435,58 +434,51 @@
   "pricing": {
     "eyebrow": "Preise",
     "ariaLabel": "Cheatjob-Preise",
-    "headlineLead": "Der Preis eines Abends.",
-    "headlineItalic": "Der Vertrag eines ganzen Jahres.",
-    "popularBadge": "Beliebt",
-    "ctaWaitlistFallback": "Loslegen",
-    "deliveryLabel": "Lieferung Juni 2026",
-    "preOrderCaption": "Vorbestellung · {delivery}",
-    "footerNote": "Sichere Zahlung über Stripe. Abrechnung in Euro, MwSt. inkl. Vorbestellung mit geschätzter Lieferung im Juni 2026, volle Rückerstattung bei Nicht-Lieferung.",
+    "headlineLead": "Credits statt Abo.",
+    "headlineItalic": "Sie verfallen nie.",
+    "popularBadge": "Am beliebtesten",
+    "footerNote": "3 Credits sind beim Erstellen deines Kontos inklusive. Sichere Einmalzahlungen über Stripe. 1 Credit = eine vollständige Bewerbung oder ein Premium-Tool.",
     "plans": {
-      "sprint": {
-        "name": "Sprint",
-        "subtitle": "Das One-Shot-Format",
+      "decollage": {
+        "name": "Décollage",
+        "subtitle": "Für den Start deiner Suche",
+        "price": "9€",
+        "priceSub": "einmalige Zahlung",
+        "credits": "15 Credits · verfallen nie",
+        "cta": "Konto erstellen",
+        "features": [
+          "15 Bewerbungen oder Premium-Tools",
+          "Email-Suche für den richtigen Manager",
+          "Personalisierte Nachricht und J+7-Erinnerung",
+          "Lebenslauf-Optimierer und Anschreiben"
+        ]
+      },
+      "terrain": {
+        "name": "Terrain",
+        "subtitle": "Für eine ernsthafte Suche",
         "price": "29€",
-        "priceSub": "einmalig, 30 Tage Zugang",
-        "cta": "Sprint wählen",
+        "priceSub": "einmalige Zahlung",
+        "credits": "50 Credits · verfallen nie",
+        "cta": "Konto erstellen",
         "features": [
-          "50 rekonstruierte Emails",
-          "Unbegrenzte personalisierte Nachrichten",
-          "Praktikums- und Werkstudenten-Templates",
-          "Automatisches J+7 Follow-up",
-          "Bewerbungs-Dashboard",
-          "Auto-Stopp am Periodenende"
+          "50 Bewerbungen oder Premium-Tools",
+          "Alle Cheatjob-Funktionen",
+          "Email-Suche und personalisierte Nachrichten",
+          "Lebenslauf-Optimierer und Anschreiben"
         ]
       },
-      "mois": {
-        "name": "Monat",
-        "subtitle": "Das flexible Format",
-        "price": "14€90",
-        "priceSub": "pro Monat, jederzeit kündbar",
-        "cta": "Loslegen",
+      "reseau": {
+        "name": "Réseau",
+        "subtitle": "Für eine breite Suche",
+        "price": "59€",
+        "priceSub": "einmalige Zahlung",
+        "credits": "120 Credits · verfallen nie",
+        "cta": "Konto erstellen",
         "features": [
-          "100 rekonstruierte Emails pro Monat",
-          "Alles aus Sprint",
-          "Priorisierter Email-Support",
-          "CSV-Export deiner Bewerbungen",
-          "Gmail- und Outlook-Integration",
-          "Vollständige Sende-Historie",
-          "Ein smartes Follow-up pro Prospekt"
-        ]
-      },
-      "vie": {
-        "name": "Lebenslang",
-        "subtitle": "Das endgültige Format",
-        "price": "149€",
-        "priceSub": "einmalig, lebenslang",
-        "cta": "Lebenslang holen",
-        "features": [
-          "Alles aus Monat",
-          "Kein Monatslimit",
-          "Früher Zugang zu neuen Features",
-          "Lebenslange Updates",
-          "Priorisierter Support",
-          "Eine Stunde Bewerbungs-Coaching inklusive"
+          "120 Bewerbungen oder Premium-Tools",
+          "Alle Cheatjob-Funktionen",
+          "Der beste Preis pro Credit",
+          "Keine Frist und keine Verlängerung"
         ]
       }
     }
@@ -506,7 +498,7 @@
       },
       "early": {
         "q": "Wenn ich meine Werkstudentenstelle in 2 Wochen finde, kann ich aufhören?",
-        "a": "Ja. Sprint endet automatisch nach 30 Tagen, ohne Verlängerung. Monat kündigst du in einem Klick im Dashboard. Lebenslang hat keine Verlängerung."
+        "a": "Es gibt kein Abo zu kündigen. Deine Credits bleiben verfügbar und verfallen nie."
       },
       "contracts": {
         "q": "Für welche Vertragsarten funktioniert das?",
@@ -526,9 +518,8 @@
     "ariaLabel": "Cheatjob starten",
     "headlineLead": "Hör auf zu hoffen.",
     "headlineItalic": "Schreib an die richtigen Leute.",
-    "ctaPrimaryStripe": "Den Shortcut für 29€ nehmen",
     "ctaPrimaryWaitlist": "Konto erstellen",
-    "subline": "Vorbestellung · Lieferung Juni 2026 · Rückerstattung bei Nicht-Lieferung."
+    "subline": "3 kostenlose Credits · Kein Abo · Lade nur auf, wenn du es brauchst."
   },
   "footer": {
     "wordmarkAria": "Cheatjob — zurück nach oben",
@@ -562,11 +553,11 @@
   },
   "waitlist": {
     "closeAria": "Schließen",
-    "preOrderEyebrow": "Vorbestellung · Lieferung Juni 2026",
-    "headlineDefault": "Halt dir deinen Platz vor dem Launch.",
-    "bodyWithPlanLead": "Du reservierst Zugang zum Plan",
-    "bodyWithPlanTrail": ". Keine Abbuchung jetzt — du bekommst beim Launch einen Zahlungslink.",
-    "bodyDefault": "Keine Abbuchung jetzt. Wir mailen dich, sobald Cheatjob bereit ist, mit garantiertem Early-Bird-Preis.",
+    "eyebrow": "Cheatjob ist live",
+    "headlineDefault": "Erhalte die nächsten Produkt-Updates.",
+    "bodyWithPlanLead": "Du möchtest Updates zu",
+    "bodyWithPlanTrail": ". Hinterlasse deine Email und wir schicken dir die wichtigen Änderungen.",
+    "bodyDefault": "Hinterlasse deine Email für die nächsten Produkt-Updates.",
     "emailLabel": "Deine Email",
     "emailPlaceholder": "vorname.nachname@beispiel.de",
     "intentLabel": "Du suchst",
@@ -575,19 +566,19 @@
     "intentAlternance": "Eine Werkstudentenstelle",
     "intentCdi": "Eine erste Festanstellung",
     "intentOther": "Etwas anderes",
-    "submit": "Meinen Platz reservieren",
+    "submit": "Updates erhalten",
     "submitting": "Speichern…",
     "errorInvalidEmail": "Ungültige Email.",
     "errorSubmit": "Wir konnten das nicht speichern. Versuch es gleich nochmal.",
-    "microcopy": "Kein Spam. Kein Teilen. Nur eine Email vom Gründer, wenn Cheatjob bereit ist.",
+    "microcopy": "Kein Spam. Kein Teilen. Nur nützliche Produkt-Updates.",
     "doneHeadlineLead": "Du bist auf der Liste.",
-    "doneHeadlineItalic": "Wir mailen dich beim Launch.",
-    "doneBody": "Launch geplant für Juni 2026. Du bekommst eine direkte Email vom Gründer mit Priority-Access-Link, kein Newsletter, kein Spam.",
+    "doneHeadlineItalic": "Wir halten dich auf dem Laufenden.",
+    "doneBody": "Du bekommst nur nützliche Produkt-Updates von Cheatjob.",
     "doneBack": "Zurück zur Seite",
     "planLabels": {
-      "sprint": "Sprint · 29€",
-      "mois": "Monat · 14€90",
-      "vie": "Lebenslang · 149€"
+      "sprint": "Décollage · 9€",
+      "mois": "Terrain · 29€",
+      "vie": "Réseau · 59€"
     }
   },
   "betaBanner": {

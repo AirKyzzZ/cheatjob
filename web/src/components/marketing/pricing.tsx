@@ -10,14 +10,8 @@ import { cn } from "@/lib/utils";
 import { EVENTS, track } from "@/lib/analytics/events";
 import { useSectionViewed } from "@/hooks/use-section-viewed";
 
-const STRIPE_LINKS: Record<string, string | undefined> = {
-  sprint: process.env.NEXT_PUBLIC_STRIPE_LINK_SPRINT,
-  mois: process.env.NEXT_PUBLIC_STRIPE_LINK_MOIS,
-  vie: process.env.NEXT_PUBLIC_STRIPE_LINK_VIE,
-};
-
-const PLAN_IDS = ["sprint", "mois", "vie"] as const;
-const FEATURED_PLAN = "mois";
+const PLAN_IDS = ["decollage", "terrain", "reseau"] as const;
+const FEATURED_PLAN = "terrain";
 
 export function Pricing() {
   const t = useTranslations("pricing");
@@ -99,49 +93,26 @@ export function Pricing() {
                   ))}
                 </ul>
 
-                {(() => {
-                  const href = STRIPE_LINKS[planId];
-                  const className = cn(
+                <Link
+                  href={`/${locale}/sign-up`}
+                  onClick={() =>
+                    track(EVENTS.PricingCtaClick, {
+                      plan: planId,
+                      destination: "sign-up",
+                    })
+                  }
+                  className={cn(
                     "w-full h-12 rounded-[10px] text-[14px] font-semibold font-sans transition-colors inline-flex items-center justify-center",
                     featured
                       ? "bg-burgundy text-cream hover:bg-burgundy-deep"
                       : "border border-burgundy text-burgundy hover:bg-burgundy/5"
-                  );
-                  if (href) {
-                    return (
-                      <a
-                        href={href}
-                        onClick={() =>
-                          track(EVENTS.PricingCtaClick, {
-                            plan: planId,
-                            destination: "stripe",
-                          })
-                        }
-                        className={className}
-                        rel="noopener"
-                      >
-                        {t(`plans.${planId}.cta`)}
-                      </a>
-                    );
-                  }
-                  return (
-                    <Link
-                      href={`/${locale}/sign-up?plan=${planId}`}
-                      onClick={() =>
-                        track(EVENTS.PricingCtaClick, {
-                          plan: planId,
-                          destination: "sign-up",
-                        })
-                      }
-                      className={className}
-                    >
-                      {t("ctaWaitlistFallback")}
-                    </Link>
-                  );
-                })()}
+                  )}
+                >
+                  {t(`plans.${planId}.cta`)}
+                </Link>
 
                 <p className="mt-3 text-center font-sans text-[11px] uppercase tracking-[0.22em] text-muted-soft">
-                  {t("preOrderCaption", { delivery: t("deliveryLabel") })}
+                  {t(`plans.${planId}.credits`)}
                 </p>
               </motion.div>
             );

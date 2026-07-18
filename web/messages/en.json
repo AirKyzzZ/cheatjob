@@ -282,7 +282,6 @@
     "headlineItalic": "by applying on Indeed.",
     "subhead": "Cheatjob finds the email of the manager who's actually hiring, writes your message, lands you in the right inbox.",
     "subheadEmphasis": "Their inbox. Not HR's.",
-    "ctaPrimaryStripe": "Take the shortcut for €29",
     "ctaPrimaryWaitlist": "Create my account",
     "ctaSecondary": "See how it works",
     "microproof": "Call it nerve. Until the day you sign.",
@@ -434,58 +433,51 @@
   "pricing": {
     "eyebrow": "Pricing",
     "ariaLabel": "Cheatjob pricing",
-    "headlineLead": "The price of one night out.",
-    "headlineItalic": "The contract of one full year.",
-    "popularBadge": "Popular",
-    "ctaWaitlistFallback": "Get started",
-    "deliveryLabel": "Shipping June 2026",
-    "preOrderCaption": "Pre-order · {delivery}",
-    "footerNote": "Secure payment via Stripe. Billed in euros, VAT included. Pre-order with estimated delivery in June 2026, full refund if the product isn't shipped by then.",
+    "headlineLead": "Credits, not a subscription.",
+    "headlineItalic": "They never expire.",
+    "popularBadge": "Most popular",
+    "footerNote": "3 credits included when you create an account. Secure one-time payments via Stripe. 1 credit = one complete application or one premium tool.",
     "plans": {
-      "sprint": {
-        "name": "Sprint",
-        "subtitle": "The one-shot format",
+      "decollage": {
+        "name": "Décollage",
+        "subtitle": "To start your search",
+        "price": "€9",
+        "priceSub": "one-time payment",
+        "credits": "15 credits · never expire",
+        "cta": "Create my account",
+        "features": [
+          "15 applications or premium tools",
+          "Hiring manager email lookup",
+          "Personalized message and J+7 reminder",
+          "CV optimizer and cover letter writer"
+        ]
+      },
+      "terrain": {
+        "name": "Terrain",
+        "subtitle": "For a serious search",
         "price": "€29",
-        "priceSub": "one-time, 30-day access",
-        "cta": "Choose Sprint",
+        "priceSub": "one-time payment",
+        "credits": "50 credits · never expire",
+        "cta": "Create my account",
         "features": [
-          "50 reconstructed emails",
-          "Unlimited personalized messages",
-          "Apprenticeship and internship templates",
-          "Automatic J+7 follow-up",
-          "Application dashboard",
-          "Auto-cancellation at the end of the period"
+          "50 applications or premium tools",
+          "Every Cheatjob feature",
+          "Email lookup and personalized messages",
+          "CV optimizer and cover letter writer"
         ]
       },
-      "mois": {
-        "name": "Monthly",
-        "subtitle": "The flexible format",
-        "price": "€14.90",
-        "priceSub": "per month, no commitment",
-        "cta": "Get started",
+      "reseau": {
+        "name": "Réseau",
+        "subtitle": "To search at scale",
+        "price": "€59",
+        "priceSub": "one-time payment",
+        "credits": "120 credits · never expire",
+        "cta": "Create my account",
         "features": [
-          "100 reconstructed emails per month",
-          "Everything in Sprint",
-          "Priority email support",
-          "CSV exports of your applications",
-          "Gmail and Outlook integration",
-          "Full history of your sends",
-          "One smart follow-up per prospect"
-        ]
-      },
-      "vie": {
-        "name": "Lifetime",
-        "subtitle": "The final format",
-        "price": "€149",
-        "priceSub": "one-time, lifetime",
-        "cta": "Get lifetime",
-        "features": [
-          "Everything in Monthly",
-          "No monthly cap",
-          "Early access to new features",
-          "Lifetime updates",
-          "Priority support",
-          "One hour of application coaching included"
+          "120 applications or premium tools",
+          "Every Cheatjob feature",
+          "The best price per credit",
+          "No deadline or renewal"
         ]
       }
     }
@@ -505,7 +497,7 @@
       },
       "early": {
         "q": "If I land my apprenticeship in 2 weeks, can I stop?",
-        "a": "Yes. The Sprint plan ends automatically after 30 days, no renewal. The Monthly plan cancels in one click from your dashboard. The Lifetime plan has no renewal."
+        "a": "There is no subscription to cancel. Your credits stay available and never expire."
       },
       "contracts": {
         "q": "What kind of contracts does this work for?",
@@ -525,9 +517,8 @@
     "ariaLabel": "Start with Cheatjob",
     "headlineLead": "Stop hoping.",
     "headlineItalic": "Write to the right people.",
-    "ctaPrimaryStripe": "Take the shortcut for €29",
     "ctaPrimaryWaitlist": "Create my account",
-    "subline": "Pre-order · Shipping June 2026 · Refund if not delivered."
+    "subline": "3 free credits · No subscription · Top up only when you need to."
   },
   "footer": {
     "wordmarkAria": "Cheatjob — back to top",
@@ -561,11 +552,11 @@
   },
   "waitlist": {
     "closeAria": "Close",
-    "preOrderEyebrow": "Pre-order · Shipping June 2026",
-    "headlineDefault": "Hold your spot before launch.",
-    "bodyWithPlanLead": "You're reserving access to the",
-    "bodyWithPlanTrail": " plan. No charge now, you'll get a payment link when we launch.",
-    "bodyDefault": "No charge now. We'll email you the moment Cheatjob is ready, with a guaranteed early-bird price.",
+    "eyebrow": "Cheatjob is live",
+    "headlineDefault": "Get the next product updates.",
+    "bodyWithPlanLead": "You want updates about",
+    "bodyWithPlanTrail": ". Leave your email and we'll send the useful changes.",
+    "bodyDefault": "Leave your email to receive the next product updates.",
     "emailLabel": "Your email",
     "emailPlaceholder": "first.last@example.com",
     "intentLabel": "You're looking for",
@@ -574,19 +565,19 @@
     "intentAlternance": "An apprenticeship",
     "intentCdi": "A first full-time role",
     "intentOther": "Something else",
-    "submit": "Reserve my spot",
+    "submit": "Keep me updated",
     "submitting": "Saving…",
     "errorInvalidEmail": "Invalid email.",
     "errorSubmit": "We couldn't save that. Try again in a moment.",
-    "microcopy": "No spam. No sharing. Just an email from the founder when Cheatjob is ready.",
+    "microcopy": "No spam. No sharing. Only useful product updates.",
     "doneHeadlineLead": "You're on the list.",
-    "doneHeadlineItalic": "We email you at launch.",
-    "doneBody": "Launch is set for June 2026. You'll get a direct email from the founder with a priority access link, no newsletter, no spam.",
+    "doneHeadlineItalic": "We'll keep you updated.",
+    "doneBody": "You'll only receive useful product updates from Cheatjob.",
     "doneBack": "Back to site",
     "planLabels": {
-      "sprint": "Sprint · €29",
-      "mois": "Monthly · €14.90",
-      "vie": "Lifetime · €149"
+      "sprint": "Décollage · €9",
+      "mois": "Terrain · €29",
+      "vie": "Réseau · €59"
     }
   },
   "betaBanner": {

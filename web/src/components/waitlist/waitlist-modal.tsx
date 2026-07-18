@@ -177,7 +177,7 @@ export function WaitlistModal({ open, onClose, plan, source }: Props) {
                 <div className="flex items-center gap-3 mb-5">
                   <span className="h-px w-8 bg-burgundy" aria-hidden />
                   <span className="text-[11px] uppercase tracking-[0.22em] font-sans font-medium text-muted">
-                    {t("preOrderEyebrow")}
+                    {t("eyebrow")}
                   </span>
                 </div>
                 <h2

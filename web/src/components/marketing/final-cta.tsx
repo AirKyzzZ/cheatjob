@@ -9,8 +9,6 @@ import { BypassPath } from "@/components/ui/bypass-path";
 import { EVENTS, track } from "@/lib/analytics/events";
 import { useSectionViewed } from "@/hooks/use-section-viewed";
 
-const STRIPE_LINK_SPRINT = process.env.NEXT_PUBLIC_STRIPE_LINK_SPRINT;
-
 export function FinalCTA() {
   const t = useTranslations("finalCta");
   const reduce = useReducedMotion();
@@ -46,24 +44,13 @@ export function FinalCTA() {
           transition={{ duration: 0.65, delay: 0.3 }}
           className="flex flex-col items-center gap-5"
         >
-          {STRIPE_LINK_SPRINT ? (
-            <a
-              href={STRIPE_LINK_SPRINT}
-              onClick={() => track(EVENTS.FinalCtaClick, { destination: "stripe" })}
-              rel="noopener"
-              className="inline-flex items-center justify-center h-16 px-10 rounded-[12px] bg-burgundy text-cream text-[17px] font-semibold font-sans hover:bg-burgundy-deep hover:-translate-y-0.5 transition-all"
-            >
-              {t("ctaPrimaryStripe")}
-            </a>
-          ) : (
-            <Link
-              href={`/${locale}/sign-up`}
-              onClick={() => track(EVENTS.FinalCtaClick, { destination: "sign-up" })}
-              className="inline-flex items-center justify-center h-16 px-10 rounded-[12px] bg-burgundy text-cream text-[17px] font-semibold font-sans hover:bg-burgundy-deep hover:-translate-y-0.5 transition-all"
-            >
-              {t("ctaPrimaryWaitlist")}
-            </Link>
-          )}
+          <Link
+            href={`/${locale}/sign-up`}
+            onClick={() => track(EVENTS.FinalCtaClick, { destination: "sign-up" })}
+            className="inline-flex items-center justify-center h-16 px-10 rounded-[12px] bg-burgundy text-cream text-[17px] font-semibold font-sans hover:bg-burgundy-deep hover:-translate-y-0.5 transition-all"
+          >
+            {t("ctaPrimaryWaitlist")}
+          </Link>
           <p className="text-[13px] text-muted font-sans">{t("subline")}</p>
         </motion.div>
       </div>

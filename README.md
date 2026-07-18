@@ -137,7 +137,7 @@ If you contribute design or copy, the charter wins over personal taste. That's t
 
 ## Status
 
-Pre-launch. Waitlist is live at [cheatjob.fr](https://cheatjob.fr). The first 100 founding users are getting the *Sprint* offer at €29 fixed price; ongoing pricing will be announced at public launch.
+Live at [cheatjob.com](https://www.cheatjob.com). New accounts start with 3 free credits; one-time packs add 15 credits for €9, 50 for €29, or 120 for €59. Credits never expire.
 
 ---
 

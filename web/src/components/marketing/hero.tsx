@@ -8,8 +8,6 @@ import { FadingVideo } from "@/components/ui/fading-video";
 import { EVENTS, track } from "@/lib/analytics/events";
 import { useSectionViewed } from "@/hooks/use-section-viewed";
 
-const STRIPE_LINK_SPRINT = process.env.NEXT_PUBLIC_STRIPE_LINK_SPRINT;
-
 const HERO_VIDEO = "/videos/hero.mp4";
 const HERO_POSTER = "/videos/hero-poster.jpg";
 
@@ -76,26 +74,14 @@ export function Hero() {
 
         {/* CTA */}
         <div className="flex flex-col sm:flex-row items-center gap-4 mt-7 animate-fade-rise-delay-2">
-          {STRIPE_LINK_SPRINT ? (
-            <a
-              href={STRIPE_LINK_SPRINT}
-              onClick={() => track(EVENTS.HeroPrimaryCta, { destination: "stripe" })}
-              rel="noopener"
-              className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-12 py-4 text-[15px] font-medium font-sans transition-transform hover:scale-[1.03]"
-            >
-              {t("ctaPrimaryStripe")}
-              <ArrowUpRight className="size-4" strokeWidth={2} aria-hidden />
-            </a>
-          ) : (
-            <Link
-              href={`/${locale}/sign-up`}
-              onClick={() => track(EVENTS.HeroPrimaryCta, { destination: "sign-up" })}
-              className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-12 py-4 text-[15px] font-medium font-sans transition-transform hover:scale-[1.03]"
-            >
-              {t("ctaPrimaryWaitlist")}
-              <ArrowUpRight className="size-4" strokeWidth={2} aria-hidden />
-            </Link>
-          )}
+          <Link
+            href={`/${locale}/sign-up`}
+            onClick={() => track(EVENTS.HeroPrimaryCta, { destination: "sign-up" })}
+            className="inline-flex items-center gap-2 rounded-full bg-ink text-cream px-12 py-4 text-[15px] font-medium font-sans transition-transform hover:scale-[1.03]"
+          >
+            {t("ctaPrimaryWaitlist")}
+            <ArrowUpRight className="size-4" strokeWidth={2} aria-hidden />
+          </Link>
           <a
             href="#wedge"
             onClick={() => track(EVENTS.HeroSecondaryCta, { target: "wedge" })}
