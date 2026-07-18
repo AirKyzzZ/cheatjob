@@ -7,8 +7,8 @@
 **Le logiciel qui contacte les recruteurs à ta place.**
 *Pas de réseau ? On t'en fabrique un.*
 
-[![Live Site](https://img.shields.io/badge/Live-cheatjob.fr-6B1F28?style=for-the-badge)](https://cheatjob.fr)
-[![Status](https://img.shields.io/badge/Status-Pre--launch-FAF9F6?style=for-the-badge&labelColor=0A0A0A)](#status)
+[![Live Site](https://img.shields.io/badge/Live-cheatjob.com-6B1F28?style=for-the-badge)](https://www.cheatjob.com)
+[![Status](https://img.shields.io/badge/Status-Live-FAF9F6?style=for-the-badge&labelColor=0A0A0A)](#status)
 [![License](https://img.shields.io/badge/License-Proprietary-0A0A0A?style=for-the-badge)](#license)
 
 [![Next.js](https://img.shields.io/badge/Next.js-16-000000?style=flat-square&logo=next.js&logoColor=white)](https://nextjs.org)
@@ -137,7 +137,7 @@ If you contribute design or copy, the charter wins over personal taste. That's t
 
 ## Status
 
-Pre-launch. Waitlist is live at [cheatjob.fr](https://cheatjob.fr). The first 100 founding users are getting the *Sprint* offer at €29 fixed price; ongoing pricing will be announced at public launch.
+Live at [cheatjob.com](https://www.cheatjob.com). New accounts start with 3 free credits; one-time packs add 15 credits for €9, 50 for €29, or 120 for €59. Credits never expire.
 
 ---
 
@@ -151,7 +151,7 @@ This repository is published for transparency and as a portfolio piece. The Chea
 
 Built by [Maxime Mansiet](https://maximemansiet.fr) · Bordeaux, France
 
-[![Website](https://img.shields.io/badge/cheatjob.fr-6B1F28?style=flat-square&logoColor=white)](https://cheatjob.fr)
+[![Website](https://img.shields.io/badge/cheatjob.com-6B1F28?style=flat-square&logoColor=white)](https://www.cheatjob.com)
 [![Portfolio](https://img.shields.io/badge/maximemansiet.fr-0A0A0A?style=flat-square&logoColor=white)](https://maximemansiet.fr)
 
 </div>
