@@ -12,6 +12,8 @@ export function Sidebar({ locale }: { locale: string }) {
 
   const items = [
     { href: `/${locale}/dashboard`, label: t("candidatures") },
+    { href: `/${locale}/dashboard/cv-optimizer`, label: t("cvOptimizer") },
+    { href: `/${locale}/dashboard/lettre`, label: t("lettre") },
     { href: `/${locale}/dashboard/profile`, label: t("profile") },
   ];
 

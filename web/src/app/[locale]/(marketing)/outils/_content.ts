@@ -95,6 +95,34 @@ export const TOOL_CONTENT: Record<ToolMode, ToolContent> = {
     ],
     fields: ["targetRole", "targetCompany", "recruiterName", "you", "offerContext"],
   },
+  lettre: {
+    slug: "lettre-de-motivation",
+    metaTitle: "Générateur de lettre de motivation gratuit · Cheatjob",
+    metaDescription:
+      "Génère une lettre de motivation complète et personnalisée en 30 secondes. Tu colles l'offre et ton profil, on écrit la lettre qui se lit jusqu'au bout. Gratuit.",
+    h1: "Générateur de lettre de motivation",
+    intro:
+      "Une lettre de motivation n'a pas besoin d'être un pensum en trois paragraphes recopié d'un modèle. Tu donnes l'offre et ton profil, on écrit une lettre précise, qui parle de l'entreprise autant que de toi.",
+    faq: [
+      {
+        q: "Comment commencer une lettre de motivation ?",
+        a: "Par l'offre, pas par toi. Une première phrase qui montre que tu as compris le poste et le contexte de l'entreprise fait plus qu'un « Actuellement étudiant en… ». L'accroche décide si la suite est lue.",
+      },
+      {
+        q: "Quelle longueur pour une lettre de motivation ?",
+        a: "Entre 220 et 300 mots. Une page maximum, trois paragraphes courts. Le recruteur y passe moins d'une minute : chaque phrase doit mériter sa place.",
+      },
+      {
+        q: "Lettre de motivation ou email de motivation ?",
+        a: "L'email quand tu contactes quelqu'un directement, la lettre quand l'offre la demande ou qu'un dossier de candidature l'exige. Les deux doivent être précis ; seul le format change.",
+      },
+      {
+        q: "Faut-il personnaliser chaque lettre ?",
+        a: "Oui, et c'est exactement ce qui élimine la concurrence. La même lettre envoyée partout se repère en deux lignes. Une lettre qui cite le poste, l'équipe et un vrai point de l'offre sort du lot immédiatement.",
+      },
+    ],
+    fields: ["targetRole", "targetCompany", "recruiterName", "you", "offerContext"],
+  },
 };
 
-export const TOOL_ORDER: ToolMode[] = ["candidature_spontanee", "relance", "motivation"];
+export const TOOL_ORDER: ToolMode[] = ["candidature_spontanee", "relance", "motivation", "lettre"];

@@ -50,6 +50,8 @@ export const EVENTS = {
   QuotaExhausted: "quota_exhausted",
   CvParsed: "cv_parsed",
   CvParseFailed: "cv_parse_failed",
+  CvOptimized: "cv_optimized",
+  LettreGenerated: "lettre_generated",
 
   UpgradeViewed: "upgrade_viewed",
   UpgradeCheckoutStarted: "upgrade_checkout_started",

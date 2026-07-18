@@ -1,5 +1,8 @@
 import { defineConfig, devices } from "@playwright/test";
 
+// PORT lets the e2e dev server coexist with another local app on 3000.
+const PORT = process.env.PORT ?? "3000";
+
 export default defineConfig({
   testDir: "./e2e",
   fullyParallel: false,
@@ -8,7 +11,7 @@ export default defineConfig({
   reporter: [["list"]],
   timeout: 45_000,
   use: {
-    baseURL: "http://localhost:3000",
+    baseURL: `http://localhost:${PORT}`,
     trace: "off",
     screenshot: "off",
   },
@@ -20,8 +23,8 @@ export default defineConfig({
   ],
   webServer: {
     command: "npm run dev",
-    url: "http://localhost:3000",
+    url: `http://localhost:${PORT}`,
     reuseExistingServer: !process.env.CI,
-    env: { ...process.env, E2E_MOCK: "1" },
+    env: { ...process.env, E2E_MOCK: "1", PORT },
   },
 });

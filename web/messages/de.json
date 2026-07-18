@@ -98,6 +98,8 @@
   "app": {
     "sidebar": {
       "candidatures": "Bewerbungen",
+      "cvOptimizer": "CV-Optimierer",
+      "lettre": "Anschreiben",
       "profile": "Profil",
       "signOut": "Abmelden"
     },
@@ -259,6 +261,20 @@
       "featReseau": "Alles aus Terrain · Anschreiben & LinkedIn ab Release",
       "successTitle": "Credits hinzugefügt!",
       "successBody": "Dein Pass ist aktiv. Kontaktiere jetzt Recruiter."
+    },
+    "tools": {
+      "cvTitle": "Dein Lebenslauf, optimiert für das Angebot",
+      "cvSubmit": "Analysieren (1 Credit)",
+      "cvNeedsCv": "Wir brauchen deinen Lebenslauf, um ihn zu analysieren. Füge ihn in deinem Profil hinzu, die Extraktion erfolgt automatisch.",
+      "cvNeedsCvCta": "Meinen Lebenslauf hinzufügen",
+      "cvReecritures": "Vorgeschlagene Umformulierungen",
+      "lettreTitle": "Dein Anschreiben, verankert in deinem Lebenslauf",
+      "lettreSubmit": "Verfassen (1 Credit)",
+      "lettreInvalid": "Wir brauchen die Stelle, das Unternehmen und das Angebot (mindestens 50 Zeichen) für ein echtes Anschreiben.",
+      "creditsRemaining": "{count} Credits verbleibend",
+      "quotaExceeded": "Keine Credits mehr. Lade ein Paket auf, um weiterzumachen, deine Credits verfallen nie.",
+      "quotaCta": "Aufladen",
+      "optional": "optional"
     }
   },
   "hero": {
@@ -606,9 +622,21 @@
     "captureConsent": "Ich möchte Tipps und Vorlagen erhalten, um ein Vorstellungsgespräch zu bekommen.",
     "captureSubmit": "Anmelden",
     "captureDone": "Erledigt. Wir melden uns bald.",
+    "captureError": "Wir konnten deine E-Mail nicht speichern. Prüfe die Adresse und versuch es nochmal.",
     "errorRateLimited": "Du hast die kostenlose Testversion ausgeschöpft. Komm morgen wieder oder erstelle dein Konto, um weiterzumachen.",
     "errorFailed": "Die Generierung ist fehlgeschlagen. Versuch es erneut.",
-    "signupCta": "Konto erstellen"
+    "signupCta": "Konto erstellen",
+    "fieldCvText": "Dein Lebenslauf (Text einfügen)",
+    "fieldCvTextPlaceholder": "Füge hier den Inhalt deines Lebenslaufs ein, unformatiert.",
+    "analyze": "Meinen Lebenslauf analysieren",
+    "analyzing": "Analyse läuft…",
+    "reanalyze": "Erneut analysieren",
+    "cvResultTitle": "Dein Lebenslauf zu diesem Angebot",
+    "cvForces": "Stärken",
+    "cvLacunes": "Was fehlt",
+    "cvMotsCles": "Keywords ergänzen",
+    "cvConseils": "Konkrete Tipps",
+    "errorCvTooShort": "Wir brauchen einen echten Lebenslauf (mindestens 200 Zeichen) und ein echtes Angebot (mindestens 50) für eine nützliche Analyse."
   },
   "blog": {
     "eyebrow": "Der Blog",

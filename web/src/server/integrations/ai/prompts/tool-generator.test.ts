@@ -31,9 +31,25 @@ describe("buildToolPrompt", () => {
     const spont = buildToolPrompt("candidature_spontanee", inputs)[0].content;
     const relance = buildToolPrompt("relance", inputs)[0].content;
     const motivation = buildToolPrompt("motivation", inputs)[0].content;
+    const lettre = buildToolPrompt("lettre", inputs)[0].content;
     expect(spont).not.toBe(relance);
     expect(relance).not.toBe(motivation);
     expect(spont).not.toBe(motivation);
+    expect(lettre).not.toBe(spont);
+    expect(lettre).not.toBe(relance);
+    expect(lettre).not.toBe(motivation);
+  });
+
+  it("builds a lettre prompt with the lettre system voice", () => {
+    const messages = buildToolPrompt("lettre", {
+      targetRole: "Chef de projet junior",
+      targetCompany: "Qonto",
+      you: "M2 management, stage chez Alan",
+      offerContext: "CDI chef de projet ops",
+    });
+    expect(messages[0].content).toContain("lettre de motivation");
+    expect(messages[1].content).toContain("Qonto");
+    expect(messages[1].content).toContain("Objet:");
   });
 });
 

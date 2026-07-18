@@ -97,6 +97,8 @@
   "app": {
     "sidebar": {
       "candidatures": "Candidatures",
+      "cvOptimizer": "CV optimizer",
+      "lettre": "Cover letter",
       "profile": "Profile",
       "signOut": "Sign out"
     },
@@ -258,6 +260,20 @@
       "featReseau": "Everything in Terrain · cover letter & LinkedIn on release",
       "successTitle": "Credits added!",
       "successBody": "Your pass is active. Go contact recruiters."
+    },
+    "tools": {
+      "cvTitle": "Your CV, optimized for the offer",
+      "cvSubmit": "Analyze (1 credit)",
+      "cvNeedsCv": "We need your CV to analyze it. Add it on your profile, extraction is automatic.",
+      "cvNeedsCvCta": "Add my CV",
+      "cvReecritures": "Suggested rewrites",
+      "lettreTitle": "Your cover letter, grounded in your CV",
+      "lettreSubmit": "Write (1 credit)",
+      "lettreInvalid": "We need the role, the company and the offer (at least 50 characters) for a real letter.",
+      "creditsRemaining": "{count} credits left",
+      "quotaExceeded": "Out of credits. Top up a pack to continue, your credits never expire.",
+      "quotaCta": "Top up",
+      "optional": "optional"
     }
   },
   "hero": {
@@ -605,9 +621,21 @@
     "captureConsent": "I agree to receive tips and templates to help me land an interview.",
     "captureSubmit": "Sign me up",
     "captureDone": "You're in. We'll be in touch soon.",
+    "captureError": "We couldn't save your email. Check the address and try again.",
     "errorRateLimited": "You've used up the free trial. Come back tomorrow or create your account to keep going.",
     "errorFailed": "Generation failed. Try again.",
-    "signupCta": "Create your account"
+    "signupCta": "Create your account",
+    "fieldCvText": "Your CV (paste the text)",
+    "fieldCvTextPlaceholder": "Paste your CV content here, raw, no formatting.",
+    "analyze": "Analyze my CV",
+    "analyzing": "Analyzing…",
+    "reanalyze": "Run it again",
+    "cvResultTitle": "Your CV against this offer",
+    "cvForces": "Strengths",
+    "cvLacunes": "What's missing",
+    "cvMotsCles": "Keywords to add",
+    "cvConseils": "Concrete advice",
+    "errorCvTooShort": "We need a real CV (at least 200 characters) and a real offer (at least 50) for a useful analysis."
   },
   "blog": {
     "eyebrow": "The blog",

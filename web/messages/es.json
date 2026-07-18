@@ -98,6 +98,8 @@
   "app": {
     "sidebar": {
       "candidatures": "Candidaturas",
+      "cvOptimizer": "Optimizador de CV",
+      "lettre": "Carta de presentación",
       "profile": "Perfil",
       "signOut": "Cerrar sesión"
     },
@@ -259,6 +261,20 @@
       "featReseau": "Todo Terrain · carta de presentación y LinkedIn al lanzarse",
       "successTitle": "¡Créditos añadidos!",
       "successBody": "Tu pase está activo. Ve a contactar reclutadores."
+    },
+    "tools": {
+      "cvTitle": "Tu CV, optimizado para la oferta",
+      "cvSubmit": "Analizar (1 crédito)",
+      "cvNeedsCv": "Necesitamos tu CV para analizarlo. Añádelo en tu perfil, la extracción es automática.",
+      "cvNeedsCvCta": "Añadir mi CV",
+      "cvReecritures": "Reescrituras sugeridas",
+      "lettreTitle": "Tu carta de presentación, anclada en tu CV",
+      "lettreSubmit": "Redactar (1 crédito)",
+      "lettreInvalid": "Necesitamos el puesto, la empresa y la oferta (al menos 50 caracteres) para una carta real.",
+      "creditsRemaining": "{count} créditos restantes",
+      "quotaExceeded": "Sin créditos. Recarga un pack para continuar, tus créditos nunca caducan.",
+      "quotaCta": "Recargar",
+      "optional": "opcional"
     }
   },
   "hero": {
@@ -606,9 +622,21 @@
     "captureConsent": "Acepto recibir consejos y plantillas para conseguir una entrevista.",
     "captureSubmit": "Apuntarme",
     "captureDone": "Hecho. Te escribimos muy pronto.",
+    "captureError": "No pudimos guardar tu email. Revisa la dirección e inténtalo de nuevo.",
     "errorRateLimited": "Has agotado la prueba gratuita. Vuelve mañana o crea tu cuenta para seguir.",
     "errorFailed": "La generación falló. Inténtalo de nuevo.",
-    "signupCta": "Crea tu cuenta"
+    "signupCta": "Crea tu cuenta",
+    "fieldCvText": "Tu CV (pega el texto)",
+    "fieldCvTextPlaceholder": "Pega aquí el contenido de tu CV, en texto plano, sin formato.",
+    "analyze": "Analizar mi CV",
+    "analyzing": "Analizando…",
+    "reanalyze": "Volver a analizar",
+    "cvResultTitle": "Tu CV frente a esta oferta",
+    "cvForces": "Puntos fuertes",
+    "cvLacunes": "Lo que falta",
+    "cvMotsCles": "Palabras clave a incluir",
+    "cvConseils": "Consejos concretos",
+    "errorCvTooShort": "Necesitamos un CV real (al menos 200 caracteres) y una oferta real (al menos 50) para un análisis útil."
   },
   "blog": {
     "eyebrow": "El blog",
